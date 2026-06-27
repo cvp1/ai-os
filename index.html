@@ -362,14 +362,20 @@ ABOUT ME (context, refine via the interview below)
 ────────────────────────────────────────────────────────
 FIRST — NEW INSTALL, OR UPGRADE? (check this before anything else)
 
-Check whether an AI-OS already exists in this folder — a CLAUDE.md plus a memory/
-folder with a MEMORY.md index.
-- IF IT DOES → switch to UPGRADE MODE. Do NOT re-run the interview and do NOT
-  rebuild. Reconcile only what this prompt adds that isn't there yet: bring the
-  MEMORY SYSTEM conventions and the SKILLS list (see PHASE 1) up to the current
-  spec and add any missing skills, while leaving my existing memories, notes,
-  CLAUDE.md, and tuning intact. Show me a short diff of what you'd add or change,
-  apply it after my OK, then STOP — skip PHASE 0 and the rest of the build.
+Check whether an AI-OS already exists — a CLAUDE.md plus a memory/ folder with a
+MEMORY.md index in this folder, OR AI-OS skills already under ~/.claude/skills/
+(e.g. improve, triage, brief). If EITHER is present — or you are not certain this
+is a clean machine — ASK me before building anything. Never default to a rebuild.
+- IF IT DOES (or I confirm I already have one) → switch to UPGRADE MODE. Do NOT
+  re-run the interview, do NOT rebuild, and do NOT create, duplicate, or
+  re-schedule any timed syncs / scheduled jobs. Reconcile ONLY additive gaps:
+  bring the MEMORY SYSTEM conventions up to the current spec and ADD any skills
+  from the PHASE 1 list that I am missing. Leave my existing memories, notes,
+  CLAUDE.md, tuning, scheduled jobs, AND any skills I already have UNTOUCHED —
+  never overwrite or "upgrade" a skill I have already customized. If a new skill
+  (e.g. /status) overlaps one I already run, point it out and let me choose — do
+  not silently replace it. Show me a short diff of what you'd ADD, apply it only
+  after my OK, then STOP — skip PHASE 0 and the rest of the build.
 - IF IT DOESN'T → this is a fresh install: continue with PHASE 0 below and build
   the whole system.
 
