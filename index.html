@@ -274,6 +274,9 @@
     <div class="refrow"><div class="c"><span class="slash">/</span>wiki</div><div class="d">Precedent search over your own notes — "what did I decide about X?" — answered with citations to the exact note and heading.</div><div class="e"><b>"/wiki the data-migration decision"</b></div></div>
     <div class="refrow"><div class="c"><span class="slash">/</span>improve</div><div class="d">The learning loop. Captures what you corrected this session into durable memory, so the system gets more "you" every time you steer it.</div><div class="e"><b>"/improve"</b> after you fix its tone → it sticks.</div></div>
     <div class="refrow"><div class="c"><span class="slash">/</span>ingest</div><div class="d">Turns raw notes you drop in — clippings, transcripts, meeting exports — into maintained, linked concept pages you can navigate, instead of re-summarizing the same sources every time.</div><div class="e"><b>"/ingest my reading"</b> → a living knowledge base, not a pile.</div></div>
+    <div class="refrow"><div class="c"><span class="slash">/</span>board</div><div class="d">Run a decision past a panel of advisor profiles — experts you admire, distilled into vault notes. Get each one's distinct take: where they agree, where they'd dissent, a recommendation.</div><div class="e"><b>"ask the board about this hire"</b> → several sharp perspectives at once.</div></div>
+    <div class="refrow"><div class="c"><span class="slash">/</span>teach</div><div class="d">A stateful tutor for learning a topic over many sessions — keeps a syllabus and your progress, and picks up each time exactly where you left off.</div><div class="e"><b>"/teach me system design"</b> → a course that remembers you.</div></div>
+    <div class="refrow"><div class="c"><span class="slash">/</span>workflow-visualizer</div><div class="d">Turns a system or process you describe into one interactive HTML diagram — clickable nodes, hover detail — you can open in a browser.</div><div class="e"><b>"diagram our release process"</b> → a map, not a wall of text.</div></div>
   </div>
   <p class="runline" style="color:var(--ink-3)">Plus <span style="font-family:var(--mono);color:var(--ink)">/memory-prune</span> to keep your memory healthy, and <span style="font-family:var(--mono);color:var(--ink)">/skill-center</span> — a meta-command to build and refine new commands as your needs grow.</p>
 </div></section>
@@ -548,6 +551,30 @@ Explain each piece in plain language as you create it.
      (grouped, one line each), flag orphans and dangling [[links]], and PROPOSE
      deletions for my OK — never auto-delete. Keep a small ledger so it doesn't
      re-flag the same ones.
+
+   - /board — Run a real decision past a panel of advisor profiles — experts whose
+     thinking I admire, each distilled into a profile note in my vault. For a
+     decision I bring, consult each profile and synthesize their distinct takes:
+     where they agree, where they'd dissent, and a recommendation. To add or refresh
+     an advisor, point me at someone's public work and I build a profile (how they
+     think, their heuristics, what they'd push back on). Profiles live under the
+     vault (e.g. 03 Areas/Advisors/); grounded only in those curated profiles, no
+     external API. Advisory / read-only. Trigger on "/board", "ask the board",
+     "what would my advisors say".
+
+   - /teach — A stateful tutor for learning a topic across many sessions. Keep a
+     per-topic workspace in the vault (04 Resources/Learning/<topic>/) holding a
+     syllabus, what we've covered, and where I struggled; each session resumes where
+     the last ended, teaches the next piece, checks my understanding, and updates the
+     progress file. Adapt depth to my level. Trigger on "/teach", "teach me X",
+     "continue my <topic> lessons".
+
+   - /workflow-visualizer — Turn a system or process I describe into one
+     self-contained interactive HTML diagram (clickable nodes, hover detail, ~20
+     nodes max) I can open in a browser — an architecture, an approval flow, how a
+     project's pieces connect. Save the single HTML file under the vault
+     (04 Resources/Diagrams/) and give me the path. Trigger on
+     "/workflow-visualizer", "diagram this", "map out this system".
 
    Keep every skill read-by-default and write/send-gated behind my explicit OK.
 

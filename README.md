@@ -55,6 +55,9 @@ No code. No config files to edit. If you can use email and a calendar, you can u
 | `/improve` | The learning loop — captures your corrections into durable memory. |
 | `/memory-prune` | Keeps memory healthy — verifies, de-dupes, proposes cleanups (never auto-deletes). |
 | `/skill-center` | Build, edit, and audit your own commands as your needs grow. |
+| `/board` | Run a decision past a panel of advisor profiles — distinct takes, dissents, a recommendation. |
+| `/teach` | A stateful tutor — keeps a syllabus and your progress across sessions. |
+| `/workflow-visualizer` | Turns a system you describe into one interactive HTML diagram. |
 
 **⚡ Local-first by design** — caches your calendar and mail locally and refreshes only what changed (Graph delta / Gmail history), so it's instant to use and won't trip rate limits.
 
