@@ -448,25 +448,45 @@ Explain each piece in plain language as you create it.
    - Confidentiality boundaries (anything confidential / under NDA / financials / personnel).
    - My timezone, working hours, and meeting-prep expectations.
 
-2) MEMORY SYSTEM — a persistent, file-based memory (this is the key to it improving
-   over time). Create a memory/ folder and a MEMORY.md index file.
-   - Each memory is ONE file holding ONE durable fact, with frontmatter:
+2) MEMORY SYSTEM — your AI-OS remembers across sessions, and that memory is YOURS:
+   plain files in your own folder. Claude Code already has built-in "auto memory" —
+   it writes notes to itself about your corrections and preferences and keeps an
+   index. We don't rebuild that. We point it at your folder and keep what it stores
+   TRUE and well-organized. Two steps:
+
+   a) Point auto-memory at this folder. Create a settings file at
+      ~/ai-os/.claude/settings.local.json containing exactly:
+          { "autoMemoryDirectory": "~/ai-os/memory/" }
+      Explain to me in plain language: this keeps Claude Code's memory inside my own
+      AI-OS folder — files I can read, edit, back up, and copy along with the rest of
+      this system — instead of hidden away where I can't see it. I may get a one-time
+      "trust this folder" prompt; tell me to accept it. Set this at the PROJECT level
+      here (this settings file), NOT in my user-wide settings, so my AI-OS memory
+      stays separate from any other project's. From now on I start my AI-OS by opening
+      Claude Code in THIS folder (~/ai-os) — that's home base, where memory lives.
+
+   b) Seed it with a clear structure, then keep it that way. In memory/, create a
+      MEMORY.md index plus one file per durable fact, in this convention (Claude Code
+      reads and writes these same files going forward):
+   - Each memory is ONE file holding ONE durable fact, with frontmatter (Claude Code
+     maintains these files; it normalizes this to a block and may add its own keys
+     like node_type / originSessionId — that's fine, keep the `type` value):
        ---
        name: <short-kebab-slug>
        description: <one-line summary used to judge relevance on recall>
-       metadata: { type: user | feedback | project | reference }
+       metadata:
+         type: user | feedback | project | reference
        ---
        <the fact; for feedback/project add **Why:** and **How to apply:** lines>
    - Types: user = who I am / my preferences; feedback = how I want you to work
      (corrections + confirmed approaches, with the why); project = ongoing work,
      goals, constraints not derivable from files; reference = pointers to docs,
      dashboards, shared drives, tickets.
-   - LINK MEMORIES TO EACH OTHER: in a memory's body, reference related memories
-     with [[their-slug]]. Link liberally — a [[slug]] that doesn't exist yet is
-     fine, it just marks a memory worth writing later. When a link has a clear
-     relationship you may type it (trailing [[slug]] #rel or leading rel:: [[slug]])
-     from this set only: replaces / replaced_by, depends_on, runs_on, fallback_for,
-     monitors, alerts_via, part_of, affects — anything else stays a plain link.
+   - THE INDEX IS THE LINK LAYER: MEMORY.md (below) is the reliable map of how
+     memories relate — keep it well-grouped. You MAY add [[their-slug]] links in a
+     memory's body to mark related notes, but treat them as best-effort: Claude Code
+     may not preserve in-body links when it later rewrites a file, so never rely on
+     them as the only connection — the index and each note's `description` carry recall.
    - USE ABSOLUTE DATES in project/feedback notes (never "today" / "next week");
      convert to an explicit date so the note still makes sense months later.
    - DON'T DUPLICATE DURABLE SOURCES: don't memorize what my code, config, files,
