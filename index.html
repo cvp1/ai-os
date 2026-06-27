@@ -243,8 +243,8 @@
   <div class="manifest">
     <div class="item">
       <span class="tag">01 · Memory</span>
-      <h3>A memory that learns you</h3>
-      <p>A persistent, file-based memory of who you are, how you like to work, and what's live on your projects. Correct it once and it remembers — next time is better by default.</p>
+      <h3>A memory that stays true</h3>
+      <p>Claude Code remembers across sessions — this keeps that memory honest: it re-checks what's gone stale, clears duplicates, resolves contradictions, and links related facts, so what it knows about your projects and people stays trustworthy instead of drifting.</p>
     </div>
     <div class="item">
       <span class="tag">02 · Vault</span>
@@ -272,7 +272,7 @@
     <div class="refrow"><div class="c"><span class="slash">/</span>status</div><div class="d">Drafts a status update from your notes + recent activity: what progressed, what's blocked, decisions needed, next steps. Polished or direct — your call.</div><div class="e"><b>"/status for &lt;project&gt;"</b> → a draft you edit &amp; send.</div></div>
     <div class="refrow"><div class="c"><span class="slash">/</span>weekly</div><div class="d">Pre-builds your weekly review — what shipped, decisions, what slipped or is blocked, next week's shape — plus a ready-to-edit status update.</div><div class="e"><b>"/weekly"</b> on Friday → review's already written.</div></div>
     <div class="refrow"><div class="c"><span class="slash">/</span>wiki</div><div class="d">Precedent search over your own notes — "what did I decide about X?" — answered with citations to the exact note and heading.</div><div class="e"><b>"/wiki the data-migration decision"</b></div></div>
-    <div class="refrow"><div class="c"><span class="slash">/</span>improve</div><div class="d">The learning loop. Captures what you corrected this session into durable memory, so the system gets more "you" every time you steer it.</div><div class="e"><b>"/improve"</b> after you fix its tone → it sticks.</div></div>
+    <div class="refrow"><div class="c"><span class="slash">/</span>improve</div><div class="d">Turns a correction into a durable rule. Claude already jots down some corrections on its own — /improve makes the ones that matter stick deliberately, as a one-fact rule, so the system gets more "you" every time you steer it.</div><div class="e"><b>"/improve"</b> after you fix its tone → it sticks.</div></div>
     <div class="refrow"><div class="c"><span class="slash">/</span>ingest</div><div class="d">Turns raw notes you drop in — clippings, transcripts, meeting exports — into maintained, linked concept pages you can navigate, instead of re-summarizing the same sources every time.</div><div class="e"><b>"/ingest my reading"</b> → a living knowledge base, not a pile.</div></div>
     <div class="refrow"><div class="c"><span class="slash">/</span>board</div><div class="d">Run a decision past a panel of advisor profiles — experts you admire, distilled into vault notes. Get each one's distinct take: where they agree, where they'd dissent, a recommendation.</div><div class="e"><b>"ask the board about this hire"</b> → several sharp perspectives at once.</div></div>
     <div class="refrow"><div class="c"><span class="slash">/</span>teach</div><div class="d">A stateful tutor for learning a topic over many sessions — keeps a syllabus and your progress, and picks up each time exactly where you left off.</div><div class="e"><b>"/teach me system design"</b> → a course that remembers you.</div></div>
@@ -300,7 +300,7 @@
     <div class="ctrl">
       <span class="chk">✓ Well-behaved</span>
       <h3>Local-first by design</h3>
-      <p>It caches your calendar and mail and refreshes only when stale — instant to use, and it won't hammer Microsoft Graph or the Gmail API or trip rate limits.</p>
+      <p>It caches your calendar and mail and refreshes only when something changes — instant to use, and gentle enough on your mail and calendar service that it won't trip rate limits.</p>
     </div>
   </div>
   <div class="notice">⚠ <b>Check first:</b> confirm with your leadership / IT that Claude Code with the Microsoft 365 or Google Workspace connector is approved for your account before wiring it to work mail. This is a personal-productivity setup — not an official product of any employer.</div>
@@ -312,11 +312,12 @@
   <h2 class="display" style="margin-top:14px">Stand it up.</h2>
   <p class="lede" style="margin-bottom:30px">No code. Install one app, connect your mail &amp; calendar, paste the prompt below, answer its questions.</p>
   <div class="steps">
-    <div class="step"><div><h4>Install Claude Code &amp; sign in</h4><p>CLI, desktop, or the VS Code / JetBrains extension — sign in with your Claude account.</p></div></div>
-    <div class="step"><div><h4>Connect your mail &amp; calendar</h4><p>In Claude Code settings, add the Microsoft 365 connector <i>or</i> the Google (Gmail + Calendar) connector — whichever you use. The prompt can walk you through it.</p></div></div>
+    <div class="step"><div><h4>Install Claude Code &amp; sign in</h4><p>Use the one-step installer at <span class="kbd">claude.com/claude-code</span> — it works on Mac, Windows, and Linux, with nothing else to set up. Then sign in with your Claude account. <i>Claude Code runs on a paid Claude plan — Pro is about $20/month. This setup is free; the AI that powers it isn&#8217;t.</i></p></div></div>
+    <div class="step"><div><h4>Connect your mail &amp; calendar</h4><p>On your Claude account at <span class="kbd">claude.ai</span> &rarr; Settings &rarr; Connectors, turn on the <b>Google (Gmail + Calendar)</b> connector <i>or</i> the <b>Microsoft 365</b> connector and sign in to authorize it. If you get to choose, <b>Google is the quickest</b> — most people can connect it themselves. The <b>Microsoft 365</b> connector is read-only and often needs your IT admin to approve it first, so check that <i>before</i> you invest time. The setup prompt can walk you through it.</p></div></div>
     <div class="step"><div><h4>Open a session in your "home" folder</h4><p>Make a folder to be your AI OS home — e.g. <span class="kbd">~/ai-os</span> — and open a Claude Code session there.</p></div></div>
     <div class="step"><div><h4>Paste the setup prompt as your first message</h4><p>Copy it below, paste the whole thing, and send.</p></div></div>
     <div class="step"><div><h4>Answer the interview</h4><p>It asks about your role, your projects, the people you work with, and how you like to work — then builds everything shaped to you and explains what it made.</p></div></div>
+    <div class="step"><div><h4>See it work — your first win</h4><p>Type <span class="kbd">/brief</span> and press enter. In a few seconds you get your actual day back — today's meetings, what's waiting on you, deadlines this week — proof it's wired to your real mail and calendar. That's the payoff; everything else builds on it.</p></div></div>
   </div>
 
   <div class="term">
@@ -335,11 +336,12 @@
   <span class="eyebrow">Questions</span>
   <h2 class="display" style="margin:14px 0 26px">Before you start.</h2>
   <details><summary>Do I need to be technical?<span class="pm">+</span></summary><div class="ans">No. You install one app and paste one prompt. The interview is a normal conversation, and Claude explains each thing it builds in plain language. If you can use email and a calendar, you can use this.</div></details>
+  <details><summary>What does it cost?<span class="pm">+</span></summary><div class="ans">This setup is free, and so is the toolkit it builds. The one cost is Claude Code itself, which runs on a paid Claude plan — Pro is about $20/month. The template is free; the AI that powers it isn&#8217;t.</div></details>
   <details><summary>What data does it touch?<span class="pm">+</span></summary><div class="ans">Your mail and calendar — Microsoft 365 or Google Workspace — read through the connector you authorize. It keeps a local cache on your own machine for speed, and treats anything you mark confidential as something that never leaves your machine without your explicit approval.</div></details>
   <details><summary>Will it email or message people on its own?<span class="pm">+</span></summary><div class="ans">No. It's read-only by default. It drafts replies, updates, and prep locally and shows them to you; nothing is sent, posted, or accepted until you say so — every time.</div></details>
   <details><summary>Do I need approval to use it?<span class="pm">+</span></summary><div class="ans">If you're connecting a work account, check with your leadership / IT that Claude Code with the Microsoft 365 or Google connector is approved first. Treat this as a personal-productivity setup, not an official product of any employer.</div></details>
-  <details><summary>How is it different from just chatting with an AI?<span class="pm">+</span></summary><div class="ans">Two things: a <b>persistent memory</b> that learns your projects and preferences across sessions, and <b>commands wired to your real mail &amp; calendar</b>. Instead of re-explaining your context every time, you say "/prep my 2pm" and it already knows the players, the history, and what's open.</div></details>
-  <details><summary>What if it gets something wrong?<span class="pm">+</span></summary><div class="ans">Correct it, then run <span class="cmd">/improve</span>. It writes the lesson to memory so it won't repeat the mistake. The system is built to get better the more you steer it.</div></details>
+  <details><summary>How is it different from just chatting with an AI?<span class="pm">+</span></summary><div class="ans">Two things: a <b>memory it actively keeps true</b> — it learns your projects and people across sessions, then re-checks what's gone stale, clears duplicates, and resolves contradictions so it doesn't drift — and <b>commands wired to your real mail &amp; calendar</b>. Instead of re-explaining your context every time, you say "/prep my 2pm" and it already knows the players, the history, and what's open.</div></details>
+  <details><summary>What if it gets something wrong?<span class="pm">+</span></summary><div class="ans">Correct it, then run <span class="cmd">/improve</span> to lock that lesson in as a durable rule, so it won't repeat the mistake. The more you steer it, the more it works the way you do.</div></details>
   <details><summary>Can I customise the commands?<span class="pm">+</span></summary><div class="ans">Yes — run <span class="cmd">/skill-center</span> to add, edit, or audit commands as your needs change. The starter set is just a foundation.</div></details>
 </div></section>
 
@@ -583,11 +585,18 @@ Explain each piece in plain language as you create it.
    connector and the "what changed?" mechanism differ. Use cache/<backend>/ — i.e.
    cache/m365/ for Microsoft 365, cache/google/ for Google Workspace (both dirs if I
    use both).
-   - Confirm the right connector/MCP is connected:
+   - Confirm the right connector is connected. These first-party connectors are turned
+     on from my Claude account (claude.ai → Settings → Connectors) and authorized via
+     OAuth — do NOT try to add them locally with `claude mcp add`:
        • Microsoft 365 → Outlook mail + calendar (Teams, SharePoint, OneDrive if available).
-       • Google Workspace → Gmail + Google Calendar (Drive if available).
-     If it isn't, walk me through adding it in Claude Code settings, then verify by
-     reading my next 3 calendar events and my latest unread subject lines (read-only).
+         Note: the Microsoft 365 connector is read-only and often needs a Microsoft 365 /
+         Entra admin to consent before it can be connected. If it won't authorize, tell me
+         up front that I may need my IT admin — before I sink time into the build.
+       • Google Workspace → Gmail + Google Calendar (Drive if available) — usually
+         self-serve for an individual.
+     If it isn't connected, point me to claude.ai → Settings → Connectors to add and
+     authorize it, then verify by reading my next 3 calendar events and my latest
+     unread subject lines (read-only).
 
    - LOCAL CACHE IS THE DEFAULT READ PATH. These APIs rate-limit and round-trips add
      latency, so do NOT hit them on every question. Maintain a local mirror under

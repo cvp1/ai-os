@@ -20,7 +20,7 @@ No code. No config files to edit. If you can use email and a calendar, you can u
 
 ## Why you'd want it
 
-- **It remembers.** Stop re-explaining your context every session — your projects, the people you work with, and your preferences persist and compound over time.
+- **It keeps your memory true.** Claude Code remembers across sessions — this keeps that memory honest: it re-checks what's gone stale, removes duplicates, resolves contradictions, and links related facts, so what it knows about your projects and people stays trustworthy instead of drifting.
 - **It's wired to your real work.** Commands read from your live mail & calendar — Microsoft 365 or Google Workspace — not a generic chatbot guess.
 - **It's in your hands.** Read-only by default — it drafts and proposes; nothing is sent, posted, or accepted without your explicit OK, every time.
 - **It gets more "you."** Correct it once, run `/improve`, and the lesson sticks.
@@ -29,7 +29,7 @@ No code. No config files to edit. If you can use email and a calendar, you can u
 
 | # | Step |
 |---|------|
-| 1 | Install **Claude Code** and sign in. |
+| 1 | Install **Claude Code** and sign in. *(Claude Code runs on a paid Claude plan — Pro is ~$20/mo. This template is free; the runtime that powers it isn't.)* |
 | 2 | Connect your mail & calendar — the **Microsoft 365** *or* **Google (Gmail + Calendar)** connector (the prompt can walk you through it). |
 | 3 | Open a Claude Code session in a folder you want as your home — e.g. `~/ai-os`. |
 | 4 | Open the [walkthrough](https://cvp1.github.io/ai-os/), copy the setup prompt, and paste it as your first message. |
@@ -37,7 +37,7 @@ No code. No config files to edit. If you can use email and a calendar, you can u
 
 ## What gets built
 
-**🧠 Persistent memory** — one-fact-per-file notes (`user` / `feedback` / `project` / `reference`) with an index that loads every session, interlinked and self-maintaining.
+**🧠 A maintained memory** — a clean one-fact-per-file structure (`user` / `feedback` / `project` / `reference`) over Claude Code's built-in memory, that actively keeps itself healthy: re-verifies stale facts, de-dupes, resolves contradictions, and grows the sources you drop in into interlinked concept notes — legible, trustworthy, and yours to edit.
 
 **📚 Notes vault** — an Obsidian-compatible PARA vault, plus an AI-owned `Synthesis/` zone that turns raw sources you drop in into maintained, linked concept pages.
 
