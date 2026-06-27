@@ -64,6 +64,16 @@ No code. No config files to edit. If you can use email and a calendar, you can u
 - **Your data stays local.** Cached on your own machine; confidential material is treated as never-leaves-without-your-say.
 - **Yours to shape.** The starter commands are a foundation — `/skill-center` adds and refines more as you go.
 
+## The principles behind it
+
+A few rules shape every command — the same ones, whatever you wire it to:
+
+- **Propose, don't act.** It drafts and recommends; you approve. The safe, reversible direction can be automatic — anything outward-facing or hard to undo waits for your OK.
+- **Earn trust, don't assume it.** It leads with what it's unsure of, checks the real source instead of a cached "looks fine," and tells you when something's stale.
+- **Signal over noise.** It surfaces what changed and what needs you, and stays quiet when nothing does.
+- **Remember, then improve.** Your context persists and compounds; a correction you make once becomes a durable rule, not a lesson you repeat.
+- **Local-first, yours to shape.** Your data stays on your machine, secrets stay out of the conversation, and every piece is a small tool you can read, edit, or replace.
+
 ## A note before you connect a work account
 
 This is a **personal-productivity template**, not an official product of any employer. If you're wiring it to a work mailbox, confirm with your leadership / IT that Claude Code with the Microsoft 365 or Google Workspace connector is approved for your account first.
