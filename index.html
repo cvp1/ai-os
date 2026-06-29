@@ -271,7 +271,8 @@
     <div class="refrow"><div class="c"><span class="slash">/</span>prep</div><div class="d">Preps you for one meeting — the invite, the mail thread, the relevant project &amp; people notes, last decisions, open items. Hands you an agenda and likely questions.</div><div class="e"><b>"/prep my 2pm with the design team"</b> → walk in ready.</div></div>
     <div class="refrow"><div class="c"><span class="slash">/</span>status</div><div class="d">Drafts a status update from your notes + recent activity: what progressed, what's blocked, decisions needed, next steps. Polished or direct — your call.</div><div class="e"><b>"/status for &lt;project&gt;"</b> → a draft you edit &amp; send.</div></div>
     <div class="refrow"><div class="c"><span class="slash">/</span>weekly</div><div class="d">Pre-builds your weekly review — what shipped, decisions, what slipped or is blocked, next week's shape — plus a ready-to-edit status update.</div><div class="e"><b>"/weekly"</b> on Friday → review's already written.</div></div>
-    <div class="refrow"><div class="c"><span class="slash">/</span>wiki</div><div class="d">Precedent search over your own notes — "what did I decide about X?" — answered with citations to the exact note and heading.</div><div class="e"><b>"/wiki the data-migration decision"</b></div></div>
+    <div class="refrow"><div class="c"><span class="slash">/</span>recall</div><div class="d">"What do I know about X?" — one search across <b>both</b> your memory and your notes vault at once, ranked together so neither crowds out the other, with directly related facts pulled in. Answered with citations, and honest about where you have gaps.</div><div class="e"><b>"/recall what I know about the website redesign"</b> → everything you know, one answer.</div></div>
+    <div class="refrow"><div class="c"><span class="slash">/</span>wiki</div><div class="d">Precedent search over your notes <i>only</i> — the deep dive into your vault, with citations to the exact note and heading. (Use <span class="cmd">/recall</span> when you want both your memory and your notes at once.)</div><div class="e"><b>"/wiki the data-migration decision"</b></div></div>
     <div class="refrow"><div class="c"><span class="slash">/</span>improve</div><div class="d">Turns a correction into a durable rule. Claude already jots down some corrections on its own — /improve makes the ones that matter stick deliberately, as a one-fact rule, so the system gets more "you" every time you steer it.</div><div class="e"><b>"/improve"</b> after you fix its tone → it sticks.</div></div>
     <div class="refrow"><div class="c"><span class="slash">/</span>ingest</div><div class="d">Turns raw notes you drop in — clippings, transcripts, meeting exports — into maintained, linked concept pages you can navigate, instead of re-summarizing the same sources every time.</div><div class="e"><b>"/ingest my reading"</b> → a living knowledge base, not a pile.</div></div>
     <div class="refrow"><div class="c"><span class="slash">/</span>board</div><div class="d">Run a decision past a panel of advisor profiles — experts you admire, distilled into vault notes. Get each one's distinct take: where they agree, where they'd dissent, a recommendation.</div><div class="e"><b>"ask the board about this hire"</b> → several sharp perspectives at once.</div></div>
@@ -557,6 +558,28 @@ Explain each piece in plain language as you create it.
 
    - /wiki — Precedent search over my notes vault: "what did I decide / write about
      X?", answered with path > heading citations. Read-only recall.
+
+   - /recall — The unified "what do I know about X?" front door: ONE query that
+     searches BOTH my maintained memory AND my notes vault in a single pass and
+     returns one ranked answer. This is the everything-at-once recall surface; /wiki
+     stays for vault-only precedent + graph enrichment. Build it READ-ONLY — it never
+     writes either store. RANK FAIRLY (the one real risk): the two stores score on
+     different scales, so a naive merge lets one drown out the other — score each
+     source's hits, NORMALIZE within each source to 0–1, then guarantee a minimum
+     quota per source (default 2 from each) before filling the rest of the pack
+     (default 8 total) by overall rank, so a cross-cutting question always shows both
+     sides. RELATIONAL CONTEXT: after picking the top memory hits, expand them by
+     their links — follow any [[slug]] links in the body and the MEMORY.md index
+     grouping (and any typed relations in the frontmatter, if I keep them) to pull in
+     directly-related memories as a separate "related" block, shown as context, not
+     re-ranked; this gives relational depth the flat vault notes can't. ANSWER
+     CONTRACT: ground the answer only in what was recalled; cite per source — vault
+     claims as path > heading, memory facts as [[slug]] — and end with an honest
+     one-line "Gaps:" footer naming uncovered terms or stale notes the answer leaned
+     on. Plain keyword matching is the right engine at this scale; leave a clear seam
+     to swap in an embedding-based reranker later, but DON'T build that now. Trigger
+     on "/recall", "what do I know about X", "search everything / both", "have I
+     decided or noted anything about…".
 
    - /weekly — Generate my recurring status / progress update from project notes +
      recent activity, in my voice and format. Draft only; I send it.
