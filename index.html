@@ -314,7 +314,7 @@
   <p class="lede" style="margin-bottom:30px">No code. Install one app, connect your mail &amp; calendar, paste the prompt below, answer its questions.</p>
   <div class="steps">
     <div class="step"><div><h4>Install Claude Code &amp; sign in</h4><p>Use the one-step installer at <span class="kbd">claude.com/claude-code</span> — it works on Mac, Windows, and Linux, with nothing else to set up. Then sign in with your Claude account. <i>Claude Code runs on a paid Claude plan — Pro is about $20/month. This setup is free; the AI that powers it isn&#8217;t.</i></p></div></div>
-    <div class="step"><div><h4>Connect your mail &amp; calendar</h4><p>On your Claude account at <span class="kbd">claude.ai</span> &rarr; Settings &rarr; Connectors, turn on the <b>Google (Gmail + Calendar)</b> connector <i>or</i> the <b>Microsoft 365</b> connector and sign in to authorize it. Both work the same here: your AI OS only ever <i>reads</i> your mail and calendar and drafts replies locally for you to send yourself — so the Microsoft 365 connector being read-only takes nothing away, it&#8217;s every bit as capable as Google. The real difference is access, not capability. If you get to choose, <b>Google is the quickest</b> — most people, personal Gmail included, can connect it themselves. <b>Microsoft 365</b> needs a <i>work</i> Microsoft 365 account your organization has enabled — a personal <span class="kbd">@outlook.com</span> or <span class="kbd">@hotmail.com</span> address can&#8217;t connect at all, and many companies need an admin to approve it once — so confirm you can connect it <i>before</i> you invest time. The setup prompt can walk you through it.</p></div></div>
+    <div class="step"><div><h4>Connect your mail &amp; calendar</h4><p>On your Claude account at <span class="kbd">claude.ai</span> &rarr; Settings &rarr; Connectors, turn on the <b>Google (Gmail + Calendar)</b> connector <i>or</i> the <b>Microsoft 365</b> connector and sign in to authorize it. Both work the same here: your AI OS only ever <i>reads</i> your mail and calendar and drafts replies locally for you to send yourself — so the Microsoft 365 connector being read-only takes nothing away, it&#8217;s every bit as capable as Google. The real difference is access, not capability. If you get to choose, <b>Google is the quickest</b> — most people, personal Gmail included, can connect it themselves. <b>Microsoft 365</b> needs a <i>work</i> Microsoft 365 account your organization has enabled — a personal <span class="kbd">@outlook.com</span> or <span class="kbd">@hotmail.com</span> address can&#8217;t connect at all. Many people can approve the connection themselves when they sign in; some tenants still need a one-time admin consent — so confirm you can connect it <i>before</i> you invest time. The setup prompt can walk you through it.</p></div></div>
     <div class="step"><div><h4>Open a session in your "home" folder</h4><p>Make a folder to be your AI OS home — e.g. <span class="kbd">~/ai-os</span> — and open a Claude Code session there.</p></div></div>
     <div class="step"><div><h4>Paste the setup prompt as your first message</h4><p>Copy it below, paste the whole thing, and send.</p></div></div>
     <div class="step"><div><h4>Answer the interview</h4><p>It asks about your role, your projects, the people you work with, and how you like to work — then builds everything shaped to you and explains what it made.</p></div></div>
@@ -412,8 +412,9 @@ C. Tools & sources of truth
       Workspace (Gmail/Google Calendar/Drive), or both? (This decides what you wire.)
       One gate to check NOW, before building anything: the Microsoft 365 connector
       only works with a WORK / Microsoft 365 (Entra) account — a PERSONAL @outlook.com
-      or @hotmail.com address cannot connect to it at all, and many work tenants also
-      need an IT admin to approve it once. So if Microsoft is my only mail but it's a
+      or @hotmail.com address cannot connect to it at all. On many work tenants I can
+      approve the connection myself when I sign in; some still require a one-time IT-admin
+      consent. So if Microsoft is my only mail but it's a
       personal Outlook.com/Hotmail address, tell me up front and steer me to Google
       instead — do NOT wire M365 and let me discover the wall after the build. (Google
       connects self-serve for both personal Gmail and Google Workspace accounts.)
@@ -659,8 +660,9 @@ Explain each piece in plain language as you create it.
          everything locally and send it myself, so M365 is fully capable here, not a
          lesser path than Google. The real constraint is ACCESS, not capability: it
          requires a work / Microsoft 365 (Entra) account — a PERSONAL @outlook.com or
-         @hotmail.com address cannot connect at all — and many tenants need an admin to
-         consent once. If a work account won't authorize, tell me I may need my IT admin —
+         @hotmail.com address cannot connect at all. On many tenants I can approve the
+         connection myself when I sign in; some still require a one-time admin consent. If
+         a work account won't authorize, tell me I may need my IT admin —
          before I sink time into the build.
        • Google Workspace → Gmail + Google Calendar (Drive if available) — connects
          self-serve for an individual, personal Gmail included.
