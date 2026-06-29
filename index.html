@@ -182,6 +182,7 @@
   <a class="navlink navhide" href="#controls">Controls</a>
   <a class="navlink navhide" href="#compare">Yours vs rented</a>
   <a class="navlink navhide" href="#rollout">Rollout</a>
+  <a class="navlink navhide" href="#domain">Add a manager</a>
   <a class="btn sm go" href="#rollout">Copy the prompt</a>
 </div></header>
 
@@ -449,6 +450,24 @@
     <pre class="code" id="promptBox">Loading…</pre>
   </div>
   <p class="runline"><span class="caret">❯</span> the one habit that makes it pay off: run <span style="color:var(--green-deep);font-weight:600">/improve</span> whenever you correct it — that's the loop that makes it more <i>you</i>.</p>
+</div></section>
+
+<!-- ============ DOMAIN MANAGERS — SECOND ACT ============ -->
+<section id="domain"><div class="wrap reveal">
+  <span class="eyebrow">When you&#8217;re ready · a manager for any domain</span>
+  <h2 class="display" style="margin-top:14px">Once it runs your week, give it a manager.</h2>
+  <p class="lede" style="margin-bottom:24px">Your AI&nbsp;OS runs your day. The next step gives it a <b>domain manager</b> &mdash; a standing chief-of-staff for one part of your life that keeps its own strategy, does its own research, stages real work for you to approve, and gets sharper every time you correct it. The same shape works for your projects, your finances, your learning. <b>Here&#8217;s the first one you can stand up today: your career.</b></p>
+  <p style="color:var(--ink-3);font-size:.94em;margin-bottom:30px">Paste one more prompt and it learns how <i>you</i> write from a few things you&#8217;ve written, keeps a living strategy for where you&#8217;re headed, and drafts LinkedIn posts that sound like <b>you</b> &mdash; not generic AI. It won&#8217;t nail your voice from three samples &mdash; no tool does. It gets it <i>roughly</i> right, shows you what it learned and asks &#8220;what&#8217;s not you?&#8221;, then sharpens every time you edit a draft. <b>You&#8217;re always the judge, and you do the posting &mdash; nothing is ever published for you.</b></p>
+
+  <div class="term">
+    <div class="termbar">
+      <span class="tdots"><i></i><i></i><i></i></span>
+      <span class="fname">career-manager-prompt.txt</span>
+      <button class="copybtn" id="copyBtn2" onclick="copyPrompt2()">Copy prompt</button>
+    </div>
+    <pre class="code" id="promptBox2">Loading…</pre>
+  </div>
+  <p class="runline"><span class="caret">❯</span> the loop that makes it <i>you</i>: every time you reword one of its drafts, run <span style="color:var(--green-deep);font-weight:600">/career voice learn</span> &mdash; it remembers the difference.</p>
 </div></section>
 
 <!-- ============ FAQ ============ -->
@@ -945,6 +964,71 @@ and record them in CLAUDE.md so they load every session:
 Start with PHASE 0 now: introduce yourself in one line and ask the first batch of
 interview questions.</script>
 
+<!-- second-act (career manager) prompt held as plain text -->
+<script type="text/plain" id="promptSource2">You are extending an AI operating system I already set up in Claude Code, by adding a
+career manager. ONLY proceed if my core AI-OS already exists.
+
+FIRST — CHECK I'M READY (do this before anything else)
+Confirm this folder has a working AI-OS: a CLAUDE.md plus a memory/ folder, OR AI-OS
+skills under ~/.claude/skills/ (e.g. brief, triage). If you can't find one, STOP and
+tell me: "Set up your AI OS first and have your first win — then come back for this."
+Do not build a career manager onto a machine with no AI-OS.
+
+WHAT YOU'LL BUILD (all under ~/ai-os/career/ so it shares my memory and /recall):
+a voice model from a few of my own writing samples, a living career strategy, and a
+/career skill that drafts LinkedIn posts in MY voice. Propose-only: you draft and
+stage; I publish. You never post anything or edit my profile.
+
+PHASE A — LEARN MY VOICE (this is the heart of it)
+1. Ask me to paste 3 to 5 things I'm proud of writing, and tell me to mix the kinds on
+   purpose: at least one short public post/update (the register you'll write in), an
+   email I'd send a colleague, and my bio/About. Tell me to paste the REAL ones, not
+   polished picks. Three is enough; more than five won't help.
+2. Ask three short substance questions: (a) what do I want to be known for? (b) a take
+   in my field I'd defend? (c) anything I never want to sound like?
+3. Save each sample verbatim to ~/ai-os/career/voice/samples/. Then write
+   ~/ai-os/career/VOICE.md: a distilled fingerprint (how I open, my tone, sentence
+   rhythm, the words I reach for and avoid), what I want to be known for, a UNIVERSAL
+   "don't" list of generic-AI tells (leverage/synergy/robust/seamless/delve, "it's not
+   just X it's Y", rule-of-three, throat-clearing, and uniform sentence length — the
+   surest machine tell), and a PER-USER punctuation section. IMPORTANT: infer my
+   punctuation tells FROM MY SAMPLES — if I use em-dashes, semicolons, etc., WHITELIST
+   them as my voice; NEVER apply a generic rule that strips them. Include a 4-part
+   scoring rubric (Sound/Substance/Structure/Clean-of-tells) and a "Learned from edits"
+   section.
+4. CONFIRM LOOP: read my fingerprint back in plain language and ask "anything wrong, or
+   just not you?" Write whatever I say into VOICE.md's "Learned from edits" as the first
+   dated entry. This is the single most important step — do not skip it.
+
+PHASE B — SEED MY WORKSPACE
+Create ~/ai-os/career/ with STRATEGY.md (a DRAFT career strategy scaffold: North
+Star, positioning thesis, content pillars — marked for me to confirm), BACKLOG.md
+(career moves + a content idea bank), DECISIONS.md (append-only log), and RULES.md with
+this confidentiality guardrail VERBATIM: "Never expose employer- or client-identifiable
+information in anything public. Generalize names to 'a large enterprise'/'a recent
+project'; never reproduce internal documents or non-public numbers; when in doubt, cut
+and flag." Ask me a few light questions to fill the strategy draft, but keep it short —
+I can refine it later with /career onboard.
+
+PHASE C — INSTALL THE SKILL (restart-free)
+Write ~/ai-os/career/personas/manager.md and personas/researcher.md (plain persona
+files the /career skill will prepend to a general-purpose agent — NOT subagent files).
+Write ~/.claude/skills/career/SKILL.md (the /career command: status, onboard, voice,
+post, research; propose-only; voice-gated; reads VOICE.md + the raw samples before
+drafting; stages posts to ~/ai-os/career/proposals/ for me to publish).
+
+PHASE D — FIRST WIN, INLINE (no restart needed)
+Right now, in THIS session, draft ONE short LinkedIn post in my voice on a topic from my
+strategy or recent notes — reading VOICE.md and my samples first, grading it against the
+rubric, revising anything that sounds like AI, and checking it against RULES.md. Show me
+the draft and ask "does this sound like you?" I am the judge. Then tell me: "Your
+/career command is ready — start a fresh session (reopen this folder) once and you can
+type /career anytime."
+
+Remember throughout: you draft, I publish. Vary sentence length. Keep my real
+punctuation. Never expose anything that identifies my employer or clients.
+</script>
+
 <script>
   // inject the plain-text prompt (no HTML escaping needed)
   document.getElementById('promptBox').textContent =
@@ -952,6 +1036,16 @@ interview questions.</script>
 
   function copyPrompt(){
     var btn=document.getElementById('copyBtn'), text=document.getElementById('promptBox').textContent;
+    function done(){btn.textContent='✓ Copied';btn.classList.add('ok');setTimeout(function(){btn.textContent='Copy prompt';btn.classList.remove('ok');},2000);}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done,fb);}else{fb();}
+    function fb(){var ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(e){btn.textContent='Select & copy';}document.body.removeChild(ta);}
+  }
+
+  // second-act (career manager) prompt
+  document.getElementById('promptBox2').textContent =
+    document.getElementById('promptSource2').textContent.replace(/^\n/,'');
+  function copyPrompt2(){
+    var btn=document.getElementById('copyBtn2'), text=document.getElementById('promptBox2').textContent;
     function done(){btn.textContent='✓ Copied';btn.classList.add('ok');setTimeout(function(){btn.textContent='Copy prompt';btn.classList.remove('ok');},2000);}
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done,fb);}else{fb();}
     function fb(){var ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(e){btn.textContent='Select & copy';}document.body.removeChild(ta);}
