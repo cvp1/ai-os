@@ -315,7 +315,7 @@
   <div class="steps">
     <div class="step"><div><h4>Install the Claude desktop app &amp; sign in</h4><p>Download the Claude desktop app from <span class="kbd">claude.com/download</span> — a normal app installer for Mac (<span class="kbd">.dmg</span>) or Windows (<span class="kbd">.exe</span>). Open it and sign in with your Claude account. <b>You never need a terminal or any code.</b> <i>The app runs on a paid Claude plan — Pro is about $20/month. This setup is free; the AI that powers it isn&#8217;t.</i></p><p style="margin-top:10px;color:var(--ink-3);font-size:.92em"><b>On Windows, one extra step:</b> the first time you open it, the app may ask you to install <b>Git for Windows</b> first — accept, let it install, then reopen the app. (Mac has nothing extra.)</p><p style="margin-top:8px;color:var(--ink-3);font-size:.92em">Prefer the command line? The Claude Code CLI at <span class="kbd">claude.com/claude-code</span> is the very same engine — every step below works there too.</p></div></div>
     <div class="step"><div><h4>Connect your mail &amp; calendar</h4><p>On your Claude account at <span class="kbd">claude.ai</span> &rarr; Settings &rarr; Connectors, turn on the <b>Google (Gmail + Calendar)</b> connector <i>or</i> the <b>Microsoft 365</b> connector and sign in to authorize it. Both work the same here: your AI OS only ever <i>reads</i> your mail and calendar and drafts replies locally for you to send yourself — so the Microsoft 365 connector being read-only takes nothing away, it&#8217;s every bit as capable as Google. The real difference is access, not capability. If you get to choose, <b>Google is the quickest</b> — most people, personal Gmail included, can connect it themselves. <b>Microsoft 365</b> needs a <i>work</i> Microsoft 365 account your organization has enabled — a personal <span class="kbd">@outlook.com</span> or <span class="kbd">@hotmail.com</span> address can&#8217;t connect at all. Many people can approve the connection themselves when they sign in; some tenants still need a one-time admin consent — so confirm you can connect it <i>before</i> you invest time. The setup prompt can walk you through it.</p></div></div>
-    <div class="step"><div><h4>Open the Code tab and point it at a "home" folder</h4><p>In the app, click the <b>Code</b> tab, then create or pick a folder to be your AI OS home — e.g. a new folder called <span class="kbd">ai-os</span>. That folder is where your memory and notes live, on your own machine. <i>For this first build, set the mode to <b>"Auto accept edits"</b> (the selector next to the message box) so it can create your files without stopping to ask about each one — it can still only <b>read and draft</b> your mail and calendar, never send, delete, or post anything.</i></p></div></div>
+    <div class="step"><div><h4>Open the Code tab and turn on Auto mode</h4><p>In the app, click the <b>Code</b> tab, then create or pick a folder to be your AI OS home — e.g. a new folder called <span class="kbd">ai-os</span>. That folder is where your memory and notes live, on your own machine. <i><b>Before you paste anything</b>, set the session's mode to <b>Auto</b> with the selector next to the message box — if you don't see Auto there, switch it on once in the app's <b>Settings</b> first. This lets it build your whole system in one pass instead of stopping to ask about every file, and it can still only <b>read and draft</b> your mail and calendar — never send, delete, or post anything.</i></p></div></div>
     <div class="step"><div><h4>Paste the setup prompt as your first message</h4><p>Copy it below, paste the whole thing, and send.</p></div></div>
     <div class="step"><div><h4>Answer the interview</h4><p>It asks about your role, your projects, the people you work with, and how you like to work — then builds everything shaped to you and explains what it made.</p></div></div>
     <div class="step"><div><h4>See it work — your first win</h4><p>Type <span class="kbd">/brief</span> and press enter. In a few seconds you get your actual day back — today's meetings, what's waiting on you, deadlines this week — proof it's wired to your real mail and calendar. That's the payoff; everything else builds on it.</p></div></div>
@@ -468,14 +468,14 @@ Explain each piece in plain language as you create it.
            ]
          }
        }
-   Then explain to me in plain language what this does: it lets you create my files and
-   folders and draft on my behalf freely — so the build doesn't stop to ask me about
-   every single file — while you stay unable to send or delete my mail (the connectors
-   are read-only) and are blocked from risky commands (deleting whole folders, fetching
-   from the internet, or touching my system and login files). You only ever write inside
-   this AI-OS folder and my Claude skills folder. If I'm on the Claude desktop app, also
-   tell me to set this session's mode to "Auto accept edits" so it takes effect right
-   away for this first build.
+   Then explain to me in plain language what this does: it writes my durable safety rules —
+   you may freely create and edit files inside this AI-OS folder and my Claude skills
+   folder and draft on my behalf, while you stay unable to send or delete my mail (the
+   connectors are read-only) and are blocked from risky commands (deleting whole folders,
+   fetching from the internet, or touching my system and login files). You only ever write
+   inside this AI-OS folder and my Claude skills folder. These rules take full effect from
+   my next session on; for THIS first build I should already have set the session to Auto
+   mode (the rollout steps cover that) so it runs without constant prompts.
 
 1) CLAUDE.md — my house rules, loaded every session. Capture from the interview:
    - Who I am, my role, my projects + their state, the people I work with.
