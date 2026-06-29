@@ -180,6 +180,7 @@
   <a class="navlink navhide" href="#flip">The flip</a>
   <a class="navlink navhide" href="#commands">Commands</a>
   <a class="navlink navhide" href="#controls">Controls</a>
+  <a class="navlink navhide" href="#compare">Yours vs rented</a>
   <a class="navlink navhide" href="#rollout">Rollout</a>
   <a class="btn sm go" href="#rollout">Copy the prompt</a>
 </div></header>
@@ -305,6 +306,124 @@
     </div>
   </div>
   <div class="notice">⚠ <b>Check first:</b> confirm with your leadership / IT that Claude Code with the Microsoft 365 or Google Workspace connector is approved for your account before wiring it to work mail. This is a personal-productivity setup — not an official product of any employer.</div>
+</div></section>
+
+<!-- ============ YOURS VS RENTED ============ -->
+<section id="compare"><div class="wrap reveal">
+  <style>
+    #compare .cmp-wins{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-bottom:34px}
+    #compare .cmp-win{background:var(--panel);padding:24px}
+    #compare .cmp-win .chk{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--green-deep);font-weight:600;margin-bottom:10px}
+    #compare .cmp-win h3{margin:0 0 8px;font-size:18px}
+    #compare .cmp-win p{margin:0;color:var(--ink-2);font-size:14.5px}
+    #compare .cmp-scroll{border:1px solid var(--line);border-radius:var(--r);overflow-x:auto;background:var(--panel)}
+    #compare table.cmp{border-collapse:collapse;width:100%;min-width:880px;font-size:13.5px}
+    #compare table.cmp th,#compare table.cmp td{text-align:left;vertical-align:top;padding:13px 16px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);line-height:1.5}
+    #compare table.cmp th:last-child,#compare table.cmp td:last-child{border-right:none}
+    #compare table.cmp tr:last-child td,#compare table.cmp tr:last-child th{border-bottom:none}
+    #compare table.cmp thead th{background:var(--ink);color:#cdd0cb;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;white-space:nowrap}
+    #compare table.cmp thead th.ours{background:var(--green-deep);color:#eaf4ee}
+    #compare table.cmp tbody th{font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);font-weight:600;background:#fafbf9;white-space:nowrap}
+    #compare table.cmp td.ours{background:var(--green-bg);color:var(--ink);font-weight:500}
+    #compare table.cmp td{color:var(--ink-2)}
+    #compare table.cmp .thin{color:var(--ink-3);font-style:italic}
+    #compare .cmp-foot{margin-top:18px;color:var(--ink-3);font-size:13px;line-height:1.65}
+    #compare .cmp-foot b{color:var(--ink-2)}
+    @media(max-width:820px){#compare .cmp-wins{grid-template-columns:1fr}}
+  </style>
+  <span class="eyebrow">Yours vs. rented</span>
+  <h2 class="display" style="margin-top:14px">A system you own &mdash; not a subscription you rent.</h2>
+  <p class="lede" style="margin-bottom:34px">Most "AI second brain" tools are hosted apps: your notes live in their cloud, on their terms, for as long as you keep paying. An AI&nbsp;OS is the opposite &mdash; a free template you copy, run on tools you already use, and reshape to fit you. Here's the honest comparison.</p>
+
+  <div class="cmp-wins">
+    <div class="cmp-win">
+      <span class="chk">✓ Yours to keep</span>
+      <h3>A free, forkable artifact</h3>
+      <p>Every tool below is a paid SaaS account you rent a seat in. This is a free copy-paste template &mdash; you can read it, reshape it, fork it, and pass it to a friend. There's no vendor to leave because there's no vendor.</p>
+    </div>
+    <div class="cmp-win">
+      <span class="chk">✓ Plain files</span>
+      <h3>Your memory is files, not a database</h3>
+      <p>Your notes and memory are plain text files on your own machine &mdash; the store <i>is</i> the data. You can open, search, edit, and version them directly, with no export step and nothing trapped in a proprietary cloud database.<sup>1</sup></p>
+    </div>
+  </div>
+
+  <div class="cmp-scroll">
+    <table class="cmp">
+      <thead>
+        <tr>
+          <th></th>
+          <th class="ours">AI&nbsp;OS</th>
+          <th>Saner.ai</th>
+          <th>Mem</th>
+          <th>Tana</th>
+          <th>Notion&nbsp;AI</th>
+          <th>ChatGPT / Claude memory</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Where it lives</th>
+          <td class="ours">Notes &amp; memory: local files on your machine. Model &amp; connectors: cloud<sup>1</sup></td>
+          <td>Cloud app</td>
+          <td>Cloud app</td>
+          <td>Cloud only (no offline)</td>
+          <td>Cloud app</td>
+          <td>Cloud, tied to your account</td>
+        </tr>
+        <tr>
+          <th>Your data's form</th>
+          <td class="ours">Plain markdown &mdash; the store <i>is</i> the data; edit &amp; search in place, no export step</td>
+          <td>Proprietary cloud; export available</td>
+          <td>Proprietary cloud; markdown export (clunky)</td>
+          <td>Proprietary nodes; JSON/MD export, but lossy</td>
+          <td>Proprietary blocks; full export</td>
+          <td>Cloud summary you can view/edit + a data export &mdash; not files</td>
+        </tr>
+        <tr>
+          <th>Own &amp; fork it</th>
+          <td class="ours">Free template &mdash; fork, reshape, pass it on</td>
+          <td>Rented seat</td>
+          <td>Rented seat</td>
+          <td>Rented seat</td>
+          <td>Rented seat</td>
+          <td>Rented seat</td>
+        </tr>
+        <tr>
+          <th>What it does on its own</th>
+          <td class="ours">Read-only connectors + approve-before-send &mdash; on by default, no mode to switch on</td>
+          <td>Drafts first; doesn't auto-send</td>
+          <td>Notes &amp; drafting assistant</td>
+          <td>Knowledge workspace</td>
+          <td>Agents act autonomously by default; approval (Plan Mode) is opt-in</td>
+          <td>&mdash; (it's memory, not actions)</td>
+        </tr>
+        <tr>
+          <th>What it costs</th>
+          <td class="ours">Free template &mdash; runs on the Claude plan you already pay for</td>
+          <td>Paid subscription</td>
+          <td>Paid subscription (free tier)</td>
+          <td>Paid subscription (free tier)</td>
+          <td>Paid seats + metered agent credits ($10 / 1,000, no rollover)</td>
+          <td>Bundled in your ChatGPT / Claude subscription</td>
+        </tr>
+        <tr>
+          <th>Keeps memory healthy</th>
+          <td class="ours">A maintenance loop you can run &amp; audit: re-checks stale facts, clears duplicates, resolves contradictions, links related notes</td>
+          <td class="thin">Auto-tags / organizes</td>
+          <td class="thin">Auto-links related notes</td>
+          <td class="thin">User-defined supertags</td>
+          <td>Workspace knowledge (not a personal memory)</td>
+          <td>Background synthesis + an editable summary; claims to reduce contradictions &mdash; but an opaque cloud summary, not files</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="cmp-foot">
+    <sup>1</sup> <b>Honest scope:</b> your notes and memory are plain files on your own machine; the AI model and the mail/calendar connectors are cloud services you already use. An AI&nbsp;OS doesn't run offline, and we don't claim it does.<br>
+    Every tool here lets you export your data &mdash; the real difference is that theirs lives in a cloud database you export <i>from</i>, while yours is already plain files you own. Competitor details are as-of June 2026; hosted-app features and pricing change often &mdash; check the source before relying on any cell.
+  </p>
 </div></section>
 
 <!-- ============ ROLLOUT ============ -->

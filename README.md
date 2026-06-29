@@ -25,6 +25,22 @@ No code. No config files to edit. If you can use email and a calendar, you can u
 - **It's in your hands.** Read-only by default — it drafts and proposes; nothing is sent, posted, or accepted without your explicit OK, every time.
 - **It gets more "you."** Correct it once, run `/improve`, and the lesson sticks.
 
+## Yours, not rented
+
+Most "AI second brain" tools are hosted apps — your notes live in their cloud, for as long as you keep paying. An AI-OS is the opposite: a free template you copy, run on tools you already use, and reshape to fit you.
+
+| | AI-OS | Hosted second-brain apps (Saner / Mem / Tana / Notion) | Native LLM memory (ChatGPT / Claude) |
+|---|---|---|---|
+| Where it lives | Notes & memory are local files¹ | Their cloud | Their cloud, tied to your account |
+| Your data's form | Plain markdown — the store *is* the data | Proprietary DB you export *from* | A cloud summary you can view/edit |
+| Own & fork it | Free template — fork & reshape | Rented seat | Rented seat |
+| On its own | Read-only + approve-before-send, on by default | Varies (Notion's agents act autonomously by default) | n/a — it's memory, not actions |
+| Cost | Free; runs on your existing Claude plan | Paid subscription | Bundled in your subscription |
+
+¹ Your notes & memory are local files; the model and connectors are cloud services you already use.
+Every tool here lets you *export* — the difference is yours is *already* plain files. Details
+as-of June 2026; verify before relying on them.
+
 ## Quickstart — about 5 minutes
 
 | # | Step |
