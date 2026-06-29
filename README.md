@@ -51,7 +51,7 @@ No code. No config files to edit. If you can use email and a calendar, you can u
 | `/status` | Drafts a status update — what progressed, what's blocked, decisions needed, next steps. |
 | `/weekly` | Pre-builds your weekly review and a ready-to-edit status update. |
 | `/wiki` | Precedent search over your own notes, answered with citations. |
-| `/recall` | "What do I know about X?" — one search across **both** your memory and your notes vault, ranked together, with related facts and an honest gaps note. |
+| `/recall` | "What do I know about X?" — one search across **all** your knowledge: your memory, your notes vault, and the work your other commands produce and keep (a tracked list, a strategy doc, research) — ranked together, with related facts and an honest gaps note. |
 | `/ingest` | Turns raw notes you drop in into maintained, linked concept pages. |
 | `/improve` | The learning loop — captures your corrections into durable memory. |
 | `/memory-prune` | Keeps memory healthy — verifies, de-dupes, proposes cleanups (never auto-deletes). |
