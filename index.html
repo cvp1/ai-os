@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- ai-os installer · build 2026.06.30d · generated from core/ by tools/build_installer.py — do not edit index.html by hand -->
+<!-- ai-os installer · build 2026.06.30e · generated from core/ by tools/build_installer.py — do not edit index.html by hand -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -284,6 +284,7 @@
     <div class="refrow"><div class="c"><span class="slash">/</span>workflow-visualizer</div><div class="d">Turns a system or process you describe into one interactive HTML diagram — clickable nodes, hover detail — you can open in a browser.</div><div class="e"><b>"diagram our release process"</b> → a map, not a wall of text.</div></div>
     <div class="refrow"><div class="c"><span class="slash">/</span>backup</div><div class="d">Protects your whole system — memory, notes, <i>and</i> your skills — against a lost or wiped machine. One command keeps an on-disk history and tucks an <b>encrypted</b> copy into the cloud folder you already sync (the 3-2-1 rule), no setup required.</div><div class="e"><b>"/backup"</b> → a safe copy on disk and off your machine.</div></div>
     <div class="refrow"><div class="c"><span class="slash">/</span>restore</div><div class="d">Brings it all back — after a new laptop, a bad edit, or a lost folder. Picks the newest snapshot, lays everything back, and is fully reversible. Use <span class="cmd">--drill</span> to <i>prove</i> a backup works without touching your live system.</div><div class="e"><b>"/restore"</b> → your system, back the way it was.</div></div>
+    <div class="refrow"><div class="c"><span class="slash">/</span>doctor</div><div class="d">A read-only checkup for your system — are your connectors still signed in, your memory and commands healthy, your last <span class="cmd">/backup</span> recent? Reports what needs attention and points you at the fix; it changes nothing. Pairs with <span class="cmd">/backup</span> — one tells you the safety net is current.</div><div class="e"><b>"/doctor"</b> → one glance that everything's working.</div></div>
   </div>
   <p class="runline" style="color:var(--ink-3)">Plus <span style="font-family:var(--mono);color:var(--ink)">/memory-prune</span> to keep your memory healthy, and <span style="font-family:var(--mono);color:var(--ink)">/skill-center</span> — a meta-command to build and refine new commands as your needs grow.</p>
 </div></section>
@@ -516,8 +517,8 @@
 a persistent memory, a structured notes vault, and a starter set of skills — and
 then you will operate it as my chief-of-staff going forward.
 
-(This installer is AI-OS build 2026.06.30d. When you build my system, record a line
-"AI-OS installer build: 2026.06.30d" in my CLAUDE.md so a later upgrade can tell what
+(This installer is AI-OS build 2026.06.30e. When you build my system, record a line
+"AI-OS installer build: 2026.06.30e" in my CLAUDE.md so a later upgrade can tell what
 changed since mine.)
 
 ABOUT ME (context, refine via the interview below)
@@ -547,7 +548,7 @@ is a clean machine — ASK me before building anything. Never default to a rebui
   not silently replace it. Show me a short diff of what you'd ADD, apply it only
   after my OK, then STOP — skip PHASE 0 and the rest of the build. If I recorded an
   "AI-OS installer build:" line in my CLAUDE.md, compare it to this installer's build
-  (2026.06.30d) to focus the diff on what's new since mine, and update that line once
+  (2026.06.30e) to focus the diff on what's new since mine, and update that line once
   the additions are applied.
 - IF IT DOESN'T → this is a fresh install: continue with PHASE 0 below and build
   the whole system.
