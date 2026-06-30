@@ -1,5 +1,5 @@
 # AI-OS installer build manifest (consumed by tools/build_installer.py)
-version: "2026.06.30c"   # stamped into index.html + the installer's UPGRADE-MODE header
+version: "2026.06.30d"   # stamped into index.html + the installer's UPGRADE-MODE header
 shell: core/shell.html
 prompt:
   before: core/sections/before-skills.txt
@@ -7,3 +7,4 @@ prompt:
   after: core/sections/after-skills.txt
   join: "\n\n"
 prompt2: core/second-act/career.txt
+prompt3: core/second-act/scheduler.txt

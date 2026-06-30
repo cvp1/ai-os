@@ -183,6 +183,7 @@
   <a class="navlink navhide" href="#controls">Controls</a>
   <a class="navlink navhide" href="#compare">Yours vs rented</a>
   <a class="navlink navhide" href="#rollout">Rollout</a>
+  <a class="navlink navhide" href="#autopilot">Run it without you</a>
   <a class="navlink navhide" href="#domain">Add a manager</a>
   <a class="btn sm go" href="#rollout">Copy the prompt</a>
 </div></header>
@@ -455,6 +456,24 @@
   <p class="runline"><span class="caret">❯</span> the one habit that makes it pay off: run <span style="color:var(--green-deep);font-weight:600">/improve</span> whenever you correct it — that's the loop that makes it more <i>you</i>.</p>
 </div></section>
 
+<!-- ============ AUTOPILOT — RUN IT WITHOUT YOU ============ -->
+<section id="autopilot"><div class="wrap reveal">
+  <span class="eyebrow">When it&#8217;s earning its keep · let it run on a schedule</span>
+  <h2 class="display" style="margin-top:14px">Once you trust it, let it run without you.</h2>
+  <p class="lede" style="margin-bottom:24px">When your <span style="color:var(--green-deep);font-weight:600">/brief</span> and <span style="color:var(--green-deep);font-weight:600">/triage</span> are part of your morning, the next step is to stop typing them. Claude&#8217;s desktop app can run a command for you on a schedule &mdash; a 7am brief waiting when you sit down &mdash; and because it runs <b>on your machine in Ask mode</b>, it still drafts and waits: anything it would send <b>stalls for your OK</b>, exactly like when you&#8217;re driving it yourself. <b>Nothing is sent while you&#8217;re away.</b></p>
+  <p style="color:var(--ink-3);font-size:.94em;margin-bottom:30px">Read this part &mdash; scheduling has real edges. It only runs while the desktop app is open and your computer is awake, so a <b>sleeping laptop silently skips the run</b> (it catches up once on wake, which can be an odd hour) &mdash; pick a time your machine is on. A green &#8220;done&#8221; doesn&#8217;t prove the brief itself worked, so open the run and read it. And every unattended run <b>uses your Claude plan</b> like a normal session, so a daily brief is a recurring draw that can crowd a ~$20 Pro plan &mdash; <b>start with one task a few days a week and watch your usage.</b> Paste the prompt below and it walks you through setup and hands you the exact text to schedule.</p>
+
+  <div class="term">
+    <div class="termbar">
+      <span class="tdots"><i></i><i></i><i></i></span>
+      <span class="fname">scheduler-setup-prompt.txt</span>
+      <button class="copybtn" id="copyBtn3" onclick="copyPrompt3()">Copy prompt</button>
+    </div>
+    <pre class="code" id="promptBox3">Loading…</pre>
+  </div>
+  <p class="runline"><span class="caret">❯</span> the rule that keeps it safe: schedule it in <b>Ask mode</b>, and on the first &#8220;Run now&#8221; <b>never click &#8220;always allow&#8221;</b> on anything that sends &mdash; that&#8217;s what keeps it drafting instead of acting.</p>
+</div></section>
+
 <!-- ============ DOMAIN MANAGERS — SECOND ACT ============ -->
 <section id="domain"><div class="wrap reveal">
   <span class="eyebrow">When you&#8217;re ready · a manager for any domain</span>
@@ -498,6 +517,9 @@
 <!-- second-act (career manager) prompt held as plain text -->
 <script type="text/plain" id="promptSource2">{{PROMPT2}}</script>
 
+<!-- autopilot (scheduler) setup prompt held as plain text -->
+<script type="text/plain" id="promptSource3">{{PROMPT3}}</script>
+
 <script>
   // inject the plain-text prompt (no HTML escaping needed)
   document.getElementById('promptBox').textContent =
@@ -515,6 +537,16 @@
     document.getElementById('promptSource2').textContent.replace(/^\n/,'');
   function copyPrompt2(){
     var btn=document.getElementById('copyBtn2'), text=document.getElementById('promptBox2').textContent;
+    function done(){btn.textContent='✓ Copied';btn.classList.add('ok');setTimeout(function(){btn.textContent='Copy prompt';btn.classList.remove('ok');},2000);}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done,fb);}else{fb();}
+    function fb(){var ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(e){btn.textContent='Select & copy';}document.body.removeChild(ta);}
+  }
+
+  // autopilot (scheduler) setup prompt
+  document.getElementById('promptBox3').textContent =
+    document.getElementById('promptSource3').textContent.replace(/^\n/,'');
+  function copyPrompt3(){
+    var btn=document.getElementById('copyBtn3'), text=document.getElementById('promptBox3').textContent;
     function done(){btn.textContent='✓ Copied';btn.classList.add('ok');setTimeout(function(){btn.textContent='Copy prompt';btn.classList.remove('ok');},2000);}
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done,fb);}else{fb();}
     function fb(){var ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(e){btn.textContent='Select & copy';}document.body.removeChild(ta);}

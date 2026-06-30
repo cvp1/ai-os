@@ -1,0 +1,68 @@
+You are helping me put part of my AI-OS on a schedule so it runs without me — drafting,
+never acting. ONLY proceed if my AI-OS already exists AND I've actually used it.
+
+FIRST — CHECK I'M READY (before anything else)
+Confirm this folder has a working AI-OS (a CLAUDE.md plus a memory/ folder, OR AI-OS
+skills under ~/.claude/skills/ like brief and triage) AND that I've run /brief or
+/triage at least once and liked it. If you can't find an AI-OS, STOP and tell me: "Set
+up your AI OS and get your morning brief working first — then come back to put it on a
+schedule." Don't schedule a command I've never run.
+
+WHAT WE'RE DOING — AND THE ONE SURFACE WE USE
+Claude's desktop app can run a command on a schedule. There are three ways and they are
+NOT equal:
+- A DESKTOP "Local" routine runs on THIS machine, can see my AI-OS files, and runs in a
+  permission mode I choose. This is the ONE we use.
+- A Cloud / "Remote" routine runs autonomously in Anthropic's cloud with NO approval
+  prompts and can write through connectors WITHOUT asking — and it can't even see my
+  local AI-OS files (it runs on a fresh copy). It would break the "drafts, never sends"
+  promise. We do NOT use this. If I ever pick "Remote", stop me and explain why.
+- A terminal loop needs a session open the whole time. Not what we want.
+Say this to me plainly in a sentence or two so I understand WHY Local + Ask mode is the
+safe path before we touch anything.
+
+THE SAFETY RULE — STATE IT, THEN ENCODE IT
+Two layers, and we want both. (1) My mail/calendar connector is READ-ONLY — it has no
+"send", so even unattended this task CANNOT send mail or change my calendar, in any
+mode. (2) But a schedule can still do other outward things (write to a synced folder,
+run a command, or any send-capable tool I add later), so we set the task to ASK mode:
+anything it isn't already allowed to do STALLS and waits for me in the run's session.
+And the one footgun: on the first "Run now" I must NEVER click "always allow" on
+anything that sends or posts — that grants standing approval and permanently defeats the
+stall. "Allow once," or just leave it stalled and approve later from the Scheduled
+session.
+
+WALK ME THROUGH SETUP (in the desktop app, no terminal) — number these and wait for me
+at each step:
+1. Open the Claude desktop app. Go to Routines → New routine → choose LOCAL (not Remote).
+2. Set the schedule — suggest weekday mornings at a time my computer is actually ON and
+   awake. Remind me: if it's asleep at that time the run is SILENTLY SKIPPED and catches
+   up only once later, maybe at an odd hour — so pick a time I'm usually at the machine,
+   or accept the brief may land late.
+3. Set the permission mode to ASK.
+4. Paste the task prompt I'll give you below as the routine's prompt.
+5. Save, then click "Run now" once to test — and remember the always-allow rule above.
+6. When it runs I get a desktop notification and a new session under "Scheduled" in the
+   sidebar. Open it, read what it drafted, and approve anything it left waiting. A green
+   status does NOT mean the brief itself was good — read it.
+
+THE TASK PROMPT TO SCHEDULE — give me this verbatim, in a copy-able block:
+"Run my morning brief: read today's calendar and the state of my inbox through my
+connected mail/calendar, and write a concise brief into THIS session — what's on today,
+what needs a reply, what's worth knowing — as a draft for me to read. Do NOT send,
+reply, post, accept, or schedule anything, and do NOT write outside ~/ai-os. If anything
+would need an outward action, stop and leave it for me to approve here. This is
+propose-only: draft and show, never act."
+(If I'd rather schedule /triage or /prep, adapt the same propose-only wording — read and
+draft only, nothing sent.)
+
+SAVE A COPY + KEEP IT HONEST
+Write the task prompt to ~/ai-os/scheduler/brief-task.md (create the folder) with a
+one-line note of the schedule I picked and the three caveats — sleep-skip, green ≠
+success, watch usage — so I can re-paste or change it later. Then tell me: start with
+this ONE task a few days a week, watch my Claude usage for a few days, and add more (a
+daily /triage, etc.) only if I have headroom — a chatty daily schedule is a real
+recurring draw on a Pro plan.
+
+Remember throughout: Local routine, Ask mode, propose-only. It drafts while I'm away; I
+approve when I'm back. Nothing is ever sent for me.

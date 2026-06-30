@@ -47,6 +47,7 @@ def render():
     before = read("sections/before-skills.txt")
     after = read("sections/after-skills.txt")
     career = read("second-act/career.txt")
+    scheduler = read("second-act/scheduler.txt")
 
     frags = [pathlib.Path(p).read_text() for p in glob.glob(str(CORE / "skills/*.md"))]
     frags.sort(key=skill_order)
@@ -55,9 +56,13 @@ def render():
     prompt = before + JOIN + JOIN.join(bodies) + JOIN + after
 
     shell = read("shell.html")
-    if shell.count("{{PROMPT}}") != 1 or shell.count("{{PROMPT2}}") != 1:
-        sys.exit("FATAL: shell.html must contain exactly one {{PROMPT}} and one {{PROMPT2}}")
-    html = shell.replace("{{PROMPT}}", prompt, 1).replace("{{PROMPT2}}", career, 1)
+    if (shell.count("{{PROMPT}}") != 1 or shell.count("{{PROMPT2}}") != 1
+            or shell.count("{{PROMPT3}}") != 1):
+        sys.exit("FATAL: shell.html must contain exactly one each of "
+                 "{{PROMPT}}, {{PROMPT2}}, {{PROMPT3}}")
+    html = (shell.replace("{{PROMPT}}", prompt, 1)
+                 .replace("{{PROMPT2}}", career, 1)
+                 .replace("{{PROMPT3}}", scheduler, 1))
     html = html.replace("{{VERSION}}", read_version())   # global: stamps all build markers
     if "{{VERSION}}" in html:
         sys.exit("FATAL: unsubstituted {{VERSION}} remains")
