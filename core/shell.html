@@ -33,7 +33,8 @@
 
   /* classification rail */
   .classbar{background:var(--ink);color:#cfd2cd;font-family:var(--mono);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase}
-  .classbar .wrap{display:flex;gap:18px;justify-content:space-between;align-items:center;height:34px}
+  .classbar .wrap{display:flex;flex-wrap:wrap;gap:4px 18px;justify-content:space-between;align-items:center;min-height:34px;padding-top:6px;padding-bottom:6px;line-height:1.4}
+  @media(max-width:560px){.classbar{letter-spacing:.12em}}
   .classbar .dotmark{color:var(--amber)}
 
   /* top nav */
@@ -52,7 +53,7 @@
   .btn.go{border-color:var(--green-deep);background:var(--green-deep)}
   .btn.sm{padding:8px 13px;font-size:12.5px}
 
-  section{padding:84px 0;border-top:1px solid var(--line)}
+  section{padding:84px 0;border-top:1px solid var(--line);scroll-margin-top:74px}
 
   /* ---------- HERO: report masthead ---------- */
   .hero{padding:64px 0 76px;border-top:none;position:relative;overflow:hidden}
@@ -78,6 +79,11 @@
   .to-state{display:inline-flex;align-items:center;gap:14px}
   @keyframes fadeOut{to{opacity:.32}}
   @keyframes fadeIn{from{opacity:0;transform:translateY(2px)}to{opacity:1;transform:none}}
+  /* keep the status pill tidy when it can't fit one line */
+  @media(max-width:440px){
+    .statuschip{flex-wrap:wrap;gap:6px 10px;font-size:12.5px;padding:10px 15px;border-radius:14px;margin-bottom:26px}
+    .statuschip .lbl{flex-basis:100%}
+  }
 
   /* ---------- RAG status board (before/after) ---------- */
   .board{display:grid;grid-template-columns:1fr 1fr;gap:20px}
