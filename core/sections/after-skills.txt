@@ -7,7 +7,11 @@
    use both).
    - Confirm the right connector is connected. These first-party connectors are turned
      on from my Claude account (claude.ai → Settings → Connectors) and authorized via
-     OAuth — do NOT try to add them locally with `claude mcp add`:
+     OAuth — do NOT try to add them locally with `claude mcp add` or `claude mcp login`
+     (those are for self-hosted servers, not these account connectors). You can check
+     whether a connector is signed in from inside this session by running /mcp; if one
+     needs re-authorizing, recent Claude Code flags it when the session starts and points
+     you at /mcp:
        • Microsoft 365 → Outlook mail + calendar (Teams, SharePoint, OneDrive if available).
          The connector is read-only — which is all this setup needs, since I draft
          everything locally and send it myself, so M365 is fully capable here, not a
@@ -19,9 +23,10 @@
          before I sink time into the build.
        • Google Workspace → Gmail + Google Calendar (Drive if available) — connects
          self-serve for an individual, personal Gmail included.
-     If it isn't connected, point me to claude.ai → Settings → Connectors to add and
-     authorize it, then verify by reading my next 3 calendar events and my latest
-     unread subject lines (read-only).
+     If it isn't connected — or /mcp shows it needs sign-in — point me to claude.ai →
+     Settings → Connectors (or run /mcp) to authorize it; once I re-authorize, Claude
+     reconnects on its own. Then verify by reading my next 3 calendar events and my
+     latest unread subject lines (read-only).
 
    - LOCAL CACHE IS THE DEFAULT READ PATH. These APIs rate-limit and round-trips add
      latency, so do NOT hit them on every question. Maintain a local mirror under

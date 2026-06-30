@@ -1,5 +1,5 @@
 # AI-OS installer build manifest (consumed by tools/build_installer.py)
-version: "2026.06.30"   # stamped into index.html + the installer's UPGRADE-MODE header
+version: "2026.06.30b"   # stamped into index.html + the installer's UPGRADE-MODE header
 shell: core/shell.html
 prompt:
   before: core/sections/before-skills.txt
