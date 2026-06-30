@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- ai-os installer · build 2026.06.30b · generated from core/ by tools/build_installer.py — do not edit index.html by hand -->
+<!-- ai-os installer · build 2026.06.30c · generated from core/ by tools/build_installer.py — do not edit index.html by hand -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -497,8 +497,8 @@
 a persistent memory, a structured notes vault, and a starter set of skills — and
 then you will operate it as my chief-of-staff going forward.
 
-(This installer is AI-OS build 2026.06.30b. When you build my system, record a line
-"AI-OS installer build: 2026.06.30b" in my CLAUDE.md so a later upgrade can tell what
+(This installer is AI-OS build 2026.06.30c. When you build my system, record a line
+"AI-OS installer build: 2026.06.30c" in my CLAUDE.md so a later upgrade can tell what
 changed since mine.)
 
 ABOUT ME (context, refine via the interview below)
@@ -528,7 +528,7 @@ is a clean machine — ASK me before building anything. Never default to a rebui
   not silently replace it. Show me a short diff of what you'd ADD, apply it only
   after my OK, then STOP — skip PHASE 0 and the rest of the build. If I recorded an
   "AI-OS installer build:" line in my CLAUDE.md, compare it to this installer's build
-  (2026.06.30b) to focus the diff on what's new since mine, and update that line once
+  (2026.06.30c) to focus the diff on what's new since mine, and update that line once
   the additions are applied.
 - IF IT DOESN'T → this is a fresh install: continue with PHASE 0 below and build
   the whole system.
@@ -850,6 +850,29 @@ Explain each piece in plain language as you create it.
      copy, never touching my live system) — because a backup I've never restored is
      only a hope. Build it per the BACKUP & RECOVERY section below. Trigger on
      "/restore", "restore my AI-OS", "recover my system".
+
+   - /doctor — A quick READ-ONLY "is my AI-OS healthy?" check I can run any time: it
+     inspects and reports, and must NEVER change, delete, or send anything. Cover the
+     AI-OS-specific state that the platform's own checker can't see: (1) CONNECTORS —
+     run /mcp and report which mail/calendar connector is signed in vs. needs a fresh
+     sign-in; this is the thing most likely to be quietly broken, and /mcp shows the
+     live auth, so if one needs sign-in point me to re-authorize it. (2) MEMORY —
+     confirm ~/ai-os/memory/ exists, report its rough size and how many notes it holds,
+     and flag if it's grown big enough that a /memory-prune is worth running. (3)
+     TOOLKIT — count and list the skills installed under ~/.claude/skills/ so I can see
+     my commands are all registered (if one I expect is missing, that's why it "does
+     nothing" — start a fresh session to register newly-built ones). (4) PROTECTION —
+     if ~/ai-os/backups/ exists, report the age of my most recent /backup so a stale or
+     missing backup is visible; if there's no backup yet, say so and suggest running
+     /backup. Then, for the deeper SYSTEM layer — install health, connector CONFIG
+     validity, version currency, search/ripgrep, CLAUDE.md size — tell me to run Claude
+     Code's own built-in /doctor (if it's available here); don't reinvent that plumbing,
+     just point at it. Finish with a short green / needs-attention summary naming the
+     one or two things worth doing next. Build it as a Claude Code skill, strictly
+     READ-ONLY (inspect and report only). Pairs with /backup: /doctor tells me my
+     safety net is current. Trigger on "/doctor", "is my AI-OS healthy / okay", "health
+     check", "check my system / check my connectors".
+
 
    Keep every skill read-by-default and write/send-gated behind my explicit OK.
 
