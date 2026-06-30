@@ -77,6 +77,7 @@ as-of June 2026; verify before relying on them.
 | `/workflow-visualizer` | Turns a system you describe into one interactive HTML diagram. |
 | `/backup` | Snapshots your whole system — memory, notes, **and** skills — to on-disk history plus an **encrypted** copy in your own cloud (3-2-1), no setup needed. |
 | `/restore` | Brings it all back from a snapshot — newest by default, fully reversible, with a `--drill` that proves a backup works without touching your live system. |
+| `/doctor` | A read-only checkup — are your connectors signed in, your memory and commands healthy, your last `/backup` recent? Reports what needs attention and points you at the fix; never changes anything. |
 
 **⚡ Local-first by design** — caches your calendar and mail locally and refreshes only what changed (Graph delta / Gmail history), so it's instant to use and won't trip rate limits.
 
