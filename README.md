@@ -75,13 +75,15 @@ as-of June 2026; verify before relying on them.
 | `/board` | Run a decision past a panel of advisor profiles — distinct takes, dissents, a recommendation. |
 | `/teach` | A stateful tutor — keeps a syllabus and your progress across sessions. |
 | `/workflow-visualizer` | Turns a system you describe into one interactive HTML diagram. |
+| `/backup` | Snapshots your whole system — memory, notes, **and** skills — to on-disk history plus an **encrypted** copy in your own cloud (3-2-1), no setup needed. |
+| `/restore` | Brings it all back from a snapshot — newest by default, fully reversible, with a `--drill` that proves a backup works without touching your live system. |
 
 **⚡ Local-first by design** — caches your calendar and mail locally and refreshes only what changed (Graph delta / Gmail history), so it's instant to use and won't trip rate limits.
 
 ## Your control & privacy
 
 - **Read-only by default.** It drafts and shows you; you approve before anything goes outward. Approving one action is never standing approval for the next.
-- **Your data stays local.** Cached on your own machine; confidential material is treated as never-leaves-without-your-say.
+- **Local — and recoverable.** Your data lives on your own machine; confidential material is treated as never-leaves-without-your-say. The one thing that can leave is a backup *you* ask for — encrypted, to your own cloud — so a lost laptop never means a lost system.
 - **Yours to shape.** The starter commands are a foundation — `/skill-center` adds and refines more as you go.
 
 ## The principles behind it
@@ -92,7 +94,7 @@ A few rules shape every command — the same ones, whatever you wire it to:
 - **Earn trust, don't assume it.** It leads with what it's unsure of, checks the real source instead of a cached "looks fine," and tells you when something's stale.
 - **Signal over noise.** It surfaces what changed and what needs you, and stays quiet when nothing does.
 - **Remember, then improve.** Your context persists and compounds; a correction you make once becomes a durable rule, not a lesson you repeat.
-- **Local-first, yours to shape.** Your data stays on your machine, secrets stay out of the conversation, and every piece is a small tool you can read, edit, or replace.
+- **Local-first, recoverable, yours to shape.** Your data stays on your machine, secrets stay out of the conversation, every piece is a small tool you can read, edit, or replace — and `/backup` keeps an encrypted copy in your own cloud so it all survives a lost machine.
 
 ## A note before you connect a work account
 

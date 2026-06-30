@@ -280,6 +280,8 @@
     <div class="refrow"><div class="c"><span class="slash">/</span>board</div><div class="d">Run a decision past a panel of advisor profiles — experts you admire, distilled into vault notes. Get each one's distinct take: where they agree, where they'd dissent, a recommendation.</div><div class="e"><b>"ask the board about this hire"</b> → several sharp perspectives at once.</div></div>
     <div class="refrow"><div class="c"><span class="slash">/</span>teach</div><div class="d">A stateful tutor for learning a topic over many sessions — keeps a syllabus and your progress, and picks up each time exactly where you left off.</div><div class="e"><b>"/teach me system design"</b> → a course that remembers you.</div></div>
     <div class="refrow"><div class="c"><span class="slash">/</span>workflow-visualizer</div><div class="d">Turns a system or process you describe into one interactive HTML diagram — clickable nodes, hover detail — you can open in a browser.</div><div class="e"><b>"diagram our release process"</b> → a map, not a wall of text.</div></div>
+    <div class="refrow"><div class="c"><span class="slash">/</span>backup</div><div class="d">Protects your whole system — memory, notes, <i>and</i> your skills — against a lost or wiped machine. One command keeps an on-disk history and tucks an <b>encrypted</b> copy into the cloud folder you already sync (the 3-2-1 rule), no setup required.</div><div class="e"><b>"/backup"</b> → a safe copy on disk and off your machine.</div></div>
+    <div class="refrow"><div class="c"><span class="slash">/</span>restore</div><div class="d">Brings it all back — after a new laptop, a bad edit, or a lost folder. Picks the newest snapshot, lays everything back, and is fully reversible. Use <span class="cmd">--drill</span> to <i>prove</i> a backup works without touching your live system.</div><div class="e"><b>"/restore"</b> → your system, back the way it was.</div></div>
   </div>
   <p class="runline" style="color:var(--ink-3)">Plus <span style="font-family:var(--mono);color:var(--ink)">/memory-prune</span> to keep your memory healthy, and <span style="font-family:var(--mono);color:var(--ink)">/skill-center</span> — a meta-command to build and refine new commands as your needs grow.</p>
 </div></section>
@@ -292,8 +294,8 @@
   <div class="controls">
     <div class="ctrl">
       <span class="chk">✓ Private</span>
-      <h3>Your data stays local</h3>
-      <p>Your mail, calendar, and notes live only in a cache on your own machine — a hard "never goes outward" rule. Nothing is posted or sent without you.</p>
+      <h3>Local &mdash; and recoverable</h3>
+      <p>Your mail, calendar, and notes live only on your own machine — a hard "never goes outward" rule. The one thing that can leave is a backup <i>you</i> ask for: encrypted, into your own cloud, so your system survives a lost laptop without ever being exposed.</p>
     </div>
     <div class="ctrl">
       <span class="chk">✓ In your hands</span>
@@ -559,24 +561,30 @@ C. Tools & sources of truth
    9. What else do I use — e.g. Jira, Asana, Linear, Notion, Confluence, Slack, a CRM,
       analytics tools?
    10. Where does "the truth" live today for plans, status, and decisions?
+   11. SAFETY NET — do you keep files in a cloud that syncs to a folder on THIS machine
+       (OneDrive, Google Drive, Dropbox)? Your whole AI-OS — memory, notes, and skills —
+       is plain files on this one computer, so I'll build you a /backup that snapshots it
+       and tucks an encrypted copy into that cloud folder, so it survives a lost or wiped
+       laptop. If you're not sure where that folder is, just name your cloud (or say "none")
+       and I'll detect it during the build — this won't block anything.
 
 D. How I like to work with you
-   11. Output style: terse and decision-first, or thorough with reasoning shown?
-   12. How proactive should you be — propose drafts unprompted, or wait to be asked?
-   13. What should you NEVER do without explicit approval (send mail, accept/decline
+   12. Output style: terse and decision-first, or thorough with reasoning shown?
+   13. How proactive should you be — propose drafts unprompted, or wait to be asked?
+   14. What should you NEVER do without explicit approval (send mail, accept/decline
        invites, edit shared docs, post in chat)?
-   14. Tone for things you draft on my behalf (formal/polished, warm, direct)? If it
+   15. Tone for things you draft on my behalf (formal/polished, warm, direct)? If it
        differs for external vs internal audiences, capture both.
 
 E. Pain & priorities
-   15. What eats the most time in my week that you could take over (writing updates,
+   16. What eats the most time in my week that you could take over (writing updates,
        chasing people, meeting prep, summarizing threads)?
-   16. What's a recurring thing I forget or drop that you should track (action items,
+   17. What's a recurring thing I forget or drop that you should track (action items,
        follow-ups, things going stale, deadlines)?
-   17. Confidentiality boundaries — what must stay OUT of notes/memory? (anything
+   18. Confidentiality boundaries — what must stay OUT of notes/memory? (anything
        confidential, under NDA, financials, personnel-sensitive items.) Treat these as
        hard rules.
-   18. What would make this feel like a win in week one?
+   19. What would make this feel like a win in week one?
 
 ────────────────────────────────────────────────────────
 PHASE 1 — BUILD THE SYSTEM (after I confirm the interview summary)
@@ -814,6 +822,27 @@ Explain each piece in plain language as you create it.
      (04 Resources/Diagrams/) and give me the path. Trigger on
      "/workflow-visualizer", "diagram this", "map out this system".
 
+   - /backup — Protect this whole AI-OS — my memory, my notes vault, AND my skills
+     (they live outside ~/ai-os, so nothing else captures them) — against a lost or
+     wiped machine. With no arguments it just works: commit my ~/ai-os to its own git
+     history (the cheap, frequent layer), build a timestamped full snapshot under
+     backups/, encrypt it, and drop the encrypted copy into the cloud folder that
+     syncs off this machine — so I have a working copy, on-disk history, and an
+     offsite copy (the 3-2-1 rule) without thinking about it. Expert flags exist
+     (--full, --no-encrypt, --to <path>, --dry-run) and a backup.config.yml tunes
+     destinations, retention, and what's included. Build it per the BACKUP & RECOVERY
+     section below. Trigger on "/backup", "back up my system", "snapshot my AI-OS".
+
+   - /restore — Bring this AI-OS back from a snapshot — after a new laptop, a bad
+     edit, or a lost folder. Lists the snapshots it can find (local and the cloud
+     folder), defaults to the newest, and lays everything back into place — my memory,
+     notes, and skills. It is REVERSIBLE: anything it would overwrite is moved aside
+     first, so a restore can itself be undone. Use --dry-run to see exactly what it
+     would change, and --drill to prove a backup actually restores (into a throwaway
+     copy, never touching my live system) — because a backup I've never restored is
+     only a hope. Build it per the BACKUP & RECOVERY section below. Trigger on
+     "/restore", "restore my AI-OS", "recover my system".
+
    Keep every skill read-by-default and write/send-gated behind my explicit OK.
 
 5) MAIL & CALENDAR WIRING — LOCAL-FIRST (stay responsive, avoid rate limits)
@@ -918,6 +947,87 @@ Explain each piece in plain language as you create it.
      without explicit per-action approval. Anything I marked confidential lives only in
      the local cache and never goes outward without my OK.
 
+6) BACKUP & RECOVERY — make this AI-OS survive a lost machine (build /backup + /restore)
+   Everything you built above is plain files on ONE computer: ~/ai-os (CLAUDE.md,
+   memory/, notes/) AND my skills in ~/.claude/skills/. GitHub isn't set up here, and the
+   skills live OUTSIDE ~/ai-os, so nothing protects them yet. Build two skills that follow
+   real backup practice — the 3-2-1 rule: a working copy, on-disk history, and an offsite
+   copy — obvious by default, tunable for power users.
+
+   WHAT TO PROTECT (the backupset):
+   - All of ~/ai-os EXCEPT cache/ (the regenerable mail/calendar mirror) and backups/ itself.
+     DO include ~/ai-os/.git — the full snapshot must carry my git history too, so a restore
+     onto a NEW machine recovers the history, not just the latest copy of each file (the
+     snapshot is the disaster-recovery layer; it can't lean on a repo that died with the laptop).
+   - ALL of ~/.claude/skills/ — the toolkit, including any I add later via /skill-center.
+     This is easy to forget because it lives outside ~/ai-os; without it a restore is useless.
+   - Skip regenerable bloat: cache/, node_modules, .venv, __pycache__, session transcripts.
+
+   THREE LAYERS — a plain "/backup" (no arguments) does all three:
+   a) INCREMENTAL — make ~/ai-os a git repo (git init if needed) and commit on every run
+      with a timestamped message. Cheap, instant, full history I can diff and roll back —
+      the everyday safety net.
+   b) FULL SNAPSHOT — build one timestamped tar.gz of the whole backupset into
+      ~/ai-os/backups/<YYYY-MM-DD-HHMM>/ with a SHA256SUMS file inside. Keep the newest 7
+      (configurable) and prune older ones.
+   c) OFFSITE (encrypted) — copy the full snapshot OFF this machine into the cloud I
+      already have. The mail connectors you wired are READ-ONLY (they can't upload), so do
+      NOT try to push through them — instead use the local cloud-SYNC folder both Google
+      and Microsoft give you, and let the desktop sync app do the upload (no API key, works
+      the same either way). Detect the first of these that exists and copy the bundle into
+      <folder>/ai-os-backups/: ~/Library/CloudStorage/OneDrive-*, ~/OneDrive,
+      ~/Library/CloudStorage/GoogleDrive-*, ~/Google Drive, ~/Dropbox. If none exists, tell
+      me and keep the local snapshot — never fail silently, never skip the local copy.
+
+   ENCRYPTION (default ON, because this copy leaves my machine):
+   - Encrypt the full bundle before it goes offsite — prefer `age`, fall back to `gpg`
+     symmetric (use whichever is installed; offer to install age). Generate a passphrase at
+     setup and store it ONLY locally at ~/ai-os/.backup-key (chmod 600) — never inside any
+     bundle. Tell me to write the passphrase down somewhere safe, and explain the honest
+     trade: if I lose it, only the OFFSITE copy is unreadable — my live files and the local
+     snapshots are still right here. Power users can pass --no-encrypt.
+
+   RESTORE — build /restore to bring it all back:
+   - Find snapshots in ~/ai-os/backups/ AND the cloud folder, list them (sort with LC_ALL=C
+     so "newest" is unambiguous when a plain and an encrypted bundle share a timestamp),
+     default to the newest. Decrypt, verify SHA256SUMS, then OVERLAY the snapshot onto the
+     existing install — ~/ai-os and ~/.claude/skills/.
+   - FRESH MACHINE: if ~/ai-os/.backup-key is missing (a new laptop), the offsite bundle
+     can't be read from a file — prompt me for the passphrase I wrote down, decrypt with it,
+     and write it back to ~/ai-os/.backup-key (chmod 600) so future backups work.
+   - REVERSIBLE, and strand nothing: for each file the snapshot WOULD overwrite, move the
+     current copy to ~/.ai-os-restore-replaced/<timestamp>/ first, then extract — but do NOT
+     relocate or delete things the snapshot doesn't contain. Leave backups/ and .backup-key
+     in place, so a restore never costs me my local snapshot history or my decryption
+     passphrase (the bug that makes a "successful" restore quietly lock me out of my offsite copies).
+   - --dry-run shows exactly what would change and what would be moved aside, writing
+     nothing. --drill restores into a THROWAWAY temp directory (a fake HOME) and runs a few
+     checks (files present, git history intact, a memory file readable) WITHOUT touching my
+     live system — so I can prove a backup actually restores before I ever need it. A backup
+     I've never restored is only a hope.
+   - After a real restore, tell me the finish steps in plain language: restart Claude Code
+     (close and reopen this folder) so the restored skills switch on, and confirm memory is
+     still pointed at ~/ai-os/memory/.
+
+   NOVICE-OBVIOUS, EXPERT-GRANULAR:
+   - Plain /backup and /restore must need ZERO arguments and ZERO config — sensible defaults
+     (encrypt on, retention 7, the detected cloud folder).
+   - For power users, read an optional ~/ai-os/backup.config.yml if present: extra
+     destinations (an external drive, an rclone remote for a true API push), retention
+     counts, include/exclude globs, cipher choice, and whether to schedule. Support flags
+     --full, --no-encrypt, --to <path>, --dry-run, --drill, and document them in each SKILL.md.
+
+   OPTIONAL WEEKLY SCHEDULE (offer it; set up only with my OK):
+   - Offer to run /backup weekly (e.g. a cron entry). If I agree, make it SAFE: if the cloud
+     folder is missing or the key isn't readable, write the local snapshot, log one clear
+     line, and exit — never a silent failure, never a half-written offsite copy. Tell me the
+     honest limit: an unattended run only reaches offsite when the cloud folder is present
+     and syncing; for a guaranteed copy, run /backup by hand.
+
+   Build both as Claude Code skills (~/.claude/skills/backup/ and ~/.claude/skills/restore/)
+   with clear SKILL.md descriptions so /backup and /restore work. Keep them read-and-confirm:
+   /restore always shows its plan and (unless --dry-run) asks before it overwrites live files.
+
    - DELIVER THE FIRST BRIEF NOW, INLINE — the moment the build is done. Do NOT wait
      for a fresh session and do NOT invoke the /brief command to do it: the commands
      you just built don't switch on until the next session, so calling /brief now
@@ -942,6 +1052,13 @@ PHASE 2 — VERIFY & HAND OFF
   just showed came from my real mail and calendar.
 - Show me the tree of what you created and a one-paragraph "how this gets smarter
   over time" explanation (the memory + /improve loop).
+- PROVE THE SAFETY NET NOW, by hand — the /backup command only switches on next session,
+  so don't call it; instead do what it does, once: commit ~/ai-os to git, build the first
+  encrypted snapshot under backups/, and copy it to my cloud folder if one exists. Then
+  verify it actually restores with a --drill into a throwaway temp directory (never
+  touching my live files). Show me where the backup landed (on disk and in the cloud) and
+  remind me to write down the passphrase at ~/ai-os/.backup-key — without it the offsite
+  copy can't be read.
 - Tell me the 3 things to try first in my next session (when the commands are live)
   and the one habit that makes this pay off (run /improve whenever you correct me).
 
@@ -957,9 +1074,10 @@ and record them in CLAUDE.md so they load every session:
   does. Decision-first and concise unless I ask for depth.
 - Remember, then improve. When you learn something durable about me or how I work,
   write it to memory; a correction I make once should become a rule, not a repeat.
-- Local-first and confidential. Keep my data on my machine, secrets out of the
-  conversation, and honor my confidentiality boundaries (anything confidential / under
-  NDA / financials / personnel) in both notes and memory.
+- Local-first, confidential, and recoverable. Keep my data on my machine, secrets out of
+  the conversation, and honor my confidentiality boundaries (anything confidential / under
+  NDA / financials / personnel) in both notes and memory — and keep the system backed up
+  (encrypted, to my own cloud) so a lost machine never means a lost AI-OS.
 
 Start with PHASE 0 now: introduce yourself in one line and ask the first batch of
 interview questions.</script>
