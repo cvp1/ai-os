@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<!-- ai-os installer · build {{VERSION}} · generated from core/ by tools/build_installer.py — do not edit index.html by hand -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI OS for Claude Code — a chief of staff that learns how you work</title>
+<style>
+  :root{
+    --paper:#f4f5f2; --panel:#ffffff; --ink:#15181c; --ink-2:#3b424a; --ink-3:#697079;
+    --line:#e3e4df; --line-2:#d2d4cd;
+    --red:#bc4030; --amber:#b7841c; --green:#2f7d5a; --green-deep:#235c43;
+    --red-bg:#fbeeec; --amber-bg:#fbf3e2; --green-bg:#e9f4ee;
+    --console:#14181c; --console-ink:#e7e9e4; --console-dim:#8d97a0; --caret:#56c596;
+    --r:6px; --maxw:1120px;
+    --mono:ui-monospace,"SF Mono",SFMono-Regular,"Cascadia Mono",Menlo,Consolas,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  a{color:inherit}
+
+  /* type system: heavy tight grotesque display + mono data layer */
+  .display{font-weight:850;letter-spacing:-.035em;line-height:.98}
+  h1.display{font-size:clamp(40px,7.2vw,86px);margin:0}
+  h2.display{font-size:clamp(28px,4vw,46px);margin:0 0 10px}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3);font-weight:600}
+  .meta{font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;color:var(--ink-3)}
+  .meta b{color:var(--ink-2);font-weight:600}
+  .lede{font-size:clamp(17px,2vw,20px);color:var(--ink-2);max-width:60ch}
+
+  /* classification rail */
+  .classbar{background:var(--ink);color:#cfd2cd;font-family:var(--mono);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase}
+  .classbar .wrap{display:flex;gap:18px;justify-content:space-between;align-items:center;height:34px}
+  .classbar .dotmark{color:var(--amber)}
+
+  /* top nav */
+  header.top{position:sticky;top:0;z-index:40;background:rgba(244,245,242,.86);backdrop-filter:saturate(150%) blur(8px);border-bottom:1px solid var(--line)}
+  header.top .wrap{display:flex;align-items:center;gap:26px;height:62px}
+  .logo{font-family:var(--mono);font-weight:700;letter-spacing:-.01em;display:flex;align-items:center;gap:10px;margin-right:auto;font-size:15px}
+  .logo .rag{display:inline-flex;gap:4px}
+  .logo .rag i{width:8px;height:8px;border-radius:2px;display:block}
+  .logo .rag .r{background:var(--red)} .logo .rag .a{background:var(--amber)} .logo .rag .g{background:var(--green)}
+  .navlink{font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;color:var(--ink-2);text-decoration:none}
+  .navlink:hover{color:var(--ink)}
+  @media(max-width:820px){.navhide{display:none}}
+  .btn{font-family:var(--mono);font-weight:600;font-size:13px;letter-spacing:.03em;cursor:pointer;border:1px solid var(--ink);border-radius:var(--r);padding:11px 16px;display:inline-flex;align-items:center;gap:9px;text-decoration:none;background:var(--ink);color:#fff;transition:transform .12s ease}
+  .btn:hover{transform:translateY(-1px)}
+  .btn.ghost{background:transparent;color:var(--ink)}
+  .btn.go{border-color:var(--green-deep);background:var(--green-deep)}
+  .btn.sm{padding:8px 13px;font-size:12.5px}
+
+  section{padding:84px 0;border-top:1px solid var(--line)}
+
+  /* ---------- HERO: report masthead ---------- */
+  .hero{padding:64px 0 76px;border-top:none;position:relative;overflow:hidden}
+  .hero .metarow{display:flex;flex-wrap:wrap;gap:8px 26px;margin:0 0 26px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+  .hero h1{max-width:16ch;margin-bottom:22px}
+  .hero h1 .amberword{color:var(--red)} .hero h1 .greenword{color:var(--green)}
+  .hero .lede{margin:0 0 30px}
+  .cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  .hero .fineprint{margin-top:22px;font-family:var(--mono);font-size:12px;color:var(--ink-3);letter-spacing:.02em}
+
+  /* signature: status flip chip */
+  .statuschip{display:inline-flex;align-items:center;gap:14px;font-family:var(--mono);font-size:14px;letter-spacing:.04em;background:var(--panel);border:1px solid var(--line-2);border-radius:999px;padding:9px 18px;margin-bottom:30px;font-weight:600}
+  .statuschip .lbl{color:var(--ink-3);text-transform:uppercase;font-size:11px;letter-spacing:.16em}
+  .sdot{width:11px;height:11px;border-radius:50%;display:inline-block;position:relative}
+  .s-from{color:var(--red)} .s-from .sdot{background:var(--red)}
+  .s-arrow{color:var(--ink-3)}
+  .s-to{color:var(--green)} .s-to .sdot{background:var(--green)}
+  .s-to .sdot::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:1px solid var(--green);opacity:.5;animation:ping 2.4s ease-out infinite}
+  @keyframes ping{0%{transform:scale(.6);opacity:.6}100%{transform:scale(1.6);opacity:0}}
+  /* on-load flip */
+  .flip .from-state{animation:fadeOut .7s ease forwards .9s}
+  .flip .to-state{opacity:0;animation:fadeIn .7s ease forwards 1.5s}
+  .to-state{display:inline-flex;align-items:center;gap:14px}
+  @keyframes fadeOut{to{opacity:.32}}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(2px)}to{opacity:1;transform:none}}
+
+  /* ---------- RAG status board (before/after) ---------- */
+  .board{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  @media(max-width:820px){.board{grid-template-columns:1fr}}
+  .col{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+  .col .head{padding:16px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+  .col.now .head{background:var(--red-bg);color:#7d2c20}
+  .col.next .head{background:var(--green-bg);color:var(--green-deep)}
+  .col .stamp{font-weight:700}
+  .row{display:flex;gap:13px;align-items:flex-start;padding:15px 20px;border-bottom:1px solid var(--line);font-size:15px;color:var(--ink-2)}
+  .row:last-child{border-bottom:none}
+  .rag{flex:none;width:10px;height:10px;border-radius:50%;margin-top:7px}
+  .rag.r{background:var(--red)} .rag.a{background:var(--amber)} .rag.g{background:var(--green)}
+
+  /* ---------- deliverables manifest ---------- */
+  .manifest{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+  @media(max-width:820px){.manifest{grid-template-columns:1fr}}
+  .item{background:var(--panel);padding:26px}
+  .item .tag{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--green-deep);font-weight:600}
+  .item h3{font-size:19px;margin:12px 0 8px;letter-spacing:-.01em}
+  .item p{margin:0;color:var(--ink-2);font-size:14.5px}
+  .item .cmd{font-family:var(--mono);font-size:13px;color:var(--ink)}
+
+  /* ---------- command reference ---------- */
+  .ref{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--panel)}
+  .refrow{display:grid;grid-template-columns:160px 1fr 1.05fr;gap:20px;padding:18px 22px;border-bottom:1px solid var(--line);align-items:start}
+  .refrow:last-child{border-bottom:none}
+  .refrow:hover{background:#fafbf9}
+  .refrow .c{font-family:var(--mono);font-weight:700;color:var(--ink);font-size:15px}
+  .refrow .c .slash{color:var(--green)}
+  .refrow .d{color:var(--ink-2);font-size:14.5px}
+  .refrow .e{font-family:var(--mono);font-size:12.5px;color:var(--ink-3);line-height:1.5}
+  .refrow .e b{color:var(--green-deep);font-weight:600}
+  .refhdr{grid-template-columns:160px 1fr 1.05fr;background:var(--ink);color:#cdd0cb}
+  .refhdr .c,.refhdr .d,.refhdr .e{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#cdd0cb;font-weight:600}
+  @media(max-width:820px){.refrow,.refhdr{grid-template-columns:1fr;gap:6px}.refhdr{display:none}}
+
+  /* ---------- controls / guardrails ---------- */
+  .controls{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  @media(max-width:820px){.controls{grid-template-columns:1fr}}
+  .ctrl{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--green);border-radius:var(--r);padding:24px}
+  .ctrl .chk{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--green-deep);font-weight:700;display:flex;align-items:center;gap:8px}
+  .ctrl h3{font-size:17px;margin:12px 0 8px;letter-spacing:-.01em}
+  .ctrl p{margin:0;color:var(--ink-2);font-size:14.5px}
+  .notice{margin-top:22px;background:var(--amber-bg);border:1px solid #ecd9a8;border-left:3px solid var(--amber);border-radius:var(--r);padding:16px 20px;color:#6f5210;font-size:14.5px}
+  .notice b{color:#5a4209}
+
+  /* ---------- rollout steps ---------- */
+  .steps{display:grid;gap:14px;counter-reset:s}
+  .step{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px}
+  .step::before{counter-increment:s;content:counter(s,decimal-leading-zero);font-family:var(--mono);font-weight:700;font-size:15px;color:var(--green-deep);padding-top:2px}
+  .step h4{margin:0 0 4px;font-size:16px;letter-spacing:-.01em}
+  .step p{margin:0;color:var(--ink-2);font-size:14.5px}
+  .kbd{font-family:var(--mono);background:var(--paper);border:1px solid var(--line-2);border-radius:4px;padding:1px 7px;font-size:13px}
+
+  /* ---------- terminal prompt box ---------- */
+  .term{margin-top:26px;border-radius:var(--r);overflow:hidden;border:1px solid #2a2f35;box-shadow:0 24px 60px -28px rgba(20,24,28,.5)}
+  .termbar{background:#0f1216;color:var(--console-dim);display:flex;align-items:center;gap:9px;padding:11px 16px;font-family:var(--mono);font-size:12.5px;border-bottom:1px solid #2a2f35}
+  .termbar .tdots{display:flex;gap:6px;margin-right:8px}
+  .termbar .tdots i{width:10px;height:10px;border-radius:50%;display:block;background:#3a4047}
+  .termbar .fname{color:#9fb6c9}
+  .copybtn{margin-left:auto;font-family:var(--mono);font-weight:600;font-size:12.5px;background:var(--green-deep);color:#fff;border:none;border-radius:5px;padding:7px 14px;cursor:pointer;letter-spacing:.03em}
+  .copybtn:hover{filter:brightness(1.1)}
+  .copybtn.ok{background:#1f4a37}
+  pre.code{margin:0;background:var(--console);color:var(--console-ink);padding:20px 22px;max-height:440px;overflow:auto;font-family:var(--mono);font-size:12.5px;line-height:1.6;white-space:pre;tab-size:2}
+  pre.code::selection,.code ::selection{background:#2c5a45}
+  .runline{font-family:var(--mono);font-size:13px;color:var(--ink-2);margin-top:14px}
+  .runline .caret{color:var(--green)}
+
+  /* ---------- faq ---------- */
+  details{border-bottom:1px solid var(--line)}
+  details summary{cursor:pointer;list-style:none;padding:20px 2px;display:flex;justify-content:space-between;gap:20px;align-items:center;font-weight:600;font-size:16.5px;letter-spacing:-.01em}
+  details summary::-webkit-details-marker{display:none}
+  details summary .pm{font-family:var(--mono);color:var(--green);font-weight:700;flex:none}
+  details[open] summary .pm{color:var(--red)}
+  details .ans{padding:0 2px 22px;color:var(--ink-2);font-size:15px;max-width:74ch}
+  details .ans .cmd{font-family:var(--mono);font-size:13.5px;color:var(--green-deep)}
+
+  footer{padding:46px 0;border-top:1px solid var(--line)}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:10px 30px;justify-content:space-between;font-family:var(--mono);font-size:12px;color:var(--ink-3);letter-spacing:.03em}
+
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    .reveal{opacity:1;transform:none}
+    .flip .from-state{opacity:.32} .flip .to-state{opacity:1}
+  }
+</style>
+</head>
+<body>
+
+<div class="classbar"><div class="wrap">
+  <span><span class="dotmark">●</span> Private by default — your mail, calendar &amp; notes stay on your machine</span>
+  <span class="navhide">Personal productivity setup · works with Microsoft 365 or Google Workspace</span>
+</div></div>
+
+<header class="top"><div class="wrap">
+  <span class="logo"><span class="rag"><i class="r"></i><i class="a"></i><i class="g"></i></span> AI&nbsp;OS</span>
+  <a class="navlink navhide" href="#flip">The flip</a>
+  <a class="navlink navhide" href="#commands">Commands</a>
+  <a class="navlink navhide" href="#controls">Controls</a>
+  <a class="navlink navhide" href="#compare">Yours vs rented</a>
+  <a class="navlink navhide" href="#rollout">Rollout</a>
+  <a class="navlink navhide" href="#domain">Add a manager</a>
+  <a class="btn sm go" href="#rollout">Copy the prompt</a>
+</div></header>
+
+<!-- ============ HERO ============ -->
+<section class="hero"><div class="wrap">
+  <div class="metarow">
+    <span class="meta"><b>REPORT</b> · Your operating week</span>
+    <span class="meta"><b>OWNER</b> · you</span>
+    <span class="meta"><b>PERIOD</b> · every week, recurring</span>
+    <span class="meta"><b>PREPARED BY</b> · an AI chief of staff</span>
+  </div>
+
+  <div class="statuschip flip" id="statuschip" aria-label="your week changes from overloaded to in control">
+    <span class="lbl">Your week</span>
+    <span class="from-state s-from"><span class="sdot"></span> OVERLOADED</span>
+    <span class="to-state"><span class="s-arrow">→</span> <span class="s-to"><span class="sdot"></span> IN CONTROL</span></span>
+  </div>
+
+  <h1 class="display">Your chief of staff. <span class="greenword">And your board of advisors.</span></h1>
+
+  <p class="lede" style="margin-top:24px">One copy-paste prompt turns <b>Claude Code</b> into a personal operating system, wired to your <b>Microsoft 365 or Google Workspace</b>. It runs your week — triage, meeting prep, status updates — then sharpens what&#8217;s left: stress-testing decisions against a board of advisors, tutoring you through whatever you&#8217;re trying to master, and getting sharper every time you correct it. Stand it up once, in about five minutes.</p>
+
+  <div class="cta">
+    <a class="btn go" href="#rollout">Copy the setup prompt →</a>
+    <a class="btn ghost" href="#flip">See what changes</a>
+  </div>
+  <p class="fineprint">no code required &nbsp;·&nbsp; read-only by default &nbsp;·&nbsp; nothing sent without your sign-off</p>
+</div></section>
+
+<!-- ============ THE FLIP ============ -->
+<section id="flip"><div class="wrap reveal">
+  <span class="eyebrow">before / after</span>
+  <h2 class="display" style="margin-top:14px">The same week, two very different feelings.</h2>
+  <p class="lede" style="margin-bottom:34px">So much of the week is recurring overhead: prepping for calls, chasing updates, keeping track of what's open, clearing mail. Hand the repetitive parts to an assistant that already knows your work — and watch the dots go green.</p>
+  <div class="board">
+    <div class="col now">
+      <div class="head"><span>Without it</span><span class="stamp">● Overloaded</span></div>
+      <div class="row"><span class="rag r"></span>Status updates eat your Friday afternoon</div>
+      <div class="row"><span class="rag r"></span>No gap to prep between back-to-back calls</div>
+      <div class="row"><span class="rag a"></span>Monday inbox is a wall of weekend mail</div>
+      <div class="row"><span class="rag a"></span>Open items and follow-ups slip until something bites you</div>
+      <div class="row"><span class="rag r"></span>Project context lives only in your head</div>
+    </div>
+    <div class="col next">
+      <div class="head"><span>With the AI OS</span><span class="stamp">● In control</span></div>
+      <div class="row"><span class="rag g"></span>Status update drafted from the week's activity — you edit &amp; send</div>
+      <div class="row"><span class="rag g"></span>Prep packet staged before every meeting, each morning</div>
+      <div class="row"><span class="rag g"></span>Inbox pre-sorted into Needs&nbsp;Reply / FYI / Noise before you open it</div>
+      <div class="row"><span class="rag g"></span>Open items, decisions &amp; follow-ups tracked — nothing slips quietly</div>
+      <div class="row"><span class="rag g"></span>Projects, people &amp; decisions captured and searchable</div>
+    </div>
+  </div>
+</div></section>
+
+<!-- ============ DELIVERABLES ============ -->
+<section id="what"><div class="wrap reveal">
+  <span class="eyebrow">What gets stood up</span>
+  <h2 class="display" style="margin-top:14px">Three parts, shaped to you.</h2>
+  <p class="lede" style="margin-bottom:34px">The prompt interviews you about your role and your work first, then builds all three around what you actually do — not a generic template.</p>
+  <div class="manifest">
+    <div class="item">
+      <span class="tag">01 · Memory</span>
+      <h3>A memory that stays true</h3>
+      <p>Claude Code remembers across sessions — this keeps that memory honest: it re-checks what's gone stale, clears duplicates, resolves contradictions, and links related facts, so what it knows about your projects and people stays trustworthy instead of drifting.</p>
+    </div>
+    <div class="item">
+      <span class="tag">02 · Vault</span>
+      <h3>A structured notes vault</h3>
+      <p>An Obsidian-style vault for projects, the people you work with, decisions, and reusable templates — status update, meeting notes, weekly review, 1:1 agenda.</p>
+    </div>
+    <div class="item">
+      <span class="tag">03 · Commands</span>
+      <h3>A toolkit of skills</h3>
+      <p>Slash-commands you invoke by name — <span class="cmd">/brief</span>, <span class="cmd">/prep</span>, <span class="cmd">/triage</span>, <span class="cmd">/weekly</span>, <span class="cmd">/ingest</span> — each wired to your mail &amp; calendar.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- ============ COMMAND REFERENCE ============ -->
+<section id="commands"><div class="wrap reveal">
+  <span class="eyebrow">Command reference</span>
+  <h2 class="display" style="margin-top:14px">Your toolkit, in plain language.</h2>
+  <p class="lede" style="margin-bottom:34px">Type a slash-command and it does the work — reading from a fast local cache of your mail &amp; calendar, drafting locally, and sending nothing without your explicit OK.</p>
+  <div class="ref">
+    <div class="refrow refhdr"><div class="c">Command</div><div class="d">What it does</div><div class="e">Try saying</div></div>
+    <div class="refrow"><div class="c"><span class="slash">/</span>brief</div><div class="d">Your morning brief — today's meetings and who's in them, what's waiting on you, top priorities, deadlines this week.</div><div class="e"><b>"/brief"</b> → your whole day on one screen before the first call.</div></div>
+    <div class="refrow"><div class="c"><span class="slash">/</span>triage</div><div class="d">One pass over your inbox + calendar. Sorts mail into Needs Reply / FYI / Noise, flags conflicts. Read-only until you say otherwise.</div><div class="e"><b>"/triage my inbox"</b> → Monday's backlog already sorted.</div></div>
+    <div class="refrow"><div class="c"><span class="slash">/</span>prep</div><div class="d">Preps you for one meeting — the invite, the mail thread, the relevant project &amp; people notes, last decisions, open items. Hands you an agenda and likely questions.</div><div class="e"><b>"/prep my 2pm with the design team"</b> → walk in ready.</div></div>
+    <div class="refrow"><div class="c"><span class="slash">/</span>status</div><div class="d">Drafts a status update from your notes + recent activity: what progressed, what's blocked, decisions needed, next steps. Polished or direct — your call.</div><div class="e"><b>"/status for &lt;project&gt;"</b> → a draft you edit &amp; send.</div></div>
+    <div class="refrow"><div class="c"><span class="slash">/</span>weekly</div><div class="d">Pre-builds your weekly review — what shipped, decisions, what slipped or is blocked, next week's shape — plus a ready-to-edit status update.</div><div class="e"><b>"/weekly"</b> on Friday → review's already written.</div></div>
+    <div class="refrow"><div class="c"><span class="slash">/</span>recall</div><div class="d">"What do I know about X?" — one search across <b>all</b> your knowledge at once: your memory, your notes vault, <b>and</b> the work your other commands produce and keep (a tracked list, a strategy doc, research) — ranked together so none crowds out the others, with directly related facts pulled in. Answered with citations, and honest about where you have gaps.</div><div class="e"><b>"/recall what am I tracking on the website redesign"</b> → everything you know, one answer.</div></div>
+    <div class="refrow"><div class="c"><span class="slash">/</span>wiki</div><div class="d">Precedent search over your notes <i>only</i> — the deep dive into your vault, with citations to the exact note and heading. (Use <span class="cmd">/recall</span> when you want both your memory and your notes at once.)</div><div class="e"><b>"/wiki the data-migration decision"</b></div></div>
+    <div class="refrow"><div class="c"><span class="slash">/</span>improve</div><div class="d">Turns a correction into a durable rule. Claude already jots down some corrections on its own — /improve makes the ones that matter stick deliberately, as a one-fact rule, so the system gets more "you" every time you steer it.</div><div class="e"><b>"/improve"</b> after you fix its tone → it sticks.</div></div>
+    <div class="refrow"><div class="c"><span class="slash">/</span>ingest</div><div class="d">Turns raw notes you drop in — clippings, transcripts, meeting exports — into maintained, linked concept pages you can navigate, instead of re-summarizing the same sources every time.</div><div class="e"><b>"/ingest my reading"</b> → a living knowledge base, not a pile.</div></div>
+    <div class="refrow"><div class="c"><span class="slash">/</span>board</div><div class="d">Run a decision past a panel of advisor profiles — experts you admire, distilled into vault notes. Get each one's distinct take: where they agree, where they'd dissent, a recommendation.</div><div class="e"><b>"ask the board about this hire"</b> → several sharp perspectives at once.</div></div>
+    <div class="refrow"><div class="c"><span class="slash">/</span>teach</div><div class="d">A stateful tutor for learning a topic over many sessions — keeps a syllabus and your progress, and picks up each time exactly where you left off.</div><div class="e"><b>"/teach me system design"</b> → a course that remembers you.</div></div>
+    <div class="refrow"><div class="c"><span class="slash">/</span>workflow-visualizer</div><div class="d">Turns a system or process you describe into one interactive HTML diagram — clickable nodes, hover detail — you can open in a browser.</div><div class="e"><b>"diagram our release process"</b> → a map, not a wall of text.</div></div>
+    <div class="refrow"><div class="c"><span class="slash">/</span>backup</div><div class="d">Protects your whole system — memory, notes, <i>and</i> your skills — against a lost or wiped machine. One command keeps an on-disk history and tucks an <b>encrypted</b> copy into the cloud folder you already sync (the 3-2-1 rule), no setup required.</div><div class="e"><b>"/backup"</b> → a safe copy on disk and off your machine.</div></div>
+    <div class="refrow"><div class="c"><span class="slash">/</span>restore</div><div class="d">Brings it all back — after a new laptop, a bad edit, or a lost folder. Picks the newest snapshot, lays everything back, and is fully reversible. Use <span class="cmd">--drill</span> to <i>prove</i> a backup works without touching your live system.</div><div class="e"><b>"/restore"</b> → your system, back the way it was.</div></div>
+  </div>
+  <p class="runline" style="color:var(--ink-3)">Plus <span style="font-family:var(--mono);color:var(--ink)">/memory-prune</span> to keep your memory healthy, and <span style="font-family:var(--mono);color:var(--ink)">/skill-center</span> — a meta-command to build and refine new commands as your needs grow.</p>
+</div></section>
+
+<!-- ============ CONTROLS ============ -->
+<section id="controls"><div class="wrap reveal">
+  <span class="eyebrow">Operating controls</span>
+  <h2 class="display" style="margin-top:14px">Built with guardrails.</h2>
+  <p class="lede" style="margin-bottom:34px">Designed to be trustworthy from the first line. Three controls keep it fast, in your hands, and private.</p>
+  <div class="controls">
+    <div class="ctrl">
+      <span class="chk">✓ Private</span>
+      <h3>Local &mdash; and recoverable</h3>
+      <p>Your mail, calendar, and notes live only on your own machine — a hard "never goes outward" rule. The one thing that can leave is a backup <i>you</i> ask for: encrypted, into your own cloud, so your system survives a lost laptop without ever being exposed.</p>
+    </div>
+    <div class="ctrl">
+      <span class="chk">✓ In your hands</span>
+      <h3>Read-only by default</h3>
+      <p>Every command reads and drafts; nothing is sent, posted, accepted, or shared until you approve it. Approving one action is never standing approval for the next.</p>
+    </div>
+    <div class="ctrl">
+      <span class="chk">✓ Well-behaved</span>
+      <h3>Local-first by design</h3>
+      <p>It caches your calendar and mail and refreshes only when something changes — instant to use, and gentle enough on your mail and calendar service that it won't trip rate limits.</p>
+    </div>
+  </div>
+  <div class="notice">⚠ <b>Check first:</b> confirm with your leadership / IT that Claude Code with the Microsoft 365 or Google Workspace connector is approved for your account before wiring it to work mail. This is a personal-productivity setup — not an official product of any employer.</div>
+</div></section>
+
+<!-- ============ YOURS VS RENTED ============ -->
+<section id="compare"><div class="wrap reveal">
+  <style>
+    #compare .cmp-wins{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-bottom:34px}
+    #compare .cmp-win{background:var(--panel);padding:24px}
+    #compare .cmp-win .chk{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--green-deep);font-weight:600;margin-bottom:10px}
+    #compare .cmp-win h3{margin:0 0 8px;font-size:18px}
+    #compare .cmp-win p{margin:0;color:var(--ink-2);font-size:14.5px}
+    #compare .cmp-scroll{border:1px solid var(--line);border-radius:var(--r);overflow-x:auto;background:var(--panel)}
+    #compare table.cmp{border-collapse:collapse;width:100%;min-width:880px;font-size:13.5px}
+    #compare table.cmp th,#compare table.cmp td{text-align:left;vertical-align:top;padding:13px 16px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);line-height:1.5}
+    #compare table.cmp th:last-child,#compare table.cmp td:last-child{border-right:none}
+    #compare table.cmp tr:last-child td,#compare table.cmp tr:last-child th{border-bottom:none}
+    #compare table.cmp thead th{background:var(--ink);color:#cdd0cb;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;white-space:nowrap}
+    #compare table.cmp thead th.ours{background:var(--green-deep);color:#eaf4ee}
+    #compare table.cmp tbody th{font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);font-weight:600;background:#fafbf9;white-space:nowrap}
+    #compare table.cmp td.ours{background:var(--green-bg);color:var(--ink);font-weight:500}
+    #compare table.cmp td{color:var(--ink-2)}
+    #compare table.cmp .thin{color:var(--ink-3);font-style:italic}
+    #compare .cmp-foot{margin-top:18px;color:var(--ink-3);font-size:13px;line-height:1.65}
+    #compare .cmp-foot b{color:var(--ink-2)}
+    @media(max-width:820px){#compare .cmp-wins{grid-template-columns:1fr}}
+  </style>
+  <span class="eyebrow">Yours vs. rented</span>
+  <h2 class="display" style="margin-top:14px">A system you own &mdash; not a subscription you rent.</h2>
+  <p class="lede" style="margin-bottom:34px">Most "AI second brain" tools are hosted apps: your notes live in their cloud, on their terms, for as long as you keep paying. An AI&nbsp;OS is the opposite &mdash; a free template you copy, run on tools you already use, and reshape to fit you. Here's the honest comparison.</p>
+
+  <div class="cmp-wins">
+    <div class="cmp-win">
+      <span class="chk">✓ Yours to keep</span>
+      <h3>A free, forkable artifact</h3>
+      <p>Every tool below is a paid SaaS account you rent a seat in. This is a free copy-paste template &mdash; you can read it, reshape it, fork it, and pass it to a friend. There's no vendor to leave because there's no vendor.</p>
+    </div>
+    <div class="cmp-win">
+      <span class="chk">✓ Plain files</span>
+      <h3>Your memory is files, not a database</h3>
+      <p>Your notes and memory are plain text files on your own machine &mdash; the store <i>is</i> the data. You can open, search, edit, and version them directly, with no export step and nothing trapped in a proprietary cloud database.<sup>1</sup></p>
+    </div>
+  </div>
+
+  <div class="cmp-scroll">
+    <table class="cmp">
+      <thead>
+        <tr>
+          <th></th>
+          <th class="ours">AI&nbsp;OS</th>
+          <th>Saner.ai</th>
+          <th>Mem</th>
+          <th>Tana</th>
+          <th>Notion&nbsp;AI</th>
+          <th>ChatGPT / Claude memory</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Where it lives</th>
+          <td class="ours">Notes &amp; memory: local files on your machine. Model &amp; connectors: cloud<sup>1</sup></td>
+          <td>Cloud app</td>
+          <td>Cloud app</td>
+          <td>Cloud only (no offline)</td>
+          <td>Cloud app</td>
+          <td>Cloud, tied to your account</td>
+        </tr>
+        <tr>
+          <th>Your data's form</th>
+          <td class="ours">Plain markdown &mdash; the store <i>is</i> the data; edit &amp; search in place, no export step</td>
+          <td>Proprietary cloud; export available</td>
+          <td>Proprietary cloud; markdown export (clunky)</td>
+          <td>Proprietary nodes; JSON/MD export, but lossy</td>
+          <td>Proprietary blocks; full export</td>
+          <td>Cloud summary you can view/edit + a data export &mdash; not files</td>
+        </tr>
+        <tr>
+          <th>Own &amp; fork it</th>
+          <td class="ours">Free template &mdash; fork, reshape, pass it on</td>
+          <td>Rented seat</td>
+          <td>Rented seat</td>
+          <td>Rented seat</td>
+          <td>Rented seat</td>
+          <td>Rented seat</td>
+        </tr>
+        <tr>
+          <th>What it does on its own</th>
+          <td class="ours">Read-only connectors + approve-before-send &mdash; on by default, no mode to switch on</td>
+          <td>Drafts first; doesn't auto-send</td>
+          <td>Notes &amp; drafting assistant</td>
+          <td>Knowledge workspace</td>
+          <td>Agents act autonomously by default; approval (Plan Mode) is opt-in</td>
+          <td>&mdash; (it's memory, not actions)</td>
+        </tr>
+        <tr>
+          <th>What it costs</th>
+          <td class="ours">Free template &mdash; runs on the Claude plan you already pay for</td>
+          <td>Paid subscription</td>
+          <td>Paid subscription (free tier)</td>
+          <td>Paid subscription (free tier)</td>
+          <td>Paid seats + metered agent credits ($10 / 1,000, no rollover)</td>
+          <td>Bundled in your ChatGPT / Claude subscription</td>
+        </tr>
+        <tr>
+          <th>Keeps memory healthy</th>
+          <td class="ours">A maintenance loop you can run &amp; audit: re-checks stale facts, clears duplicates, resolves contradictions, links related notes</td>
+          <td class="thin">Auto-tags / organizes</td>
+          <td class="thin">Auto-links related notes</td>
+          <td class="thin">User-defined supertags</td>
+          <td>Workspace knowledge (not a personal memory)</td>
+          <td>Background synthesis + an editable summary; claims to reduce contradictions &mdash; but an opaque cloud summary, not files</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="cmp-foot">
+    <sup>1</sup> <b>Honest scope:</b> your notes and memory are plain files on your own machine; the AI model and the mail/calendar connectors are cloud services you already use. An AI&nbsp;OS doesn't run offline, and we don't claim it does.<br>
+    Every tool here lets you export your data &mdash; the real difference is that theirs lives in a cloud database you export <i>from</i>, while yours is already plain files you own. Competitor details are as-of June 2026; hosted-app features and pricing change often &mdash; check the source before relying on any cell.
+  </p>
+</div></section>
+
+<!-- ============ ROLLOUT ============ -->
+<section id="rollout"><div class="wrap reveal">
+  <span class="eyebrow">Rollout · ~5 minutes</span>
+  <h2 class="display" style="margin-top:14px">Stand it up.</h2>
+  <p class="lede" style="margin-bottom:30px">No code, no terminal. Install one app, connect your mail &amp; calendar, paste the prompt below, answer its questions.</p>
+  <div class="steps">
+    <div class="step"><div><h4>Install the Claude desktop app &amp; sign in</h4><p>Download the Claude desktop app from <span class="kbd">claude.com/download</span> — a normal app installer for Mac (<span class="kbd">.dmg</span>) or Windows (<span class="kbd">.exe</span>). Open it and sign in with your Claude account. <b>You never need a terminal or any code.</b> <i>The app runs on a paid Claude plan — Pro is about $20/month. This setup is free; the AI that powers it isn&#8217;t.</i></p><p style="margin-top:10px;color:var(--ink-3);font-size:.92em"><b>On Windows, one extra step:</b> the first time you open it, the app may ask you to install <b>Git for Windows</b> first — accept, let it install, then reopen the app. (Mac has nothing extra.)</p><p style="margin-top:8px;color:var(--ink-3);font-size:.92em">Prefer the command line? The Claude Code CLI at <span class="kbd">claude.com/claude-code</span> is the very same engine — every step below works there too.</p></div></div>
+    <div class="step"><div><h4>Connect your mail &amp; calendar</h4><p>On your Claude account at <span class="kbd">claude.ai</span> &rarr; Settings &rarr; Connectors, turn on the <b>Google (Gmail + Calendar)</b> connector <i>or</i> the <b>Microsoft 365</b> connector and sign in to authorize it. Both work the same here: your AI OS only ever <i>reads</i> your mail and calendar and drafts replies locally for you to send yourself — so the Microsoft 365 connector being read-only takes nothing away, it&#8217;s every bit as capable as Google. The real difference is access, not capability. If you get to choose, <b>Google is the quickest</b> — most people, personal Gmail included, can connect it themselves. <b>Microsoft 365</b> needs a <i>work</i> Microsoft 365 account your organization has enabled — a personal <span class="kbd">@outlook.com</span> or <span class="kbd">@hotmail.com</span> address can&#8217;t connect at all. Many people can approve the connection themselves when they sign in; some tenants still need a one-time admin consent — so confirm you can connect it <i>before</i> you invest time. The setup prompt can walk you through it.</p></div></div>
+    <div class="step"><div><h4>Open the Code tab and turn on Auto mode</h4><p>In the app, click the <b>Code</b> tab, then create or pick a folder to be your AI OS home — e.g. a new folder called <span class="kbd">ai-os</span>. That folder is where your memory and notes live, on your own machine. <i><b>Before you paste anything</b>, switch the session to <b>Auto</b> using the mode control in the <b>top-left corner, just above where you type</b> — you'll get a one-time confirmation dialog; accept it. (If Auto isn't offered there, enable it once in the app's <b>Settings</b>.) This lets it build your whole system in one pass instead of stopping to ask about every file, and it can still only <b>read and draft</b> your mail and calendar — never send, delete, or post anything. Near the end it will ask permission to set up your scheduled briefs — that's expected; say yes.</i></p></div></div>
+    <div class="step"><div><h4>Paste the setup prompt as your first message</h4><p>Copy it below, paste the whole thing, and send.</p></div></div>
+    <div class="step"><div><h4>Answer the interview</h4><p>It asks about your role, your projects, the people you work with, and how you like to work — then builds everything shaped to you and explains what it made.</p></div></div>
+    <div class="step"><div><h4>See it work — your first win</h4><p>The moment the build finishes, it hands you your actual day — today's meetings, what's waiting on you, deadlines this week — proof it's wired to your real mail and calendar. That's the payoff, and you didn't have to do a thing. From your <b>next</b> session on, type <span class="kbd">/brief</span> any morning to get it again for that day; your other commands (<span class="kbd">/triage</span>, <span class="kbd">/prep</span>, <span class="kbd">/recall</span>) work the same way — <b>close this folder and reopen it (or start a new chat) once, and they're all ready.</b></p></div></div>
+  </div>
+
+  <div class="term">
+    <div class="termbar">
+      <span class="tdots"><i></i><i></i><i></i></span>
+      <span class="fname">ai-os-setup-prompt.txt</span>
+      <button class="copybtn" id="copyBtn" onclick="copyPrompt()">Copy prompt</button>
+    </div>
+    <pre class="code" id="promptBox">Loading…</pre>
+  </div>
+  <p class="runline"><span class="caret">❯</span> the one habit that makes it pay off: run <span style="color:var(--green-deep);font-weight:600">/improve</span> whenever you correct it — that's the loop that makes it more <i>you</i>.</p>
+</div></section>
+
+<!-- ============ DOMAIN MANAGERS — SECOND ACT ============ -->
+<section id="domain"><div class="wrap reveal">
+  <span class="eyebrow">When you&#8217;re ready · a manager for any domain</span>
+  <h2 class="display" style="margin-top:14px">Once it runs your week, give it a manager.</h2>
+  <p class="lede" style="margin-bottom:24px">Your AI&nbsp;OS runs your day. The next step gives it a <b>domain manager</b> &mdash; a standing chief-of-staff for one part of your life that keeps its own strategy, does its own research, stages real work for you to approve, and gets sharper every time you correct it. The same shape works for your projects, your finances, your learning. <b>Here&#8217;s the first one you can stand up today: your career.</b></p>
+  <p style="color:var(--ink-3);font-size:.94em;margin-bottom:30px">Paste one more prompt and it learns how <i>you</i> write from a few things you&#8217;ve written, keeps a living strategy for where you&#8217;re headed, and drafts LinkedIn posts that sound like <b>you</b> &mdash; not generic AI. It won&#8217;t nail your voice from three samples &mdash; no tool does. It gets it <i>roughly</i> right, shows you what it learned and asks &#8220;what&#8217;s not you?&#8221;, then sharpens every time you edit a draft. <b>You&#8217;re always the judge, and you do the posting &mdash; nothing is ever published for you.</b></p>
+
+  <div class="term">
+    <div class="termbar">
+      <span class="tdots"><i></i><i></i><i></i></span>
+      <span class="fname">career-manager-prompt.txt</span>
+      <button class="copybtn" id="copyBtn2" onclick="copyPrompt2()">Copy prompt</button>
+    </div>
+    <pre class="code" id="promptBox2">Loading…</pre>
+  </div>
+  <p class="runline"><span class="caret">❯</span> the loop that makes it <i>you</i>: every time you reword one of its drafts, run <span style="color:var(--green-deep);font-weight:600">/career voice learn</span> &mdash; it remembers the difference.</p>
+</div></section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq"><div class="wrap reveal">
+  <span class="eyebrow">Questions</span>
+  <h2 class="display" style="margin:14px 0 26px">Before you start.</h2>
+  <details><summary>Do I need to be technical?<span class="pm">+</span></summary><div class="ans">No. You install one app and paste one prompt. The interview is a normal conversation, and Claude explains each thing it builds in plain language. If you can use email and a calendar, you can use this.</div></details>
+  <details><summary>What does it cost?<span class="pm">+</span></summary><div class="ans">This setup is free, and so is the toolkit it builds. The one cost is Claude Code itself, which runs on a paid Claude plan — Pro is about $20/month. The template is free; the AI that powers it isn&#8217;t.</div></details>
+  <details><summary>What data does it touch?<span class="pm">+</span></summary><div class="ans">Your mail and calendar — Microsoft 365 or Google Workspace — read through the connector you authorize. It keeps a local cache on your own machine for speed, and treats anything you mark confidential as something that never leaves your machine without your explicit approval.</div></details>
+  <details><summary>Will it email or message people on its own?<span class="pm">+</span></summary><div class="ans">No. It's read-only by default. It drafts replies, updates, and prep locally and shows them to you; nothing is sent, posted, or accepted until you say so — every time.</div></details>
+  <details><summary>Do I need approval to use it?<span class="pm">+</span></summary><div class="ans">If you're connecting a work account, check with your leadership / IT that Claude Code with the Microsoft 365 or Google connector is approved first. Treat this as a personal-productivity setup, not an official product of any employer.</div></details>
+  <details><summary>How is it different from just chatting with an AI?<span class="pm">+</span></summary><div class="ans">Two things: a <b>memory it actively keeps true</b> — it learns your projects and people across sessions, then re-checks what's gone stale, clears duplicates, and resolves contradictions so it doesn't drift — and <b>commands wired to your real mail &amp; calendar</b>. Instead of re-explaining your context every time, you say "/prep my 2pm" and it already knows the players, the history, and what's open.</div></details>
+  <details><summary>What if it gets something wrong?<span class="pm">+</span></summary><div class="ans">Correct it, then run <span class="cmd">/improve</span> to lock that lesson in as a durable rule, so it won't repeat the mistake. The more you steer it, the more it works the way you do.</div></details>
+  <details><summary>Can I customise the commands?<span class="pm">+</span></summary><div class="ans">Yes — run <span class="cmd">/skill-center</span> to add, edit, or audit commands as your needs change. The starter set is just a foundation.</div></details>
+</div></section>
+
+<footer><div class="wrap">
+  <span>Built &amp; shared by Craig Vandeputte</span>
+  <span>Personal productivity setup — not an official product of any employer. Confirm tooling approval before connecting work accounts.</span>
+</div></footer>
+
+<!-- one-shot prompt held as plain text so no HTML escaping is needed -->
+<script type="text/plain" id="promptSource">{{PROMPT}}</script>
+
+<!-- second-act (career manager) prompt held as plain text -->
+<script type="text/plain" id="promptSource2">{{PROMPT2}}</script>
+
+<script>
+  // inject the plain-text prompt (no HTML escaping needed)
+  document.getElementById('promptBox').textContent =
+    document.getElementById('promptSource').textContent.replace(/^\n/,'');
+
+  function copyPrompt(){
+    var btn=document.getElementById('copyBtn'), text=document.getElementById('promptBox').textContent;
+    function done(){btn.textContent='✓ Copied';btn.classList.add('ok');setTimeout(function(){btn.textContent='Copy prompt';btn.classList.remove('ok');},2000);}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done,fb);}else{fb();}
+    function fb(){var ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(e){btn.textContent='Select & copy';}document.body.removeChild(ta);}
+  }
+
+  // second-act (career manager) prompt
+  document.getElementById('promptBox2').textContent =
+    document.getElementById('promptSource2').textContent.replace(/^\n/,'');
+  function copyPrompt2(){
+    var btn=document.getElementById('copyBtn2'), text=document.getElementById('promptBox2').textContent;
+    function done(){btn.textContent='✓ Copied';btn.classList.add('ok');setTimeout(function(){btn.textContent='Copy prompt';btn.classList.remove('ok');},2000);}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done,fb);}else{fb();}
+    function fb(){var ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(e){btn.textContent='Select & copy';}document.body.removeChild(ta);}
+  }
+
+  // scroll reveal
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+</script>
+
+</body>
+</html>

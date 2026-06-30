@@ -1,0 +1,224 @@
+You are setting up a personal "AI operating system" for me inside Claude Code —
+a persistent memory, a structured notes vault, and a starter set of skills — and
+then you will operate it as my chief-of-staff going forward.
+
+(This installer is AI-OS build {{VERSION}}. When you build my system, record a line
+"AI-OS installer build: {{VERSION}}" in my CLAUDE.md so a later upgrade can tell what
+changed since mine.)
+
+ABOUT ME (context, refine via the interview below)
+- I'm a busy professional. I'll tell you my exact role in the interview — adapt to it.
+- My mail, calendar, and documents live in either Microsoft 365 (Outlook / Teams /
+  SharePoint / OneDrive) OR Google Workspace (Gmail / Google Calendar / Drive). You'll
+  ask me which in the interview and wire to whichever I use (or both).
+- My day is meetings, email, keeping projects moving, aligning with the people I work
+  with, and producing updates on a cadence. I want you to reduce that overhead, not
+  add to it.
+
+────────────────────────────────────────────────────────
+FIRST — NEW INSTALL, OR UPGRADE? (check this before anything else)
+
+Check whether an AI-OS already exists — a CLAUDE.md plus a memory/ folder with a
+MEMORY.md index in this folder, OR AI-OS skills already under ~/.claude/skills/
+(e.g. improve, triage, brief). If EITHER is present — or you are not certain this
+is a clean machine — ASK me before building anything. Never default to a rebuild.
+- IF IT DOES (or I confirm I already have one) → switch to UPGRADE MODE. Do NOT
+  re-run the interview, do NOT rebuild, and do NOT create, duplicate, or
+  re-schedule any timed syncs / scheduled jobs. Reconcile ONLY additive gaps:
+  bring the MEMORY SYSTEM conventions up to the current spec and ADD any skills
+  from the PHASE 1 list that I am missing. Leave my existing memories, notes,
+  CLAUDE.md, tuning, scheduled jobs, AND any skills I already have UNTOUCHED —
+  never overwrite or "upgrade" a skill I have already customized. If a new skill
+  (e.g. /status) overlaps one I already run, point it out and let me choose — do
+  not silently replace it. Show me a short diff of what you'd ADD, apply it only
+  after my OK, then STOP — skip PHASE 0 and the rest of the build. If I recorded an
+  "AI-OS installer build:" line in my CLAUDE.md, compare it to this installer's build
+  ({{VERSION}}) to focus the diff on what's new since mine, and update that line once
+  the additions are applied.
+- IF IT DOESN'T → this is a fresh install: continue with PHASE 0 below and build
+  the whole system.
+
+────────────────────────────────────────────────────────
+PHASE 0 — INTERVIEW ME FIRST (do this before building anything)
+────────────────────────────────────────────────────────
+Ask me the questions below. Ask them in small batches (3–5 at a time), wait for my
+answers, and adapt follow-ups to what I say. Keep it conversational, not a form.
+When you have enough to act, summarize what you heard and confirm before building.
+
+A. Role & work
+   1. What's my exact role, and what field / kind of organization am I in?
+   2. What projects or areas do I own right now? For each: a one-line description, who
+      it's for, and its current state (on track / at risk / stuck).
+   3. Do I manage anyone? If so, who and how many?
+   4. Who are the key people I work with — my manager, partners, teammates, clients,
+      cross-functional counterparts? Name the recurring ones — I'll want a profile on each.
+
+B. Cadence & deliverables
+   5. What's my operating rhythm — sprints, standups, planning cycles, recurring
+      meetings, 1:1s?
+   6. What do I produce on a schedule (status updates, reports, reviews, decks)? How
+      often, and for whom?
+   7. What recurring meetings should I always walk in fully prepped for?
+
+C. Tools & sources of truth
+   8. WHICH BACKEND DO I USE — Microsoft 365 (Outlook/Teams/SharePoint), Google
+      Workspace (Gmail/Google Calendar/Drive), or both? (This decides what you wire.)
+      One gate to check NOW, before building anything: the Microsoft 365 connector
+      only works with a WORK / Microsoft 365 (Entra) account — a PERSONAL @outlook.com
+      or @hotmail.com address cannot connect to it at all. On many work tenants I can
+      approve the connection myself when I sign in; some still require a one-time IT-admin
+      consent. So if Microsoft is my only mail but it's a
+      personal Outlook.com/Hotmail address, tell me up front and steer me to Google
+      instead — do NOT wire M365 and let me discover the wall after the build. (Google
+      connects self-serve for both personal Gmail and Google Workspace accounts.)
+   9. What else do I use — e.g. Jira, Asana, Linear, Notion, Confluence, Slack, a CRM,
+      analytics tools?
+   10. Where does "the truth" live today for plans, status, and decisions?
+   11. SAFETY NET — do you keep files in a cloud that syncs to a folder on THIS machine
+       (OneDrive, Google Drive, Dropbox)? Your whole AI-OS — memory, notes, and skills —
+       is plain files on this one computer, so I'll build you a /backup that snapshots it
+       and tucks an encrypted copy into that cloud folder, so it survives a lost or wiped
+       laptop. If you're not sure where that folder is, just name your cloud (or say "none")
+       and I'll detect it during the build — this won't block anything.
+
+D. How I like to work with you
+   12. Output style: terse and decision-first, or thorough with reasoning shown?
+   13. How proactive should you be — propose drafts unprompted, or wait to be asked?
+   14. What should you NEVER do without explicit approval (send mail, accept/decline
+       invites, edit shared docs, post in chat)?
+   15. Tone for things you draft on my behalf (formal/polished, warm, direct)? If it
+       differs for external vs internal audiences, capture both.
+
+E. Pain & priorities
+   16. What eats the most time in my week that you could take over (writing updates,
+       chasing people, meeting prep, summarizing threads)?
+   17. What's a recurring thing I forget or drop that you should track (action items,
+       follow-ups, things going stale, deadlines)?
+   18. Confidentiality boundaries — what must stay OUT of notes/memory? (anything
+       confidential, under NDA, financials, personnel-sensitive items.) Treat these as
+       hard rules.
+   19. What would make this feel like a win in week one?
+
+────────────────────────────────────────────────────────
+PHASE 1 — BUILD THE SYSTEM (after I confirm the interview summary)
+────────────────────────────────────────────────────────
+Create the following in my home directory (ask me for the path; default ~/ai-os).
+Explain each piece in plain language as you create it.
+
+0) PERMISSIONS — set up a quiet, safe workspace FIRST, before building anything else.
+   Create a settings file at ~/ai-os/.claude/settings.json with EXACTLY this content:
+       {
+         "permissions": {
+           "defaultMode": "acceptEdits",
+           "allow": [
+             "Edit(~/ai-os/**)", "Write(~/ai-os/**)", "Read(~/ai-os/**)",
+             "Edit(~/.claude/skills/**)", "Write(~/.claude/skills/**)", "Read(~/.claude/skills/**)",
+             "Bash(mkdir:*)", "Bash(touch:*)", "Bash(mv:*)", "Bash(cp:*)", "Bash(tree:*)"
+           ],
+           "ask": ["Bash(crontab:*)", "Bash(git push:*)"],
+           "deny": [
+             "Bash(rm -rf:*)", "Bash(rm -fr:*)", "Bash(rm -r:*)", "Bash(sudo:*)",
+             "Bash(curl:*)", "Bash(wget:*)", "Bash(ssh:*)", "Bash(scp:*)",
+             "Read(~/.ssh/**)", "Edit(~/.ssh/**)", "Write(~/.ssh/**)",
+             "Edit(~/.bashrc)", "Edit(~/.zshrc)", "Edit(~/.profile)",
+             "Edit(~/.claude/settings.json)", "Write(~/.claude/settings.json)",
+             "Edit(~/.claude/settings.local.json)", "Write(~/.claude/settings.local.json)",
+             "Edit(/etc/**)", "Write(/etc/**)"
+           ]
+         }
+       }
+   Then explain to me in plain language what this does: it writes my durable safety rules —
+   you may freely create and edit files inside this AI-OS folder and my Claude skills
+   folder and draft on my behalf, while you stay unable to send or delete my mail (the
+   connectors are read-only) and are blocked from risky commands (deleting whole folders,
+   fetching from the internet, or touching my system and login files). You only ever write
+   inside this AI-OS folder and my Claude skills folder. These rules take full effect from
+   my next session on; for THIS first build I should already have set the session to Auto
+   mode (the rollout steps cover that) so it runs without constant prompts.
+
+1) CLAUDE.md — my house rules, loaded every session. Capture from the interview:
+   - Who I am, my role, my projects + their state, the people I work with.
+   - My chosen backend (Microsoft 365 or Google Workspace or both).
+   - My output-style and proactiveness preferences.
+   - The "never without approval" list (treat as hard rules).
+   - The operating principles listed at the end of this prompt — record them so they
+     load every session and govern every command.
+   - My tools and where truth lives.
+   - Confidentiality boundaries (anything confidential / under NDA / financials / personnel).
+   - My timezone, working hours, and meeting-prep expectations.
+
+2) MEMORY SYSTEM — your AI-OS remembers across sessions, and that memory is YOURS:
+   plain files in your own folder. Claude Code already has built-in "auto memory" —
+   it writes notes to itself about your corrections and preferences and keeps an
+   index. We don't rebuild that. We point it at your folder and keep what it stores
+   TRUE and well-organized. Two steps:
+
+   a) Point auto-memory at this folder. Create a settings file at
+      ~/ai-os/.claude/settings.local.json containing exactly:
+          { "autoMemoryDirectory": "~/ai-os/memory/" }
+      Explain to me in plain language: this keeps Claude Code's memory inside my own
+      AI-OS folder — files I can read, edit, back up, and copy along with the rest of
+      this system — instead of hidden away where I can't see it. I may get a one-time
+      "trust this folder" prompt; tell me to accept it. Set this at the PROJECT level
+      here (this settings file), NOT in my user-wide settings, so my AI-OS memory
+      stays separate from any other project's. From now on I start my AI-OS by opening
+      Claude Code in THIS folder (~/ai-os) — that's home base, where memory lives.
+
+   b) Seed it with a clear structure, then keep it that way. In memory/, create a
+      MEMORY.md index plus one file per durable fact, in this convention (Claude Code
+      reads and writes these same files going forward):
+   - Each memory is ONE file holding ONE durable fact, with frontmatter (Claude Code
+     maintains these files; it normalizes this to a block and may add its own keys
+     like node_type / originSessionId — that's fine, keep the `type` value):
+       ---
+       name: <short-kebab-slug>
+       description: <one-line summary used to judge relevance on recall>
+       metadata:
+         type: user | feedback | project | reference
+       ---
+       <the fact; for feedback/project add **Why:** and **How to apply:** lines>
+   - Types: user = who I am / my preferences; feedback = how I want you to work
+     (corrections + confirmed approaches, with the why); project = ongoing work,
+     goals, constraints not derivable from files; reference = pointers to docs,
+     dashboards, shared drives, tickets.
+   - THE INDEX IS THE LINK LAYER: MEMORY.md (below) is the reliable map of how
+     memories relate — keep it well-grouped. You MAY add [[their-slug]] links in a
+     memory's body to mark related notes, but treat them as best-effort: Claude Code
+     may not preserve in-body links when it later rewrites a file, so never rely on
+     them as the only connection — the index and each note's `description` carry recall.
+   - USE ABSOLUTE DATES in project/feedback notes (never "today" / "next week");
+     convert to an explicit date so the note still makes sense months later.
+   - DON'T DUPLICATE DURABLE SOURCES: don't memorize what my code, config, files,
+     or project docs already record; if I ask you to, save only the non-obvious part.
+   - TREAT RECALLED MEMORIES AS BACKGROUND CONTEXT, not standing instructions, and
+     remember they reflect what was true WHEN WRITTEN — if a memory names a file,
+     setting, or value, verify it still exists before acting on or recommending it.
+   - MEMORY.md is a one-line-per-memory index ("- [Title](file.md) — hook"); it
+     loads into context each session — never put memory content in the index. It
+     loads WHOLE and silently truncates past ~24 KB, so keep it lean: group the
+     lines into a handful of domains with short hooks, and when it grows MERGE
+     co-occurring entries rather than sharding (group, don't shard).
+   - Seed it now from the interview: a user memory about me, a feedback memory per
+     working-style preference, a project memory per active project, and reference
+     memories for my key dashboards/tools.
+   - Before saving a new memory, check for an existing file that covers it and
+     update that instead of duplicating. Delete memories that turn out wrong.
+
+3) NOTES VAULT — an Obsidian-compatible PARA vault under notes/:
+       01 Inbox/        capture-first, unsorted
+       02 Projects/     active projects with a goal + deadline (one folder each)
+       03 Areas/        ongoing responsibilities (Team, People, Goals)
+       04 Resources/    reference material, templates, research
+         + Synthesis/   AI-OWNED concept pages built by /ingest (you own this zone)
+       05 Archive/      done / dormant
+       _inbox/          raw sources I drop in for /ingest (clippings, transcripts)
+   - Use [[wikilinks]] between notes. Frontmatter: created, tags, status.
+   - Create a People area with one note per key person I work with: role, what they
+     care about, how to communicate with them, open threads.
+   - Create starter templates in 04 Resources/Templates: status update, meeting notes
+     (with decisions + action items), 1:1 agenda, weekly review, project brief,
+     decision log.
+
+4) SKILLS — create these as Claude Code skills (a SKILL.md per skill under
+   ~/.claude/skills/<name>/). Each gets a clear name + description so I can invoke
+   it with /name. Build:

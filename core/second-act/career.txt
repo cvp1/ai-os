@@ -1,0 +1,62 @@
+You are extending an AI operating system I already set up in Claude Code, by adding a
+career manager. ONLY proceed if my core AI-OS already exists.
+
+FIRST — CHECK I'M READY (do this before anything else)
+Confirm this folder has a working AI-OS: a CLAUDE.md plus a memory/ folder, OR AI-OS
+skills under ~/.claude/skills/ (e.g. brief, triage). If you can't find one, STOP and
+tell me: "Set up your AI OS first and have your first win — then come back for this."
+Do not build a career manager onto a machine with no AI-OS.
+
+WHAT YOU'LL BUILD (all under ~/ai-os/career/ so it shares my memory and /recall):
+a voice model from a few of my own writing samples, a living career strategy, and a
+/career skill that drafts LinkedIn posts in MY voice. Propose-only: you draft and
+stage; I publish. You never post anything or edit my profile.
+
+PHASE A — LEARN MY VOICE (this is the heart of it)
+1. Ask me to paste 3 to 5 things I'm proud of writing, and tell me to mix the kinds on
+   purpose: at least one short public post/update (the register you'll write in), an
+   email I'd send a colleague, and my bio/About. Tell me to paste the REAL ones, not
+   polished picks. Three is enough; more than five won't help.
+2. Ask three short substance questions: (a) what do I want to be known for? (b) a take
+   in my field I'd defend? (c) anything I never want to sound like?
+3. Save each sample verbatim to ~/ai-os/career/voice/samples/. Then write
+   ~/ai-os/career/VOICE.md: a distilled fingerprint (how I open, my tone, sentence
+   rhythm, the words I reach for and avoid), what I want to be known for, a UNIVERSAL
+   "don't" list of generic-AI tells (leverage/synergy/robust/seamless/delve, "it's not
+   just X it's Y", rule-of-three, throat-clearing, and uniform sentence length — the
+   surest machine tell), and a PER-USER punctuation section. IMPORTANT: infer my
+   punctuation tells FROM MY SAMPLES — if I use em-dashes, semicolons, etc., WHITELIST
+   them as my voice; NEVER apply a generic rule that strips them. Include a 4-part
+   scoring rubric (Sound/Substance/Structure/Clean-of-tells) and a "Learned from edits"
+   section.
+4. CONFIRM LOOP: read my fingerprint back in plain language and ask "anything wrong, or
+   just not you?" Write whatever I say into VOICE.md's "Learned from edits" as the first
+   dated entry. This is the single most important step — do not skip it.
+
+PHASE B — SEED MY WORKSPACE
+Create ~/ai-os/career/ with STRATEGY.md (a DRAFT career strategy scaffold: North
+Star, positioning thesis, content pillars — marked for me to confirm), BACKLOG.md
+(career moves + a content idea bank), DECISIONS.md (append-only log), and RULES.md with
+this confidentiality guardrail VERBATIM: "Never expose employer- or client-identifiable
+information in anything public. Generalize names to 'a large enterprise'/'a recent
+project'; never reproduce internal documents or non-public numbers; when in doubt, cut
+and flag." Ask me a few light questions to fill the strategy draft, but keep it short —
+I can refine it later with /career onboard.
+
+PHASE C — INSTALL THE SKILL (restart-free)
+Write ~/ai-os/career/personas/manager.md and personas/researcher.md (plain persona
+files the /career skill will prepend to a general-purpose agent — NOT subagent files).
+Write ~/.claude/skills/career/SKILL.md (the /career command: status, onboard, voice,
+post, research; propose-only; voice-gated; reads VOICE.md + the raw samples before
+drafting; stages posts to ~/ai-os/career/proposals/ for me to publish).
+
+PHASE D — FIRST WIN, INLINE (no restart needed)
+Right now, in THIS session, draft ONE short LinkedIn post in my voice on a topic from my
+strategy or recent notes — reading VOICE.md and my samples first, grading it against the
+rubric, revising anything that sounds like AI, and checking it against RULES.md. Show me
+the draft and ask "does this sound like you?" I am the judge. Then tell me: "Your
+/career command is ready — start a fresh session (reopen this folder) once and you can
+type /career anytime."
+
+Remember throughout: you draft, I publish. Vary sentence length. Keep my real
+punctuation. Never expose anything that identifies my employer or clients.
