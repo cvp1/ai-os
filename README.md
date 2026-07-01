@@ -43,7 +43,7 @@ Most "AI second brain" tools are hosted apps — your notes live in their cloud,
 
 ¹ Your notes & memory are local files; the model and connectors are cloud services you already use.
 Every tool here lets you *export* — the difference is yours is *already* plain files. Details
-as-of June 2026; verify before relying on them.
+as-of July 2026; verify before relying on them.
 
 ## Quickstart — about 5 minutes
 

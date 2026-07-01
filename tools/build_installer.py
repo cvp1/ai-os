@@ -40,6 +40,17 @@ def read_version():
         sys.exit("FATAL: meta.yml has no version")
     return m.group(1).strip()
 
+def read_asof():
+    """Human 'Month YYYY' derived from the build version date (YYYY.MM.DD…) — self-stamps
+    the compare-table 'as-of' footnote so it never lags the calendar on rebuild."""
+    v = read_version()
+    m = re.match(r"(\d{4})\.(\d{2})\.", v)
+    if not m:
+        return v
+    months = ["January", "February", "March", "April", "May", "June",
+              "July", "August", "September", "October", "November", "December"]
+    return f"{months[int(m.group(2)) - 1]} {m.group(1)}"
+
 def _after_frontmatter(text):
     """Everything after the leading '---\\n...\\n---\\n' frontmatter."""
     m = re.match(r"---\n.*?\n---\n", text, re.S)
@@ -134,6 +145,9 @@ def render():
     html = html.replace("{{VERSION}}", read_version())   # global: stamps all build markers
     if "{{VERSION}}" in html:
         sys.exit("FATAL: unsubstituted {{VERSION}} remains")
+    html = html.replace("{{ASOF}}", read_asof())   # self-stamps the compare-table 'as-of' footnote
+    if "{{ASOF}}" in html:
+        sys.exit("FATAL: unsubstituted {{ASOF}} remains")
     return html
 
 # ---- Field Guide (guide.html) rendering ---------------------------------------
