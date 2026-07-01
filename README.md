@@ -101,6 +101,10 @@ A few rules shape every command — the same ones, whatever you wire it to:
 
 This is a **personal-productivity template**, not an official product of any employer. If you're wiring it to a work mailbox, confirm with your leadership / IT that Claude Code with the Microsoft 365 or Google Workspace connector is approved for your account first.
 
+## License
+
+[MIT](LICENSE) — free to use, copy, modify, and share, including commercially. Keep the copyright line; otherwise, make it yours.
+
 ---
 
 <div align="center">
