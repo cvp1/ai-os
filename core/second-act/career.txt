@@ -69,3 +69,30 @@ type /career anytime."
 
 Remember throughout: you draft, I publish. Vary sentence length. Keep my real
 punctuation. Never expose anything that identifies my employer or clients.
+
+<!-- guide -->
+## What it does
+`/career` is a standing career chief-of-staff. It learns how *you* write from a few of your own samples, keeps a living career strategy, and drafts LinkedIn posts in your voice — you always publish; it never posts anything or edits your profile. Everything lives in `~/ai-os/career/`, so it shares your memory and `/recall`.
+
+## When to reach for it
+When you want to show up in your field on a cadence without it sounding like generic AI, or when you want a standing view of where your career is headed rather than one-off help. It's an opt-in second act — hire it *after* your core AI-OS is running and you've had your first win, not before.
+
+## A walkthrough
+The one-time setup interviews you: you paste 3–5 things you're proud of writing (mix a public post, a colleague email, and your bio), answer three short questions about what you want to be known for, and it distills a `VOICE.md` fingerprint — then reads it back and asks "anything wrong, or just not you?" Once it's running, drive it by mode:
+
+> **You:** /career post about the migration project I just wrapped
+> **/career:** *Draft (graded against your voice rubric, checked against RULES.md):*
+> "Six months ago we bet on a phased cutover instead of a big-bang migration…"
+> — sound like you? I can sharpen the open or cut the third line.
+
+- **`/career post`** — drafts a post from your strategy or recent work, in your voice, staged to `~/ai-os/career/proposals/` for you to publish.
+- **`/career voice`** — reviews or refines your voice model; run **`/career voice learn`** after you reword one of its drafts so it remembers the difference.
+- **`/career status`** — where your career strategy stands.
+- **`/career onboard`** — refine the strategy later as things change.
+- **`/career research`** — background research for a post or a move.
+
+## Power user & honest limits
+- **It won't nail your voice from three samples — no tool does.** It gets you *roughly* right, shows you what it learned, and sharpens every time you edit a draft. You're always the judge; nothing is ever published for you.
+- **The loop that makes it yours:** every reworded draft → `/career voice learn`. Voice is a compounding correction, not a one-shot clone.
+- **Confidentiality is enforced by a local `RULES.md`:** it never exposes employer- or client-identifiable information — generalizes to "a large enterprise" / "a recent project," never reproduces internal documents or non-public numbers.
+- **No connector needed** — LinkedIn is copy-paste; it drafts, you post.

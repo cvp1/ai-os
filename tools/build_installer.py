@@ -69,6 +69,23 @@ def skill_docs(text):
     parts = DOC_DELIM.split(_after_frontmatter(text), maxsplit=1)
     return parts[1] if len(parts) == 2 else None
 
+# Second-act pastes (career/projects/learning/scheduler) are injected WHOLE into
+# {{PROMPT2/4/5/3}}, so unlike skill fragments they own their exact trailing bytes. A
+# guide doc block may be appended after a '\n<!-- guide -->\n' marker: the marker's
+# leading newline is the one consumed by the split, so the paste stays byte-identical
+# to the pre-docs file (proven: each file ends in exactly one '\n').
+SA_DELIM = re.compile(r"\n<!-- guide -->\n")
+
+def secondact_paste(text):
+    """The paste body injected verbatim — everything before the guide marker,
+    byte-identical to the pre-docs file (trailing newline preserved)."""
+    return SA_DELIM.split(text, 1)[0]
+
+def secondact_docs(text):
+    """The guide doc block after the marker, or None if none is authored yet."""
+    parts = SA_DELIM.split(text, 1)
+    return parts[1] if len(parts) == 2 else None
+
 def skill_order(text):
     m = re.search(r"^order:\s*(\d+)\s*$", text, re.M)
     return int(m.group(1)) if m else 9999
@@ -120,10 +137,10 @@ def check_command_coverage():
 def render():
     before = read("sections/before-skills.txt")
     after = read("sections/after-skills.txt")
-    career = read("second-act/career.txt")
-    scheduler = read("second-act/scheduler.txt")
-    projects = read("second-act/projects.txt")
-    learning = read("second-act/learning.txt")
+    career = secondact_paste(read("second-act/career.txt"))
+    scheduler = secondact_paste(read("second-act/scheduler.txt"))
+    projects = secondact_paste(read("second-act/projects.txt"))
+    learning = secondact_paste(read("second-act/learning.txt"))
 
     frags = [pathlib.Path(p).read_text() for p in glob.glob(str(CORE / "skills/*.md"))]
     frags.sort(key=skill_order)
@@ -230,11 +247,43 @@ def render_guide():
             '</div></section>' % (name, name, _md_to_html(docs)))
     if not sections:
         sys.exit("FATAL: no skill has a <!-- docs --> block; guide.html would be empty")
+
+    # Second-act managers — opt-in /commands, grouped separately so the guide stays
+    # core-first. Fixed order; only those with an authored guide block appear.
+    second_act = [("career", "second-act/career.txt"),
+                  ("projects", "second-act/projects.txt"),
+                  ("learning", "second-act/learning.txt")]
+    sa_links, sa_sections = [], []
+    for name, path in second_act:
+        docs = secondact_docs(read(path))
+        if not docs:
+            continue
+        sa_links.append('<a href="#%s"><span class="slash">/</span>%s</a>' % (name, name))
+        sa_sections.append(
+            '<section id="%s" class="cmd-doc"><div class="wrap">\n'
+            '<h2 class="cmd-name"><span class="slash">/</span>%s</h2>\n%s\n'
+            '</div></section>' % (name, name, _md_to_html(docs)))
+
+    index_html = " · ".join(index_links)
+    all_sections = list(sections)
+    if sa_links:
+        index_html += ('  <span class="idxlabel">Second act</span> · '
+                       + " · ".join(sa_links))
+        all_sections.append(
+            '<section class="cmd-doc sagroup"><div class="wrap">\n'
+            '<h2 class="cmd-name">Second act &mdash; opt-in managers</h2>\n'
+            '<p>These aren\'t part of the core setup. You hire them after your first win, '
+            'one paste at a time, from the <a href="index.html#domain">bench on the setup '
+            'page</a> &mdash; a standing chief-of-staff for one part of your life. Each '
+            'drafts and proposes; you always approve.</p>\n'
+            '</div></section>')
+        all_sections.extend(sa_sections)
+
     for ph in ("{{GUIDE_INDEX}}", "{{GUIDE_SECTIONS}}"):
         if shell.count(ph) != 1:
             sys.exit("FATAL: guide-shell.html must contain exactly one %s" % ph)
-    html = (shell.replace("{{GUIDE_INDEX}}", " · ".join(index_links), 1)
-                 .replace("{{GUIDE_SECTIONS}}", "\n\n".join(sections), 1)
+    html = (shell.replace("{{GUIDE_INDEX}}", index_html, 1)
+                 .replace("{{GUIDE_SECTIONS}}", "\n\n".join(all_sections), 1)
                  .replace("{{VERSION}}", read_version()))
     if "{{VERSION}}" in html or "{{GUIDE" in html:
         sys.exit("FATAL: unsubstituted placeholder remains in guide.html")

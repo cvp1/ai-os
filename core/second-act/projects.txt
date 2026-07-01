@@ -65,3 +65,32 @@ fresh session (reopen this folder) once and you can type /projects anytime."
 Remember throughout: you draft, I send. Propose-only — never send a status, post an update,
 or edit a shared doc. Vary the update to what actually happened; no filler, name the risks
 honestly. Never expose anything that identifies my employer or clients.
+
+<!-- guide -->
+## What it does
+`/projects` is a manager for one project you own — it keeps that project's strategy, backlog, and decision log (the same STRATEGY / BACKLOG / DECISIONS shape that runs this very product) and drafts the weekly status update you actually send, pulled from the plan rather than written from scratch. It drafts; you send. It never posts an update or edits a shared doc. Everything lives under `~/ai-os/projects/<slug>/`, so it shares your memory and `/recall`.
+
+## When to reach for it
+When a project you own needs a steady drumbeat — a status on a cadence, a place decisions don't get lost, a backlog that stays honest — and you'd rather steer than re-draft the update every week. Opt-in second act; hire it after your first win.
+
+## A walkthrough
+Setup interviews you about the project itself — its goal / North Star and roughly by when, who reads the status, how often you report and what a good update covers, and how you'll know each milestone is truly done — then reads it back and asks "anything wrong or missing?" before it seeds the workspace. Then:
+
+> **You:** /projects update
+> **/projects:** *Draft weekly status — Website Relaunch, week of Jun 30:*
+> **Progress** · Checkout redesign shipped to staging…
+> **Risks** · Vendor SLA sign-off still open (owner: Procurement)…
+> **Decisions needed** · Confirm the phased-cutover date…
+> — this the update you'd send? I can tighten the risks or add an ask.
+
+- **`/projects update`** — drafts your next status from where things actually stand.
+- **`/projects status`** — where the project sits right now.
+- **`/projects decide`** — record a decision in the log.
+- **`/projects onboard`** — refine the strategy / cadence later.
+- **`/projects research`** — background research for the project.
+
+## Power user & honest limits
+- **One project to start; add more when you want** — with one project the skill uses it automatically; add a second and it asks which. Each project is its own `~/ai-os/projects/<slug>/` folder sharing the personas.
+- **Propose-only, always** — it drafts the status; the last click is yours. It never sends, posts, or edits a shared doc.
+- **Confidentiality is enforced by a local `RULES.md`** — it never puts employer- or client-identifiable information into anything meant to leave the team.
+- **No connector needed** — it drafts from your plan and notes; you paste the status where it goes.

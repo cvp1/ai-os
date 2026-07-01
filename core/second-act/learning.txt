@@ -89,3 +89,32 @@ start, pause, or drop. Never write inside a topic's /teach workspace, never buil
 lesson, and never claim per-card spaced repetition — the review digest is a weekly "what to revisit",
 not an optimal-interval reminder system. If I don't have /teach, offer to walk me through the first
 topic right here this once — don't build your own tutor.
+
+<!-- guide -->
+## What it does
+`/learning` is a standing strategist for everything you're trying to learn. It keeps a living portfolio of your goals and a prioritized, prerequisite-ordered topic queue across all of them, drafts a roadmap for a goal, and tells you what's gone cold and worth revisiting. **It plans; `/teach` teaches** — it hands each topic to `/teach` (the tutor that already ships with your AI-OS) and never runs a lesson itself. Everything lives in `~/ai-os/learning/`, so it shares your memory and `/recall`.
+
+## When to reach for it
+When you're trying to learn several things at once and want an order that respects prerequisites and your time, instead of learning at random — and a standing "what should I pick up next, and what have I let go cold?" Opt-in second act; hire it after your first win.
+
+## A walkthrough
+Setup interviews you about your whole learning *portfolio* — what you want to be able to *do* (concrete outcomes), why each matters, what you already know, and how much time you realistically have — then reads back a suggested order and asks "anything wrong or missing?" The first win is a roadmap that ends by handing you off to `/teach`:
+
+> **You:** /learning roadmap for "ship a small web app"
+> **/learning:** *Prioritized roadmap (needs-X-first noted):*
+> 1. HTML/CSS basics — *the surface you'll build on*
+> 2. JavaScript fundamentals — *needs #1*
+> 3. **START HERE** → a first small page…
+> When you're ready, run `/teach me HTML/CSS basics` — it keeps a syllabus and remembers where you struggle.
+
+- **`/learning roadmap`** — drafts a prioritized, prerequisite-ordered roadmap for a goal, ending in a `/teach` handoff.
+- **`/learning review`** — a weekly "what's gone cold and is worth revisiting."
+- **`/learning status`** — where your learning portfolio stands.
+- **`/learning decide`** — record what to start, pause, or drop.
+- **`/learning onboard`** / **`/learning research`** — refine goals later; find roadmap-level sources.
+
+## Power user & honest limits
+- **The clean seam:** the manager owns the portfolio *across* topics (what to learn, in what order); `/teach` owns everything *inside* a topic (the syllabus, the lessons, your progress). The manager reads `/teach`'s progress to spot cold topics; it never writes inside a topic's lesson workspace or builds a syllabus.
+- **`/learning review` is a weekly "what to revisit," not per-card spaced repetition** — it's a pull-based digest, not an optimal-interval reminder system.
+- **No `/teach` yet?** It'll offer to walk you through the first topic once — it never builds its own tutor.
+- **No connector needed; nothing to send** — it's a planner over plain files you own.
