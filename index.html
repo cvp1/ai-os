@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- ai-os installer · build 2026.07.01c · generated from core/ by tools/build_installer.py — do not edit index.html by hand -->
+<!-- ai-os installer · build 2026.07.01d · generated from core/ by tools/build_installer.py — do not edit index.html by hand -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -513,8 +513,8 @@
       <p>Learns how <i>you</i> write and drafts LinkedIn posts in your voice; keeps a living strategy for where your career is headed. Paste the prompt below to hire it.</p>
     </div>
     <div class="role">
-      <span class="rolehd">Projects <em class="pill">Coming</em></span>
-      <p>Keeps a strategy, backlog, and decision log for a project you own &mdash; and drafts the weekly status you actually send. (It&#8217;s the same shape that runs this product.)</p>
+      <span class="rolehd">Projects <em class="pill on">Live today</em></span>
+      <p>Keeps a strategy, backlog, and decision log for a project you own &mdash; and drafts the weekly status you actually send. (It&#8217;s the same shape that runs this product.) Paste the second prompt below to hire it.</p>
     </div>
     <div class="role">
       <span class="rolehd">Finances <em class="pill">Coming</em></span>
@@ -525,7 +525,7 @@
       <p>A standing plan for a subject you&#8217;re mastering that remembers where you left off from one session to the next.</p>
     </div>
   </div>
-  <p style="color:var(--ink-3);font-size:.9em;margin:0 0 30px">Career is the one you can paste today. The other three are the same pattern, on the way &mdash; and because it&#8217;s all plain files you own, an expert can stand one up now by reusing the shape.</p>
+  <p style="color:var(--ink-3);font-size:.9em;margin:0 0 30px">Career and Projects are the two you can paste today. Finances and Learning are the same pattern, on the way &mdash; and because it&#8217;s all plain files you own, an expert can stand one up now by reusing the shape.</p>
   <p style="color:var(--ink-3);font-size:.94em;margin-bottom:30px">Paste one more prompt and it learns how <i>you</i> write from a few things you&#8217;ve written, keeps a living strategy for where you&#8217;re headed, and drafts LinkedIn posts that sound like <b>you</b>, not generic AI. It won&#8217;t nail your voice from three samples &mdash; no tool does &mdash; so it gets it <i>roughly</i> right, shows you what it learned, and sharpens every time you edit a draft. <b>You&#8217;re always the judge, and you do the posting &mdash; nothing is ever published for you.</b></p>
 
   <div class="term">
@@ -537,6 +537,18 @@
     <pre class="code" id="promptBox2">Loading…</pre>
   </div>
   <p class="runline"><span class="caret">❯</span> the loop that makes it <i>you</i>: every time you reword one of its drafts, run <span style="color:var(--green-deep);font-weight:600">/career voice learn</span> &mdash; it remembers the difference.</p>
+
+  <p style="color:var(--ink-3);font-size:.94em;margin:34px 0 30px">And the <b>projects manager</b> &mdash; the same STRATEGY / BACKLOG / DECISIONS shape that runs this very product. Paste it, answer a short interview about <b>one project you own</b> (its goal, who reads the status, how often you report), and it drafts the weekly status update you actually send &mdash; pulled from the plan, not written from scratch. <b>You&#8217;re always the judge, and you do the sending &mdash; nothing is ever sent for you.</b></p>
+
+  <div class="term">
+    <div class="termbar">
+      <span class="tdots"><i></i><i></i><i></i></span>
+      <span class="fname">projects-manager-prompt.txt</span>
+      <button class="copybtn" id="copyBtn4" onclick="copyPrompt4()">Copy prompt</button>
+    </div>
+    <pre class="code" id="promptBox4">Loading…</pre>
+  </div>
+  <p class="runline"><span class="caret">❯</span> once it&#8217;s running, type <span style="color:var(--green-deep);font-weight:600">/projects update</span> anytime and it drafts your next status from where things actually stand.</p>
 </div></section>
 
 <!-- ============ FAQ ============ -->
@@ -563,9 +575,9 @@
 a persistent memory, a structured notes vault, and a starter set of skills — and
 then you will operate it as my chief-of-staff going forward.
 
-(This installer is AI-OS build 2026.07.01c. When you build my system, record a line
-"AI-OS installer build: 2026.07.01c" in my CLAUDE.md, AND write the bare build string
-2026.07.01c as the only contents of a file ~/ai-os/.aios-version, so a later upgrade or
+(This installer is AI-OS build 2026.07.01d. When you build my system, record a line
+"AI-OS installer build: 2026.07.01d" in my CLAUDE.md, AND write the bare build string
+2026.07.01d as the only contents of a file ~/ai-os/.aios-version, so a later upgrade or
 health check can tell what changed since mine without parsing prose.)
 
 ABOUT ME (context, refine via the interview below)
@@ -595,7 +607,7 @@ is a clean machine — ASK me before building anything. Never default to a rebui
   not silently replace it. Show me a short diff of what you'd ADD, apply it only
   after my OK, then STOP — skip PHASE 0 and the rest of the build. If I recorded an
   "AI-OS installer build:" line in my CLAUDE.md, compare it to this installer's build
-  (2026.07.01c) to focus the diff on what's new since mine, and update that line — and
+  (2026.07.01d) to focus the diff on what's new since mine, and update that line — and
   the ~/ai-os/.aios-version file — once the additions are applied.
 - IF IT DOESN'T → this is a fresh install: continue with PHASE 0 below and build
   the whole system.
@@ -1340,6 +1352,67 @@ Remember throughout: Local routine, Ask mode, propose-only. It drafts while I'm 
 approve when I'm back. Nothing is ever sent for me.
 </script>
 
+<!-- second-act (projects manager) prompt held as plain text -->
+<script type="text/plain" id="promptSource4">You are extending an AI operating system I already set up in Claude Code, by adding a
+projects manager. ONLY proceed if my core AI-OS already exists.
+
+FIRST — CHECK I'M READY (do this before anything else)
+Confirm this folder has a working AI-OS: a CLAUDE.md plus a memory/ folder, OR AI-OS
+skills under ~/.claude/skills/ (e.g. brief, triage). If you can't find one, STOP and
+tell me: "Set up your AI OS first and have your first win — then come back for this."
+Do not build a projects manager onto a machine with no AI-OS.
+
+WHAT YOU'LL BUILD (all under ~/ai-os/projects/ so it shares my memory and /recall):
+a manager + researcher for ONE project I own, a living strategy/backlog/decision log for
+it, and a /projects skill that drafts the weekly status update I actually send. This is
+the same shape that runs this very product. Propose-only: you draft and stage; I send.
+You never send a status, post an update, or edit a shared doc.
+
+PHASE A — LEARN THE PROJECT (this is the heart of it)
+1. Ask me to name the project and describe it in a sentence or two — what it is and why
+   it matters. Turn the name into a short lowercase slug (e.g. "Website Relaunch" ->
+   website-relaunch); everything for this project lives under ~/ai-os/projects/<slug>/.
+2. Interview me — short, one question at a time — to learn the project itself:
+   (a) the GOAL / North Star — what "done" or "winning" looks like, and roughly by when;
+   (b) STAKEHOLDERS — who I answer to, who's on it, who reads the status;
+   (c) STATUS CADENCE — how often I report (weekly? biweekly?), to whom, and what a good
+       update covers for THIS project (progress, risks, decisions, asks — pick what fits);
+   (d) DEFINITION OF DONE — how I'll know each milestone is truly finished.
+3. Read my answers back in plain language — "here's the project as I understand it" — and
+   ask "anything wrong or missing?" This confirm step is the most important one; write
+   whatever I say into the strategy before you move on. Don't skip it.
+
+PHASE B — SEED MY WORKSPACE
+Create ~/ai-os/projects/<slug>/ with STRATEGY.md (the project's North Star, stakeholders,
+status cadence + what a good update covers, and definition of done — filled from Phase A,
+marked with a "CONFIRM" note anywhere I still need to decide), BACKLOG.md (the prioritized
+work + open risks, seeded from what I told you), DECISIONS.md (append-only log; first entry
+records standing up the manager), and RULES.md with this confidentiality guardrail VERBATIM:
+"Never expose employer- or client-identifiable information in anything meant to leave the
+team. Generalize names to 'a large enterprise'/'a client'; never reproduce internal
+documents or non-public numbers in anything shared outward; when in doubt, cut and flag."
+Keep the interview light — I can refine it later with /projects onboard.
+
+PHASE C — INSTALL THE SKILL (restart-free)
+Write ~/ai-os/projects/personas/manager.md and personas/researcher.md (plain persona files
+the /projects skill prepends to a general-purpose agent — NOT subagent files; shared across
+every project I add). Write ~/.claude/skills/projects/SKILL.md (the /projects command:
+status, onboard, update, decide, research; propose-only; reads the active project's
+STRATEGY.md first; stages status drafts to the project's proposals/ for me to send). With
+one project the skill uses it automatically; if I ever add a second, it asks which.
+
+PHASE D — FIRST WIN, INLINE (no restart needed)
+Right now, in THIS session, draft ONE weekly status update for this project — in the format
+Phase A said fits it, pulled from the strategy, the backlog, and anything relevant in my
+memory or notes. Show it to me and ask "does this capture where things stand — is this the
+update you'd send?" I'm the judge. Then tell me: "Your /projects command is ready — start a
+fresh session (reopen this folder) once and you can type /projects anytime."
+
+Remember throughout: you draft, I send. Propose-only — never send a status, post an update,
+or edit a shared doc. Vary the update to what actually happened; no filler, name the risks
+honestly. Never expose anything that identifies my employer or clients.
+</script>
+
 <script>
   // inject the plain-text prompt (no HTML escaping needed)
   document.getElementById('promptBox').textContent =
@@ -1367,6 +1440,16 @@ approve when I'm back. Nothing is ever sent for me.
     document.getElementById('promptSource3').textContent.replace(/^\n/,'');
   function copyPrompt3(){
     var btn=document.getElementById('copyBtn3'), text=document.getElementById('promptBox3').textContent;
+    function done(){btn.textContent='✓ Copied';btn.classList.add('ok');setTimeout(function(){btn.textContent='Copy prompt';btn.classList.remove('ok');},2000);}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done,fb);}else{fb();}
+    function fb(){var ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(e){btn.textContent='Select & copy';}document.body.removeChild(ta);}
+  }
+
+  // second-act (projects manager) prompt
+  document.getElementById('promptBox4').textContent =
+    document.getElementById('promptSource4').textContent.replace(/^\n/,'');
+  function copyPrompt4(){
+    var btn=document.getElementById('copyBtn4'), text=document.getElementById('promptBox4').textContent;
     function done(){btn.textContent='✓ Copied';btn.classList.add('ok');setTimeout(function(){btn.textContent='Copy prompt';btn.classList.remove('ok');},2000);}
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done,fb);}else{fb();}
     function fb(){var ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(e){btn.textContent='Select & copy';}document.body.removeChild(ta);}

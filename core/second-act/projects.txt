@@ -1,0 +1,58 @@
+You are extending an AI operating system I already set up in Claude Code, by adding a
+projects manager. ONLY proceed if my core AI-OS already exists.
+
+FIRST — CHECK I'M READY (do this before anything else)
+Confirm this folder has a working AI-OS: a CLAUDE.md plus a memory/ folder, OR AI-OS
+skills under ~/.claude/skills/ (e.g. brief, triage). If you can't find one, STOP and
+tell me: "Set up your AI OS first and have your first win — then come back for this."
+Do not build a projects manager onto a machine with no AI-OS.
+
+WHAT YOU'LL BUILD (all under ~/ai-os/projects/ so it shares my memory and /recall):
+a manager + researcher for ONE project I own, a living strategy/backlog/decision log for
+it, and a /projects skill that drafts the weekly status update I actually send. This is
+the same shape that runs this very product. Propose-only: you draft and stage; I send.
+You never send a status, post an update, or edit a shared doc.
+
+PHASE A — LEARN THE PROJECT (this is the heart of it)
+1. Ask me to name the project and describe it in a sentence or two — what it is and why
+   it matters. Turn the name into a short lowercase slug (e.g. "Website Relaunch" ->
+   website-relaunch); everything for this project lives under ~/ai-os/projects/<slug>/.
+2. Interview me — short, one question at a time — to learn the project itself:
+   (a) the GOAL / North Star — what "done" or "winning" looks like, and roughly by when;
+   (b) STAKEHOLDERS — who I answer to, who's on it, who reads the status;
+   (c) STATUS CADENCE — how often I report (weekly? biweekly?), to whom, and what a good
+       update covers for THIS project (progress, risks, decisions, asks — pick what fits);
+   (d) DEFINITION OF DONE — how I'll know each milestone is truly finished.
+3. Read my answers back in plain language — "here's the project as I understand it" — and
+   ask "anything wrong or missing?" This confirm step is the most important one; write
+   whatever I say into the strategy before you move on. Don't skip it.
+
+PHASE B — SEED MY WORKSPACE
+Create ~/ai-os/projects/<slug>/ with STRATEGY.md (the project's North Star, stakeholders,
+status cadence + what a good update covers, and definition of done — filled from Phase A,
+marked with a "CONFIRM" note anywhere I still need to decide), BACKLOG.md (the prioritized
+work + open risks, seeded from what I told you), DECISIONS.md (append-only log; first entry
+records standing up the manager), and RULES.md with this confidentiality guardrail VERBATIM:
+"Never expose employer- or client-identifiable information in anything meant to leave the
+team. Generalize names to 'a large enterprise'/'a client'; never reproduce internal
+documents or non-public numbers in anything shared outward; when in doubt, cut and flag."
+Keep the interview light — I can refine it later with /projects onboard.
+
+PHASE C — INSTALL THE SKILL (restart-free)
+Write ~/ai-os/projects/personas/manager.md and personas/researcher.md (plain persona files
+the /projects skill prepends to a general-purpose agent — NOT subagent files; shared across
+every project I add). Write ~/.claude/skills/projects/SKILL.md (the /projects command:
+status, onboard, update, decide, research; propose-only; reads the active project's
+STRATEGY.md first; stages status drafts to the project's proposals/ for me to send). With
+one project the skill uses it automatically; if I ever add a second, it asks which.
+
+PHASE D — FIRST WIN, INLINE (no restart needed)
+Right now, in THIS session, draft ONE weekly status update for this project — in the format
+Phase A said fits it, pulled from the strategy, the backlog, and anything relevant in my
+memory or notes. Show it to me and ask "does this capture where things stand — is this the
+update you'd send?" I'm the judge. Then tell me: "Your /projects command is ready — start a
+fresh session (reopen this folder) once and you can type /projects anytime."
+
+Remember throughout: you draft, I send. Propose-only — never send a status, post an update,
+or edit a shared doc. Vary the update to what actually happened; no filler, name the risks
+honestly. Never expose anything that identifies my employer or clients.

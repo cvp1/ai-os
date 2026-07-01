@@ -513,8 +513,8 @@
       <p>Learns how <i>you</i> write and drafts LinkedIn posts in your voice; keeps a living strategy for where your career is headed. Paste the prompt below to hire it.</p>
     </div>
     <div class="role">
-      <span class="rolehd">Projects <em class="pill">Coming</em></span>
-      <p>Keeps a strategy, backlog, and decision log for a project you own &mdash; and drafts the weekly status you actually send. (It&#8217;s the same shape that runs this product.)</p>
+      <span class="rolehd">Projects <em class="pill on">Live today</em></span>
+      <p>Keeps a strategy, backlog, and decision log for a project you own &mdash; and drafts the weekly status you actually send. (It&#8217;s the same shape that runs this product.) Paste the second prompt below to hire it.</p>
     </div>
     <div class="role">
       <span class="rolehd">Finances <em class="pill">Coming</em></span>
@@ -525,7 +525,7 @@
       <p>A standing plan for a subject you&#8217;re mastering that remembers where you left off from one session to the next.</p>
     </div>
   </div>
-  <p style="color:var(--ink-3);font-size:.9em;margin:0 0 30px">Career is the one you can paste today. The other three are the same pattern, on the way &mdash; and because it&#8217;s all plain files you own, an expert can stand one up now by reusing the shape.</p>
+  <p style="color:var(--ink-3);font-size:.9em;margin:0 0 30px">Career and Projects are the two you can paste today. Finances and Learning are the same pattern, on the way &mdash; and because it&#8217;s all plain files you own, an expert can stand one up now by reusing the shape.</p>
   <p style="color:var(--ink-3);font-size:.94em;margin-bottom:30px">Paste one more prompt and it learns how <i>you</i> write from a few things you&#8217;ve written, keeps a living strategy for where you&#8217;re headed, and drafts LinkedIn posts that sound like <b>you</b>, not generic AI. It won&#8217;t nail your voice from three samples &mdash; no tool does &mdash; so it gets it <i>roughly</i> right, shows you what it learned, and sharpens every time you edit a draft. <b>You&#8217;re always the judge, and you do the posting &mdash; nothing is ever published for you.</b></p>
 
   <div class="term">
@@ -537,6 +537,18 @@
     <pre class="code" id="promptBox2">Loading…</pre>
   </div>
   <p class="runline"><span class="caret">❯</span> the loop that makes it <i>you</i>: every time you reword one of its drafts, run <span style="color:var(--green-deep);font-weight:600">/career voice learn</span> &mdash; it remembers the difference.</p>
+
+  <p style="color:var(--ink-3);font-size:.94em;margin:34px 0 30px">And the <b>projects manager</b> &mdash; the same STRATEGY / BACKLOG / DECISIONS shape that runs this very product. Paste it, answer a short interview about <b>one project you own</b> (its goal, who reads the status, how often you report), and it drafts the weekly status update you actually send &mdash; pulled from the plan, not written from scratch. <b>You&#8217;re always the judge, and you do the sending &mdash; nothing is ever sent for you.</b></p>
+
+  <div class="term">
+    <div class="termbar">
+      <span class="tdots"><i></i><i></i><i></i></span>
+      <span class="fname">projects-manager-prompt.txt</span>
+      <button class="copybtn" id="copyBtn4" onclick="copyPrompt4()">Copy prompt</button>
+    </div>
+    <pre class="code" id="promptBox4">Loading…</pre>
+  </div>
+  <p class="runline"><span class="caret">❯</span> once it&#8217;s running, type <span style="color:var(--green-deep);font-weight:600">/projects update</span> anytime and it drafts your next status from where things actually stand.</p>
 </div></section>
 
 <!-- ============ FAQ ============ -->
@@ -567,6 +579,9 @@
 <!-- autopilot (scheduler) setup prompt held as plain text -->
 <script type="text/plain" id="promptSource3">{{PROMPT3}}</script>
 
+<!-- second-act (projects manager) prompt held as plain text -->
+<script type="text/plain" id="promptSource4">{{PROMPT4}}</script>
+
 <script>
   // inject the plain-text prompt (no HTML escaping needed)
   document.getElementById('promptBox').textContent =
@@ -594,6 +609,16 @@
     document.getElementById('promptSource3').textContent.replace(/^\n/,'');
   function copyPrompt3(){
     var btn=document.getElementById('copyBtn3'), text=document.getElementById('promptBox3').textContent;
+    function done(){btn.textContent='✓ Copied';btn.classList.add('ok');setTimeout(function(){btn.textContent='Copy prompt';btn.classList.remove('ok');},2000);}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done,fb);}else{fb();}
+    function fb(){var ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(e){btn.textContent='Select & copy';}document.body.removeChild(ta);}
+  }
+
+  // second-act (projects manager) prompt
+  document.getElementById('promptBox4').textContent =
+    document.getElementById('promptSource4').textContent.replace(/^\n/,'');
+  function copyPrompt4(){
+    var btn=document.getElementById('copyBtn4'), text=document.getElementById('promptBox4').textContent;
     function done(){btn.textContent='✓ Copied';btn.classList.add('ok');setTimeout(function(){btn.textContent='Copy prompt';btn.classList.remove('ok');},2000);}
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done,fb);}else{fb();}
     function fb(){var ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(e){btn.textContent='Select & copy';}document.body.removeChild(ta);}
