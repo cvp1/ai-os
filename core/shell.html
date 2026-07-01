@@ -521,11 +521,11 @@
       <p>Turns statements you paste in into a budget and a plain-language read on your money. It drafts and explains &mdash; it never moves a cent.</p>
     </div>
     <div class="role">
-      <span class="rolehd">Learning <em class="pill">Coming</em></span>
-      <p>A standing plan for a subject you&#8217;re mastering that remembers where you left off from one session to the next.</p>
+      <span class="rolehd">Learning <em class="pill on">Live today</em></span>
+      <p>Plans what&#8217;s worth learning across everything you&#8217;re trying to master &mdash; a prioritized, prerequisite-ordered roadmap &mdash; then hands each topic to your tutor (<span style="font-family:var(--mono)">/teach</span>). Paste the third prompt below to hire it.</p>
     </div>
   </div>
-  <p style="color:var(--ink-3);font-size:.9em;margin:0 0 30px">Career and Projects are the two you can paste today. Finances and Learning are the same pattern, on the way &mdash; and because it&#8217;s all plain files you own, an expert can stand one up now by reusing the shape.</p>
+  <p style="color:var(--ink-3);font-size:.9em;margin:0 0 30px">Career, Projects and Learning are the three you can paste today. Finances is the same pattern, on the way &mdash; and because it&#8217;s all plain files you own, an expert can stand one up now by reusing the shape.</p>
   <p style="color:var(--ink-3);font-size:.94em;margin-bottom:30px">Paste one more prompt and it learns how <i>you</i> write from a few things you&#8217;ve written, keeps a living strategy for where you&#8217;re headed, and drafts LinkedIn posts that sound like <b>you</b>, not generic AI. It won&#8217;t nail your voice from three samples &mdash; no tool does &mdash; so it gets it <i>roughly</i> right, shows you what it learned, and sharpens every time you edit a draft. <b>You&#8217;re always the judge, and you do the posting &mdash; nothing is ever published for you.</b></p>
 
   <div class="term">
@@ -549,6 +549,18 @@
     <pre class="code" id="promptBox4">Loading…</pre>
   </div>
   <p class="runline"><span class="caret">❯</span> once it&#8217;s running, type <span style="color:var(--green-deep);font-weight:600">/projects update</span> anytime and it drafts your next status from where things actually stand.</p>
+
+  <p style="color:var(--ink-3);font-size:.94em;margin:34px 0 30px">And the <b>learning manager</b> &mdash; the same STRATEGY / BACKLOG / DECISIONS shape, pointed at everything you&#8217;re trying to learn. Answer a short interview about your goals and it drafts a <b>prioritized, prerequisite-ordered roadmap</b> &mdash; what to learn, in what order, and where to start &mdash; then hands each topic to <span style="font-family:var(--mono);color:var(--ink)">/teach</span>, the tutor that already ships with your AI OS. <b>It plans; /teach teaches.</b> No connector, nothing to send &mdash; just a standing strategist that stops you learning at random.</p>
+
+  <div class="term">
+    <div class="termbar">
+      <span class="tdots"><i></i><i></i><i></i></span>
+      <span class="fname">learning-manager-prompt.txt</span>
+      <button class="copybtn" id="copyBtn5" onclick="copyPrompt5()">Copy prompt</button>
+    </div>
+    <pre class="code" id="promptBox5">Loading…</pre>
+  </div>
+  <p class="runline"><span class="caret">❯</span> once it&#8217;s running, type <span style="color:var(--green-deep);font-weight:600">/learning review</span> anytime and it tells you which topics have gone cold and are worth revisiting.</p>
 </div></section>
 
 <!-- ============ FAQ ============ -->
@@ -581,6 +593,9 @@
 
 <!-- second-act (projects manager) prompt held as plain text -->
 <script type="text/plain" id="promptSource4">{{PROMPT4}}</script>
+
+<!-- second-act (learning manager) prompt held as plain text -->
+<script type="text/plain" id="promptSource5">{{PROMPT5}}</script>
 
 <script>
   // inject the plain-text prompt (no HTML escaping needed)
@@ -619,6 +634,16 @@
     document.getElementById('promptSource4').textContent.replace(/^\n/,'');
   function copyPrompt4(){
     var btn=document.getElementById('copyBtn4'), text=document.getElementById('promptBox4').textContent;
+    function done(){btn.textContent='✓ Copied';btn.classList.add('ok');setTimeout(function(){btn.textContent='Copy prompt';btn.classList.remove('ok');},2000);}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done,fb);}else{fb();}
+    function fb(){var ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(e){btn.textContent='Select & copy';}document.body.removeChild(ta);}
+  }
+
+  // second-act (learning manager) prompt
+  document.getElementById('promptBox5').textContent =
+    document.getElementById('promptSource5').textContent.replace(/^\n/,'');
+  function copyPrompt5(){
+    var btn=document.getElementById('copyBtn5'), text=document.getElementById('promptBox5').textContent;
     function done(){btn.textContent='✓ Copied';btn.classList.add('ok');setTimeout(function(){btn.textContent='Copy prompt';btn.classList.remove('ok');},2000);}
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done,fb);}else{fb();}
     function fb(){var ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(e){btn.textContent='Select & copy';}document.body.removeChild(ta);}

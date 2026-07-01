@@ -1,0 +1,81 @@
+You are extending an AI operating system I already set up in Claude Code, by adding a
+learning manager. ONLY proceed if my core AI-OS already exists.
+
+FIRST — CHECK I'M READY (do this before anything else)
+Confirm this folder has a working AI-OS: a CLAUDE.md plus a memory/ folder, OR AI-OS
+skills under ~/.claude/skills/ (e.g. brief, triage). If you can't find one, STOP and
+tell me: "Set up your AI OS first and have your first win — then come back for this."
+Do not build a learning manager onto a machine with no AI-OS.
+
+WHAT YOU'LL BUILD (all under ~/ai-os/learning/ so it shares my memory and /recall):
+a manager + researcher for everything I'm trying to learn, a living portfolio of my learning
+goals with a prioritized, prerequisite-ordered topic list, and a /learning skill that drafts a
+roadmap for a goal and tells me what's gone cold and worth revisiting. It PLANS what's worth my
+time and hands each topic to my tutor — the /teach command that already ships with this AI-OS. It
+never teaches lessons itself and never writes inside a topic's lesson files.
+
+THE ONE RULE THAT KEEPS THIS CLEAN (a seam you must respect everywhere):
+/teach owns everything INSIDE a topic; the learning manager owns the portfolio ACROSS topics.
+Three divisions you must never cross:
+1. CURRICULUM vs SYLLABUS — the manager decomposes a GOAL into a sequence of topics (what to
+   learn, in what order); /teach decomposes a TOPIC into lessons. Different altitudes. The
+   manager NEVER writes a per-topic syllabus or a lesson.
+2. PROGRESS — /teach owns and writes each topic's progress (what I covered, where I struggled).
+   The manager READS those progress files as ground truth and NEVER writes inside a topic's
+   workspace.
+3. RESOURCES — the manager's researcher finds ROADMAP-level sources (which course, book, or path
+   covers a goal); /teach finds LESSON-level material to teach from. Same altitude split.
+The one-line version: the manager names the missions and their order; /teach runs each mission.
+
+PHASE A — LEARN MY LEARNING GOALS (this is the heart of it)
+1. Interview me — short, one question at a time — to learn my learning PORTFOLIO, not any single
+   subject:
+   (a) the GOALS — what I want to be ABLE TO DO (concrete outcomes, e.g. "ship a small web app",
+       "read a balance sheet"), and roughly by when — capture ALL of them, not just one;
+   (b) WHY each matters — what it's for (a job, a project, curiosity), so you can prioritize;
+   (c) STARTING POINT — what I already know for each, so foundations aren't re-taught;
+   (d) TIME & PRIORITY — how much time I realistically have per week, and which goal matters most
+       right now.
+2. Check whether I already have any /teach topics going: look for a "04 Resources/Learning/" folder
+   in my vault/notes if one exists, so the portfolio starts from what's real.
+3. Read my portfolio back in plain language — "here's what you're trying to learn, and the order
+   I'd suggest" — and ask "anything wrong or missing?" This confirm step is the most important one;
+   write whatever I say into the strategy before you move on. Don't skip it.
+
+PHASE B — SEED MY WORKSPACE
+Create ~/ai-os/learning/ with STRATEGY.md (my learning goals + why each + my starting point + my
+time budget + the current top priority — filled from Phase A, marked with a "CONFIRM" note anywhere
+I still need to decide), BACKLOG.md (the prioritized, prerequisite-ordered TOPIC list ACROSS all my
+goals — each topic with a one-line why and a "needs X first" note where it applies; this cross-goal
+priority queue is the manager's core artifact), DECISIONS.md (append-only log; first entry records
+standing up the manager), and RULES.md with this guardrail VERBATIM:
+"This workspace is local-first and propose-only. The learning manager PLANS across topics and READS
+/teach's per-topic progress files; it NEVER writes inside a topic's lesson workspace, never builds a
+syllabus or a lesson (that's /teach's job), and never claims to teach. It drafts roadmaps and review
+digests; I decide what to start, pause, or drop. Nothing here is sent anywhere. The review digest is
+a weekly 'what to revisit', not per-card spaced repetition."
+Keep the interview light — I can refine it later with /learning onboard.
+
+PHASE C — INSTALL THE SKILL (restart-free)
+Write ~/ai-os/learning/personas/manager.md and personas/researcher.md (plain persona files the
+/learning skill prepends to a general-purpose agent — NOT subagent files). Write
+~/.claude/skills/learning/SKILL.md (the /learning command: status, roadmap, onboard, review, decide,
+research; propose-only; reads STRATEGY.md + BACKLOG.md first; drafts roadmaps to proposals/ and hands
+each first topic off with "/teach me <topic>"; for review, READS /teach's progress-file dates to find
+what's gone cold — it never writes those files).
+
+PHASE D — FIRST WIN, INLINE (no restart needed)
+Right now, in THIS session, pick the goal I said matters most and draft ONE prioritized LEARNING
+ROADMAP for it: a sequence of topics with prerequisites ("needs X first"), a one-line why per topic
+tied to the goal, a suggested review cadence, and a bold "START HERE" pointing at the first topic.
+End it with the exact handoff: "When you're ready, run /teach me <first topic> — it keeps a syllabus
+and remembers where you struggle." Show it to me and ask "is this the order you'd learn this in — does
+the first step feel right?" I'm the judge. (This roadmap is a PLAN, not a syllabus — /teach builds the
+syllabus once I start.) Then tell me: "Your /learning command is ready — start a fresh session (reopen
+this folder) once and you can type /learning anytime."
+
+Remember throughout: you PLAN, /teach TEACHES. Draft roadmaps and review digests; I decide what to
+start, pause, or drop. Never write inside a topic's /teach workspace, never build a syllabus or a
+lesson, and never claim per-card spaced repetition — the review digest is a weekly "what to revisit",
+not an optimal-interval reminder system. If I don't have /teach, offer to walk me through the first
+topic right here this once — don't build your own tutor.
