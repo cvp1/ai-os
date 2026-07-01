@@ -14,7 +14,7 @@ A persistent memory · a structured notes vault · a toolkit of slash-commands �
 
 ## Why this exists
 
-Most AI that knows your work lives in someone else's cloud, rented for as long as you keep paying — and the kind of leverage a chief-of-staff gives you has always needed a team or a budget. This is the opposite bet: **a personal AI that's genuinely yours, that anyone can stand up.** Plain files on your machine, free to fork, on your side by default. The leverage should belong to *you* — not to a platform, and not just to people who can code.
+AI-OS started as a favor. I kept building these setups by hand for people I know — a friend who'd never opened a terminal, then a couple of colleagues — and doing it one at a time made the point obvious: the hard part was never *building* it. The capability is already here, sitting inside tools people already pay for; it's just locked behind knowing how to wire it up. The barrier is **access, not capability.** So I compressed the whole thing into one prompt anyone can paste and run — **a personal AI that's genuinely yours, that anyone can stand up.** Plain files on your machine, free to fork, on your side by default. It should belong to *you* — not to a platform, and not just to people who can code.
 
 ## What this is
 
