@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- ai-os field guide · build 2026.06.30j · generated from core/skills/*.md by tools/build_installer.py — do not edit guide.html by hand -->
+<!-- ai-os field guide · build 2026.06.30k · generated from core/skills/*.md by tools/build_installer.py — do not edit guide.html by hand -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -64,9 +64,23 @@
   <span class="eyebrow">Field Guide</span>
   <h1 class="display">Get the most from every command.</h1>
   <p class="lede">Each command explained in plain language up top, with the depth power users want below — what it does, when to reach for it, a walkthrough, and the advanced moves. New to this? The <a class="navlink" href="index.html" style="border-bottom:1px solid var(--line-2)">setup walkthrough</a> gets you running in about five minutes; come back here when you want to go deeper.</p>
-  <div class="idx"><a href="#triage"><span class="slash">/</span>triage</a> · <a href="#brief"><span class="slash">/</span>brief</a> · <a href="#prep"><span class="slash">/</span>prep</a> · <a href="#status"><span class="slash">/</span>status</a> · <a href="#recall"><span class="slash">/</span>recall</a> · <a href="#weekly"><span class="slash">/</span>weekly</a></div>
-  <p class="note">This guide is growing — we're writing up the full toolkit one command at a time, starting with the ones you'll reach for daily. More pages land here as they're written.</p>
+  <div class="idx"><a href="#improve"><span class="slash">/</span>improve</a> · <a href="#triage"><span class="slash">/</span>triage</a> · <a href="#brief"><span class="slash">/</span>brief</a> · <a href="#prep"><span class="slash">/</span>prep</a> · <a href="#status"><span class="slash">/</span>status</a> · <a href="#wiki"><span class="slash">/</span>wiki</a> · <a href="#recall"><span class="slash">/</span>recall</a> · <a href="#weekly"><span class="slash">/</span>weekly</a> · <a href="#skill-center"><span class="slash">/</span>skill-center</a> · <a href="#ingest"><span class="slash">/</span>ingest</a> · <a href="#memory-prune"><span class="slash">/</span>memory-prune</a> · <a href="#board"><span class="slash">/</span>board</a> · <a href="#teach"><span class="slash">/</span>teach</a> · <a href="#workflow-visualizer"><span class="slash">/</span>workflow-visualizer</a> · <a href="#backup"><span class="slash">/</span>backup</a> · <a href="#restore"><span class="slash">/</span>restore</a> · <a href="#doctor"><span class="slash">/</span>doctor</a></div>
+  <p class="note">Every command in your toolkit is covered below. Start with the ones you'll reach for daily — <span class="slash">/</span>brief, <span class="slash">/</span>triage, <span class="slash">/</span>prep — and dip into the rest as you need them.</p>
 </div></div>
+
+<section id="improve" class="cmd-doc"><div class="wrap">
+<h2 class="cmd-name"><span class="slash">/</span>improve</h2>
+<h3 class="doc-h">What it does</h3>
+<p>Turns a correction you just made into a durable rule, so the system doesn't repeat the same miss — the learning loop that makes it more "you" over time.</p>
+<h3 class="doc-h">When to use it</h3>
+<p>Right after you fix something — its tone, a wrong assumption, a formatting preference. Claude already jots down some corrections on its own; <code>/improve</code> is how you make the ones that matter stick deliberately. It writes to your own local memory (a plain file you own); nothing leaves your machine.</p>
+<h3 class="doc-h">Walkthrough</h3>
+<ol><li>After you've corrected it in the conversation, type <code>/improve</code> (or say <em>"remember that"</em> / <em>"bake that in"</em>).</li><li>It captures what changed this session as a durable memory — a one-fact rule, tagged as a preference or a project fact.</li><li>Next time, that rule is in play by default. You can see and edit it — it's a plain file in your memory folder.</li></ol>
+<p>A capture looks about like this:</p>
+<blockquote class="sample"><strong>Learned this session</strong><br>· Status updates: lead with the decision, not the backstory — <em>[[status-lead-with-decision]]</em><br>· "Acme" = Acme Robotics, not Acme Foods<br>Saved to memory. These apply from your next session on.</blockquote>
+<h3 class="doc-h">Power user</h3>
+<ul><li><strong>One fact per rule.</strong> Small, specific rules beat big ones — easier to recall and to correct later.</li><li><strong>It pairs with everything.</strong> When <code>/brief</code> mis-ranks a priority, <code>/triage</code> mis-sorts a sender, or <code>/status</code> misses your tone, correct it, then <code>/improve</code> — each command gets sharper.</li><li><strong>It's yours to edit.</strong> Memories are plain files; open them, fix a word, delete one. <code>/memory-prune</code> keeps the whole store healthy over time.</li><li><strong><code>/improve</code> vs native capture.</strong> Claude Code writes some memory on its own; <code>/improve</code> is the deliberate, one-fact-durable version for the corrections you <em>want</em> to guarantee stick.</li></ul>
+</div></section>
 
 <section id="triage" class="cmd-doc"><div class="wrap">
 <h2 class="cmd-name"><span class="slash">/</span>triage</h2>
@@ -124,6 +138,20 @@
 <ul><li><strong>Tune the register.</strong> Ask for <em>"a polished external version"</em> or <em>"a direct internal one"</em> — or both at once if you write for two audiences.</li><li><strong>It leans on your notes.</strong> <code>/status</code> drafts from what's captured, so the more you note decisions and progress as you go, the less you edit. Run <code>/recall</code> first to see what it'll find.</li><li><strong><code>/status</code> vs <code>/weekly</code>.</strong> <code>/status</code> is one project on demand; <code>/weekly</code> rolls up everything for your recurring review (and includes a status update of its own).</li><li><strong>Save your template once.</strong> Correct the first draft's shape and tone, then run <code>/improve</code> — after that, <code>/status</code> matches your format by default.</li></ul>
 </div></section>
 
+<section id="wiki" class="cmd-doc"><div class="wrap">
+<h2 class="cmd-name"><span class="slash">/</span>wiki</h2>
+<h3 class="doc-h">What it does</h3>
+<p>A precedent search over your notes vault — <em>"what did I decide or write about X?"</em> — answered with citations down to the exact note and heading.</p>
+<h3 class="doc-h">When to use it</h3>
+<p>When you want the deep dive into your own notes specifically: the reasoning behind a past decision, what you wrote on a topic. Read-only recall — it never edits your notes.</p>
+<h3 class="doc-h">Walkthrough</h3>
+<ol><li>Ask <em>"/wiki the data-migration decision"</em> or <em>"what did I write about pricing?"</em>.</li><li>It searches your vault and returns the relevant passages, each cited as note &gt; heading so you can open the source.</li><li>Follow the citations into your notes, or ask a follow-up to narrow.</li></ol>
+<p>A wiki answer looks about like this:</p>
+<blockquote class="sample"><strong>"data-migration decision"</strong><br>· Chose phased cutover over big-bang — <em>04 Projects/Migration &gt; Decision</em><br>· Rollback: keep the old DB read-only for 30 days — <em>04 Projects/Migration &gt; Risk</em><br>· Related: the vendor SLA thread — <em>03 Areas/Vendors/Acme &gt; SLA</em></blockquote>
+<h3 class="doc-h">Power user</h3>
+<ul><li><strong><code>/wiki</code> vs <code>/recall</code>.</strong> <code>/wiki</code> is vault-only, with heading-level precision and graph enrichment. <code>/recall</code> casts wider — memory, vault, and command work product at once. Use <code>/recall</code> for "what do I know?", <code>/wiki</code> for "what did I write?".</li><li><strong>It's only as deep as your vault.</strong> The more you capture (with <code>/ingest</code>, <code>/status</code>, plain notes), the more precedent it finds.</li><li><strong>Read-only.</strong> <code>/wiki</code> never changes a note. To turn raw sources <em>into</em> linked notes, that's <code>/ingest</code>.</li></ul>
+</div></section>
+
 <section id="recall" class="cmd-doc"><div class="wrap">
 <h2 class="cmd-name"><span class="slash">/</span>recall</h2>
 <h3 class="doc-h">What it does</h3>
@@ -150,6 +178,132 @@
 <blockquote class="sample"><strong>Weekly review · week of 30 Jun</strong><br><strong>Shipped</strong> · Field Guide pilot live · Compare table repositioned · Connector-auth refresh<br><strong>Decisions</strong> · Grew AI-OS to a second public page (the guide)<br><strong>Slipped / blocked</strong> · Long-tail command docs (11 remaining) · Privacy page (legal)<br><strong>Next week</strong> · Author remaining command pages · Recruit the novice test</blockquote>
 <h3 class="doc-h">Power user</h3>
 <ul><li><strong><code>/weekly</code> vs <code>/status</code>.</strong> <code>/weekly</code> is the whole-week rollup for your standing review; <code>/status</code> is a single project on demand. Because <code>/weekly</code> bundles a status draft, many people run only <code>/weekly</code> on Fridays.</li><li><strong>It reflects what you captured.</strong> The review is as complete as your week's notes — jot decisions and progress as they happen (or with <code>/improve</code>) and Friday's draft writes itself.</li><li><strong>Automate it.</strong> Pair <code>/weekly</code> with a scheduled task (see the scheduler "second act" on the setup page) to have Friday's review waiting — mind the reliability and cost caveats there; a machine that's asleep silently skips the run.</li><li><strong>Keep your format.</strong> Correct the first one's shape and tone, then run <code>/improve</code>, and it matches your recurring format from then on.</li></ul>
+</div></section>
+
+<section id="skill-center" class="cmd-doc"><div class="wrap">
+<h2 class="cmd-name"><span class="slash">/</span>skill-center</h2>
+<h3 class="doc-h">What it does</h3>
+<p>The workshop for your toolkit — find, create, and audit your own commands as your needs grow, following Anthropic's skill-authoring best practices.</p>
+<h3 class="doc-h">When to use it</h3>
+<p>When the built-in commands don't quite cover something you do repeatedly, or you want to check an existing skill is well-formed. This is the expert on-ramp — how AI-OS grows <em>with</em> you instead of boxing you in.</p>
+<h3 class="doc-h">Walkthrough</h3>
+<ol><li>Type <code>/skill-center</code> and say what you want — <em>"create a command that drafts my expense report"</em> or <em>"audit my /triage skill"</em>.</li><li>To create: it scaffolds a new skill to best practices, then you refine it.</li><li>To find or audit: it lists your skills and flags ones that could be tightened.</li></ol>
+<p>A session looks about like this:</p>
+<blockquote class="sample"><strong>Skill Center</strong><br>· Installed: 17 commands · 1 flagged (missing a clear trigger)<br>· Created: <code>/expenses</code> — drafts a monthly report from your receipts folder<br>Start a fresh session to register the new command.</blockquote>
+<h3 class="doc-h">Power user</h3>
+<ul><li><strong>New skills need a fresh session.</strong> A newly-built command registers when you reopen the folder / restart — that's why a brand-new <code>/command</code> can "do nothing" until then (<code>/doctor</code> confirms what's registered).</li><li><strong>Keep skills small and single-purpose.</strong> The best commands do one thing with a clear trigger — the same discipline the built-in toolkit follows.</li><li><strong>It's how AI-OS stays yours.</strong> Everything is plain files you can read, edit, and share; <code>/skill-center</code> just makes authoring them follow the good patterns.</li></ul>
+</div></section>
+
+<section id="ingest" class="cmd-doc"><div class="wrap">
+<h2 class="cmd-name"><span class="slash">/</span>ingest</h2>
+<h3 class="doc-h">What it does</h3>
+<p>Turns raw sources you drop in — clippings, transcripts, meeting or Teams exports, reading — into maintained, interlinked concept pages, so you synthesize once and navigate later instead of re-summarizing the same material every time.</p>
+<h3 class="doc-h">When to use it</h3>
+<p>When you've collected material you'll want to reuse — research, meeting exports, articles — and don't want a growing pile of unprocessed files. Safety fence: it writes end-to-end <em>only</em> inside your Synthesis folder; everywhere else in your vault it's propose-only (a link into one of your own notes is a suggestion for your review, never a silent edit).</p>
+<h3 class="doc-h">Walkthrough</h3>
+<ol><li>Drop raw sources into your <code>_inbox/</code> folder.</li><li>Run <code>/ingest</code>. For each source it reads it, then for each distinct idea creates or updates a short, cited concept page (one idea per page) with <code>[[wikilinks]]</code> to sibling pages.</li><li>It rebuilds the Synthesis index and archives the raw source to <code>_inbox/processed/</code> — so your inbox stays clean and your knowledge stays linked.</li></ol>
+<p>A run looks about like this:</p>
+<blockquote class="sample"><strong>Ingested 3 sources → 5 concept pages</strong><br>· New: <em>Synthesis/context-windows.md</em>, <em>Synthesis/rag-vs-finetune.md</em><br>· Updated: <em>Synthesis/agent-harness.md</em> (+2 links)<br>· Archived raws → _inbox/processed/ · Rebuilt Synthesis/index.md<br>Suggested 2 links into your hand-authored notes — review before applying.</blockquote>
+<h3 class="doc-h">Power user</h3>
+<ul><li><strong>The safety fence is the point.</strong> <code>/ingest</code> owns the Synthesis folder end-to-end but treats the rest of your vault as propose-only — your hand-written notes are never silently edited.</li><li><strong>One idea per page.</strong> Concept pages stay short and single-topic so they interlink cleanly and stay reusable — the opposite of a giant summary doc.</li><li><strong>Feeds <code>/wiki</code> and <code>/recall</code>.</strong> Everything <code>/ingest</code> builds becomes searchable precedent; the more you ingest, the richer those answers.</li></ul>
+</div></section>
+
+<section id="memory-prune" class="cmd-doc"><div class="wrap">
+<h2 class="cmd-name"><span class="slash">/</span>memory-prune</h2>
+<h3 class="doc-h">What it does</h3>
+<p>An on-demand health check for your memory — it verifies each memory is still true, fixes drift, rebuilds the index, and flags what's stale or orphaned, proposing deletions for your OK. It never auto-deletes.</p>
+<h3 class="doc-h">When to use it</h3>
+<p>Every so often as your memory grows, or when answers start feeling out of date. This is the maintenance half of the memory lifecycle — what keeps a long-lived memory <em>true</em> rather than just large.</p>
+<h3 class="doc-h">Walkthrough</h3>
+<ol><li>Type <code>/memory-prune</code>.</li><li>It walks your memories: verifies each is still accurate, converts relative dates ("last week") to absolute, rebuilds the <code>MEMORY.md</code> index (grouped, one line each), and flags orphans and dangling <code>[[links]]</code>.</li><li>It <strong>proposes</strong> deletions for your approval — nothing is removed without your OK. A small ledger means it won't re-flag the same items next time.</li></ol>
+<p>A run looks about like this:</p>
+<blockquote class="sample"><strong>Memory check</strong> · 84 memories<br>· Fixed 6 relative dates → absolute · Rebuilt MEMORY.md index<br>· 2 dangling links, 1 orphan flagged<br>· Proposed for deletion (your OK): "trial ends Friday" (expired) · duplicate of [[acme-contact]]</blockquote>
+<h3 class="doc-h">Power user</h3>
+<ul><li><strong>Propose-only, always.</strong> <code>/memory-prune</code> never deletes on its own — you approve every removal. That's the deliberate trust posture.</li><li><strong><code>/improve</code> grows it, <code>/memory-prune</code> keeps it true.</strong> One captures new rules; the other re-verifies, de-dupes, and fixes drift — the maintenance native memory doesn't do.</li><li><strong><code>/doctor</code> tells you when.</strong> <code>/doctor</code> flags when your store has grown big enough that a prune is worth running.</li></ul>
+</div></section>
+
+<section id="board" class="cmd-doc"><div class="wrap">
+<h2 class="cmd-name"><span class="slash">/</span>board</h2>
+<h3 class="doc-h">What it does</h3>
+<p>Runs a real decision past a panel of advisor profiles — experts whose thinking you admire, each distilled into a note in your vault — and synthesizes their distinct takes: where they'd agree, where they'd dissent, and a recommendation.</p>
+<h3 class="doc-h">When to use it</h3>
+<p>For a decision worth several sharp perspectives — a hire, a strategy call, a design trade-off. It's advisory and read-only, grounded only in the profiles you've curated (no external lookups).</p>
+<h3 class="doc-h">Walkthrough</h3>
+<ol><li>Bring a decision — <em>"ask the board whether to ship the field guide as a second page"</em>.</li><li>It consults each advisor profile and gives you each one's distinct take, then a synthesis: agreements, dissents, and a recommendation.</li><li>To add or refresh an advisor, point it at someone's public work and it builds a profile — how they think, their heuristics, what they'd push back on.</li></ol>
+<p>A board run looks about like this:</p>
+<blockquote class="sample"><strong>The board on: "ship docs as a second page?"</strong><br>· Advisor A (systems) — yes; keep the main page lean, docs are a separate job<br>· Advisor B (growth) — yes, but link it where users hit friction, not just the footer<br>· Advisor C (minimalist) — dissents; wary of a second thing to maintain<br><strong>Synthesis</strong> · Strong lean yes; the live risk is maintenance — generate it, don't hand-write.</blockquote>
+<h3 class="doc-h">Power user</h3>
+<ul><li><strong>It's only as good as the profiles.</strong> Each advisor is a curated note; the richer the profile (heuristics, what they'd challenge), the sharper the take. Build them from real public work.</li><li><strong>Grounded, not invented.</strong> <code>/board</code> reasons only from your profiles — no external API — so it won't fabricate a stance the profile doesn't support.</li><li><strong>Read-only.</strong> It advises; you decide. Profiles live in your vault (e.g. <code>03 Areas/Advisors/</code>) as plain notes you can edit.</li></ul>
+</div></section>
+
+<section id="teach" class="cmd-doc"><div class="wrap">
+<h2 class="cmd-name"><span class="slash">/</span>teach</h2>
+<h3 class="doc-h">What it does</h3>
+<p>A stateful tutor for learning a topic over many sessions — it keeps a syllabus and your progress, and picks up each time exactly where you left off.</p>
+<h3 class="doc-h">When to use it</h3>
+<p>When you're learning something bigger than one sitting — a system, a skill, a subject — and want a course that remembers you rather than starting over each time.</p>
+<h3 class="doc-h">Walkthrough</h3>
+<ol><li>Say <em>"/teach me system design"</em> (or <em>"continue my system-design lessons"</em>).</li><li>First time, it builds a syllabus and a per-topic workspace in your vault; after that it resumes where you left off, teaches the next piece, and checks your understanding.</li><li>It updates a progress file each session — what you've covered, where you struggled — and adapts the depth to your level.</li></ol>
+<p>A session looks about like this:</p>
+<blockquote class="sample"><strong>System design · session 4</strong><br>Last time: caching, load balancing (you were shaky on cache invalidation)<br>Today: consistent hashing → a quick check → then sharding<br>Progress saved to 04 Resources/Learning/system-design/</blockquote>
+<h3 class="doc-h">Power user</h3>
+<ul><li><strong>It remembers your struggles, not just your progress.</strong> The progress file tracks where you wobbled, so it circles back instead of marching on.</li><li><strong>Everything's a plain file.</strong> The syllabus and progress live in your vault — edit the plan, or read back what you've learned, anytime.</li><li><strong>Pairs with <code>/ingest</code> and <code>/recall</code>.</strong> Turn course material into concept pages with <code>/ingest</code>; recall what you learned later with <code>/recall</code> or <code>/wiki</code>.</li></ul>
+</div></section>
+
+<section id="workflow-visualizer" class="cmd-doc"><div class="wrap">
+<h2 class="cmd-name"><span class="slash">/</span>workflow-visualizer</h2>
+<h3 class="doc-h">What it does</h3>
+<p>Turns a system or process you describe into one self-contained interactive HTML diagram — clickable nodes, hover detail — that you can open in a browser.</p>
+<h3 class="doc-h">When to use it</h3>
+<p>When a wall of text would be clearer as a picture: an architecture, an approval flow, how a project's pieces connect. Good for sharing, or for thinking something through visually.</p>
+<h3 class="doc-h">Walkthrough</h3>
+<ol><li>Describe the thing — <em>"diagram our release process"</em> or <em>"map out how these services connect"</em>.</li><li>It builds one self-contained interactive HTML file (up to ~20 nodes, with clickable nodes and hover detail).</li><li>It saves the file in your vault (<code>04 Resources/Diagrams/</code>) and gives you the path to open.</li></ol>
+<p>A run looks about like this:</p>
+<blockquote class="sample"><strong>Release process → diagram</strong><br>7 nodes: PR → CI → review → staging → QA → deploy → monitor<br>Saved: 04 Resources/Diagrams/release-process.html — open it in your browser.</blockquote>
+<h3 class="doc-h">Power user</h3>
+<ul><li><strong>Keep it to one system.</strong> It's tuned for ~20 nodes — a focused flow reads far better than an everything-map. Split a big system into a few diagrams.</li><li><strong>Self-contained by design.</strong> The output is a single HTML file with no dependencies — email it or drop it anywhere.</li><li><strong>It's a file you own.</strong> Saved in your vault; edit the description and regenerate to iterate.</li></ul>
+</div></section>
+
+<section id="backup" class="cmd-doc"><div class="wrap">
+<h2 class="cmd-name"><span class="slash">/</span>backup</h2>
+<h3 class="doc-h">What it does</h3>
+<p>Protects your whole AI-OS — memory, notes, <em>and</em> your skills — against a lost or wiped machine. One command keeps an on-disk history and tucks an encrypted copy into the cloud folder you already sync (the 3-2-1 rule), no setup required.</p>
+<h3 class="doc-h">When to use it</h3>
+<p>Regularly, and before anything risky — a big cleanup, a migration. Your skills live outside <code>~/ai-os</code>, so nothing else captures them; this is the one thing that does.</p>
+<h3 class="doc-h">Walkthrough</h3>
+<ol><li>Type <code>/backup</code>. With no arguments it just works.</li><li>It commits your <code>~/ai-os</code> to its own git history (the cheap, frequent layer), builds a timestamped full snapshot under <code>backups/</code>, encrypts it, and drops the encrypted copy into your synced cloud folder.</li><li>You end up with a working copy, on-disk history, and an offsite copy — 3-2-1 — without thinking about it.</li></ol>
+<p>A backup looks about like this:</p>
+<blockquote class="sample"><strong>Backup complete</strong><br>· Committed ~/ai-os (git) · Snapshot backups/2026-06-30T09-12.tar.gz.enc (encrypted)<br>· Copied offsite → your cloud folder<br>Memory, notes, and 17 skills all captured.</blockquote>
+<h3 class="doc-h">Power user</h3>
+<ul><li><strong>Expert flags exist.</strong> <code>--full</code>, <code>--no-encrypt</code>, <code>--to &lt;path&gt;</code>, <code>--dry-run</code>; a <code>backup.config.yml</code> tunes destinations, retention, and what's included.</li><li><strong>It captures your skills.</strong> Because commands live outside <code>~/ai-os</code>, <code>/backup</code> deliberately reaches out to include them — a plain vault sync would miss them.</li><li><strong>Prove it with <code>/restore --drill</code>.</strong> A backup you've never restored is only a hope; the drill verifies it into a throwaway copy without touching your live system.</li><li><strong><code>/doctor</code> watches its age.</strong> <code>/doctor</code> reports how old your most recent backup is, so a stale one is visible.</li></ul>
+</div></section>
+
+<section id="restore" class="cmd-doc"><div class="wrap">
+<h2 class="cmd-name"><span class="slash">/</span>restore</h2>
+<h3 class="doc-h">What it does</h3>
+<p>Brings your whole AI-OS back from a snapshot — after a new laptop, a bad edit, or a lost folder. It picks the newest snapshot, lays everything back, and is fully reversible.</p>
+<h3 class="doc-h">When to use it</h3>
+<p>When you need your system back — recovery, a fresh machine — or when you want to <em>prove</em> your backups actually work (with <code>--drill</code>, safely). Anything it would overwrite is moved aside first, so a restore can itself be undone.</p>
+<h3 class="doc-h">Walkthrough</h3>
+<ol><li>Type <code>/restore</code>. It lists the snapshots it can find — local and in your cloud folder — and defaults to the newest.</li><li>It lays everything back into place: your memory, notes, and skills.</li><li>Anything it would overwrite is moved aside first, so the restore is reversible. Use <code>--dry-run</code> to see exactly what it would change before committing.</li></ol>
+<p>A dry run looks about like this:</p>
+<blockquote class="sample"><strong>Restore (dry-run)</strong><br>Source: backups/2026-06-30T09-12.tar.gz.enc (newest)<br>Would restore: memory/ (84 notes), notes vault, 17 skills<br>Existing files → moved to restore-backup/ first — nothing lost.<br>Re-run without --dry-run to apply.</blockquote>
+<h3 class="doc-h">Power user</h3>
+<ul><li><strong><code>--drill</code> proves a backup.</strong> It restores into a throwaway copy, never touching your live system — the honest test that your <code>/backup</code> actually works.</li><li><strong>Always reversible.</strong> Overwrites are set aside first, so a restore you didn't want can be undone.</li><li><strong><code>--dry-run</code> first.</strong> See the exact change set before you commit — especially on a machine that already has data.</li><li><strong>Pairs with <code>/backup</code>.</strong> Together they're your recovery quadrant; <code>/doctor</code> tells you the safety net is current.</li></ul>
+</div></section>
+
+<section id="doctor" class="cmd-doc"><div class="wrap">
+<h2 class="cmd-name"><span class="slash">/</span>doctor</h2>
+<h3 class="doc-h">What it does</h3>
+<p>A read-only checkup for your system — are your connectors still signed in, your memory and commands healthy, your last backup recent? It reports what needs attention and points you at the fix; it changes nothing.</p>
+<h3 class="doc-h">When to use it</h3>
+<p>Any time something feels off — a command "does nothing", mail looks stale — or as a periodic once-over. It's strictly inspect-and-report: it never changes, deletes, or sends anything.</p>
+<h3 class="doc-h">Walkthrough</h3>
+<ol><li>Type <code>/doctor</code>.</li><li>It checks the four things the platform's own checker can't see: <strong>Connectors</strong> (via <code>/mcp</code> — the thing most likely to be quietly broken), <strong>Memory</strong> (exists, rough size, note count, whether a <code>/memory-prune</code> is worth it), <strong>Toolkit</strong> (which skills are registered under <code>~/.claude/skills/</code>), and <strong>Protection</strong> (the age of your most recent <code>/backup</code>).</li><li>It finishes with a short green / needs-attention summary naming the one or two things worth doing next — and points you to Claude Code's own built-in <code>/doctor</code> for the deeper system layer (install, versions, config).</li></ol>
+<p>A checkup looks about like this:</p>
+<blockquote class="sample"><strong>/doctor</strong> · AI-OS health<br>✓ Connectors — Google signed in · Memory — 84 notes (~180 KB), healthy<br>⚠ Toolkit — 16 of 17 skills registered (/expenses needs a fresh session)<br>⚠ Protection — last backup 9 days ago → run /backup<br>For install/version checks, run Claude Code's built-in /doctor.</blockquote>
+<h3 class="doc-h">Power user</h3>
+<ul><li><strong>Connectors are the usual culprit.</strong> A signed-out connector is the most common quiet failure; <code>/doctor</code> reads live auth via <code>/mcp</code> and points you to re-authorize.</li><li><strong>"My command does nothing."</strong> Usually the skill isn't registered yet — <code>/doctor</code> shows the count; start a fresh session to register newly-built ones.</li><li><strong>It complements native <code>/doctor</code>, doesn't replace it.</strong> AI-OS <code>/doctor</code> covers AI-OS-specific state; Claude Code's built-in <code>/doctor</code> covers install/config/versions. Run both.</li><li><strong>Strictly read-only.</strong> It inspects and reports — pair it with <code>/backup</code> (it tells you your safety net is current) and <code>/memory-prune</code> (it tells you when one's due).</li></ul>
 </div></section>
 
 <footer><div class="wrap">
