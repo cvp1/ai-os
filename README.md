@@ -4,7 +4,7 @@
 
 **Turn [Claude Code](https://claude.com/claude-code) into a chief-of-staff — the person who runs the day around you — that remembers your work, knows your calendar, and gets sharper every time you correct it.**
 
-A persistent memory · a structured notes vault · a toolkit of slash-commands — wired to your **Microsoft 365 or Google Workspace**, and built around *you* in about five minutes.
+A persistent memory · a structured notes vault · a toolkit of slash-commands — wired to your **Google (Gmail + Calendar) or Microsoft 365**, and built around *you* in about five minutes.
 
 ### [▶︎ Open the walkthrough →](https://cvp1.github.io/ai-os/)
 
@@ -25,7 +25,7 @@ No code. No config files to edit. If you can use email and a calendar, you can u
 ## Why you'd want it
 
 - **It keeps your memory true.** Claude Code remembers across sessions — this keeps that memory honest: it re-checks what's gone stale, removes duplicates, resolves contradictions, and links related facts, so what it knows about your projects and people stays trustworthy instead of drifting.
-- **It's wired to your real work.** Commands read from your live mail & calendar — Microsoft 365 or Google Workspace — not a generic chatbot guess.
+- **It's wired to your real work.** Commands read from your live mail & calendar — Google (Gmail + Calendar) or Microsoft 365 — not a generic chatbot guess.
 - **It's in your hands.** Read-only by default — it drafts and proposes; nothing is sent, posted, or accepted without your explicit OK, every time.
 - **It gets more "you."** Correct it once, run `/improve`, and the lesson sticks.
 
@@ -49,11 +49,13 @@ as-of June 2026; verify before relying on them.
 
 | # | Step |
 |---|------|
-| 1 | Install **Claude Code** and sign in. *(Claude Code runs on a paid Claude plan — Pro is ~$20/mo. This template is free; the runtime that powers it isn't.)* |
-| 2 | Connect your mail & calendar — the **Microsoft 365** *or* **Google (Gmail + Calendar)** connector (the prompt can walk you through it). |
-| 3 | Open a Claude Code session in a folder you want as your home — e.g. `~/ai-os`. |
+| 1 | Install the **Claude desktop app** from [claude.com/download](https://claude.com/download) and sign in — no terminal, no code. *(It runs on a paid Claude plan — Pro is ~$20/mo. This template is free; the AI that powers it isn't.)* |
+| 2 | Connect your mail & calendar: at [claude.ai](https://claude.ai) → Settings → Connectors, turn on **Google (Gmail + Calendar)** *or* **Microsoft 365** — the [walkthrough](https://cvp1.github.io/ai-os/) covers the fine print (personal Gmail works; M365 needs a work account). |
+| 3 | In the app, open the **Code** tab and create or pick a home folder — e.g. a new folder called `ai-os`. Then **switch the session to Auto mode** (top-left, just above where you type; accept the one-time dialog) *before* you paste. |
 | 4 | Open the [walkthrough](https://cvp1.github.io/ai-os/), copy the setup prompt, and paste it as your first message. |
-| 5 | Answer the interview. Claude builds everything and tells you what to try first. |
+| 5 | Answer the interview. Claude builds everything and hands you your first morning brief — your day, from your real mail and calendar. |
+
+*Prefer a terminal? The [Claude Code CLI](https://claude.com/claude-code) is the same engine — every step above works there too.*
 
 ## What gets built
 
@@ -83,7 +85,16 @@ as-of June 2026; verify before relying on them.
 | `/restore` | Brings it all back from a snapshot — newest by default, fully reversible, with a `--drill` that proves a backup works without touching your live system. |
 | `/doctor` | A read-only checkup — are your connectors signed in, your memory and commands healthy, your last `/backup` recent? Reports what needs attention and points you at the fix; never changes anything. |
 
+**Want more from each command?** The **[Field Guide](https://cvp1.github.io/ai-os/guide.html)** covers every one — what it does, when to reach for it, a walkthrough, and the power-user moves.
+
 **⚡ Local-first by design** — caches your calendar and mail locally and refreshes only what changed (Graph delta / Gmail history), so it's instant to use and won't trip rate limits.
+
+## Once it's running
+
+Two opt-in "second acts" wait past your first win — each is one more paste on the [walkthrough](https://cvp1.github.io/ai-os/):
+
+- **Put it on a schedule** — a morning brief drafted and waiting, run locally in Ask mode so nothing is ever sent while you're away. → [scheduler](https://cvp1.github.io/ai-os/#autopilot)
+- **Hire a domain manager** — a standing chief-of-staff for one part of your life: **career** (drafts LinkedIn posts in your voice), **projects** (drafts the status update you actually send), **learning** (plans what to learn; `/teach` teaches). → [staff your bench](https://cvp1.github.io/ai-os/#domain)
 
 ## Your control & privacy
 
@@ -104,6 +115,10 @@ A few rules shape every command — the same ones, whatever you wire it to:
 ## A note before you connect a work account
 
 This is a **personal-productivity template**, not an official product of any employer. If you're wiring it to a work mailbox, confirm with your leadership / IT that Claude Code with the Microsoft 365 or Google Workspace connector is approved for your account first.
+
+## Repo layout (for forkers)
+
+`core/` is the source — one fragment per command, the landing shell, the prose sections, and the second-act prompts. `index.html` and `guide.html` are **generated** from it by `tools/build_installer.py`; don't hand-edit them — edit `core/`, rebuild, done. That's the escape hatch: fork it, reshape `core/`, and it's yours.
 
 ## License
 

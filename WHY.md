@@ -23,7 +23,7 @@ truly yours, that anyone can stand up in about five minutes.
 
 One copy-paste setup prompt that turns Claude Code into your personal AI-OS: a
 maintained memory, an Obsidian-compatible notes vault, and a curated, propose-only
-toolkit of slash-commands — wired to Microsoft 365 or Google Workspace. Free, MIT,
+toolkit of slash-commands — wired to Google (Gmail + Calendar) or Microsoft 365. Free, MIT,
 yours to shape.
 
 ---
