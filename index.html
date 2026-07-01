@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- ai-os installer · build 2026.07.01h · generated from core/ by tools/build_installer.py — do not edit index.html by hand -->
+<!-- ai-os installer · build 2026.07.01i · generated from core/ by tools/build_installer.py — do not edit index.html by hand -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -357,6 +357,7 @@
     <pre class="code" id="promptBox">Loading…</pre>
   </div>
   <p class="runline"><span class="caret">❯</span> the one habit that makes it pay off: run <span style="color:var(--green-deep);font-weight:600">/improve</span> whenever you correct it — that's the loop that makes it more <i>you</i>.</p>
+  <p style="margin-top:14px;color:var(--ink-3);font-size:13px;line-height:1.6"><b style="color:var(--ink-2)">Already set up?</b> Pasting the prompt again <b>upgrades in place</b> — it detects your install and only adds what's new, leaving your memory, notes, and customizations untouched. Run <span style="font-family:var(--mono)">/doctor</span> anytime and it'll check whether you're on the current build.</p>
 </div></section>
 
 <!-- ============ YOURS VS RENTED ============ -->
@@ -594,6 +595,7 @@
   <details><summary>How is it different from just chatting with an AI?<span class="pm">+</span></summary><div class="ans">Two things: a <b>memory it actively keeps true</b> — it learns your projects and people across sessions, then re-checks what's gone stale, clears duplicates, and resolves contradictions so it doesn't drift — and <b>commands wired to your real mail &amp; calendar</b>. Instead of re-explaining your context every time, you say "/prep my 2pm" and it already knows the players, the history, and what's open.</div></details>
   <details><summary>What if it gets something wrong?<span class="pm">+</span></summary><div class="ans">Correct it, then run <span class="cmd">/improve</span> to lock that lesson in as a durable rule, so it won't repeat the mistake. The more you steer it, the more it works the way you do.</div></details>
   <details><summary>Can I customise the commands?<span class="pm">+</span></summary><div class="ans">Yes — run <span class="cmd">/skill-center</span> to add, edit, or audit commands as your needs change. The starter set is just a foundation.</div></details>
+  <details><summary>I already set this up — how do I update it?<span class="pm">+</span></summary><div class="ans">Just paste the setup prompt again into your AI-OS folder. It notices you already have an install and switches to <b>upgrade mode</b>: it adds only the commands and improvements that are new since your build and <b>leaves your memory, notes, CLAUDE.md, and any commands you've customized untouched</b> — it shows you what it would add and waits for your OK before changing anything, so re-pasting is safe, not a rebuild. Not sure whether you're behind? Run <span class="cmd">/doctor</span> — it'll check your build against the current one and point you at the update if there is one.</div></details>
 </div></section>
 
 <footer><div class="wrap">
@@ -606,9 +608,9 @@
 a persistent memory, a structured notes vault, and a starter set of skills — and
 then you will operate it as my chief-of-staff going forward.
 
-(This installer is AI-OS build 2026.07.01h. When you build my system, record a line
-"AI-OS installer build: 2026.07.01h" in my CLAUDE.md, AND write the bare build string
-2026.07.01h as the only contents of a file ~/ai-os/.aios-version, so a later upgrade or
+(This installer is AI-OS build 2026.07.01i. When you build my system, record a line
+"AI-OS installer build: 2026.07.01i" in my CLAUDE.md, AND write the bare build string
+2026.07.01i as the only contents of a file ~/ai-os/.aios-version, so a later upgrade or
 health check can tell what changed since mine without parsing prose.)
 
 ABOUT ME (context, refine via the interview below)
@@ -638,7 +640,7 @@ is a clean machine — ASK me before building anything. Never default to a rebui
   not silently replace it. Show me a short diff of what you'd ADD, apply it only
   after my OK, then STOP — skip PHASE 0 and the rest of the build. If I recorded an
   "AI-OS installer build:" line in my CLAUDE.md, compare it to this installer's build
-  (2026.07.01h) to focus the diff on what's new since mine, and update that line — and
+  (2026.07.01i) to focus the diff on what's new since mine, and update that line — and
   the ~/ai-os/.aios-version file — once the additions are applied.
 - IF IT DOESN'T → this is a fresh install: continue with PHASE 0 below and build
   the whole system.
