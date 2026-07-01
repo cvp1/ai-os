@@ -3,10 +3,19 @@
 **To put a personal AI that's genuinely *yours* into anyone's hands — so that the
 leverage of a chief-of-staff belongs to the person, not to a platform or a payroll.**
 
-Most AI that knows your work lives in someone else's cloud, rented for as long as
-you keep paying. And the leverage a chief-of-staff gives you has always needed a
-team or a budget. AI-OS is the opposite bet: a personal operating system that is
-truly yours, that anyone can stand up in about five minutes.
+I didn't set out to release a product. I set out to help a few people I know — a
+friend who'd never opened a terminal, then a couple of colleagues. For each one I
+sat down and wired up a personal AI that knew their work, their calendar, their
+world, and wrote them a guide that started at the very beginning: *what even is a
+terminal.*
+
+Doing it by hand, one person at a time, taught me the thing that became this
+project. I'd always assumed the hard part was *building* it. It isn't. The
+capability is already here — sitting inside tools people already pay for. It's just
+locked behind knowing how to wire it up. The barrier was never capability; it's
+**access.** So I compressed everything I'd been doing by hand into a single prompt
+anyone can copy, paste, and run — a personal operating system that's truly yours,
+standing up in about five minutes — and gave it away, free.
 
 ## How we make it true
 
