@@ -2,7 +2,7 @@
 
 # 🧭 AI OS for Claude Code
 
-**Turn [Claude Code](https://claude.com/claude-code) into a chief-of-staff that remembers your work, knows your calendar, and gets sharper every time you correct it.**
+**Turn [Claude Code](https://claude.com/claude-code) into a chief-of-staff — the person who runs the day around you — that remembers your work, knows your calendar, and gets sharper every time you correct it.**
 
 A persistent memory · a structured notes vault · a toolkit of slash-commands — wired to your **Microsoft 365 or Google Workspace**, and built around *you* in about five minutes.
 

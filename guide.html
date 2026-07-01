@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- ai-os field guide · build 2026.07.01a · generated from core/skills/*.md by tools/build_installer.py — do not edit guide.html by hand -->
+<!-- ai-os field guide · build 2026.07.01b · generated from core/skills/*.md by tools/build_installer.py — do not edit guide.html by hand -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -67,6 +67,75 @@
   <div class="idx"><a href="#improve"><span class="slash">/</span>improve</a> · <a href="#triage"><span class="slash">/</span>triage</a> · <a href="#brief"><span class="slash">/</span>brief</a> · <a href="#prep"><span class="slash">/</span>prep</a> · <a href="#status"><span class="slash">/</span>status</a> · <a href="#wiki"><span class="slash">/</span>wiki</a> · <a href="#recall"><span class="slash">/</span>recall</a> · <a href="#weekly"><span class="slash">/</span>weekly</a> · <a href="#skill-center"><span class="slash">/</span>skill-center</a> · <a href="#ingest"><span class="slash">/</span>ingest</a> · <a href="#memory-prune"><span class="slash">/</span>memory-prune</a> · <a href="#board"><span class="slash">/</span>board</a> · <a href="#teach"><span class="slash">/</span>teach</a> · <a href="#workflow-visualizer"><span class="slash">/</span>workflow-visualizer</a> · <a href="#backup"><span class="slash">/</span>backup</a> · <a href="#restore"><span class="slash">/</span>restore</a> · <a href="#doctor"><span class="slash">/</span>doctor</a></div>
   <p class="note">Every command in your toolkit is covered below. Start with the ones you'll reach for daily — <span class="slash">/</span>brief, <span class="slash">/</span>triage, <span class="slash">/</span>prep — and dip into the rest as you need them.</p>
 </div></div>
+
+<section class="daysection"><div class="wrap">
+  <style>
+    .daysection{padding:10px 0 18px}
+    .daysection .eyebrow{display:block}
+    .daysection h2{font-weight:850;letter-spacing:-.03em;font-size:clamp(26px,4vw,38px);margin:12px 0 10px}
+    .daysection .intro{color:var(--ink-2);max-width:64ch;margin:0 0 26px;font-size:17px}
+    .scen{display:grid;grid-template-columns:1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+    .scen .row{background:var(--panel);padding:18px 20px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 16px;align-items:baseline}
+    .scen .moment{font-size:15.5px;color:var(--ink);font-weight:600}
+    .scen .cmd{font-family:var(--mono);font-size:14px;color:var(--green);font-weight:700;white-space:nowrap;justify-self:end}
+    .scen .out{grid-column:1/-1;color:var(--ink-2);font-size:14px;margin:2px 0 0}
+    .scen .out code{font-family:var(--mono);font-size:.9em;background:#eceee9;border:1px solid var(--line);border-radius:4px;padding:1px 5px}
+    .sitmap{margin:26px 0 4px;border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+    .sitmap .sr{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;padding:11px 20px;border-bottom:1px solid var(--line);align-items:baseline;background:var(--panel)}
+    .sitmap .sr:last-child{border-bottom:none}
+    .sitmap .sr span:first-child{color:var(--ink-2);font-size:14.5px}
+    .sitmap .sr span:last-child{font-family:var(--mono);font-size:13.5px;color:var(--green);font-weight:700;white-space:nowrap;justify-self:end}
+    @media(max-width:560px){.scen .row,.sitmap .sr{grid-template-columns:1fr}.scen .cmd,.sitmap .sr span:last-child{justify-self:start}}
+  </style>
+  <span class="eyebrow">Start here</span>
+  <h2>A day with your AI OS.</h2>
+  <p class="intro">Don't worry about learning commands — learn the <b>moments</b>. Here's how a normal day maps onto your toolkit; the full reference for each command is below.</p>
+
+  <div class="scen">
+    <div class="row">
+      <div class="moment">It's 8:40am. Three meetings ahead and you're not sure what's waiting on you.</div>
+      <div class="cmd">/brief</div>
+      <p class="out">Your whole day on one screen — today's meetings and who's in them, what needs a reply, top priorities, deadlines this week — before your first coffee.</p>
+    </div>
+    <div class="row">
+      <div class="moment">Monday morning, and the weekend piled up sixty unread emails.</div>
+      <div class="cmd">/triage</div>
+      <p class="out">One pass sorts your inbox into <b>Needs Reply / FYI / Noise</b> and flags calendar conflicts. Nothing is sent — just sorted, so you open a clear inbox.</p>
+    </div>
+    <div class="row">
+      <div class="moment">A call in ten minutes and you can't remember where it last landed.</div>
+      <div class="cmd">/prep</div>
+      <p class="out">The invite, the mail thread, the relevant project and people notes, the last decisions and open items — plus the questions likely to come up. You walk in ready.</p>
+    </div>
+    <div class="row">
+      <div class="moment">It's Friday and your status update is due — again.</div>
+      <div class="cmd">/weekly</div>
+      <p class="out">Your weekly review is already drafted — what shipped, what slipped or is blocked, decisions, next week's shape — with a status update ready to edit and send. (Just one project? <code>/status</code>.)</p>
+    </div>
+    <div class="row">
+      <div class="moment">"Wait — what did we actually decide about the redesign?"</div>
+      <div class="cmd">/recall</div>
+      <p class="out">One search across everything you know — your memory <i>and</i> your notes — answered with citations and honest about any gaps. (Want just the deep dive into your notes? <code>/wiki</code>.)</p>
+    </div>
+    <div class="row">
+      <div class="moment">It drafted something in the wrong tone, and you fixed it.</div>
+      <div class="cmd">/improve</div>
+      <p class="out">Correct it once, run <code>/improve</code>, and the lesson becomes a durable rule — the system gets a little more "you" every time you steer it.</p>
+    </div>
+  </div>
+
+  <p class="intro" style="margin:30px 0 8px">Other moments, and the command they call for:</p>
+  <div class="sitmap">
+    <div class="sr"><span>A real decision to weigh — a hire, a vendor, a strategy call</span><span>/board</span></div>
+    <div class="sr"><span>A pile of reading, clippings, or meeting transcripts to make sense of</span><span>/ingest</span></div>
+    <div class="sr"><span>Learning a topic over many sessions, without losing your place</span><span>/teach</span></div>
+    <div class="sr"><span>Explaining a process or system to someone (or yourself)</span><span>/workflow-visualizer</span></div>
+    <div class="sr"><span>Protecting it all against a lost or wiped laptop — and bringing it back</span><span>/backup &nbsp;·&nbsp; /restore</span></div>
+    <div class="sr"><span>Checking everything's still healthy — connectors, memory, backups</span><span>/doctor</span></div>
+    <div class="sr"><span>Keeping your memory lean and true as it grows, or building a new command</span><span>/memory-prune &nbsp;·&nbsp; /skill-center</span></div>
+  </div>
+  <p class="note" style="margin-top:22px">New here? The <a href="index.html" style="color:var(--green-deep);font-weight:600;text-decoration:none;border-bottom:1px solid var(--line-2)">setup walkthrough</a> gets you running in about five minutes. The full reference for every command is just below.</p>
+</div></section>
 
 <section id="improve" class="cmd-doc"><div class="wrap">
 <h2 class="cmd-name"><span class="slash">/</span>improve</h2>
