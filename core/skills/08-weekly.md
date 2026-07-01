@@ -28,5 +28,5 @@ A weekly review looks about like this:
 ## Power user
 - **`/weekly` vs `/status`.** `/weekly` is the whole-week rollup for your standing review; `/status` is a single project on demand. Because `/weekly` bundles a status draft, many people run only `/weekly` on Fridays.
 - **It reflects what you captured.** The review is as complete as your week's notes — jot decisions and progress as they happen (or with `/improve`) and Friday's draft writes itself.
-- **Automate it.** Pair `/weekly` with a scheduled task (see the scheduler "second act" on the setup page) to have Friday's review waiting — mind the reliability and cost caveats there; a machine that's asleep silently skips the run.
+- **Automate it.** Pair `/weekly` with a scheduled task (see the [scheduler second act](index.html#autopilot) on the setup page) to have Friday's review waiting — mind the reliability and cost caveats there; a machine that's asleep silently skips the run.
 - **Keep your format.** Correct the first one's shape and tone, then run `/improve`, and it matches your recurring format from then on.

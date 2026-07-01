@@ -139,7 +139,7 @@ def render():
 # ---- Field Guide (guide.html) rendering ---------------------------------------
 # A deliberately small markdown subset — enough for the doc-block template
 # (## headings · paragraphs · - and 1. lists · > sample blockquotes · `code`,
-# **bold**, *italic*). Kept minimal on purpose: the source of truth is the plain
+# **bold**, *italic*, [link](url)). Kept minimal on purpose: the source of truth is the plain
 # doc block in each core/skills/*.md, and a tiny deterministic renderer keeps the
 # build honest (no dependency, no surprises). Extend only alongside the template.
 
@@ -148,6 +148,7 @@ def _esc(s):
 
 def _inline(s):
     s = _esc(s)
+    s = re.sub(r"\[([^\]]+)\]\(([^)\s]+)\)", r'<a href="\2">\1</a>', s)
     s = re.sub(r"`([^`]+)`", r"<code>\1</code>", s)
     s = re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", s)
     s = re.sub(r"(?<!\*)\*(?!\s)([^*]+?)\*(?!\*)", r"<em>\1</em>", s)

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- ai-os installer · build 2026.07.01g · generated from core/ by tools/build_installer.py — do not edit index.html by hand -->
+<!-- ai-os installer · build 2026.07.01h · generated from core/ by tools/build_installer.py — do not edit index.html by hand -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -46,7 +46,9 @@
   .logo .rag .r{background:var(--red)} .logo .rag .a{background:var(--amber)} .logo .rag .g{background:var(--green)}
   .navlink{font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;color:var(--ink-2);text-decoration:none}
   .navlink:hover{color:var(--ink)}
+  @media(max-width:1080px){header.top .wrap{gap:16px}}
   @media(max-width:820px){.navhide{display:none}}
+  @media(max-width:560px){.navhide-sm{display:none}}
   .btn{font-family:var(--mono);font-weight:600;font-size:13px;letter-spacing:.03em;cursor:pointer;border:1px solid var(--ink);border-radius:var(--r);padding:11px 16px;display:inline-flex;align-items:center;gap:9px;text-decoration:none;background:var(--ink);color:#fff;transition:transform .12s ease}
   .btn:hover{transform:translateY(-1px)}
   .btn.ghost{background:transparent;color:var(--ink)}
@@ -193,10 +195,11 @@
   <span class="logo"><span class="rag"><i class="r"></i><i class="a"></i><i class="g"></i></span> AI&nbsp;OS</span>
   <a class="navlink navhide" href="#flip">The flip</a>
   <a class="navlink navhide" href="#commands">Commands</a>
-  <a class="navlink navhide" href="guide.html">Field Guide</a>
+  <a class="navlink" href="guide.html">Field Guide</a>
   <a class="navlink navhide" href="#controls">Controls</a>
   <a class="navlink navhide" href="#rollout">Rollout</a>
   <a class="navlink navhide" href="#compare">Yours vs rented</a>
+  <a class="navlink navhide-sm" href="#domain">Second act</a>
   <a class="btn sm go" href="#rollout">Copy the prompt</a>
 </div></header>
 
@@ -506,15 +509,19 @@
     #domain .pill{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;white-space:nowrap;border-radius:999px;padding:3px 9px;border:1px solid var(--line-2);color:var(--ink-3);font-style:normal}
     #domain .pill.on{color:var(--green-deep);border-color:var(--green-deep);background:var(--green-bg)}
     @media(max-width:560px){#domain .bench{grid-template-columns:1fr}}
+    #domain details.hire{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);margin:0 0 12px}
+    #domain details.hire>summary{padding:16px 20px;font-size:16px}
+    #domain details.hire>summary .pill{margin-left:10px}
+    #domain details.hire .hirebody{padding:2px 20px 20px}
   </style>
   <div class="bench">
     <div class="role">
       <span class="rolehd">Career <em class="pill on">Live today</em></span>
-      <p>Learns how <i>you</i> write and drafts LinkedIn posts in your voice; keeps a living strategy for where your career is headed. Paste the prompt below to hire it.</p>
+      <p>Learns how <i>you</i> write and drafts LinkedIn posts in your voice; keeps a living strategy for where your career is headed. Open the career prompt below to hire it.</p>
     </div>
     <div class="role">
       <span class="rolehd">Projects <em class="pill on">Live today</em></span>
-      <p>Keeps a strategy, backlog, and decision log for a project you own &mdash; and drafts the weekly status you actually send. (It&#8217;s the same shape that runs this product.) Paste the second prompt below to hire it.</p>
+      <p>Keeps a strategy, backlog, and decision log for a project you own &mdash; and drafts the weekly status you actually send. (It&#8217;s the same shape that runs this product.) Open the projects prompt below to hire it.</p>
     </div>
     <div class="role">
       <span class="rolehd">Finances <em class="pill">Coming</em></span>
@@ -522,45 +529,57 @@
     </div>
     <div class="role">
       <span class="rolehd">Learning <em class="pill on">Live today</em></span>
-      <p>Plans what&#8217;s worth learning across everything you&#8217;re trying to master &mdash; a prioritized, prerequisite-ordered roadmap &mdash; then hands each topic to your tutor (<span style="font-family:var(--mono)">/teach</span>). Paste the third prompt below to hire it.</p>
+      <p>Plans what&#8217;s worth learning across everything you&#8217;re trying to master &mdash; a prioritized, prerequisite-ordered roadmap &mdash; then hands each topic to your tutor (<span style="font-family:var(--mono)">/teach</span>). Open the learning prompt below to hire it.</p>
     </div>
   </div>
   <p style="color:var(--ink-3);font-size:.9em;margin:0 0 30px">Career, Projects and Learning are the three you can paste today. Finances is the same pattern, on the way &mdash; and because it&#8217;s all plain files you own, an expert can stand one up now by reusing the shape.</p>
-  <p style="color:var(--ink-3);font-size:.94em;margin-bottom:30px">Paste one more prompt and it learns how <i>you</i> write from a few things you&#8217;ve written, keeps a living strategy for where you&#8217;re headed, and drafts LinkedIn posts that sound like <b>you</b>, not generic AI. It won&#8217;t nail your voice from three samples &mdash; no tool does &mdash; so it gets it <i>roughly</i> right, shows you what it learned, and sharpens every time you edit a draft. <b>You&#8217;re always the judge, and you do the posting &mdash; nothing is ever published for you.</b></p>
-
-  <div class="term">
-    <div class="termbar">
-      <span class="tdots"><i></i><i></i><i></i></span>
-      <span class="fname">career-manager-prompt.txt</span>
-      <button class="copybtn" id="copyBtn2" onclick="copyPrompt2()">Copy prompt</button>
+  <details class="hire">
+    <summary><span>Hire the career manager <em class="pill on">Live today</em></span><span class="pm">+</span></summary>
+    <div class="hirebody">
+      <p style="color:var(--ink-3);font-size:.94em;margin:0 0 22px">The <b>career manager</b> learns how <i>you</i> write from a few things you&#8217;ve written and drafts LinkedIn posts that sound like <b>you</b>, not generic AI. It won&#8217;t nail your voice from three samples &mdash; no tool does &mdash; so it gets it <i>roughly</i> right, shows you what it learned, and sharpens every time you edit a draft. <b>You&#8217;re always the judge, and you do the posting &mdash; nothing is ever published for you.</b></p>
+      <div class="term">
+        <div class="termbar">
+          <span class="tdots"><i></i><i></i><i></i></span>
+          <span class="fname">career-manager-prompt.txt</span>
+          <button class="copybtn" id="copyBtn2" onclick="copyPrompt2()">Copy prompt</button>
+        </div>
+        <pre class="code" id="promptBox2">Loading…</pre>
+      </div>
+      <p class="runline"><span class="caret">❯</span> the loop that makes it <i>you</i>: every time you reword one of its drafts, run <span style="color:var(--green-deep);font-weight:600">/career voice learn</span> &mdash; it remembers the difference.</p>
     </div>
-    <pre class="code" id="promptBox2">Loading…</pre>
-  </div>
-  <p class="runline"><span class="caret">❯</span> the loop that makes it <i>you</i>: every time you reword one of its drafts, run <span style="color:var(--green-deep);font-weight:600">/career voice learn</span> &mdash; it remembers the difference.</p>
+  </details>
 
-  <p style="color:var(--ink-3);font-size:.94em;margin:34px 0 30px">And the <b>projects manager</b> &mdash; the same STRATEGY / BACKLOG / DECISIONS shape that runs this very product. Paste it, answer a short interview about <b>one project you own</b> (its goal, who reads the status, how often you report), and it drafts the weekly status update you actually send &mdash; pulled from the plan, not written from scratch. <b>You&#8217;re always the judge, and you do the sending &mdash; nothing is ever sent for you.</b></p>
-
-  <div class="term">
-    <div class="termbar">
-      <span class="tdots"><i></i><i></i><i></i></span>
-      <span class="fname">projects-manager-prompt.txt</span>
-      <button class="copybtn" id="copyBtn4" onclick="copyPrompt4()">Copy prompt</button>
+  <details class="hire">
+    <summary><span>Hire the projects manager <em class="pill on">Live today</em></span><span class="pm">+</span></summary>
+    <div class="hirebody">
+      <p style="color:var(--ink-3);font-size:.94em;margin:0 0 22px">The <b>projects manager</b> &mdash; the same STRATEGY / BACKLOG / DECISIONS shape that runs this very product. Paste it, answer a short interview about <b>one project you own</b> (its goal, who reads the status, how often you report), and it drafts the weekly status update you actually send &mdash; pulled from the plan, not written from scratch. <b>You&#8217;re always the judge, and you do the sending &mdash; nothing is ever sent for you.</b></p>
+      <div class="term">
+        <div class="termbar">
+          <span class="tdots"><i></i><i></i><i></i></span>
+          <span class="fname">projects-manager-prompt.txt</span>
+          <button class="copybtn" id="copyBtn4" onclick="copyPrompt4()">Copy prompt</button>
+        </div>
+        <pre class="code" id="promptBox4">Loading…</pre>
+      </div>
+      <p class="runline"><span class="caret">❯</span> once it&#8217;s running, type <span style="color:var(--green-deep);font-weight:600">/projects update</span> anytime and it drafts your next status from where things actually stand.</p>
     </div>
-    <pre class="code" id="promptBox4">Loading…</pre>
-  </div>
-  <p class="runline"><span class="caret">❯</span> once it&#8217;s running, type <span style="color:var(--green-deep);font-weight:600">/projects update</span> anytime and it drafts your next status from where things actually stand.</p>
+  </details>
 
-  <p style="color:var(--ink-3);font-size:.94em;margin:34px 0 30px">And the <b>learning manager</b> &mdash; the same STRATEGY / BACKLOG / DECISIONS shape, pointed at everything you&#8217;re trying to learn. Answer a short interview about your goals and it drafts a <b>prioritized, prerequisite-ordered roadmap</b> &mdash; what to learn, in what order, and where to start &mdash; then hands each topic to <span style="font-family:var(--mono);color:var(--ink)">/teach</span>, the tutor that already ships with your AI OS. <b>It plans; /teach teaches.</b> No connector, nothing to send &mdash; just a standing strategist that stops you learning at random.</p>
-
-  <div class="term">
-    <div class="termbar">
-      <span class="tdots"><i></i><i></i><i></i></span>
-      <span class="fname">learning-manager-prompt.txt</span>
-      <button class="copybtn" id="copyBtn5" onclick="copyPrompt5()">Copy prompt</button>
+  <details class="hire">
+    <summary><span>Hire the learning manager <em class="pill on">Live today</em></span><span class="pm">+</span></summary>
+    <div class="hirebody">
+      <p style="color:var(--ink-3);font-size:.94em;margin:0 0 22px">The <b>learning manager</b> &mdash; the same STRATEGY / BACKLOG / DECISIONS shape, pointed at everything you&#8217;re trying to learn. Answer a short interview about your goals and it drafts a <b>prioritized, prerequisite-ordered roadmap</b> &mdash; what to learn, in what order, and where to start &mdash; then hands each topic to <span style="font-family:var(--mono);color:var(--ink)">/teach</span>, the tutor that already ships with your AI OS. <b>It plans; /teach teaches.</b> No connector, nothing to send &mdash; just a standing strategist that stops you learning at random.</p>
+      <div class="term">
+        <div class="termbar">
+          <span class="tdots"><i></i><i></i><i></i></span>
+          <span class="fname">learning-manager-prompt.txt</span>
+          <button class="copybtn" id="copyBtn5" onclick="copyPrompt5()">Copy prompt</button>
+        </div>
+        <pre class="code" id="promptBox5">Loading…</pre>
+      </div>
+      <p class="runline"><span class="caret">❯</span> once it&#8217;s running, type <span style="color:var(--green-deep);font-weight:600">/learning review</span> anytime and it tells you which topics have gone cold and are worth revisiting.</p>
     </div>
-    <pre class="code" id="promptBox5">Loading…</pre>
-  </div>
-  <p class="runline"><span class="caret">❯</span> once it&#8217;s running, type <span style="color:var(--green-deep);font-weight:600">/learning review</span> anytime and it tells you which topics have gone cold and are worth revisiting.</p>
+  </details>
 </div></section>
 
 <!-- ============ FAQ ============ -->
@@ -587,9 +606,9 @@
 a persistent memory, a structured notes vault, and a starter set of skills — and
 then you will operate it as my chief-of-staff going forward.
 
-(This installer is AI-OS build 2026.07.01g. When you build my system, record a line
-"AI-OS installer build: 2026.07.01g" in my CLAUDE.md, AND write the bare build string
-2026.07.01g as the only contents of a file ~/ai-os/.aios-version, so a later upgrade or
+(This installer is AI-OS build 2026.07.01h. When you build my system, record a line
+"AI-OS installer build: 2026.07.01h" in my CLAUDE.md, AND write the bare build string
+2026.07.01h as the only contents of a file ~/ai-os/.aios-version, so a later upgrade or
 health check can tell what changed since mine without parsing prose.)
 
 ABOUT ME (context, refine via the interview below)
@@ -619,7 +638,7 @@ is a clean machine — ASK me before building anything. Never default to a rebui
   not silently replace it. Show me a short diff of what you'd ADD, apply it only
   after my OK, then STOP — skip PHASE 0 and the rest of the build. If I recorded an
   "AI-OS installer build:" line in my CLAUDE.md, compare it to this installer's build
-  (2026.07.01g) to focus the diff on what's new since mine, and update that line — and
+  (2026.07.01h) to focus the diff on what's new since mine, and update that line — and
   the ~/ai-os/.aios-version file — once the additions are applied.
 - IF IT DOESN'T → this is a fresh install: continue with PHASE 0 below and build
   the whole system.
