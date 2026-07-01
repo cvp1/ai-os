@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- ai-os installer · build 2026.07.01e · generated from core/ by tools/build_installer.py — do not edit index.html by hand -->
+<!-- ai-os installer · build 2026.07.01f · generated from core/ by tools/build_installer.py — do not edit index.html by hand -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -338,8 +338,8 @@
   <p class="lede" style="margin-bottom:30px">No code, no terminal. Install one app, connect your mail &amp; calendar, paste the prompt below, answer its questions.</p>
   <div class="steps">
     <div class="step"><div><h4>Install the Claude desktop app &amp; sign in</h4><p>Download the Claude desktop app from <span class="kbd">claude.com/download</span> — a normal app installer for Mac (<span class="kbd">.dmg</span>) or Windows (<span class="kbd">.exe</span>). Open it and sign in with your Claude account. <b>You never need a terminal or any code.</b> <i>The app runs on a paid Claude plan — Pro is about $20/month. This setup is free; the AI that powers it isn&#8217;t.</i></p><p style="margin-top:10px;color:var(--ink-3);font-size:.92em"><b>On Windows, one extra step:</b> the first time you open it, the app may ask you to install <b>Git for Windows</b> first — accept, let it install, then reopen the app. (Mac has nothing extra.)</p><p style="margin-top:8px;color:var(--ink-3);font-size:.92em">Prefer the command line? The Claude Code CLI at <span class="kbd">claude.com/claude-code</span> is the very same engine — every step below works there too.</p></div></div>
-    <div class="step"><div><h4>Connect your mail &amp; calendar</h4><p>On your Claude account at <span class="kbd">claude.ai</span> &rarr; Settings &rarr; Connectors, turn on <b>Google (Gmail + Calendar)</b> <i>or</i> <b>Microsoft 365</b> and sign in to authorize it. Your AI OS only ever <i>reads</i> your mail and calendar and drafts locally for you to send — so read-only takes nothing away: <b>Microsoft 365 is every bit as capable as Google here.</b> The difference is access, not capability.</p><p style="margin-top:10px;color:var(--ink-3);font-size:.92em"><b>Pick the one you can actually connect.</b> <b>Google</b> is quickest — most people, personal Gmail included, can connect it themselves. <b>Microsoft 365</b> needs a <i>work</i> account your organization has enabled — a personal <span class="kbd">@outlook.com</span> or <span class="kbd">@hotmail.com</span> address can&#8217;t connect at all.</p><p style="margin-top:8px;color:var(--ink-3);font-size:.92em">Most people can approve it themselves; some tenants still need a one-time admin consent — so <b>confirm you can connect <i>before</i> you invest time.</b> If the connection ever needs a fresh sign-in, Claude tells you and reconnects the moment you re-authorize. The setup prompt can walk you through it.</p></div></div>
-    <div class="step"><div><h4>Open the Code tab and turn on Auto mode</h4><p>In the app, click the <b>Code</b> tab, then create or pick a folder to be your AI OS home — e.g. a new folder called <span class="kbd">ai-os</span>. That folder is where your memory and notes live, on your own machine.</p><p style="margin-top:10px"><i><b>Before you paste anything, switch the session to Auto.</b> The mode control sits in the <b>top-left corner, just above where you type</b> — you'll get a one-time confirmation dialog; accept it. (If Auto isn't offered there, enable it once in the app's <b>Settings</b>.)</i></p><p style="margin-top:8px;color:var(--ink-3);font-size:.92em">This builds your whole system in one pass instead of stopping at every file — and it can still only <b>read and draft</b> your mail and calendar, never send, delete, or post. Near the end it asks permission to set up your scheduled briefs; that's expected — say yes.</p></div></div>
+    <div class="step"><div><h4>Connect your mail &amp; calendar</h4><p>On your Claude account at <span class="kbd">claude.ai</span> &rarr; Settings &rarr; Connectors, turn on <b>Google (Gmail + Calendar)</b> <i>or</i> <b>Microsoft 365</b> and sign in to authorize it. Your AI OS works read-and-draft: it reads your mail and calendar, drafts locally, and anything outward waits for your OK — that per-action approval is the guarantee on either provider. On Microsoft 365 the connector itself is read-only on top, which takes nothing away: <b>Microsoft 365 is every bit as capable as Google here.</b> The difference is access, not capability.</p><p style="margin-top:10px;color:var(--ink-3);font-size:.92em"><b>Pick the one you can actually connect.</b> <b>Google</b> is quickest — most people, personal Gmail included, can connect it themselves. <b>Microsoft 365</b> needs a <i>work</i> account your organization has enabled — a personal <span class="kbd">@outlook.com</span> or <span class="kbd">@hotmail.com</span> address can&#8217;t connect at all.</p><p style="margin-top:8px;color:var(--ink-3);font-size:.92em">Most people can approve it themselves; some tenants still need a one-time admin consent — so <b>confirm you can connect <i>before</i> you invest time.</b> If the connection ever needs a fresh sign-in, Claude tells you and reconnects the moment you re-authorize. The setup prompt can walk you through it.</p></div></div>
+    <div class="step"><div><h4>Open the Code tab and turn on Auto mode</h4><p>In the app, click the <b>Code</b> tab, then create or pick a folder to be your AI OS home — e.g. a new folder called <span class="kbd">ai-os</span>. That folder is where your memory and notes live, on your own machine.</p><p style="margin-top:10px"><i><b>Before you paste anything, switch the session to Auto.</b> The mode control sits in the <b>top-left corner, just above where you type</b> — you'll get a one-time confirmation dialog; accept it. (If Auto isn't offered there, enable it once in the app's <b>Settings</b>.)</i></p><p style="margin-top:8px;color:var(--ink-3);font-size:.92em">This builds your whole system in one pass instead of stopping at every file — and the guardrail that matters doesn't move: your mail and calendar stay <b>read-and-draft</b>, and anything that would go outward waits for your per-action OK (on Microsoft 365, the connector itself can't write at all). Near the end it asks permission to schedule the quiet data refreshes that keep your morning brief instant; that's expected — say yes.</p></div></div>
     <div class="step"><div><h4>Paste the setup prompt as your first message</h4><p>Copy it below, paste the whole thing, and send.</p></div></div>
     <div class="step"><div><h4>Answer the interview</h4><p>It asks about your role, your projects, the people you work with, and how you like to work — then builds everything shaped to you and explains what it made.</p></div></div>
     <div class="step"><div><h4>See it work — your first win</h4><p>The moment the build finishes, it hands you your actual day — today's meetings, what's waiting on you, deadlines this week — proof it's wired to your real mail and calendar. That's the payoff, and you didn't have to do a thing. From your <b>next</b> session on, type <span class="kbd">/brief</span> any morning to get it again for that day; your other commands (<span class="kbd">/triage</span>, <span class="kbd">/prep</span>, <span class="kbd">/recall</span>) work the same way — <b>close this folder and reopen it (or start a new chat) once, and they're all ready.</b></p></div></div>
@@ -439,7 +439,7 @@
         </tr>
         <tr>
           <th>What it does on its own</th>
-          <td class="ours">Read-only connectors + approve-before-send &mdash; on by default, no mode to switch on</td>
+          <td class="ours">Reads &amp; drafts; every outward action waits for your per-action OK &mdash; on by default, no mode to switch on (on M365 the connector is read-only outright)</td>
           <td>Drafts first; doesn't auto-send</td>
           <td>Notes &amp; drafting assistant</td>
           <td>Knowledge workspace</td>
@@ -478,7 +478,7 @@
 <section id="autopilot"><div class="wrap reveal">
   <span class="eyebrow">When it&#8217;s earning its keep · let it run on a schedule</span>
   <h2 class="display" style="margin-top:14px">Once you trust it, let it run without you.</h2>
-  <p class="lede" style="margin-bottom:24px">When your <span style="color:var(--green-deep);font-weight:600">/brief</span> and <span style="color:var(--green-deep);font-weight:600">/triage</span> are part of your morning, the next step is to stop typing them. Claude&#8217;s desktop app can run a command for you on a schedule &mdash; a 7am brief waiting when you sit down &mdash; and because it runs <b>on your machine in Ask mode</b>, it still drafts and waits: anything it would send <b>stalls for your OK</b>, exactly like when you&#8217;re driving it yourself. <b>Nothing is sent while you&#8217;re away.</b></p>
+  <p class="lede" style="margin-bottom:24px">Setup already scheduled the quiet <i>data refreshes</i> that keep your commands instant — this is different: scheduling the <b>brief itself</b>, so it&#8217;s written and waiting when you sit down. When your <span style="color:var(--green-deep);font-weight:600">/brief</span> and <span style="color:var(--green-deep);font-weight:600">/triage</span> are part of your morning, the next step is to stop typing them. Claude&#8217;s desktop app can run a command for you on a schedule &mdash; a 7am brief waiting when you sit down &mdash; and because it runs <b>on your machine in Ask mode</b>, it still drafts and waits: anything it would send <b>stalls for your OK</b>, exactly like when you&#8217;re driving it yourself. <b>Nothing is sent while you&#8217;re away.</b></p>
   <p style="color:var(--ink-3);font-size:.94em;margin-bottom:30px">Read this part &mdash; scheduling has real edges:<br><b>· It only runs while the app is open and your machine is awake.</b> A sleeping laptop silently skips the run (it catches up on wake, maybe at an odd hour) &mdash; pick a time your computer is on.<br><b>· A green &#8220;done&#8221; doesn&#8217;t prove the brief worked.</b> Open the run and read it.<br><b>· Every unattended run uses your Claude plan</b> like a normal session &mdash; a daily brief is a recurring draw that can crowd a ~$20 Pro plan, so start with one task a few days a week and watch your usage.<br>Paste the prompt below and it walks you through setup and hands you the exact text to schedule.</p>
 
   <div class="term">
@@ -587,9 +587,9 @@
 a persistent memory, a structured notes vault, and a starter set of skills — and
 then you will operate it as my chief-of-staff going forward.
 
-(This installer is AI-OS build 2026.07.01e. When you build my system, record a line
-"AI-OS installer build: 2026.07.01e" in my CLAUDE.md, AND write the bare build string
-2026.07.01e as the only contents of a file ~/ai-os/.aios-version, so a later upgrade or
+(This installer is AI-OS build 2026.07.01f. When you build my system, record a line
+"AI-OS installer build: 2026.07.01f" in my CLAUDE.md, AND write the bare build string
+2026.07.01f as the only contents of a file ~/ai-os/.aios-version, so a later upgrade or
 health check can tell what changed since mine without parsing prose.)
 
 ABOUT ME (context, refine via the interview below)
@@ -619,7 +619,7 @@ is a clean machine — ASK me before building anything. Never default to a rebui
   not silently replace it. Show me a short diff of what you'd ADD, apply it only
   after my OK, then STOP — skip PHASE 0 and the rest of the build. If I recorded an
   "AI-OS installer build:" line in my CLAUDE.md, compare it to this installer's build
-  (2026.07.01e) to focus the diff on what's new since mine, and update that line — and
+  (2026.07.01f) to focus the diff on what's new since mine, and update that line — and
   the ~/ai-os/.aios-version file — once the additions are applied.
 - IF IT DOESN'T → this is a fresh install: continue with PHASE 0 below and build
   the whole system.
@@ -688,11 +688,19 @@ E. Pain & priorities
 ────────────────────────────────────────────────────────
 PHASE 1 — BUILD THE SYSTEM (after I confirm the interview summary)
 ────────────────────────────────────────────────────────
-Create the following in my home directory (ask me for the path; default ~/ai-os).
+Create the following in my AI-OS home folder. If this session is already open in a
+folder I chose for it (the desktop app's Code tab works this way), that folder IS my
+AI-OS home — confirm it with me; otherwise ask me for the path (default ~/ai-os).
+ONE RULE THAT GOVERNS THE WHOLE PROMPT: every "~/ai-os" below — in the settings files
+and their allow rules, the memory location, the skills you build, the backup paths,
+and .aios-version — is shorthand for MY AI-OS home. If mine differs, substitute my
+real path everywhere; nothing below requires the literal name ~/ai-os.
 Explain each piece in plain language as you create it.
 
 0) PERMISSIONS — set up a quiet, safe workspace FIRST, before building anything else.
-   Create a settings file at ~/ai-os/.claude/settings.json with EXACTLY this content:
+   Create a settings file at <my AI-OS home>/.claude/settings.json with EXACTLY this
+   content (one permitted change: if my AI-OS home isn't literally ~/ai-os, put my
+   real path wherever ~/ai-os appears in the allow rules):
        {
          "permissions": {
            "defaultMode": "acceptEdits",
@@ -715,8 +723,10 @@ Explain each piece in plain language as you create it.
        }
    Then explain to me in plain language what this does: it writes my durable safety rules —
    you may freely create and edit files inside this AI-OS folder and my Claude skills
-   folder and draft on my behalf, while you stay unable to send or delete my mail (the
-   connectors are read-only) and are blocked from risky commands (deleting whole folders,
+   folder and draft on my behalf, while anything outward — sending mail, changing my
+   calendar, posting — waits for my explicit per-action OK under the propose-only rule
+   (that approval is the guarantee; on Microsoft 365 the connector itself is read-only
+   on top of it), and you are blocked from risky commands (deleting whole folders,
    fetching from the internet, or touching my system and login files). You only ever write
    inside this AI-OS folder and my Claude skills folder. These rules take full effect from
    my next session on; for THIS first build I should already have set the session to Auto
@@ -1008,7 +1018,10 @@ Explain each piece in plain language as you create it.
          a work account won't authorize, tell me I may need my IT admin —
          before I sink time into the build.
        • Google Workspace → Gmail + Google Calendar (Drive if available) — connects
-         self-serve for an individual, personal Gmail included.
+         self-serve for an individual, personal Gmail included. Unlike M365, this
+         connector does carry some write tools (e.g. creating a draft or a calendar
+         event). Treat them as the approved-push path ONLY, per the write rules
+         below — never call a write tool except as one explicit, approved push.
      If it isn't connected — or /mcp shows it needs sign-in — point me to claude.ai →
      Settings → Connectors (or run /mcp) to authorize it; once I re-authorize, Claude
      reconnects on its own. Then verify by reading my next 3 calendar events and my
@@ -1042,7 +1055,10 @@ Explain each piece in plain language as you create it.
        - Draft replies / new mail / status updates / doc edits as local files under
          outbox/ (or as notes in the vault), show them to me, and push (send mail,
          create events, edit docs) ONLY after I approve — one write per approval,
-         never a write per keystroke.
+         never a write per keystroke. What "push" means depends on my backend: on
+         Google the connector has write tools for this approved push; on Microsoft
+         365 the connector is read-only, so hand me the approved draft to send
+         myself. Either way, the last click is mine.
        - Batch related writes (e.g. several calendar updates) into one approved pass
          rather than firing each immediately.
 
@@ -1056,6 +1072,12 @@ Explain each piece in plain language as you create it.
      zero-latency and fresh. Keep it to that single daily pass — do NOT add steady
      background polling (that's what trips rate limits). On a 429 it backs off and
      leaves the cache in place. Record the schedule + brief time as a project memory.
+     HOW TO SCHEDULE IT (this and every scheduled pass below): on Mac/Linux use cron —
+     the one-time crontab approval prompt is expected; I'll say yes. On Windows there
+     is NO cron: use Task Scheduler (schtasks) if it works here, and if you can't
+     schedule reliably, SKIP the timed passes and tell me plainly — everything still
+     works on demand; /brief just refreshes at read time and takes a few moments
+     longer.
 
    - SCHEDULED /prep PRE-WARM FOR BACK-TO-BACK DAYS. On packed days there's no gap to
      run /prep live, so pre-build it. As part of the morning warm-sync, scan today's
@@ -1117,19 +1139,24 @@ Explain each piece in plain language as you create it.
       ~/ai-os/backups/<YYYY-MM-DD-HHMM>/ with a SHA256SUMS file inside. Keep the newest 7
       (configurable) and prune older ones.
    c) OFFSITE (encrypted) — copy the full snapshot OFF this machine into the cloud I
-      already have. The mail connectors you wired are READ-ONLY (they can't upload), so do
+      already have. The mail/calendar connectors are the wrong path for this (M365's is
+      read-only outright, and file upload isn't what any of them are wired for), so do
       NOT try to push through them — instead use the local cloud-SYNC folder both Google
       and Microsoft give you, and let the desktop sync app do the upload (no API key, works
       the same either way). Detect the first of these that exists and copy the bundle into
       <folder>/ai-os-backups/: ~/Library/CloudStorage/OneDrive-*, ~/OneDrive,
-      ~/Library/CloudStorage/GoogleDrive-*, ~/Google Drive, ~/Dropbox. If none exists, tell
+      ~/Library/CloudStorage/GoogleDrive-*, ~/Google Drive, ~/Dropbox. On Windows the same
+      folders live elsewhere — check ~/OneDrive* (including "OneDrive - <MyOrg>"), the
+      Google Drive for Desktop location (a mounted drive letter like G:\My Drive, or the
+      mirror folder chosen in its settings), and ~/Dropbox. If none exists, tell
       me and keep the local snapshot — never fail silently, never skip the local copy.
 
    ENCRYPTION (default ON, because this copy leaves my machine):
    - Encrypt the full bundle before it goes offsite — prefer `age`, fall back to `gpg`
      symmetric (use whichever is installed; offer to install age). Generate a passphrase at
-     setup and store it ONLY locally at ~/ai-os/.backup-key (chmod 600) — never inside any
-     bundle. Tell me to write the passphrase down somewhere safe, and explain the honest
+     setup and store it ONLY locally at ~/ai-os/.backup-key (chmod 600 on Mac/Linux; on
+     Windows chmod is a no-op — the file is guarded only by my user profile; say so) —
+     never inside any bundle. Tell me to write the passphrase down somewhere safe, and explain the honest
      trade: if I lose it, only the OFFSITE copy is unreadable — my live files and the local
      snapshots are still right here. Power users can pass --no-encrypt.
 
@@ -1237,6 +1264,8 @@ Confirm this folder has a working AI-OS: a CLAUDE.md plus a memory/ folder, OR A
 skills under ~/.claude/skills/ (e.g. brief, triage). If you can't find one, STOP and
 tell me: "Set up your AI OS first and have your first win — then come back for this."
 Do not build a career manager onto a machine with no AI-OS.
+One path note: my AI-OS home may not be literally ~/ai-os — it's the folder this
+session is open in. Wherever it is, read every ~/ai-os path below as that folder.
 
 WHAT YOU'LL BUILD (all under ~/ai-os/career/ so it shares my memory and /recall):
 a voice model from a few of my own writing samples, a living career strategy, and a
@@ -1273,6 +1302,13 @@ information in anything public. Generalize names to 'a large enterprise'/'a rece
 project'; never reproduce internal documents or non-public numbers; when in doubt, cut
 and flag." Ask me a few light questions to fill the strategy draft, but keep it short —
 I can refine it later with /career onboard.
+Then make the "shares my /recall" promise real: open ~/.claude/skills/recall/SKILL.md
+and find the work-product manifest it reads (the small file listing which command
+folders /recall surfaces). Register this workspace in it — STRATEGY.md ("career
+strategy"), BACKLOG.md ("career moves + content ideas"), DECISIONS.md ("career
+decisions"), research/ ("career research") — read live at query time, never copied.
+If my install has no such manifest (an older AI-OS), don't invent one: tell me plainly
+that /recall won't see this workspace until I re-run the setup prompt to upgrade.
 
 PHASE C — INSTALL THE SKILL (restart-free)
 Write ~/ai-os/career/personas/manager.md and personas/researcher.md (plain persona
@@ -1303,6 +1339,9 @@ skills under ~/.claude/skills/ like brief and triage) AND that I've run /brief o
 /triage at least once and liked it. If you can't find an AI-OS, STOP and tell me: "Set
 up your AI OS and get your morning brief working first — then come back to put it on a
 schedule." Don't schedule a command I've never run.
+One path note: my AI-OS home may not be literally ~/ai-os — it's the folder this
+session is open in. Read every ~/ai-os below as that folder, and when you hand me
+the task prompt to schedule, substitute my real path if it differs.
 
 WHAT WE'RE DOING — AND THE ONE SURFACE WE USE
 Claude's desktop app can run a command on a schedule. There are three ways and they are
@@ -1318,15 +1357,17 @@ Say this to me plainly in a sentence or two so I understand WHY Local + Ask mode
 safe path before we touch anything.
 
 THE SAFETY RULE — STATE IT, THEN ENCODE IT
-Two layers, and we want both. (1) My mail/calendar connector is READ-ONLY — it has no
-"send", so even unattended this task CANNOT send mail or change my calendar, in any
-mode. (2) But a schedule can still do other outward things (write to a synced folder,
-run a command, or any send-capable tool I add later), so we set the task to ASK mode:
-anything it isn't already allowed to do STALLS and waits for me in the run's session.
-And the one footgun: on the first "Run now" I must NEVER click "always allow" on
-anything that sends or posts — that grants standing approval and permanently defeats the
-stall. "Allow once," or just leave it stalled and approve later from the Scheduled
-session.
+Two layers — and the FIRST one is the guarantee. (1) ASK MODE IS THE RULE: we set the
+task to Ask, so anything the run isn't already allowed to do — sending mail, changing
+my calendar, writing to a synced folder, any tool that acts outward — STALLS and waits
+for me in the run's session. That stall is what keeps an unattended run propose-only,
+whatever tools exist. (2) The connector layer is a bonus that depends on my provider:
+on Microsoft 365 the connector itself is read-only — there is no "send" to misuse. On
+Google the connector does carry some write tools (drafts, calendar changes) — which is
+exactly why Ask mode is the rule, not a nicety. And the one footgun: on the first
+"Run now" I must NEVER click "always allow" on anything that sends or posts — that
+grants standing approval and permanently defeats the stall. "Allow once," or just
+leave it stalled and approve later from the Scheduled session.
 
 WALK ME THROUGH SETUP (in the desktop app, no terminal) — number these and wait for me
 at each step:
@@ -1373,6 +1414,8 @@ Confirm this folder has a working AI-OS: a CLAUDE.md plus a memory/ folder, OR A
 skills under ~/.claude/skills/ (e.g. brief, triage). If you can't find one, STOP and
 tell me: "Set up your AI OS first and have your first win — then come back for this."
 Do not build a projects manager onto a machine with no AI-OS.
+One path note: my AI-OS home may not be literally ~/ai-os — it's the folder this
+session is open in. Wherever it is, read every ~/ai-os path below as that folder.
 
 WHAT YOU'LL BUILD (all under ~/ai-os/projects/ so it shares my memory and /recall):
 a manager + researcher for ONE project I own, a living strategy/backlog/decision log for
@@ -1404,6 +1447,13 @@ records standing up the manager), and RULES.md with this confidentiality guardra
 team. Generalize names to 'a large enterprise'/'a client'; never reproduce internal
 documents or non-public numbers in anything shared outward; when in doubt, cut and flag."
 Keep the interview light — I can refine it later with /projects onboard.
+Then make the "shares my /recall" promise real: open ~/.claude/skills/recall/SKILL.md
+and find the work-product manifest it reads (the small file listing which command
+folders /recall surfaces). Register ~/ai-os/projects/<slug>/ in it — STRATEGY.md ("the
+project's strategy"), BACKLOG.md ("project backlog + risks"), DECISIONS.md ("project
+decisions"), research/ ("project research") — read live at query time, never copied.
+If my install has no such manifest (an older AI-OS), don't invent one: tell me plainly
+that /recall won't see this workspace until I re-run the setup prompt to upgrade.
 
 PHASE C — INSTALL THE SKILL (restart-free)
 Write ~/ai-os/projects/personas/manager.md and personas/researcher.md (plain persona files
@@ -1434,6 +1484,8 @@ Confirm this folder has a working AI-OS: a CLAUDE.md plus a memory/ folder, OR A
 skills under ~/.claude/skills/ (e.g. brief, triage). If you can't find one, STOP and
 tell me: "Set up your AI OS first and have your first win — then come back for this."
 Do not build a learning manager onto a machine with no AI-OS.
+One path note: my AI-OS home may not be literally ~/ai-os — it's the folder this
+session is open in. Wherever it is, read every ~/ai-os path below as that folder.
 
 WHAT YOU'LL BUILD (all under ~/ai-os/learning/ so it shares my memory and /recall):
 a manager + researcher for everything I'm trying to learn, a living portfolio of my learning
@@ -1483,6 +1535,14 @@ syllabus or a lesson (that's /teach's job), and never claims to teach. It drafts
 digests; I decide what to start, pause, or drop. Nothing here is sent anywhere. The review digest is
 a weekly 'what to revisit', not per-card spaced repetition."
 Keep the interview light — I can refine it later with /learning onboard.
+Then make the "shares my /recall" promise real: open ~/.claude/skills/recall/SKILL.md
+and find the work-product manifest it reads (the small file listing which command
+folders /recall surfaces). Register ~/ai-os/learning/ in it — STRATEGY.md ("learning
+goals + priorities"), BACKLOG.md ("the cross-goal topic queue"), DECISIONS.md
+("learning decisions"), research/ ("roadmap research") — read live at query time,
+never copied. If my install has no such manifest (an older AI-OS), don't invent one:
+tell me plainly that /recall won't see this workspace until I re-run the setup prompt
+to upgrade.
 
 PHASE C — INSTALL THE SKILL (restart-free)
 Write ~/ai-os/learning/personas/manager.md and personas/researcher.md (plain persona files the

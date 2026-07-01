@@ -103,11 +103,19 @@ E. Pain & priorities
 ────────────────────────────────────────────────────────
 PHASE 1 — BUILD THE SYSTEM (after I confirm the interview summary)
 ────────────────────────────────────────────────────────
-Create the following in my home directory (ask me for the path; default ~/ai-os).
+Create the following in my AI-OS home folder. If this session is already open in a
+folder I chose for it (the desktop app's Code tab works this way), that folder IS my
+AI-OS home — confirm it with me; otherwise ask me for the path (default ~/ai-os).
+ONE RULE THAT GOVERNS THE WHOLE PROMPT: every "~/ai-os" below — in the settings files
+and their allow rules, the memory location, the skills you build, the backup paths,
+and .aios-version — is shorthand for MY AI-OS home. If mine differs, substitute my
+real path everywhere; nothing below requires the literal name ~/ai-os.
 Explain each piece in plain language as you create it.
 
 0) PERMISSIONS — set up a quiet, safe workspace FIRST, before building anything else.
-   Create a settings file at ~/ai-os/.claude/settings.json with EXACTLY this content:
+   Create a settings file at <my AI-OS home>/.claude/settings.json with EXACTLY this
+   content (one permitted change: if my AI-OS home isn't literally ~/ai-os, put my
+   real path wherever ~/ai-os appears in the allow rules):
        {
          "permissions": {
            "defaultMode": "acceptEdits",
@@ -130,8 +138,10 @@ Explain each piece in plain language as you create it.
        }
    Then explain to me in plain language what this does: it writes my durable safety rules —
    you may freely create and edit files inside this AI-OS folder and my Claude skills
-   folder and draft on my behalf, while you stay unable to send or delete my mail (the
-   connectors are read-only) and are blocked from risky commands (deleting whole folders,
+   folder and draft on my behalf, while anything outward — sending mail, changing my
+   calendar, posting — waits for my explicit per-action OK under the propose-only rule
+   (that approval is the guarantee; on Microsoft 365 the connector itself is read-only
+   on top of it), and you are blocked from risky commands (deleting whole folders,
    fetching from the internet, or touching my system and login files). You only ever write
    inside this AI-OS folder and my Claude skills folder. These rules take full effect from
    my next session on; for THIS first build I should already have set the session to Auto

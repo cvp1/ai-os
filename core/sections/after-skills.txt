@@ -22,7 +22,10 @@
          a work account won't authorize, tell me I may need my IT admin —
          before I sink time into the build.
        • Google Workspace → Gmail + Google Calendar (Drive if available) — connects
-         self-serve for an individual, personal Gmail included.
+         self-serve for an individual, personal Gmail included. Unlike M365, this
+         connector does carry some write tools (e.g. creating a draft or a calendar
+         event). Treat them as the approved-push path ONLY, per the write rules
+         below — never call a write tool except as one explicit, approved push.
      If it isn't connected — or /mcp shows it needs sign-in — point me to claude.ai →
      Settings → Connectors (or run /mcp) to authorize it; once I re-authorize, Claude
      reconnects on its own. Then verify by reading my next 3 calendar events and my
@@ -56,7 +59,10 @@
        - Draft replies / new mail / status updates / doc edits as local files under
          outbox/ (or as notes in the vault), show them to me, and push (send mail,
          create events, edit docs) ONLY after I approve — one write per approval,
-         never a write per keystroke.
+         never a write per keystroke. What "push" means depends on my backend: on
+         Google the connector has write tools for this approved push; on Microsoft
+         365 the connector is read-only, so hand me the approved draft to send
+         myself. Either way, the last click is mine.
        - Batch related writes (e.g. several calendar updates) into one approved pass
          rather than firing each immediately.
 
@@ -70,6 +76,12 @@
      zero-latency and fresh. Keep it to that single daily pass — do NOT add steady
      background polling (that's what trips rate limits). On a 429 it backs off and
      leaves the cache in place. Record the schedule + brief time as a project memory.
+     HOW TO SCHEDULE IT (this and every scheduled pass below): on Mac/Linux use cron —
+     the one-time crontab approval prompt is expected; I'll say yes. On Windows there
+     is NO cron: use Task Scheduler (schtasks) if it works here, and if you can't
+     schedule reliably, SKIP the timed passes and tell me plainly — everything still
+     works on demand; /brief just refreshes at read time and takes a few moments
+     longer.
 
    - SCHEDULED /prep PRE-WARM FOR BACK-TO-BACK DAYS. On packed days there's no gap to
      run /prep live, so pre-build it. As part of the morning warm-sync, scan today's
@@ -131,19 +143,24 @@
       ~/ai-os/backups/<YYYY-MM-DD-HHMM>/ with a SHA256SUMS file inside. Keep the newest 7
       (configurable) and prune older ones.
    c) OFFSITE (encrypted) — copy the full snapshot OFF this machine into the cloud I
-      already have. The mail connectors you wired are READ-ONLY (they can't upload), so do
+      already have. The mail/calendar connectors are the wrong path for this (M365's is
+      read-only outright, and file upload isn't what any of them are wired for), so do
       NOT try to push through them — instead use the local cloud-SYNC folder both Google
       and Microsoft give you, and let the desktop sync app do the upload (no API key, works
       the same either way). Detect the first of these that exists and copy the bundle into
       <folder>/ai-os-backups/: ~/Library/CloudStorage/OneDrive-*, ~/OneDrive,
-      ~/Library/CloudStorage/GoogleDrive-*, ~/Google Drive, ~/Dropbox. If none exists, tell
+      ~/Library/CloudStorage/GoogleDrive-*, ~/Google Drive, ~/Dropbox. On Windows the same
+      folders live elsewhere — check ~/OneDrive* (including "OneDrive - <MyOrg>"), the
+      Google Drive for Desktop location (a mounted drive letter like G:\My Drive, or the
+      mirror folder chosen in its settings), and ~/Dropbox. If none exists, tell
       me and keep the local snapshot — never fail silently, never skip the local copy.
 
    ENCRYPTION (default ON, because this copy leaves my machine):
    - Encrypt the full bundle before it goes offsite — prefer `age`, fall back to `gpg`
      symmetric (use whichever is installed; offer to install age). Generate a passphrase at
-     setup and store it ONLY locally at ~/ai-os/.backup-key (chmod 600) — never inside any
-     bundle. Tell me to write the passphrase down somewhere safe, and explain the honest
+     setup and store it ONLY locally at ~/ai-os/.backup-key (chmod 600 on Mac/Linux; on
+     Windows chmod is a no-op — the file is guarded only by my user profile; say so) —
+     never inside any bundle. Tell me to write the passphrase down somewhere safe, and explain the honest
      trade: if I lose it, only the OFFSITE copy is unreadable — my live files and the local
      snapshots are still right here. Power users can pass --no-encrypt.
 

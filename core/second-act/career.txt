@@ -6,6 +6,8 @@ Confirm this folder has a working AI-OS: a CLAUDE.md plus a memory/ folder, OR A
 skills under ~/.claude/skills/ (e.g. brief, triage). If you can't find one, STOP and
 tell me: "Set up your AI OS first and have your first win — then come back for this."
 Do not build a career manager onto a machine with no AI-OS.
+One path note: my AI-OS home may not be literally ~/ai-os — it's the folder this
+session is open in. Wherever it is, read every ~/ai-os path below as that folder.
 
 WHAT YOU'LL BUILD (all under ~/ai-os/career/ so it shares my memory and /recall):
 a voice model from a few of my own writing samples, a living career strategy, and a
@@ -42,6 +44,13 @@ information in anything public. Generalize names to 'a large enterprise'/'a rece
 project'; never reproduce internal documents or non-public numbers; when in doubt, cut
 and flag." Ask me a few light questions to fill the strategy draft, but keep it short —
 I can refine it later with /career onboard.
+Then make the "shares my /recall" promise real: open ~/.claude/skills/recall/SKILL.md
+and find the work-product manifest it reads (the small file listing which command
+folders /recall surfaces). Register this workspace in it — STRATEGY.md ("career
+strategy"), BACKLOG.md ("career moves + content ideas"), DECISIONS.md ("career
+decisions"), research/ ("career research") — read live at query time, never copied.
+If my install has no such manifest (an older AI-OS), don't invent one: tell me plainly
+that /recall won't see this workspace until I re-run the setup prompt to upgrade.
 
 PHASE C — INSTALL THE SKILL (restart-free)
 Write ~/ai-os/career/personas/manager.md and personas/researcher.md (plain persona

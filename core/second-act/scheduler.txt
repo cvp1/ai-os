@@ -7,6 +7,9 @@ skills under ~/.claude/skills/ like brief and triage) AND that I've run /brief o
 /triage at least once and liked it. If you can't find an AI-OS, STOP and tell me: "Set
 up your AI OS and get your morning brief working first — then come back to put it on a
 schedule." Don't schedule a command I've never run.
+One path note: my AI-OS home may not be literally ~/ai-os — it's the folder this
+session is open in. Read every ~/ai-os below as that folder, and when you hand me
+the task prompt to schedule, substitute my real path if it differs.
 
 WHAT WE'RE DOING — AND THE ONE SURFACE WE USE
 Claude's desktop app can run a command on a schedule. There are three ways and they are
@@ -22,15 +25,17 @@ Say this to me plainly in a sentence or two so I understand WHY Local + Ask mode
 safe path before we touch anything.
 
 THE SAFETY RULE — STATE IT, THEN ENCODE IT
-Two layers, and we want both. (1) My mail/calendar connector is READ-ONLY — it has no
-"send", so even unattended this task CANNOT send mail or change my calendar, in any
-mode. (2) But a schedule can still do other outward things (write to a synced folder,
-run a command, or any send-capable tool I add later), so we set the task to ASK mode:
-anything it isn't already allowed to do STALLS and waits for me in the run's session.
-And the one footgun: on the first "Run now" I must NEVER click "always allow" on
-anything that sends or posts — that grants standing approval and permanently defeats the
-stall. "Allow once," or just leave it stalled and approve later from the Scheduled
-session.
+Two layers — and the FIRST one is the guarantee. (1) ASK MODE IS THE RULE: we set the
+task to Ask, so anything the run isn't already allowed to do — sending mail, changing
+my calendar, writing to a synced folder, any tool that acts outward — STALLS and waits
+for me in the run's session. That stall is what keeps an unattended run propose-only,
+whatever tools exist. (2) The connector layer is a bonus that depends on my provider:
+on Microsoft 365 the connector itself is read-only — there is no "send" to misuse. On
+Google the connector does carry some write tools (drafts, calendar changes) — which is
+exactly why Ask mode is the rule, not a nicety. And the one footgun: on the first
+"Run now" I must NEVER click "always allow" on anything that sends or posts — that
+grants standing approval and permanently defeats the stall. "Allow once," or just
+leave it stalled and approve later from the Scheduled session.
 
 WALK ME THROUGH SETUP (in the desktop app, no terminal) — number these and wait for me
 at each step:

@@ -6,6 +6,8 @@ Confirm this folder has a working AI-OS: a CLAUDE.md plus a memory/ folder, OR A
 skills under ~/.claude/skills/ (e.g. brief, triage). If you can't find one, STOP and
 tell me: "Set up your AI OS first and have your first win — then come back for this."
 Do not build a projects manager onto a machine with no AI-OS.
+One path note: my AI-OS home may not be literally ~/ai-os — it's the folder this
+session is open in. Wherever it is, read every ~/ai-os path below as that folder.
 
 WHAT YOU'LL BUILD (all under ~/ai-os/projects/ so it shares my memory and /recall):
 a manager + researcher for ONE project I own, a living strategy/backlog/decision log for
@@ -37,6 +39,13 @@ records standing up the manager), and RULES.md with this confidentiality guardra
 team. Generalize names to 'a large enterprise'/'a client'; never reproduce internal
 documents or non-public numbers in anything shared outward; when in doubt, cut and flag."
 Keep the interview light — I can refine it later with /projects onboard.
+Then make the "shares my /recall" promise real: open ~/.claude/skills/recall/SKILL.md
+and find the work-product manifest it reads (the small file listing which command
+folders /recall surfaces). Register ~/ai-os/projects/<slug>/ in it — STRATEGY.md ("the
+project's strategy"), BACKLOG.md ("project backlog + risks"), DECISIONS.md ("project
+decisions"), research/ ("project research") — read live at query time, never copied.
+If my install has no such manifest (an older AI-OS), don't invent one: tell me plainly
+that /recall won't see this workspace until I re-run the setup prompt to upgrade.
 
 PHASE C — INSTALL THE SKILL (restart-free)
 Write ~/ai-os/projects/personas/manager.md and personas/researcher.md (plain persona files

@@ -20,8 +20,8 @@ When you want the deep dive into your own notes specifically: the reasoning behi
 A wiki answer looks about like this:
 
 > **"data-migration decision"**
-> · Chose phased cutover over big-bang — *04 Projects/Migration > Decision*
-> · Rollback: keep the old DB read-only for 30 days — *04 Projects/Migration > Risk*
+> · Chose phased cutover over big-bang — *02 Projects/Migration > Decision*
+> · Rollback: keep the old DB read-only for 30 days — *02 Projects/Migration > Risk*
 > · Related: the vendor SLA thread — *03 Areas/Vendors/Acme > SLA*
 
 ## Power user

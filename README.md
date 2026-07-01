@@ -38,7 +38,7 @@ Most "AI second brain" tools are hosted apps — your notes live in their cloud,
 | Where it lives | Notes & memory are local files¹ | Their cloud | Their cloud, tied to your account |
 | Your data's form | Plain markdown — the store *is* the data | Proprietary DB you export *from* | A cloud summary you can view/edit |
 | Own & fork it | Free template — fork & reshape | Rented seat | Rented seat |
-| On its own | Read-only + approve-before-send, on by default | Varies (Notion's agents act autonomously by default) | n/a — it's memory, not actions |
+| On its own | Reads & drafts; every outward action waits for your per-action OK — on by default, no mode to switch on (on M365 the connector is read-only outright) | Varies (Notion's agents act autonomously by default) | n/a — it's memory, not actions |
 | Cost | Free; runs on your existing Claude plan | Paid subscription | Bundled in your subscription |
 
 ¹ Your notes & memory are local files; the model and connectors are cloud services you already use.

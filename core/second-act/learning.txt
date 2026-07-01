@@ -6,6 +6,8 @@ Confirm this folder has a working AI-OS: a CLAUDE.md plus a memory/ folder, OR A
 skills under ~/.claude/skills/ (e.g. brief, triage). If you can't find one, STOP and
 tell me: "Set up your AI OS first and have your first win — then come back for this."
 Do not build a learning manager onto a machine with no AI-OS.
+One path note: my AI-OS home may not be literally ~/ai-os — it's the folder this
+session is open in. Wherever it is, read every ~/ai-os path below as that folder.
 
 WHAT YOU'LL BUILD (all under ~/ai-os/learning/ so it shares my memory and /recall):
 a manager + researcher for everything I'm trying to learn, a living portfolio of my learning
@@ -55,6 +57,14 @@ syllabus or a lesson (that's /teach's job), and never claims to teach. It drafts
 digests; I decide what to start, pause, or drop. Nothing here is sent anywhere. The review digest is
 a weekly 'what to revisit', not per-card spaced repetition."
 Keep the interview light — I can refine it later with /learning onboard.
+Then make the "shares my /recall" promise real: open ~/.claude/skills/recall/SKILL.md
+and find the work-product manifest it reads (the small file listing which command
+folders /recall surfaces). Register ~/ai-os/learning/ in it — STRATEGY.md ("learning
+goals + priorities"), BACKLOG.md ("the cross-goal topic queue"), DECISIONS.md
+("learning decisions"), research/ ("roadmap research") — read live at query time,
+never copied. If my install has no such manifest (an older AI-OS), don't invent one:
+tell me plainly that /recall won't see this workspace until I re-run the setup prompt
+to upgrade.
 
 PHASE C — INSTALL THE SKILL (restart-free)
 Write ~/ai-os/learning/personas/manager.md and personas/researcher.md (plain persona files the

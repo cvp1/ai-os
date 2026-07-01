@@ -56,7 +56,7 @@ A recall looks about like this:
 
 > **What you know about "website redesign"**
 > **Decision** · Ship the field guide as a second page — *[[field-guide-second-page]]*
-> **Note** · Compare table below the fold — *04 Projects/Redesign > Layout*
+> **Note** · Compare table below the fold — *02 Projects/Redesign > Layout*
 > **Tracking (live)** · 11 command docs remaining — *product-backlog/BACKLOG.md*
 > **Related** · Connector-auth refresh, mobile-nav QA
 > **Gaps:** nothing recent on the privacy-page copy; the layout note is 3 weeks old
