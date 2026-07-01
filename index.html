@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- ai-os installer · build 2026.06.30m · generated from core/ by tools/build_installer.py — do not edit index.html by hand -->
+<!-- ai-os installer · build 2026.07.01a · generated from core/ by tools/build_installer.py — do not edit index.html by hand -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -534,9 +534,10 @@
 a persistent memory, a structured notes vault, and a starter set of skills — and
 then you will operate it as my chief-of-staff going forward.
 
-(This installer is AI-OS build 2026.06.30m. When you build my system, record a line
-"AI-OS installer build: 2026.06.30m" in my CLAUDE.md so a later upgrade can tell what
-changed since mine.)
+(This installer is AI-OS build 2026.07.01a. When you build my system, record a line
+"AI-OS installer build: 2026.07.01a" in my CLAUDE.md, AND write the bare build string
+2026.07.01a as the only contents of a file ~/ai-os/.aios-version, so a later upgrade or
+health check can tell what changed since mine without parsing prose.)
 
 ABOUT ME (context, refine via the interview below)
 - I'm a busy professional. I'll tell you my exact role in the interview — adapt to it.
@@ -565,8 +566,8 @@ is a clean machine — ASK me before building anything. Never default to a rebui
   not silently replace it. Show me a short diff of what you'd ADD, apply it only
   after my OK, then STOP — skip PHASE 0 and the rest of the build. If I recorded an
   "AI-OS installer build:" line in my CLAUDE.md, compare it to this installer's build
-  (2026.06.30m) to focus the diff on what's new since mine, and update that line once
-  the additions are applied.
+  (2026.07.01a) to focus the diff on what's new since mine, and update that line — and
+  the ~/ai-os/.aios-version file — once the additions are applied.
 - IF IT DOESN'T → this is a fresh install: continue with PHASE 0 below and build
   the whole system.
 
@@ -901,14 +902,33 @@ Explain each piece in plain language as you create it.
      nothing" — start a fresh session to register newly-built ones). (4) PROTECTION —
      if ~/ai-os/backups/ exists, report the age of my most recent /backup so a stale or
      missing backup is visible; if there's no backup yet, say so and suggest running
-     /backup. Then, for the deeper SYSTEM layer — install health, connector CONFIG
+     /backup. (5) CURRENCY — check whether my AI-OS itself has fallen behind the
+     current product. If I can reach the internet, use the WebFetch tool (NOT a shell
+     curl/wget, which my safety rules block) to read the current installer build from
+     https://raw.githubusercontent.com/cvp1/ai-os/main/core/meta.yml and the current
+     command roster from https://api.github.com/repos/cvp1/ai-os/contents/core/skills
+     (one NN-name.md per command; the command name is that file's name without its
+     leading number and .md). Compare against MINE: read my build from
+     ~/ai-os/.aios-version if it exists, else from the "AI-OS installer build:" line in
+     my CLAUDE.md; if neither exists, treat my build as UNKNOWN (an old install
+     predating the stamp) and assume I'm behind. Report two things — (a) BUILD: my build
+     vs. the current one (if they differ, I'm behind); (b) MISSING COMMANDS: any command
+     in the current roster I don't have a skill for under ~/.claude/skills/. If I'm
+     behind or missing commands, DON'T change anything yourself — tell me to re-run the
+     setup prompt, which will detect my existing install and switch to UPGRADE MODE:
+     it adds only the missing skills and brings memory conventions current, and leaves
+     my memories, notes, CLAUDE.md, and customized skills UNTOUCHED. If I can't reach the
+     internet (or the fetch is unavailable here), say "couldn't check currency — offline"
+     and move on; NEVER let this stop the rest of the check, and NEVER guess a version
+     you couldn't read. Then, for the deeper SYSTEM layer — install health, connector CONFIG
      validity, version currency, search/ripgrep, CLAUDE.md size — tell me to run Claude
      Code's own built-in /doctor (if it's available here); don't reinvent that plumbing,
      just point at it. Finish with a short green / needs-attention summary naming the
      one or two things worth doing next. Build it as a Claude Code skill, strictly
      READ-ONLY (inspect and report only). Pairs with /backup: /doctor tells me my
      safety net is current. Trigger on "/doctor", "is my AI-OS healthy / okay", "health
-     check", "check my system / check my connectors".
+     check", "check my system / check my connectors", "am I up to date",
+     "any AI-OS updates", "is my AI-OS current".
 
 
    Keep every skill read-by-default and write/send-gated behind my explicit OK.
