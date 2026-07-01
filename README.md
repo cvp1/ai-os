@@ -12,6 +12,10 @@ A persistent memory · a structured notes vault · a toolkit of slash-commands �
 
 ---
 
+## Why this exists
+
+Most AI that knows your work lives in someone else's cloud, rented for as long as you keep paying — and the kind of leverage a chief-of-staff gives you has always needed a team or a budget. This is the opposite bet: **a personal AI that's genuinely yours, that anyone can stand up.** Plain files on your machine, free to fork, on your side by default. The leverage should belong to *you* — not to a platform, and not just to people who can code.
+
 ## What this is
 
 A single self-contained page (`index.html`) with an embedded, copy-paste **setup prompt**. You paste it into a fresh Claude Code session; it **interviews you** about your role, then builds a personal "AI operating system" shaped to how you actually work — and explains each piece in plain language as it goes.
