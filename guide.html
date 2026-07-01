@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- ai-os field guide · build 2026.06.30i · generated from core/skills/*.md by tools/build_installer.py — do not edit guide.html by hand -->
+<!-- ai-os field guide · build 2026.06.30j · generated from core/skills/*.md by tools/build_installer.py — do not edit guide.html by hand -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -64,9 +64,23 @@
   <span class="eyebrow">Field Guide</span>
   <h1 class="display">Get the most from every command.</h1>
   <p class="lede">Each command explained in plain language up top, with the depth power users want below — what it does, when to reach for it, a walkthrough, and the advanced moves. New to this? The <a class="navlink" href="index.html" style="border-bottom:1px solid var(--line-2)">setup walkthrough</a> gets you running in about five minutes; come back here when you want to go deeper.</p>
-  <div class="idx"><a href="#brief"><span class="slash">/</span>brief</a></div>
+  <div class="idx"><a href="#triage"><span class="slash">/</span>triage</a> · <a href="#brief"><span class="slash">/</span>brief</a> · <a href="#prep"><span class="slash">/</span>prep</a> · <a href="#status"><span class="slash">/</span>status</a> · <a href="#recall"><span class="slash">/</span>recall</a> · <a href="#weekly"><span class="slash">/</span>weekly</a></div>
   <p class="note">This guide is growing — we're writing up the full toolkit one command at a time, starting with the ones you'll reach for daily. More pages land here as they're written.</p>
 </div></div>
+
+<section id="triage" class="cmd-doc"><div class="wrap">
+<h2 class="cmd-name"><span class="slash">/</span>triage</h2>
+<h3 class="doc-h">What it does</h3>
+<p>One pass over your inbox and calendar that sorts the noise for you — mail bucketed into Needs Reply / FYI / Noise, plus your calendar conflicts and free blocks — so you start from a triaged list instead of a full inbox.</p>
+<h3 class="doc-h">When to use it</h3>
+<p>Monday morning, or any time the inbox has gotten ahead of you. Like <code>/brief</code> it's read-only by default: it reads and sorts, and only drafts a reply, flags a message, or proposes a calendar change when you explicitly ask — and never sends or moves anything without your OK.</p>
+<h3 class="doc-h">Walkthrough</h3>
+<ol><li>Type <code>/triage</code> (or say <em>"/triage my inbox"</em>).</li><li>It reads your inbox and calendar from the fast local cache and returns three mail buckets — <strong>Needs Reply</strong>, <strong>FYI</strong>, and <strong>Noise</strong> — plus a calendar read: conflicts and your free blocks.</li><li>Act on any line: <em>"draft replies to the Needs Reply ones"</em> (it drafts locally, never sends), <em>"flag the second one"</em>, or <em>"find me an hour for the Acme call"</em> — each waits for your approval.</li></ol>
+<p>A triage looks about like this:</p>
+<blockquote class="sample"><strong>Needs Reply (3)</strong> · Finance — Q3 budget sign-off (2 days) · Sam — roadmap review, wants a time · Legal — vendor SOW redlines<br><strong>FYI (5)</strong> · Two newsletters, release notes, an all-hands recap, a calendar invite<br><strong>Noise (11)</strong> · Promotions and automated notifications — safe to skip<br><strong>Calendar</strong> · Conflict: 14:00 1:1 overlaps the design sync · Free: 09:00–10:00, after 15:30</blockquote>
+<h3 class="doc-h">Power user</h3>
+<ul><li><strong>Ask for the actions explicitly.</strong> Triage never sends, flags, or moves anything on its own — say <em>"draft the replies"</em> or <em>"propose a new time for the conflict"</em> and it drafts or proposes for your approval (the same propose-only discipline as everywhere else).</li><li><strong>Pair it with <code>/brief</code>.</strong> <code>/brief</code> gives you the day; <code>/triage</code> clears the inbox behind it. A common rhythm is <code>/brief</code> first thing, then <code>/triage</code> to work the pile down.</li><li><strong>Hand off to <code>/prep</code>.</strong> When triage surfaces a meeting you're not ready for, say <em>"prep me for that one"</em> and it hands the details to <code>/prep</code>.</li><li><strong>Teach it your buckets.</strong> If it keeps mis-sorting a sender — a VIP landing in Noise, say — correct it and run <code>/improve</code> so the rule sticks. Triage gets more "you" over time.</li><li><strong>Stale inbox?</strong> If mail looks out of date, your connector may have signed out — run <code>/doctor</code>, or re-authorize in your connector settings.</li></ul>
+</div></section>
 
 <section id="brief" class="cmd-doc"><div class="wrap">
 <h2 class="cmd-name"><span class="slash">/</span>brief</h2>
@@ -80,6 +94,62 @@
 <blockquote class="sample"><strong>Tue 30 Jun</strong><br><strong>Meetings</strong> · 10:00 Design sync (4 people) — last decision: ship the compare table below the fold · 14:00 1:1 w/ Sam — you owe them the Q3 roadmap<br><strong>Waiting on you</strong> · Reply to Finance re: budget (2 days) · Approve the vendor SOW<br><strong>Priorities</strong> · Website redesign — copy pass · Hiring — close the PM loop<br><strong>Due this week</strong> · Board deck (Thu)</blockquote>
 <h3 class="doc-h">Power user</h3>
 <ul><li><strong>Scope it.</strong> <em>"/brief just my meetings"</em> or <em>"/brief for tomorrow"</em> narrows the run to what you need.</li><li><strong>Sharpen "priorities."</strong> <code>/brief</code> pulls them from your project notes — the more you keep those current (with <code>/status</code> and your vault), the better it reads your actual day rather than guessing.</li><li><strong>Automate it.</strong> Pair <code>/brief</code> with a scheduled task (see the scheduler "second act" on the setup page) to have a brief waiting each morning — mind the reliability and cost caveats there; a machine that's asleep at 7am silently skips the run.</li><li><strong>Stale data?</strong> If meetings or mail look out of date, your connector may have signed out. Run <code>/doctor</code> to check, or re-authorize in your connector settings — the cache refreshes when something changes, not on a fixed timer.</li><li><strong>It never writes to memory.</strong> If <code>/brief</code> got a priority wrong, tell it, then run <code>/improve</code> to make the correction stick for next time.</li></ul>
+</div></section>
+
+<section id="prep" class="cmd-doc"><div class="wrap">
+<h2 class="cmd-name"><span class="slash">/</span>prep</h2>
+<h3 class="doc-h">What it does</h3>
+<p>Everything you need for one specific meeting, gathered onto a single page — the invite, the relevant mail thread, your project and people notes, the last decisions and open items — plus a ready-made agenda, talking points, and the questions you're likely to get.</p>
+<h3 class="doc-h">When to use it</h3>
+<p>Right before a meeting you want to walk into sharp: a client call, a team sync, a 1:1. It's read-only — it pulls together what already exists and drafts an agenda; it sends and changes nothing.</p>
+<h3 class="doc-h">Walkthrough</h3>
+<ol><li>Type <code>/prep</code> and name the meeting — <em>"/prep my 2pm with the design team"</em> or <em>"prep me for the Acme call"</em>.</li><li>It finds the calendar invite, pulls the related mail thread, and reads your project and people notes — last decisions, open items, who's attending.</li><li>It hands you a one-page pack — <strong>Context</strong>, <strong>Attendees</strong>, <strong>Agenda</strong>, <strong>Talking points</strong>, <strong>Likely questions</strong> — that you can edit, or ask it to turn into a follow-up afterward.</li></ol>
+<p>A prep looks about like this:</p>
+<blockquote class="sample"><strong>Acme quarterly review · Thu 14:00 · 3 attendees</strong><br><strong>Context</strong> · Renewal is up in 6 weeks; last call they raised onboarding friction<br><strong>Attendees</strong> · Dana (their VP), Chen (their PM), you<br><strong>Agenda</strong> · 1) Onboarding fixes shipped · 2) Q3 roadmap · 3) Renewal terms<br><strong>Talking points</strong> · Support tickets down 40% since the March fix · SSO ships next sprint<br><strong>Likely questions</strong> · "What's the SLA on the migration?" · "Can we add three seats mid-term?"</blockquote>
+<h3 class="doc-h">Power user</h3>
+<ul><li><strong>Be specific about which meeting.</strong> If two invites could match, name the time or the person — <em>"/prep the 2pm, not the 4pm"</em>. The more precise the pointer, the tighter the pack.</li><li><strong>It's only as sharp as your notes.</strong> <code>/prep</code> reads your project and people notes; the more current those are, the better it briefs you. <code>/status</code> and your vault feed it.</li><li><strong>Chain it after <code>/brief</code> or <code>/triage</code>.</strong> Both surface meetings — say <em>"prep me for that one"</em> and <code>/prep</code> takes over.</li><li><strong>Ask for the follow-up.</strong> After the meeting, <em>"draft the recap from the prep"</em> turns the same context into a follow-up email — drafted locally, sent only on your OK.</li><li><strong>Missing context?</strong> Tell it what it overlooked and run <code>/improve</code> so it looks in the right place next time.</li></ul>
+</div></section>
+
+<section id="status" class="cmd-doc"><div class="wrap">
+<h2 class="cmd-name"><span class="slash">/</span>status</h2>
+<h3 class="doc-h">What it does</h3>
+<p>A ready-to-edit status update drafted from your project notes and recent activity — what progressed, what's blocked, decisions needed, and next steps — written in your template and your tone.</p>
+<h3 class="doc-h">When to use it</h3>
+<p>Whenever you owe someone an update — a project check-in, a stakeholder note — and don't want to start from a blank page. It drafts only; you review and send.</p>
+<h3 class="doc-h">Walkthrough</h3>
+<ol><li>Type <code>/status</code> and name the project — <em>"/status for the website redesign"</em>.</li><li>It reads that project's notes and recent activity and drafts an update: <strong>Progress</strong>, <strong>Blocked</strong>, <strong>Decisions needed</strong>, <strong>Next steps</strong>.</li><li>It writes in your tone and format — and if you keep separate external and internal versions, it can draft both. Edit and send; nothing goes out on its own.</li></ol>
+<p>A status draft looks about like this:</p>
+<blockquote class="sample"><strong>Website redesign — status · week of 30 Jun</strong><br><strong>Progress</strong> · Compare table moved below the fold; hero copy pass done<br><strong>Blocked</strong> · Waiting on legal sign-off for the new privacy page<br><strong>Decisions needed</strong> · Ship the field guide as a second page? (recommend yes)<br><strong>Next steps</strong> · Author the remaining command pages; QA the mobile nav</blockquote>
+<h3 class="doc-h">Power user</h3>
+<ul><li><strong>Tune the register.</strong> Ask for <em>"a polished external version"</em> or <em>"a direct internal one"</em> — or both at once if you write for two audiences.</li><li><strong>It leans on your notes.</strong> <code>/status</code> drafts from what's captured, so the more you note decisions and progress as you go, the less you edit. Run <code>/recall</code> first to see what it'll find.</li><li><strong><code>/status</code> vs <code>/weekly</code>.</strong> <code>/status</code> is one project on demand; <code>/weekly</code> rolls up everything for your recurring review (and includes a status update of its own).</li><li><strong>Save your template once.</strong> Correct the first draft's shape and tone, then run <code>/improve</code> — after that, <code>/status</code> matches your format by default.</li></ul>
+</div></section>
+
+<section id="recall" class="cmd-doc"><div class="wrap">
+<h2 class="cmd-name"><span class="slash">/</span>recall</h2>
+<h3 class="doc-h">What it does</h3>
+<p>One question — <em>"what do I know about X?"</em> — answered across all your knowledge at once: your maintained memory, your notes vault, and the work your other commands produce and keep (a tracked list, a strategy doc, research). Ranked together, cited, and honest about where you have gaps.</p>
+<h3 class="doc-h">When to use it</h3>
+<p>Any time you're sure you decided or noted something but can't find it, or you want the full picture before a meeting or a decision. It's strictly read-only — it never writes to any store.</p>
+<h3 class="doc-h">Walkthrough</h3>
+<ol><li>Ask it plainly — <em>"/recall what am I tracking on the website redesign"</em> or <em>"have I decided anything about pricing?"</em>.</li><li>It searches all three sources in one pass — memory, vault, and your commands' work product — and <strong>ranks them fairly</strong> so no single source drowns out the others (each is scored, normalized, and guaranteed a minimum showing).</li><li>It returns one ranked answer with citations, pulls in directly-related notes as context, and ends with an honest <strong>Gaps:</strong> line naming what it couldn't cover.</li></ol>
+<p>A recall looks about like this:</p>
+<blockquote class="sample"><strong>What you know about "website redesign"</strong><br><strong>Decision</strong> · Ship the field guide as a second page — <em>[[field-guide-second-page]]</em><br><strong>Note</strong> · Compare table below the fold — <em>04 Projects/Redesign &gt; Layout</em><br><strong>Tracking (live)</strong> · 11 command docs remaining — <em>product-backlog/BACKLOG.md</em><br><strong>Related</strong> · Connector-auth refresh, mobile-nav QA<br><strong>Gaps:</strong> nothing recent on the privacy-page copy; the layout note is 3 weeks old</blockquote>
+<h3 class="doc-h">Power user</h3>
+<ul><li><strong><code>/recall</code> vs <code>/wiki</code>.</strong> <code>/recall</code> spans everything — memory, vault, and command work product. <code>/wiki</code> is the vault-only deep dive with heading-level citations and graph enrichment. Reach for <code>/recall</code> first; drop to <code>/wiki</code> when you specifically want precedent from your notes.</li><li><strong>Trust the "Gaps:" line.</strong> It's deliberate honesty — if <code>/recall</code> leaned on a stale note or couldn't cover a term, it says so. Treat work-product hits (a tracked list, a pipeline) as <em>current state</em>, not settled precedent.</li><li><strong>Widen its reach.</strong> <code>/recall</code> reads a small manifest of which command folders and files to surface. As you add commands that produce durable knowledge, adding them to that manifest lets recall find them — read live at query time, never copied, so nothing goes stale.</li><li><strong>It never changes anything.</strong> <code>/recall</code> is read-only by design. If it surfaced something wrong or missing, fix the underlying note and run <code>/improve</code>; recall reflects it next time because it reads sources live.</li></ul>
+</div></section>
+
+<section id="weekly" class="cmd-doc"><div class="wrap">
+<h2 class="cmd-name"><span class="slash">/</span>weekly</h2>
+<h3 class="doc-h">What it does</h3>
+<p>Your recurring weekly review, pre-built — what shipped, the decisions, what slipped or is blocked, and the shape of next week — plus a ready-to-edit status update to send.</p>
+<h3 class="doc-h">When to use it</h3>
+<p>End of the week — Friday, or whenever you do your review. Instead of reconstructing the week from memory, you start from a draft that's already assembled. Draft only; you send it.</p>
+<h3 class="doc-h">Walkthrough</h3>
+<ol><li>Type <code>/weekly</code>.</li><li>It reads your project notes and the week's activity and assembles the review: <strong>Shipped</strong>, <strong>Decisions</strong>, <strong>Slipped / blocked</strong>, <strong>Next week</strong>.</li><li>It also drafts your recurring status update in your voice and format, ready to edit and send.</li></ol>
+<p>A weekly review looks about like this:</p>
+<blockquote class="sample"><strong>Weekly review · week of 30 Jun</strong><br><strong>Shipped</strong> · Field Guide pilot live · Compare table repositioned · Connector-auth refresh<br><strong>Decisions</strong> · Grew AI-OS to a second public page (the guide)<br><strong>Slipped / blocked</strong> · Long-tail command docs (11 remaining) · Privacy page (legal)<br><strong>Next week</strong> · Author remaining command pages · Recruit the novice test</blockquote>
+<h3 class="doc-h">Power user</h3>
+<ul><li><strong><code>/weekly</code> vs <code>/status</code>.</strong> <code>/weekly</code> is the whole-week rollup for your standing review; <code>/status</code> is a single project on demand. Because <code>/weekly</code> bundles a status draft, many people run only <code>/weekly</code> on Fridays.</li><li><strong>It reflects what you captured.</strong> The review is as complete as your week's notes — jot decisions and progress as they happen (or with <code>/improve</code>) and Friday's draft writes itself.</li><li><strong>Automate it.</strong> Pair <code>/weekly</code> with a scheduled task (see the scheduler "second act" on the setup page) to have Friday's review waiting — mind the reliability and cost caveats there; a machine that's asleep silently skips the run.</li><li><strong>Keep your format.</strong> Correct the first one's shape and tone, then run <code>/improve</code>, and it matches your recurring format from then on.</li></ul>
 </div></section>
 
 <footer><div class="wrap">

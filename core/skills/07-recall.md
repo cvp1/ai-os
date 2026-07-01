@@ -40,3 +40,29 @@ tier: core
      reranker later, but DON'T build that now. Trigger on "/recall", "what do I know
      about X", "search everything / all of it", "what am I tracking", "have I decided
      or noted anything about…".
+<!-- docs -->
+## What it does
+One question — *"what do I know about X?"* — answered across all your knowledge at once: your maintained memory, your notes vault, and the work your other commands produce and keep (a tracked list, a strategy doc, research). Ranked together, cited, and honest about where you have gaps.
+
+## When to use it
+Any time you're sure you decided or noted something but can't find it, or you want the full picture before a meeting or a decision. It's strictly read-only — it never writes to any store.
+
+## Walkthrough
+1. Ask it plainly — *"/recall what am I tracking on the website redesign"* or *"have I decided anything about pricing?"*.
+2. It searches all three sources in one pass — memory, vault, and your commands' work product — and **ranks them fairly** so no single source drowns out the others (each is scored, normalized, and guaranteed a minimum showing).
+3. It returns one ranked answer with citations, pulls in directly-related notes as context, and ends with an honest **Gaps:** line naming what it couldn't cover.
+
+A recall looks about like this:
+
+> **What you know about "website redesign"**
+> **Decision** · Ship the field guide as a second page — *[[field-guide-second-page]]*
+> **Note** · Compare table below the fold — *04 Projects/Redesign > Layout*
+> **Tracking (live)** · 11 command docs remaining — *product-backlog/BACKLOG.md*
+> **Related** · Connector-auth refresh, mobile-nav QA
+> **Gaps:** nothing recent on the privacy-page copy; the layout note is 3 weeks old
+
+## Power user
+- **`/recall` vs `/wiki`.** `/recall` spans everything — memory, vault, and command work product. `/wiki` is the vault-only deep dive with heading-level citations and graph enrichment. Reach for `/recall` first; drop to `/wiki` when you specifically want precedent from your notes.
+- **Trust the "Gaps:" line.** It's deliberate honesty — if `/recall` leaned on a stale note or couldn't cover a term, it says so. Treat work-product hits (a tracked list, a pipeline) as *current state*, not settled precedent.
+- **Widen its reach.** `/recall` reads a small manifest of which command folders and files to surface. As you add commands that produce durable knowledge, adding them to that manifest lets recall find them — read live at query time, never copied, so nothing goes stale.
+- **It never changes anything.** `/recall` is read-only by design. If it surfaced something wrong or missing, fix the underlying note and run `/improve`; recall reflects it next time because it reads sources live.
