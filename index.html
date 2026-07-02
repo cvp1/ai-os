@@ -1197,6 +1197,19 @@ Explain each piece in plain language as you create it.
      relocate or delete things the snapshot doesn't contain. Leave backups/ and .backup-key
      in place, so a restore never costs me my local snapshot history or my decryption
      passphrase (the bug that makes a "successful" restore quietly lock me out of my offsite copies).
+   - ONE LIVE COPY AT A TIME. /backup + /restore are for RECOVERY and MIGRATION —
+     bringing my AI-OS back on a rebuilt or replacement machine — not for running two
+     copies at once. My memory, notes, and git history are single-writer: a restore is a
+     point-in-time overlay, not a two-way sync. So when /restore is about to overlay onto a
+     machine that ALREADY has its own AI-OS data (a memory/ or notes/ whose git history has
+     commits the snapshot doesn't contain — i.e. this looks like a SECOND live host, not a
+     bare recovery), STOP and say so plainly: "This machine already has AI-OS changes that
+     aren't in the backup. Restoring will set them aside and replace them with the snapshot.
+     If you're MIGRATING, that's expected — continue, then stop using the old machine. If you
+     want BOTH machines live and in sync, backup/restore is the wrong tool (it overwrites, it
+     doesn't merge) — sync ~/ai-os and ~/.claude/skills with a real file-sync (Syncthing, or a
+     shared git remote you pull/merge) instead." Then wait for my OK. --dry-run and --drill are
+     exempt (they write nothing / use a throwaway HOME).
    - --dry-run shows exactly what would change and what would be moved aside, writing
      nothing. --drill restores into a THROWAWAY temp directory (a fake HOME) and runs a few
      checks (files present, git history intact, a memory file readable) WITHOUT touching my

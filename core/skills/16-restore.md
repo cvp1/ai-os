@@ -37,3 +37,4 @@ A dry run looks about like this:
 - **Always reversible.** Overwrites are set aside first, so a restore you didn't want can be undone.
 - **`--dry-run` first.** See the exact change set before you commit — especially on a machine that already has data.
 - **Pairs with `/backup`.** Together they're your recovery quadrant; `/doctor` tells you the safety net is current.
+- **One live copy at a time.** `/backup`+`/restore` are for *recovery* and *migration* — rebuilding your AI-OS on a new or wiped machine — not for keeping two machines in sync. Your memory, notes, and git history assume a single writer; a restore *overwrites* (reversibly), it doesn't *merge*. Migrating? Restore on the new machine, then stop using the old one. Genuinely want two live machines? Sync `~/ai-os` and `~/.claude/skills` with a real file-sync (Syncthing, or a shared git remote you pull/merge) — not backup/restore.
