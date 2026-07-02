@@ -18,16 +18,26 @@ tier: core
      missing backup is visible; if there's no backup yet, say so and suggest running
      /backup. (5) CURRENCY — check whether my AI-OS itself has fallen behind the
      current product. If I can reach the internet, use the WebFetch tool (NOT a shell
-     curl/wget, which my safety rules block) to read the current installer build from
-     https://raw.githubusercontent.com/cvp1/ai-os/main/core/meta.yml and the current
+     curl/wget, which my safety rules block) to read the current installer build AND its
+     outcomes: notes (one-line, cost-phrased summaries of what a change does for me, each
+     keyed by build + command + scope) from
+     https://raw.githubusercontent.com/cvp1/ai-os/main/core/meta.yml, and the current
      command roster from https://api.github.com/repos/cvp1/ai-os/contents/core/skills
      (one NN-name.md per command; the command name is that file's name without its
      leading number and .md). Compare against MINE: read my build from
      ~/ai-os/.aios-version if it exists, else from the "AI-OS installer build:" line in
      my CLAUDE.md; if neither exists, treat my build as UNKNOWN (an old install
-     predating the stamp) and assume I'm behind. Report two things — (a) BUILD: my build
+     predating the stamp) and assume I'm behind. Report three things — (a) BUILD: my build
      vs. the current one (if they differ, I'm behind); (b) MISSING COMMANDS: any command
-     in the current roster I don't have a skill for under ~/.claude/skills/. If I'm
+     in the current roster I don't have a skill for under ~/.claude/skills/; (c) WHAT'S NEW
+     FOR YOU: for each outcomes note whose build is newer than mine, render its one plain
+     sentence so I see what being behind actually COSTS me ("the build you're missing means
+     /brief can now …") — but ONLY if that note applies to me: show scope: core notes to
+     everyone, and show a scope: optin note ONLY if I actually have that command under
+     ~/.claude/skills/ (a note about a command I never installed is not for me — skip it).
+     If no newer note applies to me, render NOTHING here — do NOT invent an "all caught up!"
+     line (the closing summary already covers a clean bill). NEVER state a capability that
+     isn't spelled out in an outcomes note; only ever echo a note verbatim. If I'm
      behind or missing commands, DON'T change anything yourself — tell me to re-run the
      setup prompt, which will detect my existing install and switch to UPGRADE MODE:
      it adds only the missing skills and brings memory conventions current, and leaves
@@ -63,6 +73,7 @@ A checkup looks about like this:
 > ⚠ Toolkit — 16 of 17 skills registered (/expenses needs a fresh session)
 > ⚠ Protection — last backup 9 days ago → run /backup
 > ⚠ Currency — build 2026.05.12a is behind current 2026.06.30m; missing /restore → re-run setup (it upgrades in place, adds only what's new)
+> &nbsp;&nbsp;What's new for you — the newer build's /brief now drafts your morning digest before you're even at your desk
 > For install/version checks, run Claude Code's built-in /doctor.
 
 ## Power user

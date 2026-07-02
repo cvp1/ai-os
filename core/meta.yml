@@ -1,5 +1,5 @@
 # AI-OS installer build manifest (consumed by tools/build_installer.py)
-version: "2026.07.01l"   # stamped into index.html + guide.html + the installer's UPGRADE-MODE header
+version: "2026.07.02a"   # stamped into index.html + guide.html + the installer's UPGRADE-MODE header
 shell: core/shell.html
 prompt:
   before: core/sections/before-skills.txt
@@ -10,3 +10,27 @@ prompt2: core/second-act/career.txt
 prompt3: core/second-act/scheduler.txt
 prompt4: core/second-act/projects.txt
 prompt5: core/second-act/learning.txt
+
+# Outcome notes (FL-1a) — surfaced by /doctor CURRENCY, filtered to what the user has.
+# --------------------------------------------------------------------------------
+# SILENT-SHIP IS THE DEFAULT. Add an entry ONLY when a change is invisible-unless-named:
+#   • a NEW command the user would only get by upgrading, OR
+#   • a re-paste-required upgrade to a command they already have, OR
+#   • a change to trust posture / memory semantics (ALWAYS named).
+# Habit-free improvements (faster model, better recall, internal refactors) ship SILENT —
+# no entry. Most builds add NO entry: an over-full list recreates the announcement fatigue
+# this feature exists to avoid.
+# HONESTY: never describe a capability the build does not actually add. One cost-phrased
+# sentence per entry, addressed to the user ("your…", "you can now…").
+# FILTER KEYS: build = the build the change landed in (so /doctor shows it only to users
+# behind it); command = the command it concerns; scope = core | optin (an `optin` note is
+# shown ONLY to users who installed that command — a user without /projects never sees a
+# /projects note).
+#
+# Template for the first live entry (author it when the next invisible-unless-named change
+# ships — e.g. when /sync graduates from dogfood):
+#   - build: "YYYY.MM.DDx"
+#     command: sync
+#     scope: core
+#     note: "your AI-OS can now live on more than one computer — /sync keeps your memory, notes and skills the same on each."
+outcomes: []

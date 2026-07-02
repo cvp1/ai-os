@@ -31,8 +31,10 @@ is a clean machine — ASK me before building anything. Never default to a rebui
   CLAUDE.md, tuning, scheduled jobs, AND any skills I already have UNTOUCHED —
   never overwrite or "upgrade" a skill I have already customized. If a new skill
   (e.g. /status) overlaps one I already run, point it out and let me choose — do
-  not silently replace it. Show me a short diff of what you'd ADD, apply it only
-  after my OK, then STOP — skip PHASE 0 and the rest of the build. If I recorded an
+  not silently replace it. Show me a short diff of what you'd ADD — and phrase each
+  addition as what it does FOR me (the outcome), not just its command name, so I can see
+  why it's worth adding — then apply it only after my OK, then STOP — skip PHASE 0 and the
+  rest of the build. If I recorded an
   "AI-OS installer build:" line in my CLAUDE.md, compare it to this installer's build
   ({{VERSION}}) to focus the diff on what's new since mine, and update that line — and
   the ~/ai-os/.aios-version file — once the additions are applied.
