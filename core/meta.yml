@@ -1,5 +1,5 @@
 # AI-OS installer build manifest (consumed by tools/build_installer.py)
-version: "2026.07.02a"   # stamped into index.html + guide.html + the installer's UPGRADE-MODE header
+version: "2026.07.05a"   # stamped into index.html + guide.html + the installer's UPGRADE-MODE header
 shell: core/shell.html
 prompt:
   before: core/sections/before-skills.txt
@@ -33,4 +33,8 @@ prompt5: core/second-act/learning.txt
 #     command: sync
 #     scope: core
 #     note: "your AI-OS can now live on more than one computer — /sync keeps your memory, notes and skills the same on each."
-outcomes: []
+outcomes:
+  - build: "2026.07.02b"
+    command: capture
+    scope: core
+    note: "your AI-OS can now close a working session for you — /capture files what you decided to your notes and what you learned to your memory, so a session that mattered doesn't evaporate."

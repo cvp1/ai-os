@@ -1,8 +1,8 @@
 <div align="center">
 
-# 🧭 AI OS for Claude Code
+# 🧭 Sasha
 
-**Turn [Claude Code](https://claude.com/claude-code) into a chief-of-staff — the person who runs the day around you — that remembers your work, knows your calendar, and gets sharper every time you correct it.**
+**Sasha on [Claude Code](https://claude.com/claude-code)** — a personal AI that's genuinely yours: it reads your mail first, preps your day, and gets sharper every time you correct it. One copy-paste prompt; plain files on your machine.
 
 A persistent memory · a structured notes vault · a toolkit of slash-commands — wired to your **Google (Gmail + Calendar) or Microsoft 365**, and built around *you* in about five minutes.
 
@@ -76,6 +76,7 @@ as-of July 2026; verify before relying on them.
 | `/recall` | "What do I know about X?" — one search across **all** your knowledge: your memory, your notes vault, and the work your other commands produce and keep (a tracked list, a strategy doc, research) — ranked together, with related facts and an honest gaps note. |
 | `/ingest` | Turns raw notes you drop in into maintained, linked concept pages. |
 | `/improve` | The learning loop — captures your corrections into durable memory. |
+| `/capture` | The session write-back loop — at the end of a session that mattered, files what you decided to your notes and what you learned to your memory (proposes the note first). |
 | `/memory-prune` | Keeps memory healthy — verifies, de-dupes, proposes cleanups (never auto-deletes). |
 | `/skill-center` | Build, edit, and audit your own commands as your needs grow. |
 | `/board` | Run a decision past a panel of advisor profiles — distinct takes, dissents, a recommendation. |

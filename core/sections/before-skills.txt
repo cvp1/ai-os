@@ -208,7 +208,8 @@ Explain each piece in plain language as you create it.
      setting, or value, verify it still exists before acting on or recommending it.
    - MEMORY.md is a one-line-per-memory index ("- [Title](file.md) — hook"); it
      loads into context each session — never put memory content in the index. It
-     loads WHOLE and silently truncates past ~24 KB, so keep it lean: group the
+     loads WHOLE and silently truncates past ~200 lines OR ~25 KB (whichever comes
+     first), so keep it lean: group the
      lines into a handful of domains with short hooks, and when it grows MERGE
      co-occurring entries rather than sharding (group, don't shard).
    - Seed it now from the interview: a user memory about me, a feedback memory per
