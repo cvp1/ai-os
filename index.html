@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- ai-os installer · build 2026.07.05f · generated from core/ by tools/build_installer.py — do not edit index.html by hand -->
+<!-- ai-os installer · build 2026.07.06a · generated from core/ by tools/build_installer.py — do not edit index.html by hand -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -613,9 +613,9 @@
 a persistent memory, a structured notes vault, and a starter set of skills — and
 then you will operate it as my chief-of-staff going forward.
 
-(This installer is AI-OS build 2026.07.05f. When you build my system, record a line
-"AI-OS installer build: 2026.07.05f" in my CLAUDE.md, AND write the bare build string
-2026.07.05f as the only contents of a file ~/ai-os/.aios-version, so a later upgrade or
+(This installer is AI-OS build 2026.07.06a. When you build my system, record a line
+"AI-OS installer build: 2026.07.06a" in my CLAUDE.md, AND write the bare build string
+2026.07.06a as the only contents of a file ~/ai-os/.aios-version, so a later upgrade or
 health check can tell what changed since mine without parsing prose.)
 
 ABOUT ME (context, refine via the interview below)
@@ -650,7 +650,7 @@ is a clean machine — ASK me before building anything. Never default to a rebui
   why it's worth adding — then apply it only after my OK, then STOP — skip PHASE 0 and the
   rest of the build. If I recorded an
   "AI-OS installer build:" line in my CLAUDE.md, compare it to this installer's build
-  (2026.07.05f) to focus the diff on what's new since mine, and update that line — and
+  (2026.07.06a) to focus the diff on what's new since mine, and update that line — and
   the ~/ai-os/.aios-version file — once the additions are applied.
 - IF IT DOESN'T → this is a fresh install: continue with PHASE 0 below and build
   the whole system.
@@ -913,6 +913,33 @@ Explain each piece in plain language as you create it.
      date>` and `origin: <the command/session it came from>` so its provenance is
      legible — the monthly "Sharper this month" mirror only surfaces rules that carry
      this stamp, and it lets me spot any rule I don't recognize.
+     PROACTIVE SYNTHESIS (propose-only). While you are here capturing this correction,
+     also look back over my recent correction/feedback memories for a REPEATED pattern:
+     the SAME KIND of steer I have made at least THREE times across at least TWO
+     different sessions, that is NOT already a standing rule in HOW-I-WORK.md. Judge
+     "same kind" by meaning, not exact words. If — and ONLY if — you find one, PROPOSE a
+     single standing rule for it: show me the exact one-line rule you would add to
+     HOW-I-WORK.md (stamped `added: <today's date>` and `origin: synthesized`) and ask me
+     to accept, edit, or reject it. NEVER write it without my explicit yes — you propose,
+     I decide; on yes, write it exactly like any other HOW-I-WORK rule. HARD LIMITS:
+     (1) DIVERGENCE ONLY — synthesize a rule only about something idiosyncratic to ME
+     (a tone, a structure I keep asking for, a "never", signing as my real name,
+     one-rec-not-a-menu). NEVER propose a rule for generic good-assistant behaviour a
+     strong model already does by default (leading with the conclusion, clean prose,
+     honest trade-offs) — that is not compounding, it is noise. Test: would a good
+     assistant already do this unprompted? If yes, do not propose it. (2) AT MOST ONE
+     proposal per /improve, and only when the threshold is truly crossed — otherwise say
+     nothing about synthesis; silence is the default. (3) ANTI-NAG / ANTI-POISON: if I
+     reject a proposal, or if I later delete or rewrite a rule you synthesized, record a
+     short fingerprint of that pattern in ~/ai-os/me/.synth-ledger (create it if needed;
+     it holds only short pattern fingerprints, nothing else) and NEVER propose that same
+     pattern again. (4) If you cannot confidently tell a real recurring divergent pattern
+     from noise (likelier on a smaller model), propose NOTHING. (5) NEVER do this between
+     sessions or unprompted — it happens only here, when I have chosen to run /improve.
+     If a counter file ~/ai-os/.aios-usage.jsonl exists, append an aggregate event when
+     you propose a synthesis ("synth_proposed"), when I accept one ("synth_accepted"),
+     and when a previously-accepted synthesized rule is found gone ("synth_reverted") —
+     counts only, never any rule text.
 
    - /triage — One pass over my inbox + calendar. Classify mail into Needs Reply /
      FYI / Noise, surface calendar conflicts and free blocks, and ONLY on explicit
@@ -987,9 +1014,11 @@ Explain each piece in plain language as you create it.
            period (it carries an `added:` date in the window) AND that you have since
            applied at least once in a later session. Capture alone does not count — the
            rule must have done work.
-       (b) SYNTHESIZED — a rule you proposed from a repeated pattern of mine that I
-           accepted and did not revert (nothing to show here until proactive synthesis
-           ships; render it only when it is real).
+       (b) SYNTHESIZED — a standing rule you PROPOSED from a repeated pattern of mine
+           (it carries `origin: synthesized` in HOW-I-WORK.md) that I accepted THIS
+           period AND have not since deleted or rewritten. Show it only if it is still
+           present and provenanced; a proposal I rejected or later reverted does not
+           count.
        (c) FRONTIER — a newly-available capability, quoted VERBATIM from the /doctor
            CURRENCY outcomes notes, that helps a specific thing I actually do (match it
            against my me/WHOAMI.md + recent activity). Never invent a capability; skip it

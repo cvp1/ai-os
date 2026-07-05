@@ -16,9 +16,11 @@ tier: core
            period (it carries an `added:` date in the window) AND that you have since
            applied at least once in a later session. Capture alone does not count — the
            rule must have done work.
-       (b) SYNTHESIZED — a rule you proposed from a repeated pattern of mine that I
-           accepted and did not revert (nothing to show here until proactive synthesis
-           ships; render it only when it is real).
+       (b) SYNTHESIZED — a standing rule you PROPOSED from a repeated pattern of mine
+           (it carries `origin: synthesized` in HOW-I-WORK.md) that I accepted THIS
+           period AND have not since deleted or rewritten. Show it only if it is still
+           present and provenanced; a proposal I rejected or later reverted does not
+           count.
        (c) FRONTIER — a newly-available capability, quoted VERBATIM from the /doctor
            CURRENCY outcomes notes, that helps a specific thing I actually do (match it
            against my me/WHOAMI.md + recent activity). Never invent a capability; skip it
