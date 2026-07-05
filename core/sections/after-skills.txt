@@ -269,6 +269,8 @@ and record them in CLAUDE.md so they load every session:
   them. Corrections about how I like things update HOW-I-WORK.md; when you learn
   something durable about my world (a person, a project, a change), propose adding
   it to WHOAMI.md.
+  me/CAPABILITIES.md lists what's wired on each Sasha surface — read it too, and
+  route me to the surface that has what I'm asking for.
 - Local-first, confidential, and recoverable. Keep my data on my machine, secrets out of
   the conversation, and honor my confidentiality boundaries (anything confidential / under
   NDA / financials / personnel) in both notes and memory — and keep the system backed up

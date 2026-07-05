@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- ai-os installer · build 2026.07.05d · generated from core/ by tools/build_installer.py — do not edit index.html by hand -->
+<!-- ai-os installer · build 2026.07.05e · generated from core/ by tools/build_installer.py — do not edit index.html by hand -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -613,9 +613,9 @@
 a persistent memory, a structured notes vault, and a starter set of skills — and
 then you will operate it as my chief-of-staff going forward.
 
-(This installer is AI-OS build 2026.07.05d. When you build my system, record a line
-"AI-OS installer build: 2026.07.05d" in my CLAUDE.md, AND write the bare build string
-2026.07.05d as the only contents of a file ~/ai-os/.aios-version, so a later upgrade or
+(This installer is AI-OS build 2026.07.05e. When you build my system, record a line
+"AI-OS installer build: 2026.07.05e" in my CLAUDE.md, AND write the bare build string
+2026.07.05e as the only contents of a file ~/ai-os/.aios-version, so a later upgrade or
 health check can tell what changed since mine without parsing prose.)
 
 ABOUT ME (context, refine via the interview below)
@@ -641,7 +641,7 @@ is a clean machine — ASK me before building anything. Never default to a rebui
   from the PHASE 1 list that I am missing, and — if I have no ~/ai-os/me/ files —
   create me/WHOAMI.md + me/HOW-I-WORK.md by DISTILLING what my existing CLAUDE.md
   and memory already record (do NOT interview me again; show me both files for
-  correction). Leave my existing memories, notes,
+  correction). Likewise write me/CAPABILITIES.md (the AIOS-CAPS block) from my installed skills + wired connector if it is missing. Leave my existing memories, notes,
   CLAUDE.md, tuning, scheduled jobs, AND any skills I already have UNTOUCHED —
   never overwrite or "upgrade" a skill I have already customized. If a new skill
   (e.g. /status) overlaps one I already run, point it out and let me choose — do
@@ -650,7 +650,7 @@ is a clean machine — ASK me before building anything. Never default to a rebui
   why it's worth adding — then apply it only after my OK, then STOP — skip PHASE 0 and the
   rest of the build. If I recorded an
   "AI-OS installer build:" line in my CLAUDE.md, compare it to this installer's build
-  (2026.07.05d) to focus the diff on what's new since mine, and update that line — and
+  (2026.07.05e) to focus the diff on what's new since mine, and update that line — and
   the ~/ai-os/.aios-version file — once the additions are applied.
 - IF IT DOESN'T → this is a fresh install: continue with PHASE 0 below and build
   the whole system.
@@ -808,6 +808,22 @@ Explain each piece in plain language as you create it.
      load every session and govern every command.
    - My tools and where truth lives (from the deep intake if I did it; otherwise as learned).
    - My timezone and working hours.
+
+   Then me/CAPABILITIES.md — what I have wired up on THIS surface, so another
+   Sasha (e.g. the hermes web layer) can see it and route to it. Write a marked
+   block:
+       <!-- AIOS-CAPS start -->
+       ## On Claude Code (your ai-os)
+       Connected: <the account I wired — Google (Gmail + Calendar) or Microsoft 365>
+       Commands I can run here:
+       - /brief — your day at a glance   · /triage — sort your inbox
+       - /prep — walk into a meeting ready   · /recall — find anything you've saved
+       - …one line per installed command, from the PHASE 1 list below…
+       <!-- AIOS-CAPS end -->
+   Edit ONLY between those markers — another surface owns the rest of the file
+   (a HERMES-CAPS block may already be there; never touch it). Read the WHOLE
+   file at session start: if I ask for something this surface can't do but
+   another Sasha can, point me there by name instead of just declining.
 
 2) MEMORY SYSTEM — your AI-OS remembers across sessions, and that memory is YOURS:
    plain files in your own folder. Claude Code already has built-in "auto memory" —
@@ -1358,6 +1374,8 @@ and record them in CLAUDE.md so they load every session:
   them. Corrections about how I like things update HOW-I-WORK.md; when you learn
   something durable about my world (a person, a project, a change), propose adding
   it to WHOAMI.md.
+  me/CAPABILITIES.md lists what's wired on each Sasha surface — read it too, and
+  route me to the surface that has what I'm asking for.
 - Local-first, confidential, and recoverable. Keep my data on my machine, secrets out of
   the conversation, and honor my confidentiality boundaries (anything confidential / under
   NDA / financials / personnel) in both notes and memory — and keep the system backed up

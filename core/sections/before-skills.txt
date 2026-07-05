@@ -30,7 +30,7 @@ is a clean machine — ASK me before building anything. Never default to a rebui
   from the PHASE 1 list that I am missing, and — if I have no ~/ai-os/me/ files —
   create me/WHOAMI.md + me/HOW-I-WORK.md by DISTILLING what my existing CLAUDE.md
   and memory already record (do NOT interview me again; show me both files for
-  correction). Leave my existing memories, notes,
+  correction). Likewise write me/CAPABILITIES.md (the AIOS-CAPS block) from my installed skills + wired connector if it is missing. Leave my existing memories, notes,
   CLAUDE.md, tuning, scheduled jobs, AND any skills I already have UNTOUCHED —
   never overwrite or "upgrade" a skill I have already customized. If a new skill
   (e.g. /status) overlaps one I already run, point it out and let me choose — do
@@ -197,6 +197,22 @@ Explain each piece in plain language as you create it.
      load every session and govern every command.
    - My tools and where truth lives (from the deep intake if I did it; otherwise as learned).
    - My timezone and working hours.
+
+   Then me/CAPABILITIES.md — what I have wired up on THIS surface, so another
+   Sasha (e.g. the hermes web layer) can see it and route to it. Write a marked
+   block:
+       <!-- AIOS-CAPS start -->
+       ## On Claude Code (your ai-os)
+       Connected: <the account I wired — Google (Gmail + Calendar) or Microsoft 365>
+       Commands I can run here:
+       - /brief — your day at a glance   · /triage — sort your inbox
+       - /prep — walk into a meeting ready   · /recall — find anything you've saved
+       - …one line per installed command, from the PHASE 1 list below…
+       <!-- AIOS-CAPS end -->
+   Edit ONLY between those markers — another surface owns the rest of the file
+   (a HERMES-CAPS block may already be there; never touch it). Read the WHOLE
+   file at session start: if I ask for something this surface can't do but
+   another Sasha can, point me there by name instead of just declining.
 
 2) MEMORY SYSTEM — your AI-OS remembers across sessions, and that memory is YOURS:
    plain files in your own folder. Claude Code already has built-in "auto memory" —
