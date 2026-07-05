@@ -44,7 +44,22 @@ tier: core
      my memories, notes, CLAUDE.md, and customized skills UNTOUCHED. If I can't reach the
      internet (or the fetch is unavailable here), say "couldn't check currency — offline"
      and move on; NEVER let this stop the rest of the check, and NEVER guess a version
-     you couldn't read. Then, for the deeper SYSTEM layer — install health, connector CONFIG
+     you couldn't read. (6) STANDING WORK — if I've put any of my managers on a schedule (a
+     between-session "check-in" that drafts something while I'm away), confirm it's actually
+     still running. Read ~/ai-os/.aios-heartbeat.jsonl if it exists (one JSON line per run:
+     ts, job, status, every, note). For each distinct job take its LATEST record, and FLAG it
+     if either (a) its status is "error", or (b) the time since its ts exceeds its own expected
+     cadence `every` by more than about half again (so a "7d" job is stale past ~10 days) —
+     which means a scheduled run may be failing SILENTLY (a sleeping laptop skips runs, a
+     deleted routine stops them, an errored run leaves no draft), and that is worse than no
+     automation because I THINK it's still happening. For a flagged job say plainly: "your
+     <job> standing work hasn't run since <date> (expected every <every>) — open your Scheduled
+     sessions or re-check that routine." For a healthy job, one green line: when it last ran and
+     whether a draft is waiting. If the file is missing or empty, render NOTHING here (I simply
+     have no standing work registered — do not invent a line). Strictly READ-ONLY: never re-run
+     a job, never re-authorize, never restart a routine — detect, report, and point me at the
+     fix. If a counter file ~/ai-os/.aios-usage.jsonl exists, append one aggregate
+     "heartbeat_stale" event per flagged job — counts only, no content. Then, for the deeper SYSTEM layer — install health, connector CONFIG
      validity, version currency, search/ripgrep, CLAUDE.md size — tell me to run Claude
      Code's own built-in /doctor (if it's available here); don't reinvent that plumbing,
      just point at it. Finish with a short green / needs-attention summary naming the
@@ -63,7 +78,7 @@ Any time something feels off — a command "does nothing", mail looks stale — 
 
 ## Walkthrough
 1. Type `/doctor`.
-2. It checks the five things the platform's own checker can't see: **Connectors** (via `/mcp` — the thing most likely to be quietly broken), **Memory** (exists, rough size, note count, whether a `/memory-prune` is worth it), **Toolkit** (which skills are registered under `~/.claude/skills/`), **Protection** (the age of your most recent `/backup`), and **Currency** (whether your installer build and command roster have fallen behind the current AI-OS — if so, it points you at re-running setup, which upgrades in place).
+2. It checks the six things the platform's own checker can't see: **Connectors** (via `/mcp` — the thing most likely to be quietly broken), **Memory** (exists, rough size, note count, whether a `/memory-prune` is worth it), **Toolkit** (which skills are registered under `~/.claude/skills/`), **Protection** (the age of your most recent `/backup`), **Currency** (whether your installer build and command roster have fallen behind the current AI-OS — if so, it points you at re-running setup, which upgrades in place), and **Standing work** (if you've scheduled a manager to draft between sessions, whether it's actually still running — a silently-skipped run is worse than none).
 3. It finishes with a short green / needs-attention summary naming the one or two things worth doing next — and points you to Claude Code's own built-in `/doctor` for the deeper system layer (install, versions, config).
 
 A checkup looks about like this:
@@ -74,6 +89,7 @@ A checkup looks about like this:
 > ⚠ Protection — last backup 9 days ago → run /backup
 > ⚠ Currency — build 2026.05.12a is behind current 2026.06.30m; missing /restore → re-run setup (it upgrades in place, adds only what's new)
 > &nbsp;&nbsp;What's new for you — the newer build's /brief now drafts your morning digest before you're even at your desk
+> ⚠ Standing work — your /projects check-in hasn't run since Jul 1 (expected weekly) → check its routine (a sleeping laptop skips runs)
 > For install/version checks, run Claude Code's built-in /doctor.
 
 ## Power user
@@ -82,3 +98,4 @@ A checkup looks about like this:
 - **It complements native `/doctor`, doesn't replace it.** AI-OS `/doctor` covers AI-OS-specific state; Claude Code's built-in `/doctor` covers install/config/versions. Run both.
 - **Currency routes, it never upgrades.** `/doctor` only *tells* you your build or command roster is behind and points you at re-running the setup prompt — which detects your install and switches to upgrade mode, adding only what's missing and leaving your memories, notes, and customized skills untouched. `/doctor` itself changes nothing, and if you're offline it just skips the currency check.
 - **Strictly read-only.** It inspects and reports — pair it with `/backup` (it tells you your safety net is current) and `/memory-prune` (it tells you when one's due).
+- **Standing work can fail silently — this catches it.** If you've scheduled a manager to draft between sessions (the "Run it without you" setup), `/doctor` reads a small heartbeat file and tells you if a scheduled run has quietly stopped — a sleeping laptop, a deleted routine, an errored run. It only reports and points you at the fix; it never re-runs or restarts anything.

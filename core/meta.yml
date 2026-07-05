@@ -1,5 +1,5 @@
 # AI-OS installer build manifest (consumed by tools/build_installer.py)
-version: "2026.07.06a"   # stamped into index.html + guide.html + the installer's UPGRADE-MODE header
+version: "2026.07.06b"   # stamped into index.html + guide.html + the installer's UPGRADE-MODE header
 shell: core/shell.html
 prompt:
   before: core/sections/before-skills.txt
@@ -50,3 +50,11 @@ outcomes:
     command: improve
     scope: core
     note: "/improve now notices when you've corrected it the same way a few times and PROPOSES a standing rule so you stop repeating yourself — you always accept, edit, or reject it; nothing is written without your yes."
+  - build: "2026.07.06b"
+    command: doctor
+    scope: core
+    note: "/doctor now also checks your standing work — if you've scheduled a manager to draft between sessions, it tells you when a scheduled run has quietly stopped, so a silently-skipped automation can't fool you into thinking it's still working."
+  - build: "2026.07.06b"
+    command: projects
+    scope: optin
+    note: "/projects can now check in on its own — put `/projects check-in` on a schedule and it drafts your due status update while you're away, staged for you to send; /doctor warns you if a scheduled check-in ever stops. Nothing is sent without you."

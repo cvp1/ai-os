@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- ai-os installer · build 2026.07.06a · generated from core/ by tools/build_installer.py — do not edit index.html by hand -->
+<!-- ai-os installer · build 2026.07.06b · generated from core/ by tools/build_installer.py — do not edit index.html by hand -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -613,9 +613,9 @@
 a persistent memory, a structured notes vault, and a starter set of skills — and
 then you will operate it as my chief-of-staff going forward.
 
-(This installer is AI-OS build 2026.07.06a. When you build my system, record a line
-"AI-OS installer build: 2026.07.06a" in my CLAUDE.md, AND write the bare build string
-2026.07.06a as the only contents of a file ~/ai-os/.aios-version, so a later upgrade or
+(This installer is AI-OS build 2026.07.06b. When you build my system, record a line
+"AI-OS installer build: 2026.07.06b" in my CLAUDE.md, AND write the bare build string
+2026.07.06b as the only contents of a file ~/ai-os/.aios-version, so a later upgrade or
 health check can tell what changed since mine without parsing prose.)
 
 ABOUT ME (context, refine via the interview below)
@@ -650,7 +650,7 @@ is a clean machine — ASK me before building anything. Never default to a rebui
   why it's worth adding — then apply it only after my OK, then STOP — skip PHASE 0 and the
   rest of the build. If I recorded an
   "AI-OS installer build:" line in my CLAUDE.md, compare it to this installer's build
-  (2026.07.06a) to focus the diff on what's new since mine, and update that line — and
+  (2026.07.06b) to focus the diff on what's new since mine, and update that line — and
   the ~/ai-os/.aios-version file — once the additions are applied.
 - IF IT DOESN'T → this is a fresh install: continue with PHASE 0 below and build
   the whole system.
@@ -1141,7 +1141,22 @@ Explain each piece in plain language as you create it.
      my memories, notes, CLAUDE.md, and customized skills UNTOUCHED. If I can't reach the
      internet (or the fetch is unavailable here), say "couldn't check currency — offline"
      and move on; NEVER let this stop the rest of the check, and NEVER guess a version
-     you couldn't read. Then, for the deeper SYSTEM layer — install health, connector CONFIG
+     you couldn't read. (6) STANDING WORK — if I've put any of my managers on a schedule (a
+     between-session "check-in" that drafts something while I'm away), confirm it's actually
+     still running. Read ~/ai-os/.aios-heartbeat.jsonl if it exists (one JSON line per run:
+     ts, job, status, every, note). For each distinct job take its LATEST record, and FLAG it
+     if either (a) its status is "error", or (b) the time since its ts exceeds its own expected
+     cadence `every` by more than about half again (so a "7d" job is stale past ~10 days) —
+     which means a scheduled run may be failing SILENTLY (a sleeping laptop skips runs, a
+     deleted routine stops them, an errored run leaves no draft), and that is worse than no
+     automation because I THINK it's still happening. For a flagged job say plainly: "your
+     <job> standing work hasn't run since <date> (expected every <every>) — open your Scheduled
+     sessions or re-check that routine." For a healthy job, one green line: when it last ran and
+     whether a draft is waiting. If the file is missing or empty, render NOTHING here (I simply
+     have no standing work registered — do not invent a line). Strictly READ-ONLY: never re-run
+     a job, never re-authorize, never restart a routine — detect, report, and point me at the
+     fix. If a counter file ~/ai-os/.aios-usage.jsonl exists, append one aggregate
+     "heartbeat_stale" event per flagged job — counts only, no content. Then, for the deeper SYSTEM layer — install health, connector CONFIG
      validity, version currency, search/ripgrep, CLAUDE.md size — tell me to run Claude
      Code's own built-in /doctor (if it's available here); don't reinvent that plumbing,
      just point at it. Finish with a short green / needs-attention summary naming the
@@ -1647,9 +1662,35 @@ PHASE C — INSTALL THE SKILL (restart-free)
 Write ~/ai-os/projects/personas/manager.md and personas/researcher.md (plain persona files
 the /projects skill prepends to a general-purpose agent — NOT subagent files; shared across
 every project I add). Write ~/.claude/skills/projects/SKILL.md (the /projects command:
-status, onboard, update, decide, research; propose-only; reads the active project's
+status, onboard, update, check-in, decide, research; propose-only; reads the active project's
 STRATEGY.md first; stages status drafts to the project's proposals/ for me to send). With
 one project the skill uses it automatically; if I ever add a second, it asks which.
+
+STANDING CHECK-IN — MAKE THE SKILL ABLE TO INITIATE (propose-only, self-verifying)
+Also build a "check-in" mode into the /projects skill (`/projects check-in`) — the one thing
+that lets it work FOR me between sessions instead of only when I ask. When check-in runs
+(whether I type it, or a schedule runs it while I'm away) it does ONE standing thing and no
+more: if my status cadence says an update is due (or nearly), it drafts that ONE status from
+where things actually stand and STAGES it to ~/ai-os/projects/<slug>/proposals/ — it does NOT
+send it, notify anyone, or write anywhere outside my projects workspace. Then two housekeeping
+writes, both local files I own:
+  1. HEARTBEAT — append one JSON line to ~/ai-os/.aios-heartbeat.jsonl (create if needed):
+     {"ts":"<now, ISO>","job":"projects-checkin","status":"ok","every":"<my status cadence,
+     e.g. 7d>","note":"staged status for <slug>"}. If check-in runs but can't finish, write the
+     same line with "status":"error". This is how /doctor can later tell me if a scheduled
+     check-in has gone silently dead — a job that fails without telling me is worse than no job.
+  2. COUNTER — if ~/ai-os/.aios-usage.jsonl exists, append an aggregate "proposal_surfaced"
+     event (counts only, no content).
+SURFACING (never a nag): between sessions, check-in stays SILENT — it only stages the draft.
+The next time I actually run /projects, if a staged check-in draft is waiting, mention exactly
+ONE: "while you were away I drafted your weekly status (staged <date>) — want to look?" If I
+open or use it, append "proposal_accepted"; if I wave it off, append "proposal_dismissed" and
+don't raise that same one again. At most one waiting item, only when I'm already here — never
+unprompted, never between sessions.
+TO RUN IT WHILE I'M AWAY: tell me I can put `/projects check-in` on a schedule with the "Run it
+without you" setup on the AI-OS page (a Local routine in Ask mode) — it will draft on my cadence
+and /doctor will warn me if it ever stops. Only if I want it; interactively it works the same,
+just when I ask.
 
 PHASE D — FIRST WIN, INLINE (no restart needed)
 Right now, in THIS session, draft ONE weekly status update for this project — in the format
