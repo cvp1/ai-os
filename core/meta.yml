@@ -1,5 +1,5 @@
 # AI-OS installer build manifest (consumed by tools/build_installer.py)
-version: "2026.07.05e"   # stamped into index.html + guide.html + the installer's UPGRADE-MODE header
+version: "2026.07.05f"   # stamped into index.html + guide.html + the installer's UPGRADE-MODE header
 shell: core/shell.html
 prompt:
   before: core/sections/before-skills.txt
@@ -42,3 +42,7 @@ outcomes:
     command: improve
     scope: core
     note: "Sasha now keeps who-you-are in two plain files you can open and edit — me/WHOAMI.md and me/HOW-I-WORK.md. New setups meet a 5-question hello instead of a 19-question interview; re-pasting this installer adds the me/ files to an existing setup from what it already knows."
+  - build: "2026.07.05f"
+    command: weekly
+    scope: core
+    note: "/weekly now shows a monthly 'Sharper this month' mirror — how it got sharper at your work, and it stays silent when there's nothing real to show"

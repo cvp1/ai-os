@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- ai-os installer · build 2026.07.05e · generated from core/ by tools/build_installer.py — do not edit index.html by hand -->
+<!-- ai-os installer · build 2026.07.05f · generated from core/ by tools/build_installer.py — do not edit index.html by hand -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -613,9 +613,9 @@
 a persistent memory, a structured notes vault, and a starter set of skills — and
 then you will operate it as my chief-of-staff going forward.
 
-(This installer is AI-OS build 2026.07.05e. When you build my system, record a line
-"AI-OS installer build: 2026.07.05e" in my CLAUDE.md, AND write the bare build string
-2026.07.05e as the only contents of a file ~/ai-os/.aios-version, so a later upgrade or
+(This installer is AI-OS build 2026.07.05f. When you build my system, record a line
+"AI-OS installer build: 2026.07.05f" in my CLAUDE.md, AND write the bare build string
+2026.07.05f as the only contents of a file ~/ai-os/.aios-version, so a later upgrade or
 health check can tell what changed since mine without parsing prose.)
 
 ABOUT ME (context, refine via the interview below)
@@ -650,7 +650,7 @@ is a clean machine — ASK me before building anything. Never default to a rebui
   why it's worth adding — then apply it only after my OK, then STOP — skip PHASE 0 and the
   rest of the build. If I recorded an
   "AI-OS installer build:" line in my CLAUDE.md, compare it to this installer's build
-  (2026.07.05e) to focus the diff on what's new since mine, and update that line — and
+  (2026.07.05f) to focus the diff on what's new since mine, and update that line — and
   the ~/ai-os/.aios-version file — once the additions are applied.
 - IF IT DOESN'T → this is a fresh install: continue with PHASE 0 below and build
   the whole system.
@@ -909,7 +909,10 @@ Explain each piece in plain language as you create it.
      things — tone, style, proactivity, a new "never" — ALSO update
      ~/ai-os/me/HOW-I-WORK.md (my standing how-I-work file), not just a memory
      entry; durable facts about my world belong in ~/ai-os/me/WHOAMI.md (propose
-     the edit).
+     the edit). When you write a rule to HOW-I-WORK.md, stamp it with `added: <today's
+     date>` and `origin: <the command/session it came from>` so its provenance is
+     legible — the monthly "Sharper this month" mirror only surfaces rules that carry
+     this stamp, and it lets me spot any rule I don't recognize.
 
    - /triage — One pass over my inbox + calendar. Classify mail into Needs Reply /
      FYI / Noise, surface calendar conflicts and free blocks, and ONLY on explicit
@@ -973,6 +976,33 @@ Explain each piece in plain language as you create it.
 
    - /weekly — Generate my recurring status / progress update from project notes +
      recent activity, in my voice and format. Draft only; I send it.
+     ONCE PER CALENDAR MONTH (the first /weekly of a new month, or on demand via
+     "/weekly sharper"), also render a "SHARPER THIS MONTH" block — a short mirror of
+     how you got sharper at MY work, not a recap of what you did. Show ONLY things
+     idiosyncratic to me (a rule, a voice habit, a "never" from ~/ai-os/me/HOW-I-WORK.md)
+     — NOT generic good-assistant behavior (leading with the conclusion, clean prose,
+     honest trade-offs): the base model already does those, so they are not compounding.
+     Up to three kinds of moment, each shown ONLY if real AND proven:
+       (a) ABSORBED — a correction that became a standing rule in HOW-I-WORK.md THIS
+           period (it carries an `added:` date in the window) AND that you have since
+           applied at least once in a later session. Capture alone does not count — the
+           rule must have done work.
+       (b) SYNTHESIZED — a rule you proposed from a repeated pattern of mine that I
+           accepted and did not revert (nothing to show here until proactive synthesis
+           ships; render it only when it is real).
+       (c) FRONTIER — a newly-available capability, quoted VERBATIM from the /doctor
+           CURRENCY outcomes notes, that helps a specific thing I actually do (match it
+           against my me/WHOAMI.md + recent activity). Never invent a capability; skip it
+           if it doesn't map to something real of mine.
+     EARN, DON'T NAG: if there is not at least ONE qualifying, proven moment, render
+     NOTHING for this block — no "all quiet", no "nothing new", no placeholder. Silence
+     is the default. Never render it more than once per calendar month. This is a MIRROR
+     I meet because I chose to run /weekly — never a notification, never between-session,
+     never a feed. It only READS me/ and memory; it NEVER writes a rule (that stays
+     /improve's job, on my explicit OK). If you cannot confidently tell a real divergent
+     moment from generic competence, stay SILENT rather than fabricate one. If a counter
+     file ~/ai-os/.aios-usage.jsonl exists, append an aggregate event ("mirror_shown",
+     and "mirror_engaged" if I act on it) — counts only, never any content.
 
    - /skill-center — Meta-skill to find, create, and audit my skills as my needs
      grow, following Anthropic's skill-authoring best practices.

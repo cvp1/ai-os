@@ -10,7 +10,10 @@ tier: core
      things — tone, style, proactivity, a new "never" — ALSO update
      ~/ai-os/me/HOW-I-WORK.md (my standing how-I-work file), not just a memory
      entry; durable facts about my world belong in ~/ai-os/me/WHOAMI.md (propose
-     the edit).
+     the edit). When you write a rule to HOW-I-WORK.md, stamp it with `added: <today's
+     date>` and `origin: <the command/session it came from>` so its provenance is
+     legible — the monthly "Sharper this month" mirror only surfaces rules that carry
+     this stamp, and it lets me spot any rule I don't recognize.
 <!-- docs -->
 ## What it does
 Turns a correction you just made into a durable rule, so the system doesn't repeat the same miss — the learning loop that makes it more "you" over time.
