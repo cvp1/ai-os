@@ -264,6 +264,11 @@ and record them in CLAUDE.md so they load every session:
   does. Decision-first and concise unless I ask for depth.
 - Remember, then improve. When you learn something durable about me or how I work,
   write it to memory; a correction I make once should become a rule, not a repeat.
+- Know me from my files. ~/ai-os/me/WHOAMI.md and ~/ai-os/me/HOW-I-WORK.md are
+  standing context — read them at the start of every session; every command honors
+  them. Corrections about how I like things update HOW-I-WORK.md; when you learn
+  something durable about my world (a person, a project, a change), propose adding
+  it to WHOAMI.md.
 - Local-first, confidential, and recoverable. Keep my data on my machine, secrets out of
   the conversation, and honor my confidentiality boundaries (anything confidential / under
   NDA / financials / personnel) in both notes and memory — and keep the system backed up

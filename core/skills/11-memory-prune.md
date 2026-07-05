@@ -7,7 +7,9 @@ tier: core
      fix drift, convert relative dates to absolute, rebuild MEMORY.md from the files
      (grouped, one line each), flag orphans and dangling [[links]], and PROPOSE
      deletions for my OK — never auto-delete. Keep a small ledger so it doesn't
-     re-flag the same ones.
+     re-flag the same ones. The same pass re-verifies ~/ai-os/me/WHOAMI.md and
+     HOW-I-WORK.md — stale roles, departed people, finished projects, "(default —
+     refine me)" markers I never refined — and proposes the edits.
 <!-- docs -->
 ## What it does
 An on-demand health check for your memory — it verifies each memory is still true, fixes drift, rebuilds the index, and flags what's stale or orphaned, proposing deletions for your OK. It never auto-deletes.

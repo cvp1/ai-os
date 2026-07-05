@@ -6,7 +6,11 @@ tier: core
    - /improve — Capture what I corrected or taught you THIS session into durable
      memory (feedback/project type), so next time is better by default. This is the
      learning loop — the system gets more "me" every time I steer it. Trigger on
-     "/improve", "remember that", "bake that in".
+     "/improve", "remember that", "bake that in". Corrections about HOW I like
+     things — tone, style, proactivity, a new "never" — ALSO update
+     ~/ai-os/me/HOW-I-WORK.md (my standing how-I-work file), not just a memory
+     entry; durable facts about my world belong in ~/ai-os/me/WHOAMI.md (propose
+     the edit).
 <!-- docs -->
 ## What it does
 Turns a correction you just made into a durable rule, so the system doesn't repeat the same miss — the learning loop that makes it more "you" over time.
@@ -30,4 +34,5 @@ A capture looks about like this:
 - **One fact per rule.** Small, specific rules beat big ones — easier to recall and to correct later.
 - **It pairs with everything.** When `/brief` mis-ranks a priority, `/triage` mis-sorts a sender, or `/status` misses your tone, correct it, then `/improve` — each command gets sharper.
 - **It's yours to edit.** Memories are plain files; open them, fix a word, delete one. `/memory-prune` keeps the whole store healthy over time.
+- **Style corrections land in `me/`.** A "that's not how I work" correction updates `me/HOW-I-WORK.md` — the standing file every command reads — so it changes behavior everywhere, not just in one memory.
 - **`/improve` vs native capture.** Claude Code writes some memory on its own; `/improve` is the deliberate, one-fact-durable version for the corrections you *want* to guarantee stick.
