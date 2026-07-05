@@ -192,12 +192,12 @@
 </div></div>
 
 <header class="top"><div class="wrap">
-  <span class="logo"><span class="rag"><i class="r"></i><i class="a"></i><i class="g"></i></span> AI&nbsp;OS</span>
+  <span class="logo"><span class="rag"><i class="r"></i><i class="a"></i><i class="g"></i></span> Sasha</span>
+  <a class="navlink navhide" href="#rollout">Set it up</a>
   <a class="navlink navhide" href="#flip">The flip</a>
   <a class="navlink navhide" href="#commands">Commands</a>
   <a class="navlink" href="guide.html">Field Guide</a>
   <a class="navlink navhide" href="#controls">Controls</a>
-  <a class="navlink navhide" href="#rollout">Rollout</a>
   <a class="navlink navhide" href="#compare">Yours vs rented</a>
   <a class="navlink navhide-sm" href="#domain">Second act</a>
   <a class="btn sm go" href="#rollout">Copy the prompt</a>
@@ -221,7 +221,7 @@
   <h1 class="display">Meet Sasha — <span class="greenword">your chief of staff.</span></h1>
 
   <p class="lede" style="margin-top:24px;font-weight:700">Sasha is the person who runs the day around you — reads your mail first, preps you for every meeting, keeps track of what's open — a personal AI that's genuinely <b>yours</b>, one anyone can stand up.</p>
-  <p class="lede" style="margin-top:10px">One copy-paste prompt turns <b>Claude Code</b> into a personal operating system, wired to your <b>Google (Gmail + Calendar) or Microsoft 365</b>. It runs your week — triage, meeting prep, status updates — and gets sharper every time you correct it. Stand it up once, in about five minutes.</p>
+  <p class="lede" style="margin-top:10px">One copy-paste prompt turns <b>Claude Code</b> into a personal operating system, wired to your <b>Google (Gmail + Calendar) or Microsoft 365</b>. It runs your week — triage, meeting prep, status updates — and gets sharper every time you correct it. Five questions and one paste &mdash; most people read their first brief in about ten minutes.</p>
 
   <div class="cta">
     <a class="btn go" href="#rollout">Copy the setup prompt →</a>
@@ -229,6 +229,33 @@
   </div>
   <p class="fineprint">no code required &nbsp;·&nbsp; read-only by default &nbsp;·&nbsp; nothing sent without your sign-off</p>
   <p style="margin-top:18px;font-size:14.5px;color:var(--ink-2)">New here? The <a href="guide.html" style="color:var(--green-deep);font-weight:700;text-decoration:none;border-bottom:2px solid var(--green)">Field Guide →</a> shows how to get the most from every command — plain-language up top, power-user depth below.</p>
+</div></section>
+
+<!-- ============ ROLLOUT ============ -->
+<section id="rollout"><div class="wrap reveal">
+  <span class="eyebrow">Set it up · five questions and one paste</span>
+  <h2 class="display" style="margin-top:14px">Stand it up.</h2>
+  <p class="lede" style="margin-bottom:30px">No code, no terminal. Install one app, connect your mail &amp; calendar, switch on Auto, paste the prompt &mdash; then Sasha asks five quick questions and builds around you. Most people read their first brief in about ten minutes.</p>
+  <div class="steps">
+    <div class="step"><div><h4>Install the Claude desktop app &amp; sign in</h4><p>Download the Claude desktop app from <span class="kbd">claude.com/download</span> — a normal app installer for Mac (<span class="kbd">.dmg</span>) or Windows (<span class="kbd">.exe</span>). Open it and sign in with your Claude account. <b>You never need a terminal or any code.</b> <i>The app runs on a paid Claude plan — Pro is about $20/month. This setup is free; the AI that powers it isn&#8217;t.</i></p><p style="margin-top:10px;color:var(--ink-3);font-size:.92em"><b>Windows detour (one time, a couple of extra minutes):</b> the first time you open it, the app may ask you to install <b>Git for Windows</b> — click Install, accept the defaults, let it finish, then reopen the Claude app. That&#8217;s the whole detour. (Mac has nothing extra.)</p><p style="margin-top:8px;color:var(--ink-3);font-size:.92em">Prefer the command line? The Claude Code CLI at <span class="kbd">claude.com/claude-code</span> is the very same engine — every step below works there too.</p></div></div>
+    <div class="step"><div><h4>Connect your mail &amp; calendar</h4><p>On your Claude account at <span class="kbd">claude.ai</span> &rarr; Settings &rarr; Connectors, turn on <b>Google (Gmail + Calendar)</b> <i>or</i> <b>Microsoft 365</b> and sign in to authorize it. Your AI OS works read-and-draft: it reads your mail and calendar, drafts locally, and anything outward waits for your OK — that per-action approval is the guarantee on either provider. On Microsoft 365 the connector itself is read-only on top, which takes nothing away: <b>Microsoft 365 is every bit as capable as Google here.</b> The difference is access, not capability.</p><p style="margin-top:10px;color:var(--ink-3);font-size:.92em"><b>Pick the one you can actually connect.</b> <b>Google</b> is quickest — most people, personal Gmail included, can connect it themselves. <b>Microsoft 365</b> needs a <i>work</i> account your organization has enabled — a personal <span class="kbd">@outlook.com</span> or <span class="kbd">@hotmail.com</span> address can&#8217;t connect at all.</p><p style="margin-top:8px;color:var(--ink-3);font-size:.92em">Most people can approve it themselves; some tenants still need a one-time admin consent — so <b>confirm you can connect <i>before</i> you invest time.</b> If the connection ever needs a fresh sign-in, Claude tells you and reconnects the moment you re-authorize. The setup prompt can walk you through it.</p></div></div>
+    <div class="step"><div><h4>Open the Code tab and pick your home folder</h4><p>In the app, click the <b>Code</b> tab, then create or pick a folder to be Sasha&#8217;s home — e.g. a new folder called <span class="kbd">ai-os</span>. That folder is where your memory and notes live, on your own machine.</p></div></div>
+    <div class="step"><div><h4>Switch to Auto — before you paste</h4><p><b>The one step people miss.</b> The mode control sits in the <b>top-left corner, just above where you type</b> — switch it to <b>Auto</b> and accept the one-time confirmation dialog. (If Auto isn&#8217;t offered there, enable it once in the app&#8217;s <b>Settings</b>.)</p><p style="margin-top:8px;color:var(--ink-3);font-size:.92em">Auto means the build runs in one pass instead of stopping at every file — and the guardrail that matters doesn&#8217;t move: your mail and calendar stay <b>read-and-draft</b>, and anything outward waits for your per-action OK (on Microsoft 365, the connector itself can&#8217;t write at all). Near the end it asks permission to schedule the quiet data refreshes that keep your morning brief instant; that&#8217;s expected — say yes.</p></div></div>
+    <div class="step"><div><h4>Paste the setup prompt as your first message</h4><p>Copy it below, paste the whole thing, and send.</p></div></div>
+    <div class="step"><div><h4>Say hello — five quick questions</h4><p>Sasha introduces herself and asks five questions: what fills your week, which account to wire up, what to take off your plate first, what she should never do without asking, and how you like things. Say &#8220;skip&#8221; to any of them — she starts with sensible defaults and learns as you work. Then she builds everything shaped to you and explains what she made.</p></div></div>
+    <div class="step"><div><h4>See it work — your first win</h4><p>The moment the build finishes, it hands you your actual day — today's meetings, what's waiting on you, deadlines this week — proof it's wired to your real mail and calendar. That's the payoff, and you didn't have to do a thing. From your <b>next</b> session on, type <span class="kbd">/brief</span> any morning to get it again for that day; your other commands (<span class="kbd">/triage</span>, <span class="kbd">/prep</span>, <span class="kbd">/recall</span>) work the same way — <b>close this folder and reopen it (or start a new chat) once, and they're all ready.</b></p></div></div>
+  </div>
+
+  <div class="term">
+    <div class="termbar">
+      <span class="tdots"><i></i><i></i><i></i></span>
+      <span class="fname">ai-os-setup-prompt.txt</span>
+      <button class="copybtn" id="copyBtn" onclick="copyPrompt()">Copy prompt</button>
+    </div>
+    <pre class="code" id="promptBox">Loading…</pre>
+  </div>
+  <p class="runline"><span class="caret">❯</span> the one habit that makes it pay off: run <span style="color:var(--green-deep);font-weight:600">/improve</span> whenever you correct it — that's the loop that makes it more <i>you</i>.</p>
+  <p style="margin-top:14px;color:var(--ink-3);font-size:13px;line-height:1.6"><b style="color:var(--ink-2)">Already set up?</b> Pasting the prompt again <b>upgrades in place</b> — it detects your install and only adds what's new, leaving your memory, notes, and customizations untouched. Run <span style="font-family:var(--mono)">/doctor</span> anytime and it'll check whether you're on the current build.</p>
 </div></section>
 
 <!-- ============ THE FLIP ============ -->
@@ -333,32 +360,6 @@
     </div>
   </div>
   <div class="notice">⚠ <b>Check first:</b> confirm with your leadership / IT that Claude Code with the Microsoft 365 or Google Workspace connector is approved for your account before wiring it to work mail. This is a personal-productivity setup — not an official product of any employer.</div>
-</div></section>
-
-<!-- ============ ROLLOUT ============ -->
-<section id="rollout"><div class="wrap reveal">
-  <span class="eyebrow">Rollout · ~5 minutes</span>
-  <h2 class="display" style="margin-top:14px">Stand it up.</h2>
-  <p class="lede" style="margin-bottom:30px">No code, no terminal. Install one app, connect your mail &amp; calendar, paste the prompt below, answer its questions.</p>
-  <div class="steps">
-    <div class="step"><div><h4>Install the Claude desktop app &amp; sign in</h4><p>Download the Claude desktop app from <span class="kbd">claude.com/download</span> — a normal app installer for Mac (<span class="kbd">.dmg</span>) or Windows (<span class="kbd">.exe</span>). Open it and sign in with your Claude account. <b>You never need a terminal or any code.</b> <i>The app runs on a paid Claude plan — Pro is about $20/month. This setup is free; the AI that powers it isn&#8217;t.</i></p><p style="margin-top:10px;color:var(--ink-3);font-size:.92em"><b>On Windows, one extra step:</b> the first time you open it, the app may ask you to install <b>Git for Windows</b> first — accept, let it install, then reopen the app. (Mac has nothing extra.)</p><p style="margin-top:8px;color:var(--ink-3);font-size:.92em">Prefer the command line? The Claude Code CLI at <span class="kbd">claude.com/claude-code</span> is the very same engine — every step below works there too.</p></div></div>
-    <div class="step"><div><h4>Connect your mail &amp; calendar</h4><p>On your Claude account at <span class="kbd">claude.ai</span> &rarr; Settings &rarr; Connectors, turn on <b>Google (Gmail + Calendar)</b> <i>or</i> <b>Microsoft 365</b> and sign in to authorize it. Your AI OS works read-and-draft: it reads your mail and calendar, drafts locally, and anything outward waits for your OK — that per-action approval is the guarantee on either provider. On Microsoft 365 the connector itself is read-only on top, which takes nothing away: <b>Microsoft 365 is every bit as capable as Google here.</b> The difference is access, not capability.</p><p style="margin-top:10px;color:var(--ink-3);font-size:.92em"><b>Pick the one you can actually connect.</b> <b>Google</b> is quickest — most people, personal Gmail included, can connect it themselves. <b>Microsoft 365</b> needs a <i>work</i> account your organization has enabled — a personal <span class="kbd">@outlook.com</span> or <span class="kbd">@hotmail.com</span> address can&#8217;t connect at all.</p><p style="margin-top:8px;color:var(--ink-3);font-size:.92em">Most people can approve it themselves; some tenants still need a one-time admin consent — so <b>confirm you can connect <i>before</i> you invest time.</b> If the connection ever needs a fresh sign-in, Claude tells you and reconnects the moment you re-authorize. The setup prompt can walk you through it.</p></div></div>
-    <div class="step"><div><h4>Open the Code tab and turn on Auto mode</h4><p>In the app, click the <b>Code</b> tab, then create or pick a folder to be your AI OS home — e.g. a new folder called <span class="kbd">ai-os</span>. That folder is where your memory and notes live, on your own machine.</p><p style="margin-top:10px"><i><b>Before you paste anything, switch the session to Auto.</b> The mode control sits in the <b>top-left corner, just above where you type</b> — you'll get a one-time confirmation dialog; accept it. (If Auto isn't offered there, enable it once in the app's <b>Settings</b>.)</i></p><p style="margin-top:8px;color:var(--ink-3);font-size:.92em">This builds your whole system in one pass instead of stopping at every file — and the guardrail that matters doesn't move: your mail and calendar stay <b>read-and-draft</b>, and anything that would go outward waits for your per-action OK (on Microsoft 365, the connector itself can't write at all). Near the end it asks permission to schedule the quiet data refreshes that keep your morning brief instant; that's expected — say yes.</p></div></div>
-    <div class="step"><div><h4>Paste the setup prompt as your first message</h4><p>Copy it below, paste the whole thing, and send.</p></div></div>
-    <div class="step"><div><h4>Answer the interview</h4><p>It asks about your role, your projects, the people you work with, and how you like to work — then builds everything shaped to you and explains what it made.</p></div></div>
-    <div class="step"><div><h4>See it work — your first win</h4><p>The moment the build finishes, it hands you your actual day — today's meetings, what's waiting on you, deadlines this week — proof it's wired to your real mail and calendar. That's the payoff, and you didn't have to do a thing. From your <b>next</b> session on, type <span class="kbd">/brief</span> any morning to get it again for that day; your other commands (<span class="kbd">/triage</span>, <span class="kbd">/prep</span>, <span class="kbd">/recall</span>) work the same way — <b>close this folder and reopen it (or start a new chat) once, and they're all ready.</b></p></div></div>
-  </div>
-
-  <div class="term">
-    <div class="termbar">
-      <span class="tdots"><i></i><i></i><i></i></span>
-      <span class="fname">ai-os-setup-prompt.txt</span>
-      <button class="copybtn" id="copyBtn" onclick="copyPrompt()">Copy prompt</button>
-    </div>
-    <pre class="code" id="promptBox">Loading…</pre>
-  </div>
-  <p class="runline"><span class="caret">❯</span> the one habit that makes it pay off: run <span style="color:var(--green-deep);font-weight:600">/improve</span> whenever you correct it — that's the loop that makes it more <i>you</i>.</p>
-  <p style="margin-top:14px;color:var(--ink-3);font-size:13px;line-height:1.6"><b style="color:var(--ink-2)">Already set up?</b> Pasting the prompt again <b>upgrades in place</b> — it detects your install and only adds what's new, leaving your memory, notes, and customizations untouched. Run <span style="font-family:var(--mono)">/doctor</span> anytime and it'll check whether you're on the current build.</p>
 </div></section>
 
 <!-- ============ YOURS VS RENTED ============ -->
