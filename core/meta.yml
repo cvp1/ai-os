@@ -1,5 +1,5 @@
 # AI-OS installer build manifest (consumed by tools/build_installer.py)
-version: "2026.07.06b"   # stamped into index.html + guide.html + the installer's UPGRADE-MODE header
+version: "2026.07.06c"   # stamped into index.html + guide.html + the installer's UPGRADE-MODE header
 shell: core/shell.html
 prompt:
   before: core/sections/before-skills.txt
@@ -58,3 +58,7 @@ outcomes:
     command: projects
     scope: optin
     note: "/projects can now check in on its own — put `/projects check-in` on a schedule and it drafts your due status update while you're away, staged for you to send; /doctor warns you if a scheduled check-in ever stops. Nothing is sent without you."
+  - build: "2026.07.06c"
+    command: gift
+    scope: core
+    note: "you can now give a capability you've proven to a friend — /gift packages it as one de-personalized file you can both read, and safely adopts one a friend sends you: their Sasha reviews it out loud and installs only after an explicit yes. No registry, no tracking — a gift is just a file."

@@ -96,6 +96,11 @@ Two opt-in "second acts" wait past your first win — each is one more paste on 
 
 - **Put it on a schedule** — a morning brief drafted and waiting, run locally in Ask mode so nothing is ever sent while you're away. → [scheduler](https://cvp1.github.io/ai-os/#autopilot)
 - **Hire a domain manager** — a standing chief-of-staff for one part of your life: **career** (drafts LinkedIn posts in your voice), **projects** (drafts the status update you actually send), **learning** (plans what to learn; `/teach` teaches). → [staff your bench](https://cvp1.github.io/ai-os/#domain)
+- **Gift a capability** — when a command has genuinely earned its keep, `/gift` packages it as one de-personalized markdown file a friend can read before trusting; their Sasha reviews it out loud and installs only after an explicit yes. No registry, no accounts, no tracking — a gift is just a file.
+
+## Promote a lesson
+
+If a capability you built or tuned has survived weeks of real use and you think it belongs in the shared foundation: open a ["Promote a capability" issue](.github/ISSUE_TEMPLATE/promote-a-capability.md) with the gift-format artifact, how long it's run, and what it survived. Curation is deliberately a single pair of hands — most promotions are declined, and that's the point; what merges, everyone can trust.
 
 ## Your control & privacy
 
