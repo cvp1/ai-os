@@ -1,5 +1,5 @@
 # AI-OS installer build manifest (consumed by tools/build_installer.py)
-version: "2026.07.06c"   # stamped into index.html + guide.html + the installer's UPGRADE-MODE header
+version: "2026.07.11a"   # stamped into index.html + guide.html + the installer's UPGRADE-MODE header
 shell: core/shell.html
 prompt:
   before: core/sections/before-skills.txt
@@ -62,3 +62,7 @@ outcomes:
     command: gift
     scope: core
     note: "you can now give a capability you've proven to a friend — /gift packages it as one de-personalized file you can both read, and safely adopts one a friend sends you: their Sasha reviews it out loud and installs only after an explicit yes. No registry, no tracking — a gift is just a file."
+  - build: "2026.07.11a"
+    command: improve
+    scope: core
+    note: "your assistant's ground rules are now explicitly yours — setup asks how much it may do without asking (one test: can it be undone, and who can see it?), how hard it pushes back when it thinks you're wrong, what it protects for you unprompted (a sleep window, family dates, a budget line), and even its name; your answers live in me/HOW-I-WORK.md where you can edit them anytime, and it never changes its own rules without your plain-language OK."
