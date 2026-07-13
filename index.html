@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- ai-os installer · build 2026.07.12a · generated from core/ by tools/build_installer.py — do not edit index.html by hand -->
+<!-- ai-os installer · build 2026.07.13a · generated from core/ by tools/build_installer.py — do not edit index.html by hand -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -331,6 +331,7 @@
     <div class="refrow"><div class="c"><span class="slash">/</span>backup</div><div class="d">Protects your whole system — memory, notes, <i>and</i> your skills — against a lost or wiped machine. One command keeps an on-disk history and tucks an <b>encrypted</b> copy into the cloud folder you already sync (the 3-2-1 rule), no setup required.</div><div class="e"><b>"/backup"</b> → a safe copy on disk and off your machine.</div></div>
     <div class="refrow"><div class="c"><span class="slash">/</span>restore</div><div class="d">Brings it all back — after a new laptop, a bad edit, or a lost folder. Picks the newest snapshot, lays everything back, and is fully reversible. Use <span class="cmd">--drill</span> to <i>prove</i> a backup works without touching your live system.</div><div class="e"><b>"/restore"</b> → your system, back the way it was.</div></div>
     <div class="refrow"><div class="c"><span class="slash">/</span>doctor</div><div class="d">A read-only checkup for your system — are your connectors still signed in, your memory and commands healthy, your last <span class="cmd">/backup</span> recent? Reports what needs attention and points you at the fix; it changes nothing. Pairs with <span class="cmd">/backup</span> — one tells you the safety net is current.</div><div class="e"><b>"/doctor"</b> → one glance that everything's working.</div></div>
+    <div class="refrow"><div class="c"><span class="slash">/</span>update</div><div class="d">Fetches the current setup prompt, checks it's byte-exact, and hands it into this session as if you'd pasted it — the same safe upgrade mode you'd get by hand decides what actually changes, and nothing does without your OK.</div><div class="e"><b>"/update"</b> → caught up, verified, on your say-so.</div></div>
     <div class="refrow"><div class="c"><span class="slash">/</span>gift</div><div class="d">Give a capability you've proven to a friend — packaged as one de-personalized markdown file you can both read — and safely adopt one a friend sends you: it's reviewed out loud first and installs only after your explicit yes. No registry, no accounts, no tracking — a gift is just a file.</div><div class="e"><b>"my friend sent me this"</b> → reviewed first, then it's yours.</div></div>
     </details>
   </div>
@@ -601,7 +602,7 @@
   <details><summary>How is it different from just chatting with an AI?<span class="pm">+</span></summary><div class="ans">Two things: a <b>memory it actively keeps true</b> — it learns your projects and people across sessions, then re-checks what's gone stale, clears duplicates, and resolves contradictions so it doesn't drift — and <b>commands wired to your real mail &amp; calendar</b>. Instead of re-explaining your context every time, you say "/prep my 2pm" and it already knows the players, the history, and what's open.</div></details>
   <details><summary>What if it gets something wrong?<span class="pm">+</span></summary><div class="ans">Correct it, then run <span class="cmd">/improve</span> to lock that lesson in as a durable rule, so it won't repeat the mistake. The more you steer it, the more it works the way you do.</div></details>
   <details><summary>Can I customise the commands?<span class="pm">+</span></summary><div class="ans">Yes — run <span class="cmd">/skill-center</span> to add, edit, or audit commands as your needs change. The starter set is just a foundation.</div></details>
-  <details><summary>I already set this up — how do I update it?<span class="pm">+</span></summary><div class="ans">Just paste the setup prompt again into your AI-OS folder. It notices you already have an install and switches to <b>upgrade mode</b>: it adds only the commands and improvements that are new since your build and <b>leaves your memory, notes, CLAUDE.md, and any commands you've customized untouched</b> — it shows you what it would add and waits for your OK before changing anything, so re-pasting is safe, not a rebuild. Not sure whether you're behind? Run <span class="cmd">/doctor</span> — it'll check your build against the current one and point you at the update if there is one.</div></details>
+  <details><summary>I already set this up — how do I update it?<span class="pm">+</span></summary><div class="ans">Just say <span class="cmd">/update</span> — it fetches the latest setup prompt, checks it's genuine, and hands off to <b>upgrade mode</b>: it adds only the commands and improvements that are new since your build and <b>leaves your memory, notes, CLAUDE.md, and any commands you've customized untouched</b> — it shows you what it would add and waits for your OK before changing anything. Don't have <span class="cmd">/update</span> yet (a very old install)? Paste the setup prompt again by hand — same safe upgrade mode, no code to run. Not sure whether you're behind? Run <span class="cmd">/doctor</span> — it'll check your build against the current one and point you at the fix.</div></details>
 </div></section>
 
 <footer><div class="wrap">
@@ -614,9 +615,9 @@
 a persistent memory, a structured notes vault, and a starter set of skills — and
 then you will operate it as my chief-of-staff going forward.
 
-(This installer is AI-OS build 2026.07.12a. When you build my system, record a line
-"AI-OS installer build: 2026.07.12a" in my CLAUDE.md, AND write the bare build string
-2026.07.12a as the only contents of a file ~/ai-os/.aios-version, so a later upgrade or
+(This installer is AI-OS build 2026.07.13a. When you build my system, record a line
+"AI-OS installer build: 2026.07.13a" in my CLAUDE.md, AND write the bare build string
+2026.07.13a as the only contents of a file ~/ai-os/.aios-version, so a later upgrade or
 health check can tell what changed since mine without parsing prose.)
 
 ABOUT ME (context, refine via the interview below)
@@ -651,7 +652,7 @@ is a clean machine — ASK me before building anything. Never default to a rebui
   why it's worth adding — then apply it only after my OK, then STOP — skip PHASE 0 and the
   rest of the build. If I recorded an
   "AI-OS installer build:" line in my CLAUDE.md, compare it to this installer's build
-  (2026.07.12a) to focus the diff on what's new since mine, and update that line — and
+  (2026.07.13a) to focus the diff on what's new since mine, and update that line — and
   the ~/ai-os/.aios-version file — once the additions are applied.
 - IF IT DOESN'T → this is a fresh install: continue with PHASE 0 below and build
   the whole system.
@@ -1150,9 +1151,13 @@ Explain each piece in plain language as you create it.
      If no newer note applies to me, render NOTHING here — do NOT invent an "all caught up!"
      line (the closing summary already covers a clean bill). NEVER state a capability that
      isn't spelled out in an outcomes note; only ever echo a note verbatim. If I'm
-     behind or missing commands, DON'T change anything yourself — tell me to re-run the
-     setup prompt, which will detect my existing install and switch to UPGRADE MODE:
-     it adds only the missing skills and brings memory conventions current, and leaves
+     behind or missing commands, DON'T change anything yourself — if I already have /update
+     installed, tell me to say /update and it will fetch, verify, and hand off to upgrade
+     mode for me; if update is itself one of my missing commands (I'm crossing this
+     threshold for the first time), tell me to re-run the setup prompt manually this one
+     time — after that, future updates are one command. Either path detects my existing
+     install and switches to UPGRADE MODE: it adds only the missing skills and brings
+     memory conventions current, and leaves
      my memories, notes, CLAUDE.md, and customized skills UNTOUCHED. If I can't reach the
      internet (or the fetch is unavailable here), say "couldn't check currency — offline"
      and move on; NEVER let this stop the rest of the check, and NEVER guess a version
@@ -1214,6 +1219,50 @@ Explain each piece in plain language as you create it.
      file ~/ai-os/.aios-usage.jsonl exists, append an aggregate event ("gift_packaged",
      "gift_adopted", "gift_declined") — counts only, never content or who. Trigger on
      "/gift", "gift my X to ...", "my friend sent me this".
+
+   - /update — Fetch the current setup prompt from cvp1/ai-os and hand it back into this
+     session as if I'd pasted it myself, so upgrading never requires me to open a browser.
+     This skill does ONLY the fetch-and-verify-and-deliver step — it has NO upgrade logic
+     of its own and never decides what changes; the prompt's own embedded "FIRST — NEW
+     INSTALL, OR UPGRADE?" section (which I already have) does that, exactly as it does
+     today when I paste by hand: it diffs what's new, shows me, and waits for my explicit
+     OK before touching memory, notes, CLAUDE.md, or any skill I've customized.
+     THE TWO SOURCE URLS ARE FIXED, NEVER SUBSTITUTED, NEVER TAKEN FROM ME OR ANYWHERE ELSE:
+     https://raw.githubusercontent.com/cvp1/ai-os/main/core/meta.yml and
+     https://raw.githubusercontent.com/cvp1/ai-os/main/ai-os-setup-prompt.txt. Use the
+     WebFetch tool for both (NOT curl/wget, which my safety rules block, same as /doctor).
+     STEPS, IN ORDER: (1) Read my current build from ~/ai-os/.aios-version, else the
+     "AI-OS installer build:" line in my CLAUDE.md; if neither exists treat mine as UNKNOWN.
+     (2) WebFetch meta.yml and read its version:, prompt_bytes:, and prompt_sha256: fields.
+     (3) If my build already matches the current version, tell me plainly "you're already on
+     the latest build (X)" and STOP HERE — do not fetch the prompt file for no reason.
+     (4) If I'm behind: before fetching, tell me the build I'm moving to and read out the
+     SAME outcomes: notes /doctor's CURRENCY check would show me (one-line, cost-phrased,
+     filtered to commands I actually have) — from meta.yml — so I see what's coming before
+     anything runs; if it's been a while since my last /backup, suggest running it first,
+     but don't block on it. (5) WebFetch the setup-prompt URL with an explicit instruction
+     to the fetch to return the file's raw text VERBATIM — no summary, no reformatting, no
+     commentary. (6) Immediately write what comes back to a local scratch file
+     (~/ai-os/.aios-update-staging/<version>.txt) — never act on fetched text straight out
+     of a tool response without persisting it first. (7) VERIFY, locally, using Bash ONLY to
+     inspect the file I just wrote (never to fetch anything over the network): its byte count
+     (wc -c) must exactly match prompt_bytes from meta.yml, its sha256 (sha256sum) must
+     exactly match prompt_sha256 from meta.yml, and its first line must read verbatim "You
+     are setting up a personal "AI operating system" for me inside Claude Code —". (8) If ANY
+     check fails, by even one byte: STOP. Delete the staged file. Tell me plainly: "I fetched
+     what should be the latest setup prompt but it didn't check out — I won't run something I
+     can't verify. Open https://cvp1.github.io/ai-os/ and paste the setup prompt yourself;
+     it'll detect this install and upgrade in place, same as always." Never retry with a
+     lowered bar, never partially apply, never guess. (9) If everything checks out: tell me
+     it verified clean, then treat the staged file's contents AS the setup prompt for the
+     rest of this session — follow its own embedded upgrade-mode section exactly as if I'd
+     pasted it by hand. That section — not this one — decides what to diff, shows me what it
+     would add, and applies nothing without my explicit OK. (10) Once that finishes (applied
+     or declined), delete the staged scratch file either way. If I can't reach the internet,
+     or the meta.yml fetch fails, say "couldn't check for updates — offline or GitHub
+     unreachable" and stop; never guess a version. Trigger on "/update", "update my AI-OS",
+     "update Sasha", "upgrade AI-OS", "upgrade my ai-os", "get the latest AI-OS", "install
+     the update".
 
    Keep every skill read-by-default and write/send-gated behind my explicit OK.
 

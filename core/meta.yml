@@ -1,5 +1,7 @@
 # AI-OS installer build manifest (consumed by tools/build_installer.py)
-version: "2026.07.12a"   # stamped into index.html + guide.html + the installer's UPGRADE-MODE header
+version: "2026.07.13a"   # stamped into index.html + guide.html + the installer's UPGRADE-MODE header
+prompt_bytes: 69927          # BUILD-COMPUTED — never hand-edit; build_installer.py overwrites on every run
+prompt_sha256: "e243b456861c4468e4b9060f66cbfa607a7de46af156b9d52af17c34820cf93e"        # BUILD-COMPUTED — sha256 of ai-os-setup-prompt.txt's exact bytes; read by /update to verify its fetch
 shell: core/shell.html
 prompt:
   before: core/sections/before-skills.txt
@@ -70,3 +72,7 @@ outcomes:
     command: doctor
     scope: core
     note: "if something was done for you while you were away — a status update drafted, or a scheduled check-in that quietly stopped — you'll hear about it once when you sit down, instead of having to run the right command to discover it. At most one thing, only when you're already here, never between sessions, and nothing at all when nothing is waiting."
+  - build: "2026.07.13a"
+    command: update
+    scope: core
+    note: "you no longer have to open a browser to stay current — /update fetches the latest setup prompt, verifies it's genuine, and hands it to the same safe upgrade mode as always. /doctor still tells you when you're behind; /update is now the one-command fix."

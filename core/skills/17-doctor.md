@@ -38,9 +38,13 @@ tier: core
      If no newer note applies to me, render NOTHING here — do NOT invent an "all caught up!"
      line (the closing summary already covers a clean bill). NEVER state a capability that
      isn't spelled out in an outcomes note; only ever echo a note verbatim. If I'm
-     behind or missing commands, DON'T change anything yourself — tell me to re-run the
-     setup prompt, which will detect my existing install and switch to UPGRADE MODE:
-     it adds only the missing skills and brings memory conventions current, and leaves
+     behind or missing commands, DON'T change anything yourself — if I already have /update
+     installed, tell me to say /update and it will fetch, verify, and hand off to upgrade
+     mode for me; if update is itself one of my missing commands (I'm crossing this
+     threshold for the first time), tell me to re-run the setup prompt manually this one
+     time — after that, future updates are one command. Either path detects my existing
+     install and switches to UPGRADE MODE: it adds only the missing skills and brings
+     memory conventions current, and leaves
      my memories, notes, CLAUDE.md, and customized skills UNTOUCHED. If I can't reach the
      internet (or the fetch is unavailable here), say "couldn't check currency — offline"
      and move on; NEVER let this stop the rest of the check, and NEVER guess a version
@@ -87,7 +91,7 @@ A checkup looks about like this:
 > ✓ Connectors — Google signed in · Memory — 84 notes (~180 KB), healthy
 > ⚠ Toolkit — 16 of 17 skills registered (/expenses needs a fresh session)
 > ⚠ Protection — last backup 9 days ago → run /backup
-> ⚠ Currency — build 2026.05.12a is behind current 2026.06.30m; missing /restore → re-run setup (it upgrades in place, adds only what's new)
+> ⚠ Currency — build 2026.05.12a is behind current 2026.06.30m; missing /restore, /update → re-run setup once to catch up (it upgrades in place, adds only what's new) — after that, /update does this for you
 > &nbsp;&nbsp;What's new for you — the newer build's /brief now drafts your morning digest before you're even at your desk
 > ⚠ Standing work — your /projects check-in hasn't run since Jul 1 (expected weekly) → check its routine (a sleeping laptop skips runs)
 > For install/version checks, run Claude Code's built-in /doctor.
@@ -96,6 +100,6 @@ A checkup looks about like this:
 - **Connectors are the usual culprit.** A signed-out connector is the most common quiet failure; `/doctor` reads live auth via `/mcp` and points you to re-authorize.
 - **"My command does nothing."** Usually the skill isn't registered yet — `/doctor` shows the count; start a fresh session to register newly-built ones.
 - **It complements native `/doctor`, doesn't replace it.** AI-OS `/doctor` covers AI-OS-specific state; Claude Code's built-in `/doctor` covers install/config/versions. Run both.
-- **Currency routes, it never upgrades.** `/doctor` only *tells* you your build or command roster is behind and points you at re-running the setup prompt — which detects your install and switches to upgrade mode, adding only what's missing and leaving your memories, notes, and customized skills untouched. `/doctor` itself changes nothing, and if you're offline it just skips the currency check.
+- **Currency routes, it never upgrades.** `/doctor` only *tells* you your build or command roster is behind; if you have `/update`, say it and it fetches, verifies, and hands off to the same upgrade mode automatically — if you don't have `/update` yet, re-paste the setup prompt manually once (upgrade mode detects your install, adds only what's missing, leaves your memories, notes, and customized skills untouched). `/doctor` itself changes nothing, and if you're offline it just skips the currency check.
 - **Strictly read-only.** It inspects and reports — pair it with `/backup` (it tells you your safety net is current) and `/memory-prune` (it tells you when one's due).
 - **Standing work can fail silently — this catches it.** If you've scheduled a manager to draft between sessions (the "Run it without you" setup), `/doctor` reads a small heartbeat file and tells you if a scheduled run has quietly stopped — a sleeping laptop, a deleted routine, an errored run. It only reports and points you at the fix; it never re-runs or restarts anything.

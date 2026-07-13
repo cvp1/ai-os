@@ -17,12 +17,13 @@ remains the public-repo index.html (see ai_os_sync_check.sh).
 
 Stdlib only, /usr/bin/python3.
 """
-import re, sys, glob, pathlib
+import re, sys, glob, pathlib, hashlib
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent      # .../ai-os
 CORE = ROOT / "core"
 OUT = ROOT / "index.html"
 GUIDE_OUT = ROOT / "guide.html"   # the Field Guide — per-command layered docs (D25)
+PROMPT_OUT = ROOT / "ai-os-setup-prompt.txt"   # standalone prompt artifact, fetched by /update (UPDATE-1)
 JOIN = "\n\n"   # the exact separator that flanks/separates skill blocks
 
 # The docs delimiter separates a skill fragment's PROMPT body (injected verbatim into
@@ -134,19 +135,47 @@ def check_command_coverage():
             problems.append("/%s missing from the landing #commands section" % name)
     return problems
 
-def render():
+def build_prompt():
+    """The exact setup-prompt string — shared by the pasted {{PROMPT}} slot in
+    index.html and the standalone ai-os-setup-prompt.txt artifact (UPDATE-1). One
+    source of truth: whichever a user gets, the bytes are identical. {{VERSION}} is
+    substituted here (not left for render()'s html-wide pass) so the standalone
+    artifact is never left with a literal unstamped placeholder."""
     before = read("sections/before-skills.txt")
     after = read("sections/after-skills.txt")
+    frags = [pathlib.Path(p).read_text() for p in glob.glob(str(CORE / "skills/*.md"))]
+    frags.sort(key=skill_order)
+    bodies = [skill_body(f) for f in frags]
+    prompt = before + JOIN + JOIN.join(bodies) + JOIN + after
+    prompt = prompt.replace("{{VERSION}}", read_version())
+    if "{{VERSION}}" in prompt:
+        sys.exit("FATAL: unsubstituted {{VERSION}} remains in prompt")
+    return prompt
+
+def prompt_meta(prompt):
+    """(byte length, sha256 hex digest) of the exact prompt string, UTF-8 encoded —
+    published in meta.yml so /update can verify its own fetch landed byte-exact."""
+    b = prompt.encode("utf-8")
+    return len(b), hashlib.sha256(b).hexdigest()
+
+def write_meta_prompt_fields(prompt_bytes, prompt_sha256):
+    """Rewrite ONLY the two BUILD-COMPUTED placeholder lines in meta.yml in place;
+    everything else in the file (version, outcomes notes) is hand-authored and left
+    untouched. Fails loudly if the placeholders are missing — never appends blind."""
+    text = read("meta.yml")
+    new_text, n1 = re.subn(r'^prompt_bytes:\s*\d+.*$', f"prompt_bytes: {prompt_bytes}          # BUILD-COMPUTED — never hand-edit; build_installer.py overwrites on every run", text, count=1, flags=re.M)
+    new_text, n2 = re.subn(r'^prompt_sha256:\s*".*?".*$', f'prompt_sha256: "{prompt_sha256}"        # BUILD-COMPUTED — sha256 of ai-os-setup-prompt.txt\'s exact bytes; read by /update to verify its fetch', new_text, count=1, flags=re.M)
+    if n1 != 1 or n2 != 1:
+        sys.exit("FATAL: meta.yml missing prompt_bytes:/prompt_sha256: placeholder lines")
+    (CORE / "meta.yml").write_text(new_text)
+
+def render():
     career = secondact_paste(read("second-act/career.txt"))
     scheduler = secondact_paste(read("second-act/scheduler.txt"))
     projects = secondact_paste(read("second-act/projects.txt"))
     learning = secondact_paste(read("second-act/learning.txt"))
 
-    frags = [pathlib.Path(p).read_text() for p in glob.glob(str(CORE / "skills/*.md"))]
-    frags.sort(key=skill_order)
-    bodies = [skill_body(f) for f in frags]
-
-    prompt = before + JOIN + JOIN.join(bodies) + JOIN + after
+    prompt = build_prompt()
 
     shell = read("shell.html")
     if (shell.count("{{PROMPT}}") != 1 or shell.count("{{PROMPT2}}") != 1
@@ -292,6 +321,8 @@ def render_guide():
 def main():
     html = render()
     guide = render_guide()
+    prompt = build_prompt()
+    prompt_bytes, prompt_sha256 = prompt_meta(prompt)
     coverage = check_command_coverage()
     if "--check" in sys.argv[1:]:
         problems = list(coverage)
@@ -301,12 +332,20 @@ def main():
         if (GUIDE_OUT.read_text() if GUIDE_OUT.exists() else None) != guide:
             problems.append("guide.html is stale vs a fresh build of core/ "
                             "(run build_installer.py to regenerate)")
+        if (PROMPT_OUT.read_text() if PROMPT_OUT.exists() else None) != prompt:
+            problems.append("ai-os-setup-prompt.txt is stale vs a fresh build of core/ "
+                            "(run build_installer.py to regenerate)")
+        meta = read("meta.yml")
+        if (f"prompt_bytes: {prompt_bytes} " not in meta
+                or f'prompt_sha256: "{prompt_sha256}"' not in meta):
+            problems.append("meta.yml prompt_bytes/prompt_sha256 stale vs a fresh build of core/ "
+                            "(run build_installer.py to regenerate)")
         if problems:
             for p in problems:
                 print("FAIL:", p, file=sys.stderr)
             return 1
-        print("OK: index.html + guide.html up to date with core/; all %d commands "
-              "listed in README + landing" % len(skill_commands()))
+        print("OK: index.html + guide.html + ai-os-setup-prompt.txt up to date with core/; "
+              "all %d commands listed in README + landing" % len(skill_commands()))
         return 0
     if coverage:
         print("WARNING — command-coverage drift (fix before publishing):",
@@ -317,6 +356,10 @@ def main():
     print("wrote", OUT, "(%d bytes)" % len(html))
     GUIDE_OUT.write_text(guide)
     print("wrote", GUIDE_OUT, "(%d bytes)" % len(guide))
+    PROMPT_OUT.write_text(prompt)
+    print("wrote", PROMPT_OUT, "(%d bytes)" % len(prompt))
+    write_meta_prompt_fields(prompt_bytes, prompt_sha256)
+    print("updated core/meta.yml prompt_bytes=%d prompt_sha256=%s" % (prompt_bytes, prompt_sha256))
     return 0
 
 if __name__ == "__main__":

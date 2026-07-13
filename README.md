@@ -85,6 +85,7 @@ as-of July 2026; verify before relying on them.
 | `/backup` | Snapshots your whole system — memory, notes, **and** skills — to on-disk history plus an **encrypted** copy in your own cloud (3-2-1), no setup needed. |
 | `/restore` | Brings it all back from a snapshot — newest by default, fully reversible, with a `--drill` that proves a backup works without touching your live system. |
 | `/doctor` | A read-only checkup — are your connectors signed in, your memory and commands healthy, your last `/backup` recent? Reports what needs attention and points you at the fix; never changes anything. |
+| `/update` | Fetches the current setup prompt, verifies it byte-for-byte, and hands it back to you as if you'd pasted it — then the same safe upgrade mode as always decides what's new. |
 
 **Want more from each command?** The **[Field Guide](https://cvp1.github.io/ai-os/guide.html)** covers every one — what it does, when to reach for it, a walkthrough, and the power-user moves.
 
