@@ -1,7 +1,7 @@
 # AI-OS installer build manifest (consumed by tools/build_installer.py)
 version: "2026.07.13a"   # stamped into index.html + guide.html + the installer's UPGRADE-MODE header
-prompt_bytes: 69927          # BUILD-COMPUTED — never hand-edit; build_installer.py overwrites on every run
-prompt_sha256: "e243b456861c4468e4b9060f66cbfa607a7de46af156b9d52af17c34820cf93e"        # BUILD-COMPUTED — sha256 of ai-os-setup-prompt.txt's exact bytes; read by /update to verify its fetch
+prompt_bytes: 70979          # BUILD-COMPUTED — never hand-edit; build_installer.py overwrites on every run
+prompt_sha256: "46867843b7b32a239b5ae1b4aa4609fa4c157a10c621b783341845586371a6de"        # BUILD-COMPUTED — sha256 of ai-os-setup-prompt.txt's exact bytes; read by /update to verify its fetch
 shell: core/shell.html
 prompt:
   before: core/sections/before-skills.txt
@@ -75,4 +75,4 @@ outcomes:
   - build: "2026.07.13a"
     command: update
     scope: core
-    note: "you no longer have to open a browser to stay current — /update fetches the latest setup prompt, verifies it's genuine, and hands it to the same safe upgrade mode as always. /doctor still tells you when you're behind; /update is now the one-command fix."
+    note: "if you have Playwright MCP connected, you no longer have to open a browser to stay current — /update fetches the latest setup prompt, verifies it's genuine, and hands it to the same safe upgrade mode as always. Without Playwright connected, it tells you plainly and points you at pasting the prompt yourself, same as today. /doctor still tells you when you're behind."
