@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- ai-os installer · build 2026.07.11a · generated from core/ by tools/build_installer.py — do not edit index.html by hand -->
+<!-- ai-os installer · build 2026.07.12a · generated from core/ by tools/build_installer.py — do not edit index.html by hand -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -614,9 +614,9 @@
 a persistent memory, a structured notes vault, and a starter set of skills — and
 then you will operate it as my chief-of-staff going forward.
 
-(This installer is AI-OS build 2026.07.11a. When you build my system, record a line
-"AI-OS installer build: 2026.07.11a" in my CLAUDE.md, AND write the bare build string
-2026.07.11a as the only contents of a file ~/ai-os/.aios-version, so a later upgrade or
+(This installer is AI-OS build 2026.07.12a. When you build my system, record a line
+"AI-OS installer build: 2026.07.12a" in my CLAUDE.md, AND write the bare build string
+2026.07.12a as the only contents of a file ~/ai-os/.aios-version, so a later upgrade or
 health check can tell what changed since mine without parsing prose.)
 
 ABOUT ME (context, refine via the interview below)
@@ -651,7 +651,7 @@ is a clean machine — ASK me before building anything. Never default to a rebui
   why it's worth adding — then apply it only after my OK, then STOP — skip PHASE 0 and the
   rest of the build. If I recorded an
   "AI-OS installer build:" line in my CLAUDE.md, compare it to this installer's build
-  (2026.07.11a) to focus the diff on what's new since mine, and update that line — and
+  (2026.07.12a) to focus the diff on what's new since mine, and update that line — and
   the ~/ai-os/.aios-version file — once the additions are applied.
 - IF IT DOESN'T → this is a fresh install: continue with PHASE 0 below and build
   the whole system.
@@ -1493,6 +1493,23 @@ and record them in CLAUDE.md so they load every session:
   it to WHOAMI.md.
   me/CAPABILITIES.md lists what's wired on each Sasha surface — read it too, and
   route me to the surface that has what I'm asking for.
+- Ring the bell once — but only if there's a bell to ring. If you did something for me
+  while I was away, I should not have to go looking for it. At the start of a session,
+  after reading my files, check exactly TWO local things and nothing else:
+    1. Is something waiting for my answer? — a staged draft in ~/ai-os/*/proposals/ or
+       ~/ai-os/projects/*/proposals/ that I haven't opened or waved off yet.
+    2. Did a scheduled check-in go silently dead? — ~/ai-os/.aios-heartbeat.jsonl, a job
+       past its own `every` cadence by more than about half again (a "7d" job silent past
+       ~10 days). A job that fails without telling me is worse than no job.
+  If so, say it in ONE line — AT MOST ONE item, the most useful one — then drop it and do
+  what I came for: "While you were away I drafted your weekly status for <project> — want
+  to look?" · "Your projects check-in hasn't run since <date> — it may have stopped."
+  If I open it, append "proposal_accepted" to ~/ai-os/.aios-usage.jsonl (counts only); if I
+  wave it off, append "proposal_dismissed" and never raise that same one again.
+  IF NOTHING IS WAITING, SAY NOTHING — no "all quiet", no status line, no list of what you
+  checked. Silence is the default and the normal case: a bell that rings every session is a
+  bell I stop hearing. This is the ONLY thing you ever raise unbidden, it happens only when
+  I'm already here, and it never notifies me between sessions.
 - Local-first, confidential, and recoverable. Keep my data on my machine, secrets out of
   the conversation, and honor my confidentiality boundaries (anything confidential / under
   NDA / financials / personnel) in both notes and memory — and keep the system backed up
@@ -1725,11 +1742,13 @@ writes, both local files I own:
   2. COUNTER — if ~/ai-os/.aios-usage.jsonl exists, append an aggregate "proposal_surfaced"
      event (counts only, no content).
 SURFACING (never a nag): between sessions, check-in stays SILENT — it only stages the draft.
-The next time I actually run /projects, if a staged check-in draft is waiting, mention exactly
-ONE: "while you were away I drafted your weekly status (staged <date>) — want to look?" If I
-open or use it, append "proposal_accepted"; if I wave it off, append "proposal_dismissed" and
-don't raise that same one again. At most one waiting item, only when I'm already here — never
-unprompted, never between sessions.
+The next time I SHOW UP — the start of my next session, whether or not I run /projects — if a
+staged check-in draft is waiting, mention exactly ONE: "while you were away I drafted your
+weekly status (staged <date>) — want to look?" (Don't make me run /projects to find out that
+/projects worked for me; that's a door I have to remember to open.) If I open or use it, append
+"proposal_accepted"; if I wave it off, append "proposal_dismissed" and don't raise that same one
+again. At most one waiting item, only when I'm already here — never unprompted between sessions,
+never a notification. If nothing is waiting, say nothing at all.
 TO RUN IT WHILE I'M AWAY: tell me I can put `/projects check-in` on a schedule with the "Run it
 without you" setup on the AI-OS page (a Local routine in Ask mode) — it will draft on my cadence
 and /doctor will warn me if it ever stops. Only if I want it; interactively it works the same,

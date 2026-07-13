@@ -71,11 +71,13 @@ writes, both local files I own:
   2. COUNTER — if ~/ai-os/.aios-usage.jsonl exists, append an aggregate "proposal_surfaced"
      event (counts only, no content).
 SURFACING (never a nag): between sessions, check-in stays SILENT — it only stages the draft.
-The next time I actually run /projects, if a staged check-in draft is waiting, mention exactly
-ONE: "while you were away I drafted your weekly status (staged <date>) — want to look?" If I
-open or use it, append "proposal_accepted"; if I wave it off, append "proposal_dismissed" and
-don't raise that same one again. At most one waiting item, only when I'm already here — never
-unprompted, never between sessions.
+The next time I SHOW UP — the start of my next session, whether or not I run /projects — if a
+staged check-in draft is waiting, mention exactly ONE: "while you were away I drafted your
+weekly status (staged <date>) — want to look?" (Don't make me run /projects to find out that
+/projects worked for me; that's a door I have to remember to open.) If I open or use it, append
+"proposal_accepted"; if I wave it off, append "proposal_dismissed" and don't raise that same one
+again. At most one waiting item, only when I'm already here — never unprompted between sessions,
+never a notification. If nothing is waiting, say nothing at all.
 TO RUN IT WHILE I'M AWAY: tell me I can put `/projects check-in` on a schedule with the "Run it
 without you" setup on the AI-OS page (a Local routine in Ask mode) — it will draft on my cadence
 and /doctor will warn me if it ever stops. Only if I want it; interactively it works the same,

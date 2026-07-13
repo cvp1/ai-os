@@ -1,5 +1,5 @@
 # AI-OS installer build manifest (consumed by tools/build_installer.py)
-version: "2026.07.11a"   # stamped into index.html + guide.html + the installer's UPGRADE-MODE header
+version: "2026.07.12a"   # stamped into index.html + guide.html + the installer's UPGRADE-MODE header
 shell: core/shell.html
 prompt:
   before: core/sections/before-skills.txt
@@ -66,3 +66,7 @@ outcomes:
     command: improve
     scope: core
     note: "your assistant's ground rules are now explicitly yours — setup asks how much it may do without asking (one test: can it be undone, and who can see it?), how hard it pushes back when it thinks you're wrong, what it protects for you unprompted (a sleep window, family dates, a budget line), and even its name; your answers live in me/HOW-I-WORK.md where you can edit them anytime, and it never changes its own rules without your plain-language OK."
+  - build: "2026.07.12a"
+    command: doctor
+    scope: core
+    note: "if something was done for you while you were away — a status update drafted, or a scheduled check-in that quietly stopped — you'll hear about it once when you sit down, instead of having to run the right command to discover it. At most one thing, only when you're already here, never between sessions, and nothing at all when nothing is waiting."
