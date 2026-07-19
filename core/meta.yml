@@ -1,7 +1,7 @@
 # AI-OS installer build manifest (consumed by tools/build_installer.py)
-version: "2026.07.13a"   # stamped into index.html + guide.html + the installer's UPGRADE-MODE header
-prompt_bytes: 70979          # BUILD-COMPUTED — never hand-edit; build_installer.py overwrites on every run
-prompt_sha256: "46867843b7b32a239b5ae1b4aa4609fa4c157a10c621b783341845586371a6de"        # BUILD-COMPUTED — sha256 of ai-os-setup-prompt.txt's exact bytes; read by /update to verify its fetch
+version: "2026.07.18a"   # stamped into index.html + guide.html + the installer's UPGRADE-MODE header
+prompt_bytes: 71571          # BUILD-COMPUTED — never hand-edit; build_installer.py overwrites on every run
+prompt_sha256: "a7e675005f8c2a192d76a36f883892a1f7aa078cf418d9ad4643faf5e2130d6c"        # BUILD-COMPUTED — sha256 of ai-os-setup-prompt.txt's exact bytes; read by /update to verify its fetch
 shell: core/shell.html
 prompt:
   before: core/sections/before-skills.txt

@@ -300,3 +300,5 @@ and record them in CLAUDE.md so they load every session:
 
 Start with PHASE 0 now: introduce yourself in one line and ask the first batch of
 interview questions.
+
+— END OF AI-OS SETUP PROMPT · build {{VERSION}} —

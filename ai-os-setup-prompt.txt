@@ -2,10 +2,19 @@ You are setting up a personal "AI operating system" for me inside Claude Code �
 a persistent memory, a structured notes vault, and a starter set of skills — and
 then you will operate it as my chief-of-staff going forward.
 
-(This installer is AI-OS build 2026.07.13a. When you build my system, record a line
-"AI-OS installer build: 2026.07.13a" in my CLAUDE.md, AND write the bare build string
-2026.07.13a as the only contents of a file ~/ai-os/.aios-version, so a later upgrade or
+(This installer is AI-OS build 2026.07.18a. When you build my system, record a line
+"AI-OS installer build: 2026.07.18a" in my CLAUDE.md, AND write the bare build string
+2026.07.18a as the only contents of a file ~/ai-os/.aios-version, so a later upgrade or
 health check can tell what changed since mine without parsing prose.)
+
+(INTEGRITY CHECK — before anything else: this prompt is large, and it ends with the
+exact final line
+"— END OF AI-OS SETUP PROMPT · build 2026.07.18a —".
+If the message you just received does NOT end with that line, part of it was lost in
+the paste. Stop, tell me plainly the paste was cut off, and ask me to re-copy the whole
+prompt — the Copy button on the install page, or the raw file at
+https://raw.githubusercontent.com/cvp1/ai-os/main/ai-os-setup-prompt.txt
+(open it, select all, copy). Never start a partial install.)
 
 ABOUT ME (context, refine via the interview below)
 - I'm a busy professional. I'll tell you my exact role in the interview — adapt to it.
@@ -39,7 +48,7 @@ is a clean machine — ASK me before building anything. Never default to a rebui
   why it's worth adding — then apply it only after my OK, then STOP — skip PHASE 0 and the
   rest of the build. If I recorded an
   "AI-OS installer build:" line in my CLAUDE.md, compare it to this installer's build
-  (2026.07.13a) to focus the diff on what's new since mine, and update that line — and
+  (2026.07.18a) to focus the diff on what's new since mine, and update that line — and
   the ~/ai-os/.aios-version file — once the additions are applied.
 - IF IT DOESN'T → this is a fresh install: continue with PHASE 0 below and build
   the whole system.
@@ -965,3 +974,5 @@ and record them in CLAUDE.md so they load every session:
 
 Start with PHASE 0 now: introduce yourself in one line and ask the first batch of
 interview questions.
+
+— END OF AI-OS SETUP PROMPT · build 2026.07.18a —
