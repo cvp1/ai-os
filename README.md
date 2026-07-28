@@ -59,7 +59,7 @@ as-of July 2026; verify before relying on them.
 
 ## What gets built
 
-**🧠 A maintained memory** — a clean one-fact-per-file structure (`user` / `feedback` / `project` / `reference`) over Claude Code's built-in memory, that actively keeps itself healthy: re-verifies stale facts, de-dupes, resolves contradictions, and grows the sources you drop in into interlinked concept notes — legible, trustworthy, and yours to edit.
+**🧠 A maintained memory** — a clean one-fact-per-file structure (`user` / `feedback` / `project` / `reference`) over Claude Code's built-in memory, that actively keeps itself healthy: re-verifies stale facts, de-dupes, resolves contradictions, and grows the sources you drop in into interlinked concept notes — legible, trustworthy, and yours to edit. Where this design is headed — the event-sourced, contradiction-detecting memory running on my own machines — is written up in [the memory-mesh spec](https://craigvandeputte.com/notes/memory-mesh/).
 
 **📚 Notes vault** — an Obsidian-compatible PARA vault, plus an AI-owned `Synthesis/` zone that turns raw sources you drop in into maintained, linked concept pages.
 
