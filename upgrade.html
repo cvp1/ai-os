@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI OS — Upgrade · the memory mesh</title>
+<meta name="description" content="Give an existing AI-OS install an event-sourced memory: append-only history, contradiction detection, and replay — one machine by default, more when you enroll them.">
+<style>
+  :root{
+    --paper:#f4f5f2; --panel:#ffffff; --ink:#15181c; --ink-2:#3b424a; --ink-3:#697079;
+    --line:#e3e4df; --line-2:#d2d4cd; --green-deep:#235c43; --green:#2f7d5a;
+    --console:#14181c; --console-ink:#e7e9e4; --caret:#56c596;
+    --r:6px; --maxw:820px;
+    --mono:ui-monospace,"SF Mono",SFMono-Regular,"Cascadia Mono",Menlo,Consolas,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 26px}
+  a{color:inherit}
+  .slash{color:var(--green)}
+  header.top{position:sticky;top:0;z-index:40;background:rgba(244,245,242,.9);backdrop-filter:saturate(150%) blur(8px);border-bottom:1px solid var(--line)}
+  header.top .wrap{display:flex;align-items:center;gap:20px;height:60px;max-width:var(--maxw)}
+  .logo{font-family:var(--mono);font-weight:700;letter-spacing:-.01em;margin-right:auto;font-size:15px}
+  .navlink{font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;color:var(--ink-2);text-decoration:none}
+  .navlink:hover{color:var(--ink)}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3);font-weight:600}
+  .masthead{padding:56px 0 10px}
+  h1.display{font-weight:850;letter-spacing:-.035em;line-height:1.05;font-size:clamp(30px,5vw,48px);margin:14px 0 12px}
+  .lede{font-size:clamp(17px,2vw,19px);color:var(--ink-2);max-width:64ch;margin:0 0 8px}
+  h2{font-weight:800;letter-spacing:-.02em;font-size:22px;margin:44px 0 10px}
+  p{max-width:70ch}
+  code{font-family:var(--mono);font-size:.92em;background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:1px 5px}
+  .console{background:var(--console);color:var(--console-ink);border-radius:var(--r);padding:14px 18px;font-family:var(--mono);font-size:13.5px;line-height:1.8;overflow-x:auto;margin:14px 0}
+  .console b{color:var(--caret);font-weight:600}
+  .note{font-size:13.5px;color:var(--ink-3);border-left:2px solid var(--line-2);padding-left:12px;max-width:70ch}
+  ul{max-width:70ch}
+  li{margin:6px 0}
+  footer{margin:70px 0 40px;font-family:var(--mono);font-size:12.5px;color:var(--ink-3)}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <span class="logo">ai<span class="slash">-</span>os · upgrade</span>
+  <a class="navlink" href="index.html">home</a>
+  <a class="navlink" href="guide.html">field guide</a>
+</div></header>
+
+<div class="wrap">
+<div class="masthead">
+  <div class="eyebrow">Upgrade · optional · reversible</div>
+  <h1 class="display">Give your AI-OS a memory with history</h1>
+  <p class="lede">The memory mesh replaces "a file your agent edits" with an append-only event log:
+  every belief has a history, contradictions get detected instead of silently coexisting, and you
+  can replay exactly what your agent believed at any past moment. It runs complete on one machine;
+  more machines can enroll later and share one set of beliefs.</p>
+  <p class="note">The full design — including its honest gaps — is written up in
+  <a href="https://craigvandeputte.com/notes/memory-mesh/">the memory-mesh spec</a>.
+  This page is just the upgrade path.</p>
+</div>
+
+<h2>Is this for you?</h2>
+<p>Your AI-OS keeps working exactly as it is without this. Upgrade if any of these ring true:
+you run sessions in parallel and have caught your memory index losing lines; you want to know
+<i>when</i> and <i>why</i> a remembered fact changed, not just its latest wording; or you run
+(or plan to run) your assistant on more than one machine and want them to disagree loudly
+instead of silently.</p>
+
+<h2>What the upgrade actually does</h2>
+<ul>
+  <li>Adds a <code>memory-mesh/</code> component beside your existing workspace content. Your
+  notes, your <code>CLAUDE.md</code>, and your memory files are not touched.</li>
+  <li>Backfills your current always-on memory notes as the first events, and preserves your
+  on-demand catalog.</li>
+  <li>Flips your <code>MEMORY.md</code> index to <b>generated</b> — rebuilt from the event log
+  every few minutes. Your hand-built index is kept at <code>MEMORY.md.pre-mesh</code>.</li>
+  <li>Schedules a small fold job (plain Python, no AI in it) that rebuilds the index and parks
+  contradictions.</li>
+</ul>
+<p class="note">Reverting is one step: delete the <code>.mesh-generated</code> marker in your
+memory store and restore <code>MEMORY.md.pre-mesh</code>. The event log just stops being consumed.</p>
+
+<h2>The upgrade</h2>
+<p>From a terminal (or paste these to your agent and have it run them, one at a time):</p>
+<div class="console">
+<b>git</b> clone https://github.com/cvp1/ai-os-seed<br>
+<b>python3</b> ai-os-seed/install.py --target &lt;your-workspace&gt; --into<br>
+<b>bash</b> &lt;your-workspace&gt;/memory-mesh/install.sh
+</div>
+<p>Then verify two things: your <code>MEMORY.md</code> now opens with a
+<code>GENERATED by memory-mesh fold</code> header, and it still carries the same notes it did
+before. If either is off, revert (above) and nothing is lost.</p>
+<p class="note"><code>--into</code> refuses to overwrite anything that already exists — if your
+workspace already has a directory named the same as a seed component (say, <code>skills/</code>),
+it stops before moving a single byte and tells you. That upgrade becomes a by-hand merge; ask
+your agent to reconcile the two directories first.</p>
+
+<h2>One habit changes</h2>
+<p>After the flip, <code>MEMORY.md</code> is a view, not a file to edit — hand edits get rebuilt
+away within minutes. New durable lessons enter through an event instead
+(<span class="slash">/</span><code>improve</code> does this for you):</p>
+<div class="console">
+<b>python3</b> &lt;your-workspace&gt;/memory-mesh/emit.py --kind lesson \<br>
+&nbsp;&nbsp;--subject lesson/&lt;short-slug&gt; --content "the one-line rule" --session &lt;label&gt;
+</div>
+<p>Re-emitting the same subject supersedes the old wording — that's the update path. Memory
+<i>files</i> work exactly as before; only the index maintenance moved.</p>
+
+<h2>More machines, later</h2>
+<p>Solo is the default and is fully functional. When you add a second machine, the mesh becomes
+peer-to-peer: each machine carries every machine's events over plain git-over-ssh (no server),
+and a contradiction between machines parks on all of them within minutes. The enrollment
+runbook ships with the component: <code>memory-mesh/ENROLL.md</code> — including optional
+signed truth, where only a key you hold can settle a disagreement.</p>
+
+<footer>ai-os · the upgrade is part of <a href="https://github.com/cvp1/ai-os-seed">ai-os-seed</a> ·
+design spec: <a href="https://craigvandeputte.com/notes/memory-mesh/">memory-mesh</a></footer>
+</div>
+</body>
+</html>
