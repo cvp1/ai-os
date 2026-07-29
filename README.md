@@ -70,7 +70,7 @@ as-of July 2026; verify before relying on them.
 | `/brief` | Your morning brief — meetings, what's waiting on you, priorities, deadlines. |
 | `/triage` | One pass over inbox + calendar → Needs Reply / FYI / Noise, conflicts flagged. |
 | `/prep` | Preps you for one meeting — invite, thread, notes, decisions, likely questions. |
-| `/status` | Drafts a status update — what progressed, what's blocked, decisions needed, next steps. |
+| `/status-update` | Drafts a status update — what progressed, what's blocked, decisions needed, next steps. |
 | `/weekly` | Pre-builds your weekly review and a ready-to-edit status update. |
 | `/wiki` | Precedent search over your own notes, answered with citations. |
 | `/recall` | "What do I know about X?" — one search across **all** your knowledge: your memory, your notes vault, and the work your other commands produce and keep (a tracked list, a strategy doc, research) — ranked together, with related facts and an honest gaps note. |

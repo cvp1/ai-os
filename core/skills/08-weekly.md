@@ -60,7 +60,7 @@ A weekly review looks about like this:
 
 ## Power user
 - **"Sharper this month" — the compounding mirror.** Once a month, `/weekly` adds a short mirror of how the system got sharper *at your work* — the corrections it turned into standing rules and has since applied, and (when relevant) a new capability that helps something you actually do. It shows the *change*, not a list of what it knows. It stays completely silent any month it has nothing real to show — it's a mirror, never a nag. Run it on demand any time with `/weekly sharper`.
-- **`/weekly` vs `/status`.** `/weekly` is the whole-week rollup for your standing review; `/status` is a single project on demand. Because `/weekly` bundles a status draft, many people run only `/weekly` on Fridays.
+- **`/weekly` vs `/status-update`.** `/weekly` is the whole-week rollup for your standing review; `/status-update` is a single project on demand. Because `/weekly` bundles a status draft, many people run only `/weekly` on Fridays.
 - **It reflects what you captured.** The review is as complete as your week's notes — jot decisions and progress as they happen (or with `/improve`) and Friday's draft writes itself.
 - **Automate it.** Pair `/weekly` with a scheduled task (see the [scheduler second act](index.html#autopilot) on the setup page) to have Friday's review waiting — mind the reliability and cost caveats there; a machine that's asleep silently skips the run.
 - **Keep your format.** Correct the first one's shape and tone, then run `/improve`, and it matches your recurring format from then on.

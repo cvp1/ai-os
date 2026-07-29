@@ -28,7 +28,7 @@ A brief looks about like this:
 
 ## Power user
 - **Scope it.** *"/brief just my meetings"* or *"/brief for tomorrow"* narrows the run to what you need.
-- **Sharpen "priorities."** `/brief` pulls them from your project notes — the more you keep those current (with `/status` and your vault), the better it reads your actual day rather than guessing.
+- **Sharpen "priorities."** `/brief` pulls them from your project notes — the more you keep those current (with `/status-update` and your vault), the better it reads your actual day rather than guessing.
 - **Automate it.** Pair `/brief` with a scheduled task (see the [scheduler second act](index.html#autopilot) on the setup page) to have a brief waiting each morning — mind the reliability and cost caveats there; a machine that's asleep at 7am silently skips the run.
 - **Stale data?** If meetings or mail look out of date, your connector may have signed out. Run `/aios-doctor` to check, or re-authorize in your connector settings — the cache refreshes when something changes, not on a fixed timer.
 - **It never writes to memory.** If `/brief` got a priority wrong, tell it, then run `/improve` to make the correction stick for next time.

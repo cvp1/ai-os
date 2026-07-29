@@ -62,7 +62,7 @@ A capture looks about like this:
 
 ## Power user
 - **One fact per rule.** Small, specific rules beat big ones — easier to recall and to correct later.
-- **It pairs with everything.** When `/brief` mis-ranks a priority, `/triage` mis-sorts a sender, or `/status` misses your tone, correct it, then `/improve` — each command gets sharper.
+- **It pairs with everything.** When `/brief` mis-ranks a priority, `/triage` mis-sorts a sender, or `/status-update` misses your tone, correct it, then `/improve` — each command gets sharper.
 - **It's yours to edit.** Memories are plain files; open them, fix a word, delete one. `/memory-prune` keeps the whole store healthy over time.
 - **Style corrections land in `me/`.** A "that's not how I work" correction updates `me/HOW-I-WORK.md` — the standing file every command reads — so it changes behavior everywhere, not just in one memory.
 - **It proposes standing rules — never writes them unasked.** When you run `/improve`, if it notices you've steered it the same idiosyncratic way three times across different sessions, it *proposes* a single standing rule so you stop having to repeat the correction — you accept, edit, or reject it, and nothing lands in your how-I-work file without your yes. It only ever proposes *personal* preferences (a tone, a "never", how you sign off — never generic "good assistant" behaviour), never nags, and remembers anything you reject so it won't ask twice.

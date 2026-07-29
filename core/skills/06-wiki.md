@@ -26,5 +26,5 @@ A wiki answer looks about like this:
 
 ## Power user
 - **`/wiki` vs `/recall`.** `/wiki` is vault-only, with heading-level precision and graph enrichment. `/recall` casts wider — memory, vault, and command work product at once. Use `/recall` for "what do I know?", `/wiki` for "what did I write?".
-- **It's only as deep as your vault.** The more you capture (with `/ingest`, `/status`, plain notes), the more precedent it finds.
+- **It's only as deep as your vault.** The more you capture (with `/ingest`, `/status-update`, plain notes), the more precedent it finds.
 - **Read-only.** `/wiki` never changes a note. To turn raw sources *into* linked notes, that's `/ingest`.

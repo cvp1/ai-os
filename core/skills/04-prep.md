@@ -30,7 +30,7 @@ A prep looks about like this:
 
 ## Power user
 - **Be specific about which meeting.** If two invites could match, name the time or the person — *"/prep the 2pm, not the 4pm"*. The more precise the pointer, the tighter the pack.
-- **It's only as sharp as your notes.** `/prep` reads your project and people notes; the more current those are, the better it briefs you. `/status` and your vault feed it.
+- **It's only as sharp as your notes.** `/prep` reads your project and people notes; the more current those are, the better it briefs you. `/status-update` and your vault feed it.
 - **Chain it after `/brief` or `/triage`.** Both surface meetings — say *"prep me for that one"* and `/prep` takes over.
 - **Ask for the follow-up.** After the meeting, *"draft the recap from the prep"* turns the same context into a follow-up email — drafted locally, sent only on your OK.
 - **Missing context?** Tell it what it overlooked and run `/improve` so it looks in the right place next time.

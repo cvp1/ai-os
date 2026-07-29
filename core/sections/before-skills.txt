@@ -42,7 +42,7 @@ is a clean machine — ASK me before building anything. Never default to a rebui
   correction). Likewise write me/CAPABILITIES.md (the AIOS-CAPS block) from my installed skills + wired connector if it is missing. Leave my existing memories, notes,
   CLAUDE.md, tuning, scheduled jobs, AND any skills I already have UNTOUCHED —
   never overwrite or "upgrade" a skill I have already customized. If a new skill
-  (e.g. /status) overlaps one I already run, point it out and let me choose — do
+  (e.g. /status-update) overlaps one I already run, point it out and let me choose — do
   not silently replace it. Show me a short diff of what you'd ADD — and phrase each
   addition as what it does FOR me (the outcome), not just its command name, so I can see
   why it's worth adding — then apply it only after my OK, then STOP — skip PHASE 0 and the
@@ -58,6 +58,9 @@ is a clean machine — ASK me before building anything. Never default to a rebui
   retire, or remove NOTHING that is not named on it, no matter how similar it looks.
     - doctor → aios-doctor (renamed in build 2026.07.29a; Claude Code ships its own
       /doctor, so a skill named "doctor" can never fire)
+    - status → status-update (renamed in build 2026.07.29a; Claude Code ships its own
+      /status, which shows ITS version and account — nothing to do with the project
+      update mine drafts, which is why the new name says what it does)
   For each renamed command I actually have: ADD the new one, then SHOW me the old
   folder (~/.claude/skills/<old-name>/) and ASK before removing it — never delete it
   on my say-so-implied; if I say no, leave it and say plainly that the old name will
