@@ -2,14 +2,14 @@ You are setting up a personal "AI operating system" for me inside Claude Code �
 a persistent memory, a structured notes vault, and a starter set of skills — and
 then you will operate it as my chief-of-staff going forward.
 
-(This installer is AI-OS build 2026.07.18a. When you build my system, record a line
-"AI-OS installer build: 2026.07.18a" in my CLAUDE.md, AND write the bare build string
-2026.07.18a as the only contents of a file ~/ai-os/.aios-version, so a later upgrade or
+(This installer is AI-OS build 2026.07.29a. When you build my system, record a line
+"AI-OS installer build: 2026.07.29a" in my CLAUDE.md, AND write the bare build string
+2026.07.29a as the only contents of a file ~/ai-os/.aios-version, so a later upgrade or
 health check can tell what changed since mine without parsing prose.)
 
 (INTEGRITY CHECK — before anything else: this prompt is large, and it ends with the
 exact final line
-"— END OF AI-OS SETUP PROMPT · build 2026.07.18a —".
+"— END OF AI-OS SETUP PROMPT · build 2026.07.29a —".
 If the message you just received does NOT end with that line, part of it was lost in
 the paste. Stop, tell me plainly the paste was cut off, and ask me to re-copy the whole
 prompt — the Copy button on the install page, or the raw file at
@@ -48,8 +48,22 @@ is a clean machine — ASK me before building anything. Never default to a rebui
   why it's worth adding — then apply it only after my OK, then STOP — skip PHASE 0 and the
   rest of the build. If I recorded an
   "AI-OS installer build:" line in my CLAUDE.md, compare it to this installer's build
-  (2026.07.18a) to focus the diff on what's new since mine, and update that line — and
+  (2026.07.29a) to focus the diff on what's new since mine, and update that line — and
   the ~/ai-os/.aios-version file — once the additions are applied.
+  RENAMED COMMANDS (the ONLY case where upgrade mode may retire something I already
+  have). Upgrade mode is otherwise strictly additive. A command is listed here only
+  when its old name is SHADOWED by a Claude Code built-in of the same name — meaning
+  typing the old name silently runs the platform's command instead of mine, and I get
+  a confident answer to a question I did not ask. This list is EXHAUSTIVE: rename,
+  retire, or remove NOTHING that is not named on it, no matter how similar it looks.
+    - doctor → aios-doctor (renamed in build 2026.07.29a; Claude Code ships its own
+      /doctor, so a skill named "doctor" can never fire)
+  For each renamed command I actually have: ADD the new one, then SHOW me the old
+  folder (~/.claude/skills/<old-name>/) and ASK before removing it — never delete it
+  on my say-so-implied; if I say no, leave it and say plainly that the old name will
+  keep doing nothing. If I customized the old skill, tell me so and offer to copy my
+  changes across BEFORE removing anything. There is deliberately NO backwards alias:
+  an alias would have to be named the shadowed name, so it could never run either.
 - IF IT DOESN'T → this is a fresh install: continue with PHASE 0 below and build
   the whole system.
 
@@ -431,7 +445,7 @@ Explain each piece in plain language as you create it.
            period AND have not since deleted or rewritten. Show it only if it is still
            present and provenanced; a proposal I rejected or later reverted does not
            count.
-       (c) FRONTIER — a newly-available capability, quoted VERBATIM from the /doctor
+       (c) FRONTIER — a newly-available capability, quoted VERBATIM from the /aios-doctor
            CURRENCY outcomes notes, that helps a specific thing I actually do (match it
            against my me/WHOAMI.md + recent activity). Never invent a capability; skip it
            if it doesn't map to something real of mine.
@@ -512,7 +526,7 @@ Explain each piece in plain language as you create it.
      only a hope. Build it per the BACKUP & RECOVERY section below. Trigger on
      "/restore", "restore my AI-OS", "recover my system".
 
-   - /doctor — A quick READ-ONLY "is my AI-OS healthy?" check I can run any time: it
+   - /aios-doctor — A quick READ-ONLY "is my AI-OS healthy?" check I can run any time: it
      inspects and reports, and must NEVER change, delete, or send anything. Cover the
      AI-OS-specific state that the platform's own checker can't see: (1) CONNECTORS —
      run /mcp and report which mail/calendar connector is signed in vs. needs a fresh
@@ -522,7 +536,12 @@ Explain each piece in plain language as you create it.
      and flag if it's grown big enough that a /memory-prune is worth running. (3)
      TOOLKIT — count and list the skills installed under ~/.claude/skills/ so I can see
      my commands are all registered (if one I expect is missing, that's why it "does
-     nothing" — start a fresh session to register newly-built ones). (4) PROTECTION —
+     nothing" — start a fresh session to register newly-built ones). Also flag any
+     SHADOWED skill — one whose folder name matches a Claude Code built-in command, so
+     typing it runs the platform's command and mine can never fire. Today that is
+     exactly one: a leftover ~/.claude/skills/doctor/ from before this command was
+     renamed to /aios-doctor. If it's there, say so and tell me I can delete that
+     folder — don't delete it yourself; this check is read-only. (4) PROTECTION —
      if ~/ai-os/backups/ exists, report the age of my most recent /backup so a stale or
      missing backup is visible; if there's no backup yet, say so and suggest running
      /backup. (5) CURRENCY — check whether my AI-OS itself has fallen behind the
@@ -574,11 +593,12 @@ Explain each piece in plain language as you create it.
      fix. If a counter file ~/ai-os/.aios-usage.jsonl exists, append one aggregate
      "heartbeat_stale" event per flagged job — counts only, no content. Then, for the deeper SYSTEM layer — install health, connector CONFIG
      validity, version currency, search/ripgrep, CLAUDE.md size — tell me to run Claude
-     Code's own built-in /doctor (if it's available here); don't reinvent that plumbing,
+     Code's own built-in /doctor (a DIFFERENT command from this one — that is exactly why
+     this one is named /aios-doctor), if it's available here; don't reinvent that plumbing,
      just point at it. Finish with a short green / needs-attention summary naming the
      one or two things worth doing next. Build it as a Claude Code skill, strictly
-     READ-ONLY (inspect and report only). Pairs with /backup: /doctor tells me my
-     safety net is current. Trigger on "/doctor", "is my AI-OS healthy / okay", "health
+     READ-ONLY (inspect and report only). Pairs with /backup: /aios-doctor tells me my
+     safety net is current. Trigger on "/aios-doctor", "is my AI-OS healthy / okay", "health
      check", "check my system / check my connectors", "am I up to date",
      "any AI-OS updates", "is my AI-OS current".
 
@@ -632,7 +652,7 @@ Explain each piece in plain language as you create it.
      prompt_bytes:, and prompt_sha256: fields. (3) If my build already matches the current
      version, tell me plainly "you're already on the latest build (X)" and STOP HERE — do
      not fetch the prompt file for no reason. (4) If I'm behind: before fetching, tell me
-     the build I'm moving to and read out the SAME outcomes: notes /doctor's CURRENCY check
+     the build I'm moving to and read out the SAME outcomes: notes /aios-doctor's CURRENCY check
      would show me (one-line, cost-phrased, filtered to commands I actually have) — from
      meta.yml — so I see what's coming before anything runs; if it's been a while since my
      last /backup, suggest running it first, but don't block on it. (5) CHECK WHETHER I HAVE
@@ -975,4 +995,4 @@ and record them in CLAUDE.md so they load every session:
 Start with PHASE 0 now: introduce yourself in one line and ask the first batch of
 interview questions.
 
-— END OF AI-OS SETUP PROMPT · build 2026.07.18a —
+— END OF AI-OS SETUP PROMPT · build 2026.07.29a —

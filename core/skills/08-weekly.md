@@ -21,7 +21,7 @@ tier: core
            period AND have not since deleted or rewritten. Show it only if it is still
            present and provenanced; a proposal I rejected or later reverted does not
            count.
-       (c) FRONTIER — a newly-available capability, quoted VERBATIM from the /doctor
+       (c) FRONTIER — a newly-available capability, quoted VERBATIM from the /aios-doctor
            CURRENCY outcomes notes, that helps a specific thing I actually do (match it
            against my me/WHOAMI.md + recent activity). Never invent a capability; skip it
            if it doesn't map to something real of mine.

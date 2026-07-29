@@ -36,5 +36,5 @@ A backup looks about like this:
 - **Expert flags exist.** `--full`, `--no-encrypt`, `--to <path>`, `--dry-run`; a `backup.config.yml` tunes destinations, retention, and what's included.
 - **It captures your skills.** Because commands live outside `~/ai-os`, `/backup` deliberately reaches out to include them — a plain vault sync would miss them.
 - **Prove it with `/restore --drill`.** A backup you've never restored is only a hope; the drill verifies it into a throwaway copy without touching your live system.
-- **`/doctor` watches its age.** `/doctor` reports how old your most recent backup is, so a stale one is visible.
+- **`/aios-doctor` watches its age.** `/aios-doctor` reports how old your most recent backup is, so a stale one is visible.
 - **It's a safety net, not a sync.** A backup is a point-in-time snapshot for *recovery* and *migration*, not a way to run the same AI-OS live on two machines at once (see `/restore`). One live writer at a time.

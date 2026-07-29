@@ -32,4 +32,4 @@ A run looks about like this:
 ## Power user
 - **Propose-only, always.** `/memory-prune` never deletes on its own — you approve every removal. That's the deliberate trust posture.
 - **`/improve` grows it, `/memory-prune` keeps it true.** One captures new rules; the other re-verifies, de-dupes, and fixes drift — the maintenance native memory doesn't do.
-- **`/doctor` tells you when.** `/doctor` flags when your store has grown big enough that a prune is worth running.
+- **`/aios-doctor` tells you when.** `/aios-doctor` flags when your store has grown big enough that a prune is worth running.

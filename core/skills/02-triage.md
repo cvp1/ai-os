@@ -31,4 +31,4 @@ A triage looks about like this:
 - **Pair it with `/brief`.** `/brief` gives you the day; `/triage` clears the inbox behind it. A common rhythm is `/brief` first thing, then `/triage` to work the pile down.
 - **Hand off to `/prep`.** When triage surfaces a meeting you're not ready for, say *"prep me for that one"* and it hands the details to `/prep`.
 - **Teach it your buckets.** If it keeps mis-sorting a sender — a VIP landing in Noise, say — correct it and run `/improve` so the rule sticks. Triage gets more "you" over time.
-- **Stale inbox?** If mail looks out of date, your connector may have signed out — run `/doctor`, or re-authorize in your connector settings.
+- **Stale inbox?** If mail looks out of date, your connector may have signed out — run `/aios-doctor`, or re-authorize in your connector settings.

@@ -25,6 +25,6 @@ A session looks about like this:
 > Start a fresh session to register the new command.
 
 ## Power user
-- **New skills need a fresh session.** A newly-built command registers when you reopen the folder / restart — that's why a brand-new `/command` can "do nothing" until then (`/doctor` confirms what's registered).
+- **New skills need a fresh session.** A newly-built command registers when you reopen the folder / restart — that's why a brand-new `/command` can "do nothing" until then (`/aios-doctor` confirms what's registered).
 - **Keep skills small and single-purpose.** The best commands do one thing with a clear trigger — the same discipline the built-in toolkit follows.
 - **It's how AI-OS stays yours.** Everything is plain files you can read, edit, and share; `/skill-center` just makes authoring them follow the good patterns.

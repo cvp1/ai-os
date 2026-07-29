@@ -1,7 +1,7 @@
 # AI-OS installer build manifest (consumed by tools/build_installer.py)
-version: "2026.07.18a"   # stamped into index.html + guide.html + the installer's UPGRADE-MODE header
-prompt_bytes: 71571          # BUILD-COMPUTED — never hand-edit; build_installer.py overwrites on every run
-prompt_sha256: "a7e675005f8c2a192d76a36f883892a1f7aa078cf418d9ad4643faf5e2130d6c"        # BUILD-COMPUTED — sha256 of ai-os-setup-prompt.txt's exact bytes; read by /update to verify its fetch
+version: "2026.07.29a"   # stamped into index.html + guide.html + the installer's UPGRADE-MODE header
+prompt_bytes: 73267          # BUILD-COMPUTED — never hand-edit; build_installer.py overwrites on every run
+prompt_sha256: "8fd912138a0c308ecd787119272d4c22a4d192d5e149f904f48a87795fa2c93b"        # BUILD-COMPUTED — sha256 of ai-os-setup-prompt.txt's exact bytes; read by /update to verify its fetch
 shell: core/shell.html
 prompt:
   before: core/sections/before-skills.txt
@@ -13,7 +13,7 @@ prompt3: core/second-act/scheduler.txt
 prompt4: core/second-act/projects.txt
 prompt5: core/second-act/learning.txt
 
-# Outcome notes (FL-1a) — surfaced by /doctor CURRENCY, filtered to what the user has.
+# Outcome notes (FL-1a) — surfaced by /aios-doctor CURRENCY, filtered to what the user has.
 # --------------------------------------------------------------------------------
 # SILENT-SHIP IS THE DEFAULT. Add an entry ONLY when a change is invisible-unless-named:
 #   • a NEW command the user would only get by upgrading, OR
@@ -24,7 +24,7 @@ prompt5: core/second-act/learning.txt
 # this feature exists to avoid.
 # HONESTY: never describe a capability the build does not actually add. One cost-phrased
 # sentence per entry, addressed to the user ("your…", "you can now…").
-# FILTER KEYS: build = the build the change landed in (so /doctor shows it only to users
+# FILTER KEYS: build = the build the change landed in (so /aios-doctor shows it only to users
 # behind it); command = the command it concerns; scope = core | optin (an `optin` note is
 # shown ONLY to users who installed that command — a user without /projects never sees a
 # /projects note).
@@ -53,13 +53,13 @@ outcomes:
     scope: core
     note: "/improve now notices when you've corrected it the same way a few times and PROPOSES a standing rule so you stop repeating yourself — you always accept, edit, or reject it; nothing is written without your yes."
   - build: "2026.07.06b"
-    command: doctor
+    command: aios-doctor
     scope: core
-    note: "/doctor now also checks your standing work — if you've scheduled a manager to draft between sessions, it tells you when a scheduled run has quietly stopped, so a silently-skipped automation can't fool you into thinking it's still working."
+    note: "/aios-doctor now also checks your standing work — if you've scheduled a manager to draft between sessions, it tells you when a scheduled run has quietly stopped, so a silently-skipped automation can't fool you into thinking it's still working."
   - build: "2026.07.06b"
     command: projects
     scope: optin
-    note: "/projects can now check in on its own — put `/projects check-in` on a schedule and it drafts your due status update while you're away, staged for you to send; /doctor warns you if a scheduled check-in ever stops. Nothing is sent without you."
+    note: "/projects can now check in on its own — put `/projects check-in` on a schedule and it drafts your due status update while you're away, staged for you to send; /aios-doctor warns you if a scheduled check-in ever stops. Nothing is sent without you."
   - build: "2026.07.06c"
     command: gift
     scope: core
@@ -69,10 +69,14 @@ outcomes:
     scope: core
     note: "your assistant's ground rules are now explicitly yours — setup asks how much it may do without asking (one test: can it be undone, and who can see it?), how hard it pushes back when it thinks you're wrong, what it protects for you unprompted (a sleep window, family dates, a budget line), and even its name; your answers live in me/HOW-I-WORK.md where you can edit them anytime, and it never changes its own rules without your plain-language OK."
   - build: "2026.07.12a"
-    command: doctor
+    command: aios-doctor
     scope: core
     note: "if something was done for you while you were away — a status update drafted, or a scheduled check-in that quietly stopped — you'll hear about it once when you sit down, instead of having to run the right command to discover it. At most one thing, only when you're already here, never between sessions, and nothing at all when nothing is waiting."
   - build: "2026.07.13a"
     command: update
     scope: core
-    note: "if you have Playwright MCP connected, you no longer have to open a browser to stay current — /update fetches the latest setup prompt, verifies it's genuine, and hands it to the same safe upgrade mode as always. Without Playwright connected, it tells you plainly and points you at pasting the prompt yourself, same as today. /doctor still tells you when you're behind."
+    note: "if you have Playwright MCP connected, you no longer have to open a browser to stay current — /update fetches the latest setup prompt, verifies it's genuine, and hands it to the same safe upgrade mode as always. Without Playwright connected, it tells you plainly and points you at pasting the prompt yourself, same as today. /aios-doctor still tells you when you're behind."
+  - build: "2026.07.29a"
+    command: aios-doctor
+    scope: core
+    note: "your checkup command is now /aios-doctor — it used to be /doctor, which is also the name of one of Claude Code's own commands, so typing it ran the platform's health check instead of yours and told you everything was fine about a system it never looked at. Same command, unambiguous name; upgrading shows you the old folder and asks before removing it."

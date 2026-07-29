@@ -50,6 +50,20 @@ is a clean machine — ASK me before building anything. Never default to a rebui
   "AI-OS installer build:" line in my CLAUDE.md, compare it to this installer's build
   ({{VERSION}}) to focus the diff on what's new since mine, and update that line — and
   the ~/ai-os/.aios-version file — once the additions are applied.
+  RENAMED COMMANDS (the ONLY case where upgrade mode may retire something I already
+  have). Upgrade mode is otherwise strictly additive. A command is listed here only
+  when its old name is SHADOWED by a Claude Code built-in of the same name — meaning
+  typing the old name silently runs the platform's command instead of mine, and I get
+  a confident answer to a question I did not ask. This list is EXHAUSTIVE: rename,
+  retire, or remove NOTHING that is not named on it, no matter how similar it looks.
+    - doctor → aios-doctor (renamed in build 2026.07.29a; Claude Code ships its own
+      /doctor, so a skill named "doctor" can never fire)
+  For each renamed command I actually have: ADD the new one, then SHOW me the old
+  folder (~/.claude/skills/<old-name>/) and ASK before removing it — never delete it
+  on my say-so-implied; if I say no, leave it and say plainly that the old name will
+  keep doing nothing. If I customized the old skill, tell me so and offer to copy my
+  changes across BEFORE removing anything. There is deliberately NO backwards alias:
+  an alias would have to be named the shadowed name, so it could never run either.
 - IF IT DOESN'T → this is a fresh install: continue with PHASE 0 below and build
   the whole system.
 

@@ -19,7 +19,7 @@ tier: core
      prompt_bytes:, and prompt_sha256: fields. (3) If my build already matches the current
      version, tell me plainly "you're already on the latest build (X)" and STOP HERE — do
      not fetch the prompt file for no reason. (4) If I'm behind: before fetching, tell me
-     the build I'm moving to and read out the SAME outcomes: notes /doctor's CURRENCY check
+     the build I'm moving to and read out the SAME outcomes: notes /aios-doctor's CURRENCY check
      would show me (one-line, cost-phrased, filtered to commands I actually have) — from
      meta.yml — so I see what's coming before anything runs; if it's been a while since my
      last /backup, suggest running it first, but don't block on it. (5) CHECK WHETHER I HAVE
@@ -63,12 +63,12 @@ tier: core
 Fetches the current setup prompt from the AI-OS repo, checks it's byte-exact against a checksum before touching anything, and hands it into this session as if you'd pasted it yourself — then lets the setup prompt's own upgrade mode (the same one that runs when you paste by hand) decide what's new and wait for your OK. If you're already current, it says so and does nothing else.
 
 ## When to use it
-Any time `/doctor`'s currency check says you're behind, or whenever you feel like checking — it's free to run and does nothing if there's nothing new.
+Any time `/aios-doctor`'s currency check says you're behind, or whenever you feel like checking — it's free to run and does nothing if there's nothing new.
 
 ## Walkthrough
 1. Type `/update`.
 2. It checks the current build against yours. Already current → it tells you and stops.
-3. Behind → it shows you what's changing (the same "what's new for you" notes `/doctor` uses).
+3. Behind → it shows you what's changing (the same "what's new for you" notes `/aios-doctor` uses).
 4. If you have Playwright MCP connected, it fetches the prompt and verifies it byte-for-byte before doing anything with it. If verification ever fails, it stops cold and points you at pasting the prompt yourself — same safe path as always, no half-measures.
 5. If you don't have Playwright MCP connected, it tells you plainly and points you at pasting the prompt yourself — same outcome as today, no worse.
 6. When it does fetch clean, the setup prompt's own upgrade mode takes over exactly as if you'd pasted it: it shows you a diff of what it would add and waits for your OK. Nothing changes until you say yes.
@@ -78,4 +78,4 @@ Any time `/doctor`'s currency check says you're behind, or whenever you feel lik
 - **Verified, not just fetched.** A checksum published alongside the prompt (`meta.yml`) is checked locally against what actually landed on disk — if the fetch ever came back altered, it's caught, and `/update` refuses to run it rather than guess.
 - **Needs Playwright MCP for the one-command path.** WebFetch's own model can't relay this much AI-instruction-shaped text byte-exact — tested and confirmed, not assumed. Without Playwright connected, `/update` degrades honestly to "paste it yourself," which is exactly today's flow, not a regression.
 - **Fixed source, always.** The two URLs it reads are hard-coded to `cvp1/ai-os`'s `main` branch — never a URL you or anything else supplies.
-- **Pairs with `/doctor`.** `/doctor` tells you you're behind and what it'll cost you to stay there; `/update` is the one-command fix when it can be.
+- **Pairs with `/aios-doctor`.** `/aios-doctor` tells you you're behind and what it'll cost you to stay there; `/update` is the one-command fix when it can be.

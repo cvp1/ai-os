@@ -1,9 +1,9 @@
 ---
-name: doctor
+name: aios-doctor
 order: 17
 tier: core
 ---
-   - /doctor — A quick READ-ONLY "is my AI-OS healthy?" check I can run any time: it
+   - /aios-doctor — A quick READ-ONLY "is my AI-OS healthy?" check I can run any time: it
      inspects and reports, and must NEVER change, delete, or send anything. Cover the
      AI-OS-specific state that the platform's own checker can't see: (1) CONNECTORS —
      run /mcp and report which mail/calendar connector is signed in vs. needs a fresh
@@ -13,7 +13,12 @@ tier: core
      and flag if it's grown big enough that a /memory-prune is worth running. (3)
      TOOLKIT — count and list the skills installed under ~/.claude/skills/ so I can see
      my commands are all registered (if one I expect is missing, that's why it "does
-     nothing" — start a fresh session to register newly-built ones). (4) PROTECTION —
+     nothing" — start a fresh session to register newly-built ones). Also flag any
+     SHADOWED skill — one whose folder name matches a Claude Code built-in command, so
+     typing it runs the platform's command and mine can never fire. Today that is
+     exactly one: a leftover ~/.claude/skills/doctor/ from before this command was
+     renamed to /aios-doctor. If it's there, say so and tell me I can delete that
+     folder — don't delete it yourself; this check is read-only. (4) PROTECTION —
      if ~/ai-os/backups/ exists, report the age of my most recent /backup so a stale or
      missing backup is visible; if there's no backup yet, say so and suggest running
      /backup. (5) CURRENCY — check whether my AI-OS itself has fallen behind the
@@ -65,11 +70,12 @@ tier: core
      fix. If a counter file ~/ai-os/.aios-usage.jsonl exists, append one aggregate
      "heartbeat_stale" event per flagged job — counts only, no content. Then, for the deeper SYSTEM layer — install health, connector CONFIG
      validity, version currency, search/ripgrep, CLAUDE.md size — tell me to run Claude
-     Code's own built-in /doctor (if it's available here); don't reinvent that plumbing,
+     Code's own built-in /doctor (a DIFFERENT command from this one — that is exactly why
+     this one is named /aios-doctor), if it's available here; don't reinvent that plumbing,
      just point at it. Finish with a short green / needs-attention summary naming the
      one or two things worth doing next. Build it as a Claude Code skill, strictly
-     READ-ONLY (inspect and report only). Pairs with /backup: /doctor tells me my
-     safety net is current. Trigger on "/doctor", "is my AI-OS healthy / okay", "health
+     READ-ONLY (inspect and report only). Pairs with /backup: /aios-doctor tells me my
+     safety net is current. Trigger on "/aios-doctor", "is my AI-OS healthy / okay", "health
      check", "check my system / check my connectors", "am I up to date",
      "any AI-OS updates", "is my AI-OS current".
 
@@ -81,25 +87,25 @@ A read-only checkup for your system — are your connectors still signed in, you
 Any time something feels off — a command "does nothing", mail looks stale — or as a periodic once-over. It's strictly inspect-and-report: it never changes, deletes, or sends anything.
 
 ## Walkthrough
-1. Type `/doctor`.
+1. Type `/aios-doctor`.
 2. It checks the six things the platform's own checker can't see: **Connectors** (via `/mcp` — the thing most likely to be quietly broken), **Memory** (exists, rough size, note count, whether a `/memory-prune` is worth it), **Toolkit** (which skills are registered under `~/.claude/skills/`), **Protection** (the age of your most recent `/backup`), **Currency** (whether your installer build and command roster have fallen behind the current AI-OS — if so, it points you at re-running setup, which upgrades in place), and **Standing work** (if you've scheduled a manager to draft between sessions, whether it's actually still running — a silently-skipped run is worse than none).
-3. It finishes with a short green / needs-attention summary naming the one or two things worth doing next — and points you to Claude Code's own built-in `/doctor` for the deeper system layer (install, versions, config).
+3. It finishes with a short green / needs-attention summary naming the one or two things worth doing next — and points you to Claude Code's own built-in `/doctor` — a different command — for the deeper system layer (install, versions, config).
 
 A checkup looks about like this:
 
-> **/doctor** · AI-OS health
+> **/aios-doctor** · AI-OS health
 > ✓ Connectors — Google signed in · Memory — 84 notes (~180 KB), healthy
 > ⚠ Toolkit — 16 of 17 skills registered (/expenses needs a fresh session)
 > ⚠ Protection — last backup 9 days ago → run /backup
 > ⚠ Currency — build 2026.05.12a is behind current 2026.06.30m; missing /restore, /update → re-run setup once to catch up (it upgrades in place, adds only what's new) — after that, /update does this for you
 > &nbsp;&nbsp;What's new for you — the newer build's /brief now drafts your morning digest before you're even at your desk
 > ⚠ Standing work — your /projects check-in hasn't run since Jul 1 (expected weekly) → check its routine (a sleeping laptop skips runs)
-> For install/version checks, run Claude Code's built-in /doctor.
+> For install/version checks, run Claude Code's own built-in /doctor.
 
 ## Power user
-- **Connectors are the usual culprit.** A signed-out connector is the most common quiet failure; `/doctor` reads live auth via `/mcp` and points you to re-authorize.
-- **"My command does nothing."** Usually the skill isn't registered yet — `/doctor` shows the count; start a fresh session to register newly-built ones.
-- **It complements native `/doctor`, doesn't replace it.** AI-OS `/doctor` covers AI-OS-specific state; Claude Code's built-in `/doctor` covers install/config/versions. Run both.
-- **Currency routes, it never upgrades.** `/doctor` only *tells* you your build or command roster is behind; if you have `/update`, say it and it fetches, verifies, and hands off to the same upgrade mode automatically — if you don't have `/update` yet, re-paste the setup prompt manually once (upgrade mode detects your install, adds only what's missing, leaves your memories, notes, and customized skills untouched). `/doctor` itself changes nothing, and if you're offline it just skips the currency check.
+- **Connectors are the usual culprit.** A signed-out connector is the most common quiet failure; `/aios-doctor` reads live auth via `/mcp` and points you to re-authorize.
+- **"My command does nothing."** Usually the skill isn't registered yet — `/aios-doctor` shows the count; start a fresh session to register newly-built ones.
+- **Two different commands, on purpose.** `/aios-doctor` is AI-OS's; `/doctor` is Claude Code's own. Ours checks AI-OS-specific state (connectors, memory, toolkit, backups, currency, standing work); the platform's covers install, config and versions. Run both — and the names differ so you always know which one you got.
+- **Currency routes, it never upgrades.** `/aios-doctor` only *tells* you your build or command roster is behind; if you have `/update`, say it and it fetches, verifies, and hands off to the same upgrade mode automatically — if you don't have `/update` yet, re-paste the setup prompt manually once (upgrade mode detects your install, adds only what's missing, leaves your memories, notes, and customized skills untouched). `/aios-doctor` itself changes nothing, and if you're offline it just skips the currency check.
 - **Strictly read-only.** It inspects and reports — pair it with `/backup` (it tells you your safety net is current) and `/memory-prune` (it tells you when one's due).
-- **Standing work can fail silently — this catches it.** If you've scheduled a manager to draft between sessions (the "Run it without you" setup), `/doctor` reads a small heartbeat file and tells you if a scheduled run has quietly stopped — a sleeping laptop, a deleted routine, an errored run. It only reports and points you at the fix; it never re-runs or restarts anything.
+- **Standing work can fail silently — this catches it.** If you've scheduled a manager to draft between sessions (the "Run it without you" setup), `/aios-doctor` reads a small heartbeat file and tells you if a scheduled run has quietly stopped — a sleeping laptop, a deleted routine, an errored run. It only reports and points you at the fix; it never re-runs or restarts anything.

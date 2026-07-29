@@ -40,4 +40,4 @@ When a command or domain setup has genuinely earned its keep and someone you kno
 ## Power user
 - **Adopted ≠ trusted.** Adopted artifacts carry `tier: adopted` + origin stamps forever; they never touch `me/` or memory, and suggested rules route one at a time through /improve's normal accept gate.
 - **It's files, not a network.** No registry, no accounts, nothing phones home — a gift is a markdown file moving over whatever channel you two already use.
-- **Provenance survives.** `/doctor` can list what you've adopted and from whom.
+- **Provenance survives.** `/aios-doctor` can list what you've adopted and from whom.

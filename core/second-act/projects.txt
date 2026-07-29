@@ -66,7 +66,7 @@ writes, both local files I own:
   1. HEARTBEAT — append one JSON line to ~/ai-os/.aios-heartbeat.jsonl (create if needed):
      {"ts":"<now, ISO>","job":"projects-checkin","status":"ok","every":"<my status cadence,
      e.g. 7d>","note":"staged status for <slug>"}. If check-in runs but can't finish, write the
-     same line with "status":"error". This is how /doctor can later tell me if a scheduled
+     same line with "status":"error". This is how /aios-doctor can later tell me if a scheduled
      check-in has gone silently dead — a job that fails without telling me is worse than no job.
   2. COUNTER — if ~/ai-os/.aios-usage.jsonl exists, append an aggregate "proposal_surfaced"
      event (counts only, no content).
@@ -80,7 +80,7 @@ again. At most one waiting item, only when I'm already here — never unprompted
 never a notification. If nothing is waiting, say nothing at all.
 TO RUN IT WHILE I'M AWAY: tell me I can put `/projects check-in` on a schedule with the "Run it
 without you" setup on the AI-OS page (a Local routine in Ask mode) — it will draft on my cadence
-and /doctor will warn me if it ever stops. Only if I want it; interactively it works the same,
+and /aios-doctor will warn me if it ever stops. Only if I want it; interactively it works the same,
 just when I ask.
 
 PHASE D — FIRST WIN, INLINE (no restart needed)
@@ -123,4 +123,4 @@ Setup interviews you about the project itself — its goal / North Star and roug
 - **Propose-only, always** — it drafts the status; the last click is yours. It never sends, posts, or edits a shared doc.
 - **Confidentiality is enforced by a local `RULES.md`** — it never puts employer- or client-identifiable information into anything meant to leave the team.
 - **No connector needed** — it drafts from your plan and notes; you paste the status where it goes.
-- **It can check in on its own.** `/projects check-in` drafts your due status and stages it — run it yourself, or put it on a schedule with the "Run it without you" setup so it drafts while you're away. It only ever *stages* a draft (never sends), it surfaces one waiting draft the next time you're in `/projects` (never nags between sessions), and `/doctor` warns you if a scheduled check-in ever stops running.
+- **It can check in on its own.** `/projects check-in` drafts your due status and stages it — run it yourself, or put it on a schedule with the "Run it without you" setup so it drafts while you're away. It only ever *stages* a draft (never sends), it surfaces one waiting draft the next time you're in `/projects` (never nags between sessions), and `/aios-doctor` warns you if a scheduled check-in ever stops running.
