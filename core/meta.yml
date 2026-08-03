@@ -1,7 +1,7 @@
 # AI-OS installer build manifest (consumed by tools/build_installer.py)
-version: "2026.07.29a"   # stamped into index.html + guide.html + the installer's UPGRADE-MODE header
-prompt_bytes: 73526          # BUILD-COMPUTED — never hand-edit; build_installer.py overwrites on every run
-prompt_sha256: "bed58a2957e7a3745586a703919beed7c27ae81b78961d3da9e4d1de480dc850"        # BUILD-COMPUTED — sha256 of ai-os-setup-prompt.txt's exact bytes; read by /update to verify its fetch
+version: "2026.08.03a"   # stamped into index.html + guide.html + the installer's UPGRADE-MODE header
+prompt_bytes: 74689          # BUILD-COMPUTED — never hand-edit; build_installer.py overwrites on every run
+prompt_sha256: "366aaca3150ba55c7e7345badcf002f417f61ff10d5a29a3d0ab0153e864f156"        # BUILD-COMPUTED — sha256 of ai-os-setup-prompt.txt's exact bytes; read by /update to verify its fetch
 shell: core/shell.html
 prompt:
   before: core/sections/before-skills.txt
@@ -36,6 +36,10 @@ prompt5: core/second-act/learning.txt
 #     scope: core
 #     note: "your AI-OS can now live on more than one computer — /sync keeps your memory, notes and skills the same on each."
 outcomes:
+  - build: "2026.08.03a"
+    command: local
+    scope: core
+    note: "your AI-OS can now keep working when the internet can't — /local sets up a small model on your own machine as a measured, gated failover floor, so essential automated work degrades instead of dying."
   - build: "2026.07.02b"
     command: capture
     scope: core

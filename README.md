@@ -86,6 +86,7 @@ as-of July 2026; verify before relying on them.
 | `/restore` | Brings it all back from a snapshot — newest by default, fully reversible, with a `--drill` that proves a backup works without touching your live system. |
 | `/aios-doctor` | A read-only checkup — are your connectors signed in, your memory and commands healthy, your last `/backup` recent? Reports what needs attention and points you at the fix; never changes anything. |
 | `/update` | Fetches the current setup prompt, verifies it byte-for-byte, and hands it back to you as if you'd pasted it — then the same safe upgrade mode as always decides what's new. |
+| `/local` | Sets up a small model on your own machine as a measured failover floor — when the internet or your provider is down, essential automated work degrades to it instead of dying. |
 
 **Want more from each command?** The **[Field Guide](https://cvp1.github.io/ai-os/guide.html)** covers every one — what it does, when to reach for it, a walkthrough, and the power-user moves.
 

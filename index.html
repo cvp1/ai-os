@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- ai-os installer · build 2026.07.29a · generated from core/ by tools/build_installer.py — do not edit index.html by hand -->
+<!-- ai-os installer · build 2026.08.03a · generated from core/ by tools/build_installer.py — do not edit index.html by hand -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -331,6 +331,7 @@
     <div class="refrow"><div class="c"><span class="slash">/</span>backup</div><div class="d">Protects your whole system — memory, notes, <i>and</i> your skills — against a lost or wiped machine. One command keeps an on-disk history and tucks an <b>encrypted</b> copy into the cloud folder you already sync (the 3-2-1 rule), no setup required.</div><div class="e"><b>"/backup"</b> → a safe copy on disk and off your machine.</div></div>
     <div class="refrow"><div class="c"><span class="slash">/</span>restore</div><div class="d">Brings it all back — after a new laptop, a bad edit, or a lost folder. Picks the newest snapshot, lays everything back, and is fully reversible. Use <span class="cmd">--drill</span> to <i>prove</i> a backup works without touching your live system.</div><div class="e"><b>"/restore"</b> → your system, back the way it was.</div></div>
     <div class="refrow"><div class="c"><span class="slash">/</span>doctor</div><div class="d">A read-only checkup for your system — are your connectors still signed in, your memory and commands healthy, your last <span class="cmd">/backup</span> recent? Reports what needs attention and points you at the fix; it changes nothing. Pairs with <span class="cmd">/backup</span> — one tells you the safety net is current.</div><div class="e"><b>"/aios-doctor"</b> → one glance that everything's working.</div></div>
+    <div class="refrow"><div class="c"><span class="slash">/</span>local</div><div class="d">Sets up a small model on your own machine as a measured failover floor — probed and gated by real multi-step trials, not reputation. When the internet or your provider is down, essential automated work degrades to it instead of dying.</div><div class="e"><b>"/local setup"</b> → your AI-OS survives an outage.</div></div>
     <div class="refrow"><div class="c"><span class="slash">/</span>update</div><div class="d">Fetches the current setup prompt, checks it's byte-exact, and hands it into this session as if you'd pasted it — the same safe upgrade mode you'd get by hand decides what actually changes, and nothing does without your OK.</div><div class="e"><b>"/update"</b> → caught up, verified, on your say-so.</div></div>
     <div class="refrow"><div class="c"><span class="slash">/</span>gift</div><div class="d">Give a capability you've proven to a friend — packaged as one de-personalized markdown file you can both read — and safely adopt one a friend sends you: it's reviewed out loud first and installs only after your explicit yes. No registry, no accounts, no tracking — a gift is just a file.</div><div class="e"><b>"my friend sent me this"</b> → reviewed first, then it's yours.</div></div>
     </details>
@@ -478,7 +479,7 @@
 
   <p class="cmp-foot">
     <sup>1</sup> <b>Honest scope:</b> your notes and memory are plain files on your own machine; the AI model and the mail/calendar connectors are cloud services you already use. An AI&nbsp;OS doesn't run offline, and we don't claim it does.<br>
-    Every tool here lets you export your data &mdash; the real difference is that theirs lives in a cloud database you export <i>from</i>, while yours is already plain files you own. Competitor details are as-of July 2026; hosted-app features and pricing change often &mdash; check the source before relying on any cell.
+    Every tool here lets you export your data &mdash; the real difference is that theirs lives in a cloud database you export <i>from</i>, while yours is already plain files you own. Competitor details are as-of August 2026; hosted-app features and pricing change often &mdash; check the source before relying on any cell.
   </p>
 </div></section>
 
@@ -615,14 +616,14 @@
 a persistent memory, a structured notes vault, and a starter set of skills — and
 then you will operate it as my chief-of-staff going forward.
 
-(This installer is AI-OS build 2026.07.29a. When you build my system, record a line
-"AI-OS installer build: 2026.07.29a" in my CLAUDE.md, AND write the bare build string
-2026.07.29a as the only contents of a file ~/ai-os/.aios-version, so a later upgrade or
+(This installer is AI-OS build 2026.08.03a. When you build my system, record a line
+"AI-OS installer build: 2026.08.03a" in my CLAUDE.md, AND write the bare build string
+2026.08.03a as the only contents of a file ~/ai-os/.aios-version, so a later upgrade or
 health check can tell what changed since mine without parsing prose.)
 
 (INTEGRITY CHECK — before anything else: this prompt is large, and it ends with the
 exact final line
-"— END OF AI-OS SETUP PROMPT · build 2026.07.29a —".
+"— END OF AI-OS SETUP PROMPT · build 2026.08.03a —".
 If the message you just received does NOT end with that line, part of it was lost in
 the paste. Stop, tell me plainly the paste was cut off, and ask me to re-copy the whole
 prompt — the Copy button on the install page, or the raw file at
@@ -661,7 +662,7 @@ is a clean machine — ASK me before building anything. Never default to a rebui
   why it's worth adding — then apply it only after my OK, then STOP — skip PHASE 0 and the
   rest of the build. If I recorded an
   "AI-OS installer build:" line in my CLAUDE.md, compare it to this installer's build
-  (2026.07.29a) to focus the diff on what's new since mine, and update that line — and
+  (2026.08.03a) to focus the diff on what's new since mine, and update that line — and
   the ~/ai-os/.aios-version file — once the additions are applied.
   RENAMED COMMANDS (the ONLY case where upgrade mode may retire something I already
   have). Upgrade mode is otherwise strictly additive. A command is listed here only
@@ -1308,6 +1309,23 @@ Explain each piece in plain language as you create it.
      on "/update", "update my AI-OS", "update Sasha", "upgrade AI-OS", "upgrade my ai-os",
      "get the latest AI-OS", "install the update".
 
+   - /local — Give this AI-OS a local floor: a small model running on my own
+     machine that keeps essential automated work limping along when the internet
+     or the frontier provider is down. With no arguments, report floor readiness
+     (is Ollama installed, is a node reachable, is the harness installed, has a
+     model actually passed its gate). "/local setup" builds it: check for Ollama
+     (point me at ollama.com/download if missing), clone
+     https://github.com/cvp1/harness next to ~/ai-os, run
+     `python3 -m harness.selftest` (must be all green), then `--probe` and
+     `--gate` the model I choose — a model earns its place by measurement, never
+     by reputation. Record the node in HARNESS_NODE/HARNESS_MODEL. "/local
+     <task>" runs one bounded agentic task through the floor
+     (`python3 -m harness "<task>" --workdir <dir>`). The floor is a backstop,
+     never the primary: rougher answers that arrive beat perfect answers that
+     don't. Always label floor output as local so I know what produced it.
+     Trigger on "/local", "set up a local model", "local failover", "make this
+     work offline", "run that locally".
+
    Keep every skill read-by-default and write/send-gated behind my explicit OK.
 
 5) MAIL & CALENDAR WIRING — LOCAL-FIRST (stay responsive, avoid rate limits)
@@ -1611,7 +1629,7 @@ and record them in CLAUDE.md so they load every session:
 Start with PHASE 0 now: introduce yourself in one line and ask the first batch of
 interview questions.
 
-— END OF AI-OS SETUP PROMPT · build 2026.07.29a —</script>
+— END OF AI-OS SETUP PROMPT · build 2026.08.03a —</script>
 
 <!-- second-act (career manager) prompt held as plain text -->
 <script type="text/plain" id="promptSource2">You are extending an AI operating system I already set up in Claude Code, by adding a
