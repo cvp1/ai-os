@@ -319,6 +319,13 @@ def render_guide():
     return html
 
 def main():
+    unknown = [a for a in sys.argv[1:] if a != "--check"]
+    if unknown:
+        print(f"unknown argument(s): {' '.join(unknown)}", file=sys.stderr)
+        print("this tool BUILDS AND WRITES on any bare invocation — refusing.\n"
+              "valid: (no args) build and write · --check  drift gate, writes nothing",
+              file=sys.stderr)
+        sys.exit(2)
     html = render()
     guide = render_guide()
     prompt = build_prompt()
